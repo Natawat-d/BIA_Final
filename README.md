@@ -30,5 +30,5 @@ The pages were built from the course lecture slides (`Lecture/Chapter7-BIA.pdf`,
 
 ## How to view
 
-- **Locally:** double-click `index.html` — all files are self-contained HTML (no build step, no dependencies). The two "Related" cards link to the sibling `../Midterm_prepare/` folder and only work with both folders side by side.
-- **On the web (GitHub Pages):** push this folder to a repo, then enable *Settings → Pages → Deploy from branch*. The hub will be served at `https://<user>.github.io/<repo>/` (the Midterm-hub links won't resolve unless that folder is pushed too).
+- **Locally:** double-click `index.html` — all files are self-contained HTML (no build step, no dependencies).
+- **On the web (GitHub Pages):** enable *Settings → Pages → Deploy from branch* (main / root). The hub is served at `https://natawat-d.github.io/BIA_Final/`. The two "Related" cards link to the live Midterm hub at `https://natawat-d.github.io/BIA_Midterm/`.
