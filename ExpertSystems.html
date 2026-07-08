@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expert Systems · Full Detail</title>
+<style>
+  :root{--teal:#1a7a96;--teal-dark:#0f5a70;--red:#c0392b;--orange:#c0622b;--green:#2e8b57;--purple:#7a5ca8;--bg:#f7f9fa;--card:#fff;--ink:#1f2d33;--muted:#5c6b72;--border:#d9e2e6;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;}
+  a{color:var(--teal-dark);}
+  header.hero{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;padding:34px 26px 26px;}
+  header.hero .home{font-size:.82rem;color:#d7eef4;text-decoration:none;}
+  header.hero .chip{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin:10px 0 8px;}
+  header.hero h1{margin:0;font-size:1.7rem;line-height:1.25;max-width:900px;}
+  header.hero .cite{margin-top:10px;font-size:.9rem;opacity:.92;max-width:900px;}
+  .layout{display:flex;max-width:1140px;margin:0 auto;gap:28px;padding:26px 22px 48px;align-items:flex-start;}
+  nav.toc{position:sticky;top:16px;flex:0 0 215px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.84rem;max-height:calc(100vh - 32px);overflow-y:auto;}
+  nav.toc h2{font-size:.7rem;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0 0 8px;}
+  nav.toc a{display:block;color:var(--teal-dark);text-decoration:none;padding:3px 0;}
+  nav.toc a:hover{text-decoration:underline;}
+  main{flex:1 1 auto;min-width:0;}
+  section.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:14px;}
+  section.card>h2{color:var(--teal);margin-top:0;border-bottom:3px solid var(--teal);padding-bottom:8px;font-size:1.3rem;}
+  h3{color:var(--teal-dark);font-size:1.07rem;margin:20px 0 6px;border-left:4px solid var(--teal);padding-left:9px;}
+  h4{color:var(--teal-dark);margin:14px 0 4px;font-size:.98rem;}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;padding-left:22px;}
+  li{margin:3px 0;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef4f6;color:var(--teal-dark);}
+  code{background:#eef4f6;padding:1px 6px;border-radius:5px;font-size:.9em;display:inline-block;}
+  pre{background:#eef4f6;border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:.85rem;overflow-x:auto;line-height:1.5;}
+  .idea{background:#fdf3ea;border-left:4px solid var(--red);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .idea b{color:var(--red);}
+  .ex{background:#eef7fa;border-left:4px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.95rem;}
+  .ex b{color:var(--teal-dark);}
+  .exam{background:#fbf4ec;border-left:4px solid var(--orange);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .exam b{color:var(--orange);}
+  .spectrum{display:flex;flex-wrap:wrap;align-items:center;gap:7px;background:#eef4f6;border-radius:10px;padding:12px;margin:12px 0;font-weight:600;color:var(--teal-dark);font-size:.85rem;}
+  .spectrum .step{background:#fff;border:1px solid var(--border);border-radius:8px;padding:5px 9px;text-align:center;}
+  .spectrum .arrow{color:var(--teal);}
+  .red{color:var(--red);font-weight:600;}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:22px;border-top:1px solid var(--border);}
+  @media(max-width:860px){.layout{flex-direction:column;}nav.toc{position:static;width:100%;max-height:none;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <a class="home" href="index.html">← Final Prep Hub</a>
+  <div class="chip">LECTURE · FULL DETAIL · RULE-BASED AI</div>
+  <h1>Expert Systems</h1>
+  <div class="cite">Rule-based expert systems (ES): concept &amp; evolution, architecture (knowledge base · inference engine · explanation facility), the knowledge-engineering process, forward vs backward chaining, and where ES fit today.</div>
+</header>
+
+<div class="layout">
+  <nav class="toc">
+    <h2>On this page</h2>
+    <a href="#glance">Key idea</a>
+    <a href="#what">What is an ES?</a>
+    <a href="#concepts">Expert · expertise</a>
+    <a href="#conventional">Conventional vs ES</a>
+    <a href="#classics">Classic applications</a>
+    <a href="#structure">Architecture</a>
+    <a href="#ke">Knowledge engineering</a>
+    <a href="#rules">Production rules</a>
+    <a href="#chaining">Forward vs backward chaining</a>
+    <a href="#explain">Explanation facility</a>
+    <a href="#areas">Suitable problem areas</a>
+    <a href="#develop">Developing an ES</a>
+    <a href="#worked">Worked rule examples</a>
+    <a href="#exam">Exam focus</a>
+  </nav>
+  <main>
+
+  <section class="card" id="glance">
+    <h2>Key idea</h2>
+    <div class="idea"><b>Core message:</b> An expert system is a computer program that <b>imitates an expert's reasoning process and knowledge</b> to solve problems in a <b>narrow domain</b>. Its defining architecture <b>separates the knowledge (knowledge base of IF–THEN rules) from the reasoning (inference engine)</b> — and it can <b>explain</b> its conclusions. ES <span class="red">do not replace experts</span>; they make scarce expertise widely available so non-experts can work better.</div>
+  </section>
+
+  <section class="card" id="what">
+    <h2>What is an expert system?</h2>
+    <ul>
+      <li>A computer program that attempts to <b>imitate expert reasoning processes and knowledge</b> in solving <b>specific</b> problems.</li>
+      <li>Historically the <b>most popular applied AI technology</b> — enhances productivity, <b>augments workforces</b>.</li>
+      <li>Works best with <b>narrow problem areas/tasks</b> — depth over breadth.</li>
+      <li>Purpose: <b>transfer expertise</b> from the few to the many — the slides quote a <b>non-expert : expert ratio of 100 : 1</b>.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="concepts">
+    <h2>Important concepts: expert &amp; expertise</h2>
+    <ul>
+      <li><b>Expert</b> — a human who has developed a <b>high level of proficiency in making judgments in a specific domain</b>.</li>
+      <li><b>Expertise</b> — the set of capabilities underlying expert performance:
+        <ul>
+          <li>extensive <b>domain knowledge</b>,</li>
+          <li><b>heuristic rules</b> that simplify and improve problem-solving,</li>
+          <li><b>meta-knowledge and meta-cognition</b> (knowledge about one's own knowledge),</li>
+          <li><b>compiled forms of behaviour</b> that afford great economy in skilled performance.</li>
+        </ul></li>
+      <li><b>Transferring expertise</b> — from expert → computer → non-experts, via four activities: <b>acquisition → representation → inferencing → transfer</b>.</li>
+      <li>Other features: <b>symbolic reasoning</b> (manipulating symbols, not just numbers), degrees/levels of expertise, <b>deep knowledge</b> vs surface knowledge, and <b>self-knowledge</b> (the system can reason about its own reasoning).</li>
+    </ul>
+  </section>
+
+  <section class="card" id="conventional">
+    <h2>Conventional programs vs expert systems</h2>
+    <table>
+      <tr><th>Conventional system</th><th>Expert system</th></tr>
+      <tr><td>Knowledge and control (processing) are <b>mixed together</b> in one program</td><td><b>Knowledge base is separate</b> from the processing (inference) mechanism</td></tr>
+      <tr><td>Doesn't (usually) explain <em>why</em> input data are needed or <em>how</em> results were produced</td><td><b>Explanation is a core feature</b> — why a fact is asked, how a conclusion was reached</td></tr>
+      <tr><td>Needs <b>complete, exact</b> input data</td><td>Can operate with <b>incomplete or uncertain</b> information</td></tr>
+      <tr><td>Changes to the logic are <b>tedious</b> (reprogramming)</td><td>Changes in the <b>rules</b> are easy to make</td></tr>
+      <tr><td>Works with <b>numeric</b> data, algorithmic processing</td><td>Works with <b>symbolic</b> knowledge, heuristic reasoning</td></tr>
+      <tr><td>Efficient processing of large databases</td><td>Effective handling of large <b>knowledge bases</b></td></tr>
+      <tr><td>Execution: step-by-step algorithm</td><td>Execution: <b>firing whichever rules match</b> the current facts</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="classics">
+    <h2>Classic applications (name-drop these)</h2>
+    <table>
+      <tr><th>System</th><th>What it did</th></tr>
+      <tr><td><b>DENDRAL</b></td><td>Applied rule-based reasoning to <b>deduce the likely molecular structure of chemical compounds</b> — the first famous ES</td></tr>
+      <tr><td><b>MYCIN</b></td><td>Rule-based ES for <b>diagnosing and treating bacterial infections</b> (medicine; also cited in Ch.7's cognitive-computing lineage)</td></tr>
+      <tr><td><b>XCON</b></td><td>Rule-based ES to determine the <b>optimal computer-system configuration</b> (DEC)</td></tr>
+    </table>
+    <p><b>Newer application areas:</b> credit analysis, marketing, finance, manufacturing, human resources, science &amp; engineering, education…</p>
+    <div class="ex"><b>Application cases in the slides:</b> ① <b>CBR Advisor</b> — identifies <b>chemical, biological, and radiological agents</b> for quick emergency decisions; ② <b>SIPMES</b> — diagnoses heart disease by integrating <b>signal processing of digitised heart sounds</b> with an ES; ③ a <b>clinical ES for tendon injuries</b>. Common thread: narrow domain + codified expert rules + explanation.</div>
+  </section>
+
+  <section class="card" id="structure">
+    <h2>Architecture — the structure of an expert system</h2>
+    <p>Two environments: the <b>development environment</b> (expert + knowledge engineer build/refine the knowledge base) and the <b>consultation environment</b> (a non-expert user gets advice). Major components:</p>
+    <table>
+      <tr><th>Component</th><th>Role</th></tr>
+      <tr><td><b>Knowledge acquisition subsystem</b></td><td>Gets knowledge from the human expert(s) &amp; other sources — via the <b>knowledge engineer</b> (knowledge elicitation)</td></tr>
+      <tr><td><b>Knowledge base</b></td><td><b>Long-term memory:</b> stores facts + knowledge <b>rules</b> about the domain</td></tr>
+      <tr><td><b>Inference engine</b></td><td>The "brain": chains and <b>fires rules</b> against known facts to derive conclusions</td></tr>
+      <tr><td><b>User interface</b></td><td>Question/answer dialogue with the user</td></tr>
+      <tr><td><b>Blackboard (workplace)</b></td><td><b>Working / short-term memory:</b> the current problem's facts and intermediate results</td></tr>
+      <tr><td><b>Explanation subsystem (justifier)</b></td><td>Explains <b>why</b> a fact is requested and <b>how</b> a conclusion was reached</td></tr>
+      <tr><td><b>Knowledge-refining system</b></td><td>Learns from experience: analyses performance and refines the rules</td></tr>
+    </table>
+    <div class="ex"><b>Data flow to remember (the slides' architecture figure):</b> Human expert(s) + other knowledge sources → <em>knowledge elicitation</em> → knowledge engineer → <b>knowledge rules → knowledge base</b>. User → questions/answers → user interface → <b>facts → blackboard</b>; inference engine reads facts + rules, <b>fires rules</b>, writes conclusions back to the blackboard; the explanation facility justifies; knowledge refinement sends <b>refined rules</b> back to the base. External data can arrive via the Web.</div>
+  </section>
+
+  <section class="card" id="ke">
+    <h2>Knowledge engineering (KE)</h2>
+    <p><b>Definition:</b> a set of intensive activities encompassing the <b>acquisition of knowledge from human experts</b> (and other sources) and <b>converting it into a repository — the knowledge base</b>. Primary goals: help experts <b>articulate how they do what they do</b> and document that knowledge in a <b>reusable</b> form. (Narrow KE = building the ES; broad KE = the whole knowledge-systems discipline.)</p>
+    <h3>The KE process — 5 stages + feedback loop</h3>
+    <div class="spectrum"><span class="step">1 Knowledge acquisition</span><span class="arrow">→</span><span class="step">2 Knowledge representation</span><span class="arrow">→</span><span class="step">3 Knowledge validation</span><span class="arrow">→</span><span class="step">4 Inferencing (reasoning)</span><span class="arrow">→</span><span class="step">5 Explanation &amp; justification</span></div>
+    <p>Raw knowledge → codified knowledge → validated knowledge → solutions, with a <b>feedback loop of corrections and refinements</b> running back through every stage, plus <b>meta-knowledge</b> feeding the inferencing/explanation stages.</p>
+    <h3>Difficulties in KE</h3>
+    <ul>
+      <li>Experts often <b>cannot articulate</b> how they decide (compiled, tacit knowledge).</li>
+      <li>Experts may be unavailable, expensive, or <b>disagree with each other</b>.</li>
+      <li>Knowledge extraction is slow; testing and refining rules is laborious; domains drift over time.</li>
+    </ul>
+    <h3>Validation vs verification (definitions the slides stress)</h3>
+    <ul>
+      <li><b>Evaluation</b> — the broad concept: assess the ES's <b>overall value</b>.</li>
+      <li><b>Validation</b> — deals with the <b>performance</b> of the system (are we building the <em>right</em> system? does it match the expert?).</li>
+      <li><b>Verification</b> — <b>building the system right</b>: substantiating that it correctly implements its <b>specifications</b>.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="rules">
+    <h2>Knowledge representation — production rules</h2>
+    <p>Expert knowledge must be represented in a <b>computer-understandable format</b>, organised in the knowledge base. The most common/popular representation: <b>production rules</b> — <b>condition–action pairs</b>: <code>IF … THEN … (ELSE …)</code>.</p>
+    <h3>Forms of production rules</h3>
+    <ul>
+      <li><b>IF premise, THEN conclusion:</b> "IF your income is high, THEN your chance of being audited by the IRS is high."</li>
+      <li><b>Conclusion, IF premise:</b> "Your chance of being audited is high, IF your income is high."</li>
+      <li><b>With ELSE:</b> "IF your income is high OR your deductions are unusual, THEN your chance of being audited is high, ELSE your chance is low."</li>
+    </ul>
+    <h3>Knowledge rules vs inference rules (a classic exam contrast)</h3>
+    <table>
+      <tr><th></th><th>Knowledge (declarative) rules</th><th>Inference (procedural) rules</th></tr>
+      <tr><td>What they state</td><td>All the <b>facts and relationships</b> about the problem</td><td><b>How to solve</b> the problem given certain facts — including <b>meta-rules</b> (rules about rules)</td></tr>
+      <tr><td>Where stored</td><td><b>Knowledge base</b></td><td>Become part of the <b>inference engine</b></td></tr>
+      <tr><td>Example</td><td>"IF income is high THEN audit chance is high"</td><td>"IF needed data is not known THEN <b>ask the user</b>"; "IF more than one rule applies THEN <b>fire the highest-priority rule</b> first"</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="chaining">
+    <h2>Inferencing — forward vs backward chaining</h2>
+    <p><b>Inference</b> = the process of <b>chaining multiple rules together</b> based on available data. A rule is <b>FIRED</b> when <b>all of its "if" parts (hypotheses) are satisfied</b>; the engine keeps checking rules forward or backward until <b>no more rules can fire or a goal is achieved</b>.</p>
+    <table>
+      <tr><th></th><th>Forward chaining</th><th>Backward chaining</th></tr>
+      <tr><td>Direction</td><td><b>Data-driven</b>: start from known facts</td><td><b>Goal-driven</b>: start from the conclusion to prove</td></tr>
+      <tr><td>Mechanism</td><td>If a rule's premises match the situation, <b>assert its conclusion</b>; repeat as new facts appear</td><td>Begin with a rule's <b>action clause</b> and work backward through the chain looking for a <b>verifiable set of condition clauses</b></td></tr>
+      <tr><td>Typical use</td><td>Monitoring, planning, configuration — "what follows from these facts?"</td><td>Diagnosis — "could disease X explain these symptoms?"</td></tr>
+    </table>
+    <div class="ex"><b>Mnemonic:</b> forward = <b>facts → conclusions</b>; backward = <b>goal → needed facts</b>. MYCIN-style diagnosis is the standard backward-chaining example; inventory monitoring (below) runs forward.</div>
+  </section>
+
+  <section class="card" id="explain">
+    <h2>Explanation — the metaknowledge feature</h2>
+    <p>Human experts justify their advice — so should an ES. <b>Explanation</b> = the ES's attempt to clarify its reasoning, recommendations, or actions (including why it asks a question). The component is the <b>explanation facility, a.k.a. the justifier</b>.</p>
+    <ul>
+      <li><b>Why explanations</b> — "why is this fact being requested?"</li>
+      <li><b>How explanations</b> — "how was this conclusion reached?" Simple systems explain only the final conclusion; complex ones show the <b>whole chain of fired rules</b>.</li>
+      <li><b>Purposes:</b> make the system intelligible; <b>uncover shortcomings of the knowledge base</b>; explain unanticipated situations; satisfy users' psychological/social needs; support <b>training and evaluation</b>.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="areas">
+    <h2>Problem areas suitable for expert systems</h2>
+    <p>The classic ten <b>generic categories</b> — recognise the task type from a scenario:</p>
+    <table>
+      <tr><th>Category</th><th>Task</th></tr>
+      <tr><td><b>Interpretation</b></td><td>Infer situation descriptions from observations/sensor data</td></tr>
+      <tr><td><b>Prediction</b></td><td>Infer likely consequences of situations</td></tr>
+      <tr><td><b>Diagnosis</b></td><td>Infer malfunctions/diseases from symptoms</td></tr>
+      <tr><td><b>Repair</b></td><td>Prescribe and execute remedies for malfunctions</td></tr>
+      <tr><td><b>Design</b></td><td>Configure objects under constraints (e.g. XCON)</td></tr>
+      <tr><td><b>Planning</b></td><td>Develop sequences of actions to reach goals</td></tr>
+      <tr><td><b>Monitoring</b></td><td>Compare observations to expected outcomes, flag exceptions</td></tr>
+      <tr><td><b>Debugging</b></td><td>Prescribe remedies for faults in a design/program</td></tr>
+      <tr><td><b>Instruction</b></td><td>Diagnose and correct student performance (tutoring)</td></tr>
+      <tr><td><b>Control</b></td><td>Govern overall system behaviour (interpret–predict–monitor–act)</td></tr>
+    </table>
+    <p>Good ES problems are <b>narrow, judgment-heavy, rule-expressible</b>, have available experts, and reward making expertise available at scale.</p>
+  </section>
+
+  <section class="card" id="develop">
+    <h2>Developing an expert system</h2>
+    <ol>
+      <li><b>Define the nature and scope</b> of the problem (narrow it!).</li>
+      <li><b>Identify proper experts</b>.</li>
+      <li><b>Acquire knowledge</b> — the <b>knowledge engineer</b> elicits and structures it.</li>
+      <li><b>Select the building tools</b> — an ES <b>shell</b> (prebuilt inference engine + empty knowledge base, e.g. <b>Exsys</b>) versus complete custom development.</li>
+      <li><b>Code the system</b> (write the rules).</li>
+      <li><b>Evaluate and launch</b> — validate against the expert before deployment.</li>
+    </ol>
+    <div class="ex"><b>Why shells matter:</b> a shell gives you the inference engine, UI, and explanation facility for free — the project reduces to knowledge engineering. Exsys is the slides' example of a popular shell.</div>
+  </section>
+
+  <section class="card" id="worked">
+    <h2>Worked rule examples (straight from the slides)</h2>
+    <h3>Retail: inventory replenishment</h3>
+    <p>A grocery store's ES decides when and how to reorder stock:</p>
+    <pre>RULE 1: IF current_stock &lt; reorder_point
+        AND supplier_lead_time ≤ 3 days
+        AND season = "peak"
+        THEN action = "URGENT: Order 150% of standard quantity."
+
+RULE 2: IF current_stock &lt; reorder_point
+        AND supplier_lead_time ≤ 3 days
+        AND season = "off"
+        THEN action = "Order standard quantity."
+
+RULE 3: IF current_stock &lt; reorder_point
+        AND supplier_lead_time &gt; 7 days
+        THEN action = "Order expedited shipping with double quantity."
+
+RULE 4: IF days_until_expiration &lt; 5
+        AND product_type = "dairy"
+        THEN action = "Apply 30% discount immediately."</pre>
+    <p>Note the ES signature: rules combine <b>multiple conditions</b> (stock level, lead time, season, expiry) into expert-style actions, and each firing can be <b>explained</b> by quoting the rule.</p>
+    <h3>Exercise the lecture poses: an ES for loan approval — a model sketch</h3>
+    <div class="ex"><b>How to answer:</b> ① <b>Scope</b>: consumer-loan approve/reject/refer, one product line. ② <b>Experts &amp; acquisition</b>: senior credit officers; elicit their decision criteria (income, credit score, debt-to-income ratio, employment stability, collateral). ③ <b>Representation</b> — production rules, e.g. <code>IF credit_score ≥ 700 AND DTI &lt; 40% THEN decision = approve</code>; <code>IF credit_score &lt; 550 THEN decision = reject</code>; <code>IF 550 ≤ credit_score &lt; 700 AND collateral = yes THEN decision = refer_to_officer</code>. ④ <b>Inference</b>: backward chaining from the goal "approve?" asking the user only for facts still needed. ⑤ <b>Explanation</b>: the justifier cites the fired rules — essential for fair-lending accountability. ⑥ <b>Validate</b> against past officer decisions before launch; refine rules on disagreement.</div>
+  </section>
+
+  <section class="card" id="exam">
+    <h2>Exam focus</h2>
+    <div class="exam"><b>Most-tested:</b> ES definition (imitate expert reasoning, narrow domain, <b>augment not replace</b>); expert vs expertise (4 components); transferring expertise chain (acquisition→representation→inferencing→transfer); the <b>architecture</b> — 7 components with knowledge base = long-term vs blackboard = short-term memory; conventional-vs-ES contrasts (separation of knowledge &amp; control, explanation, incomplete data); DENDRAL/MYCIN/XCON one-liners; KE process 5 stages + feedback; <b>validation vs verification</b>; production-rule forms; knowledge (declarative) vs inference (procedural/meta) rules; <span class="red">forward (data-driven) vs backward (goal-driven) chaining</span> + what "firing a rule" means; why- vs how-explanations; the 10 generic problem areas; shell vs custom development. Be ready to <b>write 3–4 IF–THEN rules</b> for a given business scenario (loan approval, inventory) and say which chaining you'd use.</div>
+    <p><b>↔ Readings:</b> R18 (rule-based ES for early diagnosis of bipolar/major depressive disorder — a modern MYCIN descendant), R19 (Social4Fashion — ES forecasting fashion trends from social media). Also links back: MYCIN appears in <a href="Ch7.html">Ch.7</a>'s cognitive-computing lineage; heuristics/ES appear in <a href="Ch8.html">Ch.8</a>'s categories-of-models table. Back to <a href="index.html">hub</a>.</p>
+  </section>
+
+  </main>
+</div>
+<footer>Expert Systems · BIA final-exam full-detail page · <a href="index.html">back to hub</a></footer>
+</body>
+</html>

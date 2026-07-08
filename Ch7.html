@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.7 — Deep Learning &amp; Cognitive Computing · Full Detail</title>
+<style>
+  :root{--teal:#1a7a96;--teal-dark:#0f5a70;--red:#c0392b;--orange:#c0622b;--green:#2e8b57;--purple:#7a5ca8;--bg:#f7f9fa;--card:#fff;--ink:#1f2d33;--muted:#5c6b72;--border:#d9e2e6;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;}
+  a{color:var(--teal-dark);}
+  header.hero{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;padding:34px 26px 26px;}
+  header.hero .home{font-size:.82rem;color:#d7eef4;text-decoration:none;}
+  header.hero .chip{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin:10px 0 8px;}
+  header.hero h1{margin:0;font-size:1.7rem;line-height:1.25;max-width:900px;}
+  header.hero .cite{margin-top:10px;font-size:.9rem;opacity:.92;max-width:900px;}
+  .layout{display:flex;max-width:1140px;margin:0 auto;gap:28px;padding:26px 22px 48px;align-items:flex-start;}
+  nav.toc{position:sticky;top:16px;flex:0 0 215px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.84rem;max-height:calc(100vh - 32px);overflow-y:auto;}
+  nav.toc h2{font-size:.7rem;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0 0 8px;}
+  nav.toc a{display:block;color:var(--teal-dark);text-decoration:none;padding:3px 0;}
+  nav.toc a:hover{text-decoration:underline;}
+  main{flex:1 1 auto;min-width:0;}
+  section.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:14px;}
+  section.card>h2{color:var(--teal);margin-top:0;border-bottom:3px solid var(--teal);padding-bottom:8px;font-size:1.3rem;}
+  h3{color:var(--teal-dark);font-size:1.07rem;margin:20px 0 6px;border-left:4px solid var(--teal);padding-left:9px;}
+  h4{color:var(--teal-dark);margin:14px 0 4px;font-size:.98rem;}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;padding-left:22px;}
+  li{margin:3px 0;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef4f6;color:var(--teal-dark);}
+  code{background:#eef4f6;padding:1px 6px;border-radius:5px;font-size:.9em;}
+  .idea{background:#fdf3ea;border-left:4px solid var(--red);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .idea b{color:var(--red);}
+  .ex{background:#eef7fa;border-left:4px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.95rem;}
+  .ex b{color:var(--teal-dark);}
+  .exam{background:#fbf4ec;border-left:4px solid var(--orange);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .exam b{color:var(--orange);}
+  .spectrum{display:flex;flex-wrap:wrap;align-items:center;gap:7px;background:#eef4f6;border-radius:10px;padding:12px;margin:12px 0;font-weight:600;color:var(--teal-dark);font-size:.85rem;}
+  .spectrum .step{background:#fff;border:1px solid var(--border);border-radius:8px;padding:5px 9px;text-align:center;}
+  .spectrum .arrow{color:var(--teal);}
+  .red{color:var(--red);font-weight:600;}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:22px;border-top:1px solid var(--border);}
+  @media(max-width:860px){.layout{flex-direction:column;}nav.toc{position:static;width:100%;max-height:none;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <a class="home" href="index.html">← Final Prep Hub</a>
+  <div class="chip">CHAPTER 7 · FULL DETAIL · DEEP LEARNING &amp; AI</div>
+  <h1>Deep Learning and Cognitive Computing</h1>
+  <div class="cite">Sharda, Delen &amp; Turban — Chapter 7. From "shallow" neural networks to deep architectures (MLP, CNN, RNN/LSTM), the frameworks that run them, LLMs/ChatGPT, and IBM-Watson-style cognitive computing.</div>
+</header>
+
+<div class="layout">
+  <nav class="toc">
+    <h2>On this page</h2>
+    <a href="#glance">Key idea</a>
+    <a href="#vignette">Vignette: Danske Bank</a>
+    <a href="#placement">Where DL sits in AI</a>
+    <a href="#ann">"Shallow" ANN basics</a>
+    <a href="#learning">How an ANN learns</a>
+    <a href="#blackbox">Opening the black box</a>
+    <a href="#deep">Deep networks (MLP)</a>
+    <a href="#cnn">CNN</a>
+    <a href="#rnn">RNN &amp; LSTM</a>
+    <a href="#llm">ChatGPT &amp; LLMs</a>
+    <a href="#frameworks">Frameworks</a>
+    <a href="#cognitive">Cognitive computing</a>
+    <a href="#cases">Application cases</a>
+    <a href="#exam">Exam focus</a>
+  </nav>
+  <main>
+
+  <section class="card" id="glance">
+    <h2>Key idea</h2>
+    <div class="idea"><b>Core message:</b> Deep learning is the <b>newest member of the AI/ML family</b>. Its superpower — and the reason it beats classic ML on images, text, and speech — is <b>automatic feature extraction and representation learning</b>: the network learns its own features from raw data instead of relying on hand-engineered ones. "Deep" simply means <b>many hidden layers</b>, trained on large data with GPUs.</div>
+    <p>Chapter arc: shallow ANN mechanics → training (backpropagation) → deep architectures for different data types (<b>MLP</b> for tabular, <b>CNN</b> for images/text, <b>RNN/LSTM</b> for sequences) → implementation frameworks → <b>cognitive computing</b> (IBM Watson) as the applied, human-augmenting face of these technologies.</p>
+  </section>
+
+  <section class="card" id="vignette">
+    <h2>Opening vignette — fighting fraud with deep learning (Danske Bank)</h2>
+    <p><b>Business problem:</b> bank fraud — using deceptive, illegal methods to steal assets from financial institutions or their customers, increasingly through digital channels. Typical fraud types:</p>
+    <ul>
+      <li><b>Phishing</b> — tricking individuals into revealing credentials.</li>
+      <li><b>Identity theft</b> — using stolen personal information to open accounts or take over existing ones.</li>
+      <li><b>ATM skimming</b> — stealing card data via compromised ATMs.</li>
+      <li><b>Loan fraud</b> — intentionally providing false information to obtain loans.</li>
+    </ul>
+    <p><b>Solution &amp; result:</b> Danske Bank replaced rule-based/traditional detection with <b>deep learning</b>. Measured on <b>accuracy and the ROC curve</b>, deep learning outperformed traditional ML techniques — fewer missed frauds <em>and</em> fewer false alarms.</p>
+    <div class="ex"><b>Discussion point the slides flag (exam-friendly):</b> the <b>false-positive vs false-negative trade-off</b> (Type&nbsp;I vs Type&nbsp;II error). A false positive blocks a legitimate customer transaction (friction, complaints); a false negative lets real fraud through (direct loss). Where you set the alert threshold is a <em>business</em> decision, not just a statistical one.</div>
+  </section>
+
+  <section class="card" id="placement">
+    <h2>Where deep learning sits in the AI learning family</h2>
+    <p>The chapter's framing figure places methods in nested families: <b>AI</b> ⊃ machine learning ⊃ neural networks ⊃ <b>representation learning / deep learning</b>. Voice assistants (Siri, Google Assistant, Alexa, Google Home) are everyday deep-learning products.</p>
+    <h3>Classic ML vs representation/deep learning</h3>
+    <table>
+      <tr><th></th><th>Classic ("shallow") ML</th><th>Representation learning / deep learning</th></tr>
+      <tr><td>Features</td><td><b>Hand-crafted</b> by analysts (feature engineering)</td><td><b>Learned automatically</b> from raw data, layer by layer</td></tr>
+      <tr><td>Data appetite</td><td>Works on small–medium data</td><td>Needs <b>large datasets</b></td></tr>
+      <tr><td>Hardware</td><td>CPU is fine</td><td><b>GPU</b> (+ CUDA) or TPU practically required</td></tr>
+      <tr><td>Performance ceiling</td><td>Plateaus as data grows</td><td>Keeps improving with more data/layers</td></tr>
+      <tr><td>Typical inputs</td><td>Structured/tabular</td><td>Images, audio, text, sequences (as <b>tensors</b>)</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="ann">
+    <h2>Basics of "shallow" neural networks</h2>
+    <p><b>Artificial Neural Networks (ANN)</b> are abstractions of the human brain's biological network of neurons. An artificial neuron is called a <b>processing element (PE)</b>.</p>
+    <h3>The neuron's arithmetic</h3>
+    <p>A neuron with R inputs computes a weighted sum plus a <b>bias</b>, then passes it through a <b>transfer (activation) function</b>:</p>
+    <p style="text-align:center;"><code>n = w₁,₁p₁ + w₁,₂p₂ + … + w₁,RpR + b</code> &nbsp;→ in vector form&nbsp; <code>n = wp + b</code>, output <code>a = f(n)</code></p>
+    <h3>Elements of an ANN (Technology Insight 7.1)</h3>
+    <ul>
+      <li><b>Processing element (PE)</b> — the neuron itself.</li>
+      <li><b>Network structure</b> — how neurons are organised: <b>input layer → hidden layer(s) → output layer</b>.</li>
+      <li><b>Connection weights</b> — the adjustable parameters; they store what the network has learned.</li>
+      <li><b>Summation function</b> — combines multiple incoming signals into a single value.</li>
+      <li><b>Transfer (activation) function</b> — translates the summed input into the neuron's output; common choices: <b>sigmoid</b> (0–1), <b>tanh</b>, <b>ReLU</b> (rectified linear — the deep-learning default), linear, hard limit.</li>
+    </ul>
+    <div class="ex"><b>Vocabulary check:</b> a "typical" small network in the slides has <b>three layers and eight neurons</b> — the point is that a <em>shallow</em> network has one (maybe two) hidden layers; a <em>deep</em> network has many.</div>
+  </section>
+
+  <section class="card" id="learning">
+    <h2>How an ANN learns</h2>
+    <p><b>Development process</b> (iterative, with constant feedback): collect data → separate into training/test sets → define network structure → select a learning algorithm → set parameters &amp; initialise weights → transform data → <b>train</b> → test → implement — looping back whenever results disappoint.</p>
+    <h3>The learning loop (3 steps)</h3>
+    <div class="spectrum"><span class="step">1 Compute temporary outputs</span><span class="arrow">→</span><span class="step">2 Compare with desired targets</span><span class="arrow">→</span><span class="step">3 Adjust weights &amp; repeat</span></div>
+    <h3>Backpropagation (the standard training algorithm)</h3>
+    <ol>
+      <li><b>Initialise</b> weights with random values.</li>
+      <li>Read in the <b>input vector and the desired output</b>.</li>
+      <li><b>Compute the actual output</b> via forward calculation.</li>
+      <li><b>Compute the error</b> (desired − actual).</li>
+      <li><b>Change the weights by working backward</b> from the output layer through the hidden layers.</li>
+    </ol>
+    <p>Repeat over many examples/epochs until error is acceptably low.</p>
+  </section>
+
+  <section class="card" id="blackbox">
+    <h2>Illuminating the ANN black box</h2>
+    <p>ANN are typically criticised as <b>black boxes</b> — accurate but opaque. The chapter's remedy: <b>sensitivity analysis</b> based on <b>leave-one-out</b> — perturb or omit each input variable in turn and measure how much the trained network's output changes; the change ranks each variable's importance.</p>
+    <div class="ex"><b>Analytics in Action 7.2 — injury severity in traffic accidents:</b> eight binary ANN models were built and sensitivity analysis ranked the factors driving injury severity. Why use a black-box ANN over transparent logistic regression? Because the ANN captures <b>non-linear relationships</b> and predicts better — and sensitivity analysis restores (some) interpretability afterwards.</div>
+  </section>
+
+  <section class="card" id="deep">
+    <h2>Deep neural networks — what makes them "deep"</h2>
+    <ul>
+      <li><b>Deep = more hidden layers</b> (not just more neurons in one layer). Empirically, adding <em>layers</em> tends to help more than merely widening a layer.</li>
+      <li><b>Hardware:</b> beyond CPUs, deep learning uses <b>GPUs</b> programmed with <b>CUDA</b> (NVIDIA's Compute Unified Device Architecture); Google built <b>TPUs</b> (Tensor Processing Units).</li>
+      <li><b>Data:</b> needs large datasets; inputs are <b>tensors = N-dimensional arrays</b> (e.g. a colour image is a 3-D tensor: height × width × RGB channels).</li>
+      <li>Different deep-network types suit different tasks — MLP (general), CNN (images/text), RNN/LSTM (sequences).</li>
+    </ul>
+    <h3>Feedforward MLP-type deep networks</h3>
+    <p>The <b>multilayer perceptron (MLP)</b> is the most common deep network: fully connected layers passing vectors forward. Two training subtleties from the slides: <b>random initial weights</b> can strongly affect where training ends up, and <b>pretraining network parameters</b> (initialising from an unsupervised pass) measurably improves classification results.</p>
+    <div class="ex"><b>Analytics in Action 7.3 — Georgia DOT variable speed limits:</b> data science on traffic-flow data to set variable speed limits and relieve congestion — an example of deep/predictive analytics embedded in public-sector operations.</div>
+  </section>
+
+  <section class="card" id="cnn">
+    <h2>Convolutional neural networks (CNN)</h2>
+    <p>The <b>most popular</b> deep-learning method, used for <b>image/video processing and text recognition</b>. Defining property: at least one <b>convolution</b> layer.</p>
+    <ul>
+      <li><b>Convolution layer</b> — a small <b>kernel (filter)</b>, e.g. 2×2, slides across the input matrix computing local weighted sums; this detects local features (edges, corners, textures) and <b>shares weights</b>, drastically reducing parameters vs a fully connected layer.</li>
+      <li><b>Pooling (sub-sampling) layer</b> — consolidates large tensors into smaller ones, <b>reducing the number of model parameters while keeping only the important features</b> (e.g. max pooling). Several pooling types exist.</li>
+      <li>Typical unit: <b>convolution → pooling → convolution → pooling → … → fully connected → output</b>.</li>
+    </ul>
+    <h3>Image processing milestones</h3>
+    <ul>
+      <li><b>ImageNet</b> (image-net.org) — the benchmark dataset that powered the CNN revolution.</li>
+      <li><b>AlexNet</b> — the landmark CNN architecture for image classification.</li>
+      <li><b>GoogLeNet</b> — introduced the <b>Inception</b> feature (parallel multi-size convolutions).</li>
+      <li><b>Google Lens</b> — a consumer service built on convolutional deep networks for image recognition.</li>
+      <li><b>Face recognition</b> (Analytics in Action 7.4) — technically challenging (pose, lighting, ageing) and socially contentious (privacy, surveillance, bias).</li>
+    </ul>
+    <h3>Text processing with CNN</h3>
+    <p><b>Word embeddings</b> (Google's <b>word2vec</b>) map words into a vector space where semantically similar words sit near each other; CNNs over embedded text handle tasks such as <b>relation extraction</b> in text mining.</p>
+  </section>
+
+  <section class="card" id="rnn">
+    <h2>Recurrent neural networks (RNN) &amp; LSTM</h2>
+    <p><b>RNN</b> are designed to process <b>sequential inputs</b> (language, time series, speech): the recurrent unit feeds its output back into itself, so the network has memory of what came before.</p>
+    <p><b>LSTM (long short-term memory)</b> is the practical RNN variant. In a dynamic network the <b>weights are the long-term memory</b> while the <b>feedback loop plays the short-term memory role</b>; LSTM adds gates that decide what to keep, forget, and output — solving the vanishing-gradient problem on long sequences.</p>
+    <div class="ex"><b>Flagship application:</b> the <b>Google Neural Machine Translator (GNMT)</b> — LSTM-based machine translation with <b>close-to-human performance</b>. Other LSTM uses: speech recognition, handwriting, time-series forecasting.</div>
+  </section>
+
+  <section class="card" id="llm">
+    <h2>ChatGPT &amp; large language models</h2>
+    <ul>
+      <li>ChatGPT (OpenAI) is the chapter's example of a <b>large language model (LLM)</b> — and the <b>fastest AI technology adoption to date</b>.</li>
+      <li><b>Applications:</b> customer service, healthcare, marketing, computer programming, and more.</li>
+      <li><b>Limitations (know these):</b> <span class="red">biases, false answers (hallucination), obsolete training data</span>.</li>
+      <li>How it works (high level): a transformer-based network pre-trained on massive text to predict the next token, then fine-tuned with human feedback.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="frameworks">
+    <h2>Computer frameworks for deep learning</h2>
+    <table>
+      <tr><th>Framework</th><th>Origin / note</th></tr>
+      <tr><td><b>Torch</b> (torch.ch)</td><td>Scientific-computing framework; ML with GPU support</td></tr>
+      <tr><td><b>Caffe / Caffe2</b></td><td>Berkeley Vision; <b>Caffe2 is Facebook's improved version</b></td></tr>
+      <tr><td><b>TensorFlow</b></td><td><b>Google</b>; pairs with Tensor Processing Units (TPUs)</td></tr>
+      <tr><td><b>Theano</b></td><td>Deep Learning Group, <b>University of Montreal</b></td></tr>
+      <tr><td><b>Keras</b> (keras.io)</td><td>High-level <b>API</b> that runs on top of the engines above</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="cognitive">
+    <h2>Cognitive computing &amp; IBM Watson</h2>
+    <p><b>Definition:</b> systems that use mathematical models to <b>emulate (or partially simulate) the human cognition process</b> to find solutions to complex problems and situations <b>where the potential answers can be imprecise</b>. The icon: <b>IBM Watson winning Jeopardy!</b></p>
+    <h3>How cognitive computing works — four attributes</h3>
+    <ul>
+      <li><b>Adaptive</b> — learns as information and goals change.</li>
+      <li><b>Interactive</b> — converses naturally with users (and other systems).</li>
+      <li><b>Iterative and stateful</b> — remembers earlier interactions, asks clarifying questions when a problem is ambiguous.</li>
+      <li><b>Contextual</b> — draws meaning from context (domain, time, location, user).</li>
+    </ul>
+    <p>Underlying technologies: data mining, pattern recognition, deep learning, and <b>NLP</b> — mimicking the way the human brain works.</p>
+    <h3>Cognitive computing vs AI (Table 7.4 — a favourite exam table)</h3>
+    <table>
+      <tr><th>Characteristic</th><th>Cognitive computing</th><th>Artificial intelligence</th></tr>
+      <tr><td>Technologies</td><td>ML, NLP, neural networks, deep learning, <b>+ text mining &amp; sentiment analysis</b></td><td>ML, NLP, neural networks, deep learning</td></tr>
+      <tr><td>Capabilities</td><td><b>Simulate human thought processes</b> to assist humans in finding solutions</td><td><b>Find hidden patterns</b> in data to identify problems and provide solutions</td></tr>
+      <tr><td>Purpose</td><td><span class="red">Augment</span> human capability</td><td><span class="red">Automate</span> complex processes by acting like a human</td></tr>
+      <tr><td>Industries</td><td>Customer service, marketing, healthcare, entertainment, services</td><td>Manufacturing, finance, healthcare, banking, securities, retail, government</td></tr>
+    </table>
+    <h3>Use cases &amp; cognitive search</h3>
+    <p>Use cases: smart adaptive search engines, NLP, speech recognition, language translation, context-based sentiment analysis, face/emotion recognition, risk assessment, fraud detection, behavioural recommendations. <b>Cognitive search</b> goes beyond keyword search: handles <b>a variety of data types</b>, <b>contextualises</b> the search space, employs advanced AI, and lets developers build <b>enterprise-specific applications</b>.</p>
+    <div class="ex"><b>Applications named in the slides:</b> Watson predicting the <b>Eurovision Song Contest</b> winner; <b>MYCIN</b> — the 1980s rule-based expert system (bridge to the <a href="ExpertSystems.html">Expert Systems lecture</a>); plus healthcare/medicine, security, finance, retail, education, government, research.</div>
+  </section>
+
+  <section class="card" id="cases">
+    <h2>Application case with numbers — ED bounce-backs (Analytics in Action 7.5)</h2>
+    <p>A deep-learning model predicts <b>early bounce-backs to the emergency department</b> (patients who return soon after discharge). The headline finding: adding <b>unstructured physician notes</b> (text) to structured vitals/history/demographics improved every metric:</p>
+    <table>
+      <tr><th>Metric</th><th>Structured only</th><th>+ Physician notes</th><th>Improvement</th></tr>
+      <tr><td>Accuracy</td><td>0.668</td><td><b>0.748</b></td><td>+0.080</td></tr>
+      <tr><td>Sensitivity / recall</td><td>0.615</td><td><b>0.756</b></td><td>+0.141</td></tr>
+      <tr><td>Specificity</td><td>0.671</td><td><b>0.747</b></td><td>+0.076</td></tr>
+      <tr><td>AUROC</td><td>0.674</td><td><b>0.766</b></td><td>+0.092</td></tr>
+    </table>
+    <p><b>Lesson:</b> deep learning's ability to digest <em>unstructured</em> data is exactly where its business value over classic ML shows up.</p>
+  </section>
+
+  <section class="card" id="exam">
+    <h2>Exam focus</h2>
+    <div class="exam"><b>Most-tested:</b> why deep learning beats classic ML (<b>automatic feature extraction / representation learning</b>); neuron arithmetic <code>n = wp + b</code> + role of the transfer function; the 3-step learning loop and 5-step <b>backpropagation</b>; sensitivity analysis for the black box; deep = many hidden layers + GPU/CUDA + tensors; <b>CNN</b> = convolution (kernel, weight sharing) + pooling (parameter reduction) → image &amp; text uses (word2vec); <b>RNN/LSTM</b> = sequences, long- vs short-term memory, GNMT; ChatGPT's three limitations; the five frameworks and who's behind each; cognitive computing's 4 attributes and the <b>augment-vs-automate</b> contrast with AI.</div>
+    <p><b>↔ Readings:</b> R13 (brain-tumour classification <em>with a CNN</em> — the direct companion paper), R14 (comparing ML algorithms — where deep models fit among classic ones). Back to <a href="index.html">hub</a>.</p>
+  </section>
+
+  </main>
+</div>
+<footer>Ch.7 · Deep Learning and Cognitive Computing · BIA final-exam full-detail page · <a href="index.html">back to hub</a></footer>
+</body>
+</html>

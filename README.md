@@ -1,0 +1,34 @@
+# BIA Final Prep Hub
+
+Study materials for the **AT82.04 Business Intelligence & Analytics** final exam (AIT, 16 July, 25%).
+Open **[`index.html`](index.html)** for the landing page that links to everything.
+
+## Exam coverage (this hub)
+
+Post-midterm lecture topics:
+
+- **Ch. 7** — Deep Learning & Cognitive Computing
+- **Ch. 8** — Prescriptive Analytics: Optimization & Simulation
+- **Expert Systems** — rule-based ES lecture
+- **Big Data Analytics** — Hadoop / MapReduce / stream analytics lecture
+
+Companion readings per topic: R13–R14 (Ch. 7) · R15–R17 (Ch. 8) · R18–R19 (Expert Systems) · R20–R21 (Big Data). If the final follows the midterm format, expect a choose-one reading question — excluding your own presentation reading (**R20**).
+
+> ⚠️ The 9 July class also covers Ch. 10 (AI-based trends) and Ch. 11 (ethics/privacy) + R22–R25 — confirm with the instructor whether they're examinable.
+
+## Contents
+
+| File | What it is |
+|------|------------|
+| `index.html` | Hub — links to all resources below |
+| `Ch7.html` | **Full-detail page** — Deep Learning & Cognitive Computing (ANN → backprop → CNN/RNN/LSTM → LLMs → cognitive computing vs AI) |
+| `Ch8.html` | **Full-detail page** — Prescriptive Analytics (decision modeling, worked MBI LP, sensitivity/what-if/goal seeking, decision tables, simulation) |
+| `ExpertSystems.html` | **Full-detail page** — Expert Systems (architecture, knowledge engineering, production rules, forward/backward chaining, worked rules) |
+| `BigData.html` | **Full-detail page** — Big Data Analytics (the Vs, CSFs, MapReduce/Hadoop, Hadoop vs DW, stream analytics) |
+
+The pages were built from the course lecture slides (`Lecture/Chapter7-BIA.pdf`, `Chapter8-BIA.pdf`, `ExpertSystem.pdf`, `Big_Data_Analytics.pdf`), in the same template as the `Midterm_prepare/` detail pages — sticky table of contents, key-idea / example / exam-focus callouts, one self-contained page each.
+
+## How to view
+
+- **Locally:** double-click `index.html` — all files are self-contained HTML (no build step, no dependencies). The two "Related" cards link to the sibling `../Midterm_prepare/` folder and only work with both folders side by side.
+- **On the web (GitHub Pages):** push this folder to a repo, then enable *Settings → Pages → Deploy from branch*. The hub will be served at `https://<user>.github.io/<repo>/` (the Midterm-hub links won't resolve unless that folder is pushed too).

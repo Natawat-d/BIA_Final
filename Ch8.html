@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.8 — Prescriptive Analytics: Optimization &amp; Simulation · Full Detail</title>
+<style>
+  :root{--teal:#1a7a96;--teal-dark:#0f5a70;--red:#c0392b;--orange:#c0622b;--green:#2e8b57;--purple:#7a5ca8;--bg:#f7f9fa;--card:#fff;--ink:#1f2d33;--muted:#5c6b72;--border:#d9e2e6;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;}
+  a{color:var(--teal-dark);}
+  header.hero{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;padding:34px 26px 26px;}
+  header.hero .home{font-size:.82rem;color:#d7eef4;text-decoration:none;}
+  header.hero .chip{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin:10px 0 8px;}
+  header.hero h1{margin:0;font-size:1.7rem;line-height:1.25;max-width:900px;}
+  header.hero .cite{margin-top:10px;font-size:.9rem;opacity:.92;max-width:900px;}
+  .layout{display:flex;max-width:1140px;margin:0 auto;gap:28px;padding:26px 22px 48px;align-items:flex-start;}
+  nav.toc{position:sticky;top:16px;flex:0 0 215px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.84rem;max-height:calc(100vh - 32px);overflow-y:auto;}
+  nav.toc h2{font-size:.7rem;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0 0 8px;}
+  nav.toc a{display:block;color:var(--teal-dark);text-decoration:none;padding:3px 0;}
+  nav.toc a:hover{text-decoration:underline;}
+  main{flex:1 1 auto;min-width:0;}
+  section.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:14px;}
+  section.card>h2{color:var(--teal);margin-top:0;border-bottom:3px solid var(--teal);padding-bottom:8px;font-size:1.3rem;}
+  h3{color:var(--teal-dark);font-size:1.07rem;margin:20px 0 6px;border-left:4px solid var(--teal);padding-left:9px;}
+  h4{color:var(--teal-dark);margin:14px 0 4px;font-size:.98rem;}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;padding-left:22px;}
+  li{margin:3px 0;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef4f6;color:var(--teal-dark);}
+  code{background:#eef4f6;padding:1px 6px;border-radius:5px;font-size:.9em;}
+  .idea{background:#fdf3ea;border-left:4px solid var(--red);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .idea b{color:var(--red);}
+  .ex{background:#eef7fa;border-left:4px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.95rem;}
+  .ex b{color:var(--teal-dark);}
+  .exam{background:#fbf4ec;border-left:4px solid var(--orange);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .exam b{color:var(--orange);}
+  .spectrum{display:flex;flex-wrap:wrap;align-items:center;gap:7px;background:#eef4f6;border-radius:10px;padding:12px;margin:12px 0;font-weight:600;color:var(--teal-dark);font-size:.85rem;}
+  .spectrum .step{background:#fff;border:1px solid var(--border);border-radius:8px;padding:5px 9px;text-align:center;}
+  .spectrum .arrow{color:var(--teal);}
+  .red{color:var(--red);font-weight:600;}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:22px;border-top:1px solid var(--border);}
+  @media(max-width:860px){.layout{flex-direction:column;}nav.toc{position:static;width:100%;max-height:none;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <a class="home" href="index.html">← Final Prep Hub</a>
+  <div class="chip">CHAPTER 8 · FULL DETAIL · PRESCRIPTIVE ANALYTICS</div>
+  <h1>Prescriptive Analytics: Optimization and Simulation</h1>
+  <div class="cite">Sharda, Delen &amp; Turban — Chapter 8. Decision modeling, linear programming, sensitivity / what-if / goal seeking, decision tables &amp; trees, and simulation — the "what should we do?" layer of analytics.</div>
+</header>
+
+<div class="layout">
+  <nav class="toc">
+    <h2>On this page</h2>
+    <a href="#glance">Key idea</a>
+    <a href="#model">Model-based decisions</a>
+    <a href="#issues">Modeling issues</a>
+    <a href="#categories">Categories of models</a>
+    <a href="#structure">Model structure</a>
+    <a href="#zones">Certainty · risk · uncertainty</a>
+    <a href="#spreadsheet">Spreadsheet modeling</a>
+    <a href="#lp">Linear programming</a>
+    <a href="#mbi">Worked LP example</a>
+    <a href="#sens">Sensitivity · what-if · goal seek</a>
+    <a href="#tables">Decision tables &amp; trees</a>
+    <a href="#sim">Simulation</a>
+    <a href="#simtypes">Simulation types &amp; VIS</a>
+    <a href="#cases">Application cases</a>
+    <a href="#exam">Exam focus</a>
+  </nav>
+  <main>
+
+  <section class="card" id="glance">
+    <h2>Key idea</h2>
+    <div class="idea"><b>Core message:</b> Prescriptive analytics = <b>making the decision with an analytical model</b>. Descriptive and predictive analytics create the foundation (the choice alternatives); prescriptive analytics picks the <b>best possible decision</b> — by <b>optimization</b> when the problem can be expressed mathematically, and by <b>simulation</b> when it is too complex for a closed-form optimum. Remember the chain: <span class="red">Descriptive, Predictive → Prescriptive</span>.</div>
+    <p>Example framing from the slides: profit maximisation based on optimal spending on promotions and product/service pricing; or choosing which customers get a promotional offer to maximise response within a budget.</p>
+  </section>
+
+  <section class="card" id="model">
+    <h2>Model-based decision making</h2>
+    <p><b>Modeling is the key element of prescriptive analytics</b> — mostly mathematical modeling. Real-world successes are published in INFORMS outlets (<em>Interfaces</em>, <em>ORMS Today</em>, <em>Analytics Magazine</em>).</p>
+    <div class="ex"><b>Marquee example:</b> <b>TurboRouter</b> — a DSS for ship routing; within just a few weeks the company saved <b>$1–2M</b>. Same family: the <b>School District of Philadelphia</b> (opening vignette) used prescriptive analytics to find the optimal way to award school-bus route contracts, and <b>ExxonMobil</b> (Case 8.1) optimises ship transport for its downstream business.</div>
+  </section>
+
+  <section class="card" id="issues">
+    <h2>Major modeling issues</h2>
+    <ul>
+      <li><b>Problem identification &amp; environmental analysis</b> — information collection; understand the setting first.</li>
+      <li><b>Variable identification</b> — find the variables and their relationships; tools: <b>influence diagrams</b>, <b>cognitive maps</b>.</li>
+      <li><b>Forecasting (predictive analytics)</b> — feeds the model; more information → better prediction.</li>
+      <li><b>Multiple models</b> — a decision system may combine several models, each representing a different part of the problem; models can be <b>static</b> (single snapshot) or <b>dynamic</b> (evaluate over time).</li>
+      <li><b>Model management</b> — models, like data, must be managed to maintain integrity and applicability → <b>model-based management systems (MBMS)</b>.</li>
+      <li><b>Knowledge-based modeling</b> — DSS usually uses quantitative models; <b>expert systems use qualitative, knowledge-based models</b> (bridge to the <a href="ExpertSystems.html">Expert Systems lecture</a>).</li>
+      <li><b>Current trends</b> — cloud-based modeling tools; transparent (multidimensional/visual) models; "model of models" (e.g. influence diagrams used to build and solve models).</li>
+    </ul>
+  </section>
+
+  <section class="card" id="categories">
+    <h2>Categories of models (Table 8.1 — memorise the mapping)</h2>
+    <table>
+      <tr><th>Category</th><th>Process &amp; objective</th><th>Representative techniques</th></tr>
+      <tr><td>Optimization, <b>few alternatives</b></td><td>Best solution from a small set</td><td>Decision tables, decision trees, <b>AHP</b></td></tr>
+      <tr><td>Optimization <b>via algorithm</b></td><td>Best solution from many alternatives, step-by-step improvement</td><td><b>Linear &amp; other mathematical programming</b>, network models</td></tr>
+      <tr><td>Optimization <b>via analytic formula</b></td><td>Best solution in one step, using a formula</td><td>Some inventory models (e.g. EOQ)</td></tr>
+      <tr><td><b>Simulation</b></td><td><em>Good-enough</em> solution among alternatives checked, by experimentation</td><td>Several types of simulation</td></tr>
+      <tr><td><b>Heuristics</b></td><td>Good-enough solution using rules</td><td>Heuristic programming, expert systems</td></tr>
+      <tr><td>Predictive models</td><td>Predict the future for a scenario</td><td>Forecasting models, Markov analysis</td></tr>
+      <tr><td>Other</td><td>Solve a what-if case with a formula</td><td>Financial modeling, waiting lines</td></tr>
+    </table>
+    <div class="ex"><b>Exam trap:</b> optimization <em>guarantees</em> the best solution of the modeled problem; simulation and heuristics only find <em>good-enough</em> ones. AHP (used in R17 and Tutorial 2 / SuperDecisions) sits in the "few alternatives" row.</div>
+  </section>
+
+  <section class="card" id="structure">
+    <h2>Structure of mathematical models</h2>
+    <p>A quantitative model mathematically links three kinds of variables (plus intermediate results):</p>
+    <ul>
+      <li><b>Decision variables</b> — what the manager controls (what to produce, staffing levels, ad budget).</li>
+      <li><b>Uncontrollable variables / parameters</b> — the environment (inflation rate, competition, machine capacity, regulations).</li>
+      <li><b>Result variables</b> — the outcomes (profit, market share, total cost, customer satisfaction).</li>
+    </ul>
+    <table>
+      <tr><th>Area</th><th>Decision variables</th><th>Result variables</th><th>Uncontrollable</th></tr>
+      <tr><td>Financial investment</td><td>Investment alternatives &amp; amounts</td><td>Total profit, risk, ROI, EPS, liquidity</td><td>Inflation rate, prime rate, competition</td></tr>
+      <tr><td>Marketing</td><td>Advertising budget, where to advertise</td><td>Market share, customer satisfaction</td><td>Customer income, competitors' actions</td></tr>
+      <tr><td>Manufacturing</td><td>What/how much to produce, inventory, compensation</td><td>Total cost, quality, employee satisfaction</td><td>Machine capacity, technology, material prices</td></tr>
+      <tr><td>Services</td><td>Staffing levels</td><td>Customer satisfaction</td><td>Demand for services</td></tr>
+    </table>
+    <p>Components are linked by algebraic <b>equations or inequalities</b>. Simplest: <code>P = R − C</code>. Present-value example: <code>P = F / (1+i)ⁿ = 100,000 / (1.1)⁵ = 62,092</code>.</p>
+  </section>
+
+  <section class="card" id="zones">
+    <h2>Decision making under certainty, risk, and uncertainty</h2>
+    <table>
+      <tr><th>Zone</th><th>What you know</th><th>Consequence</th></tr>
+      <tr><td><b>Certainty</b></td><td>Complete knowledge — all outcomes known</td><td>May yield the <b>optimal</b> solution</td></tr>
+      <tr><td><b>Risk</b></td><td>Several outcomes per decision, <b>with known probabilities</b></td><td>Probabilistic decision making — compute <b>expected values</b></td></tr>
+      <tr><td><b>Uncertainty</b></td><td>Several outcomes, <b>probabilities unknown</b></td><td>Use optimistic/pessimistic approaches; gather knowledge to move toward risk</td></tr>
+    </table>
+    <div class="ex"><b>Case 8.3 — American Airlines:</b> a <b>"should-cost" model</b> to assess the uncertainty of supplier bids for shipment routes, reducing the risk of over- or under-paying suppliers.</div>
+  </section>
+
+  <section class="card" id="spreadsheet">
+    <h2>Decision modeling with spreadsheets</h2>
+    <p>The spreadsheet is the <b>most popular end-user modeling tool</b>: flexible, easy, powerful add-in functions, programmable (macros), built-in <b>what-if analysis and goal seeking</b>, simple database management, seamless integration of model and data, supports both <b>static</b> and <b>dynamic</b> models.</p>
+    <ul>
+      <li><b>Static example:</b> simple loan calculation of monthly payments — <code>F = P(1+i)ⁿ</code> and the annuity formula <code>A = P·[i(1+i)ⁿ]/[(1+i)ⁿ−1]</code>.</li>
+      <li><b>Dynamic example:</b> the same loan model extended with the <b>effects of prepayment</b> over time.</li>
+    </ul>
+    <div class="ex"><b>Cases:</b> the <b>Pennsylvania Adoption Exchange</b> used a spreadsheet model to better match children with families (Case 8.4); <b>Metro Meals on Wheels Treasure Valley</b> used Excel to find optimal meal-delivery routes (Case 8.5) — proof that "prescriptive analytics" can live in Excel, not just in specialised solvers.</div>
+  </section>
+
+  <section class="card" id="lp">
+    <h2>Optimization via mathematical programming</h2>
+    <p><b>Mathematical programming:</b> a family of tools for problems where a decision maker must <b>allocate scarce resources among competing activities</b> to optimise a measurable goal. The <b>optimal solution</b> = the best possible solution <em>to the modeled problem</em>.</p>
+    <p><b>Linear programming (LP):</b> a mathematical model for optimal resource allocation in which <b>all relationships are linear</b>.</p>
+    <h3>LP problem characteristics (5)</h3>
+    <ol>
+      <li>Limited quantity of economic resources.</li>
+      <li>Resources are used to produce products or services.</li>
+      <li>Two or more ways (solutions, <em>programs</em>) to use the resources.</li>
+      <li>Each activity yields a return in terms of the goal.</li>
+      <li>Allocation is restricted by <b>constraints</b>.</li>
+    </ol>
+    <h3>LP modeling steps</h3>
+    <div class="spectrum"><span class="step">1 Identify decision variables, objective function, coefficients, constraints</span><span class="arrow">→</span><span class="step">2 Represent the model (LINDO formulation / Excel cells)</span><span class="arrow">→</span><span class="step">3 Run &amp; observe results</span></div>
+    <h3>Common optimization model families</h3>
+    <p>Assignment (best matching), dynamic programming, goal programming, investment (maximise ROI), linear &amp; integer programming, network models (planning/scheduling), nonlinear programming, replacement (capital budgeting), simple inventory models (<b>EOQ</b>), transportation (minimise shipment cost).</p>
+    <div class="ex"><b>Case 8.6:</b> a <b>mixed-integer programming</b> model schedules physicians at the University of Tennessee Medical Center — integer variables because you can't assign 0.4 of a doctor.</div>
+  </section>
+
+  <section class="card" id="mbi">
+    <h2>Worked LP example — the MBI product-mix model (know this cold)</h2>
+    <p><b>Problem:</b> MBI Corporation builds two computers, <b>CC-7</b> and <b>CC-8</b>. How many of each per month to <b>maximise profit</b>?</p>
+    <table>
+      <tr><th></th><th>CC-7</th><th>CC-8</th><th>Relation</th><th>Limit</th></tr>
+      <tr><td>Labor (days)</td><td>300</td><td>500</td><td>≤</td><td>200,000 / month</td></tr>
+      <tr><td>Materials ($)</td><td>10,000</td><td>15,000</td><td>≤</td><td>8,000,000 / month</td></tr>
+      <tr><td>Units CC-7</td><td>1</td><td>—</td><td>≥</td><td>100</td></tr>
+      <tr><td>Units CC-8</td><td>—</td><td>1</td><td>≥</td><td>200</td></tr>
+      <tr><td>Profit ($)</td><td>8,000</td><td>12,000</td><td colspan="2"><b>Maximise</b></td></tr>
+    </table>
+    <h3>Algebraic formulation</h3>
+    <p>Decision variables: <code>X₁</code> = units of CC-7, <code>X₂</code> = units of CC-8.</p>
+    <p style="text-align:center;"><code>Max Z = 8000·X₁ + 12000·X₂</code></p>
+    <p style="text-align:center;">subject to&nbsp; <code>300X₁ + 500X₂ ≤ 200,000</code> · <code>10,000X₁ + 15,000X₂ ≤ 8,000,000</code> · <code>X₁ ≥ 100</code> · <code>X₂ ≥ 200</code></p>
+    <div class="ex"><b>Solution (via Excel Solver):</b> <code>X₁ = 333.33</code> (slides: 333), <code>X₂ = 200</code> → total profit ≈ <b>$5,066,667 per month</b> (slides: 5,066.66 in $'000). Interpretation: build as many high-labor-efficiency CC-7s as labor allows after meeting the CC-8 minimum — the <b>labor constraint is binding</b>, materials are not.</div>
+  </section>
+
+  <section class="card" id="sens">
+    <h2>Multiple goals, sensitivity analysis, what-if, goal seeking</h2>
+    <h3>Multiple goals</h3>
+    <p>Most managerial problems have <b>multiple objectives</b> to attain simultaneously. Handling methods: <b>utility theory</b>, <b>goal programming</b>, <b>expressing goals as constraints in LP</b>, a <b>points system</b>. Difficulties: hard to get a single organisational goal; goal importance changes over time; goals viewed differently across levels; group dynamics; assessing priorities.</p>
+    <h3>The three analysis modes (favourite exam contrast)</h3>
+    <table>
+      <tr><th>Mode</th><th>Question it answers</th><th>Example</th></tr>
+      <tr><td><b>Sensitivity analysis</b></td><td>How does a change in <b>inputs</b> affect <b>outputs</b>?</td><td>Which variables matter enough to estimate better; can be <b>automatic or trial-and-error</b></td></tr>
+      <tr><td><b>What-if analysis</b></td><td>What happens to the solution if a variable/assumption changes? (scenario analysis)</td><td>"What if capacity at the milling station rises 40% — what is the impact on output?"</td></tr>
+      <tr><td><b>Goal seeking</b></td><td><b>Backwards:</b> start from the goal, find the input needed</td><td>Break-even: "To make profit = 0, how many units must we sell per month?"</td></tr>
+    </table>
+    <p>Sensitivity analysis also helps <b>eliminate variables</b>, revise models to remove too-large sensitivities, add detail about sensitive variables, and obtain better estimates of them.</p>
+  </section>
+
+  <section class="card" id="tables">
+    <h2>Decision analysis with decision tables &amp; decision trees</h2>
+    <p><b>Decision table:</b> a tabular model — alternatives (decision variables) × <b>states of nature</b> (uncontrollable) → projected results.</p>
+    <h3>The investment example (goal: maximise yield after one year)</h3>
+    <table>
+      <tr><th>Alternative</th><th>Solid growth (%)</th><th>Stagnation (%)</th><th>Inflation (%)</th></tr>
+      <tr><td>Bonds</td><td>12.0</td><td>6.0</td><td>3.0</td></tr>
+      <tr><td>Stocks</td><td>15.0</td><td>3.0</td><td>−2.0</td></tr>
+      <tr><td>CDs (time deposits)</td><td>6.5</td><td>6.5</td><td>6.5</td></tr>
+    </table>
+    <ul>
+      <li><b>Under uncertainty:</b> <b>optimistic</b> approach (best of the best → stocks, 15%) vs <b>pessimistic</b> approach (best of the worst → CDs, 6.5%).</li>
+      <li><b>Under risk</b> (known probabilities: growth 0.5, stagnation 0.3, inflation 0.2) — compute <b>expected values</b>:
+        Bonds = 12(.5)+6(.3)+3(.2) = <b>8.4%</b> ✅ · Stocks = 15(.5)+3(.3)−2(.2) = <b>8.0%</b> · CDs = <b>6.5%</b> → choose bonds by EV.</li>
+      <li><b>Multiple goals</b> (yield, safety, liquidity): bonds = 8.4 / high / high · stocks = 8.0 / low / high · CDs = 6.5 / very high / high — the "best" now depends on goal weights.</li>
+    </ul>
+    <p><b>Decision trees:</b> graphical representation of the relationships; can be <b>induced from data</b> (data-mining trees, Ch.5) or <b>driven from experts</b> (knowledge-driven); good for multiple criteria and complex relationships, but <b>cumbersome with many alternatives</b>. Tools: Mind Tools, TreeAge, Palisade.</p>
+  </section>
+
+  <section class="card" id="sim">
+    <h2>Simulation</h2>
+    <p><b>Definition:</b> simulation is the <b>"appearance" of reality</b> — a technique for <b>conducting experiments</b> (what-if analysis) with a computer on a comprehensive model of a system to assess its <b>dynamic behaviour</b>. Used when the system is <b>too complex</b> for other DSS techniques.</p>
+    <h3>Major characteristics</h3>
+    <ul>
+      <li><b>Imitates</b> reality (vs a model that merely <em>represents</em> it) — captures richness in shape and behaviour.</li>
+      <li>A technique for experiments; <span class="red">descriptive, not normative</span> — it evaluates what you try, it does not produce the optimum by itself.</li>
+      <li>Rule of thumb: <b>use simulation only when numerical optimization is not possible</b>.</li>
+    </ul>
+    <h3>Worked example — the supermarket model</h3>
+    <div class="ex"><b>Objective:</b> hire the least-cost combination of checkout clerks &amp; baggers that keeps queue length under a limit <b>95% of the time</b>.<br>
+    <b>Decision variables:</b> number of open checkout counters; number of baggers.<br>
+    <b>State (uncontrollable) variables:</b> number of shoppers in the store / at each open counter.<br>
+    <b>Data needed:</b> arrival-rate statistics, distribution of shopping times, checkout process statistics.</div>
+    <h3>Advantages vs disadvantages</h3>
+    <table>
+      <tr><th>Advantages</th><th>Disadvantages</th></tr>
+      <tr><td>Straightforward theory; great <b>time compression</b>; experiment with alternatives; reflects the <b>manager's perspective</b>; handles a wide variety of problems and <b>real complexities</b>; produces performance measures; often the <b>only</b> tool for non-structured problems</td><td><span class="red">Cannot guarantee an optimal solution</span> (descriptive model → prescriptive outcomes only indirectly); time-demanding &amp; costly to build; <b>models are problem-specific</b> (solutions don't transfer); so easy to sell that managers may overlook available analytical optima; software may require special skills</td></tr>
+    </table>
+    <h3>Simulation methodology — 7 steps</h3>
+    <div class="spectrum"><span class="step">1 Define problem</span><span class="arrow">→</span><span class="step">2 Construct model</span><span class="arrow">→</span><span class="step">3 Test &amp; validate</span><span class="arrow">→</span><span class="step">4 Design experiments</span><span class="arrow">→</span><span class="step">5 Conduct experiments</span><span class="arrow">→</span><span class="step">6 Evaluate results</span><span class="arrow">→</span><span class="step">7 Implement solution</span></div>
+  </section>
+
+  <section class="card" id="simtypes">
+    <h2>Simulation types &amp; visual interactive simulation</h2>
+    <ul>
+      <li><b>Stochastic vs deterministic</b> — stochastic models have one or more <b>random variables as inputs</b>.</li>
+      <li><b>Time-dependent vs time-independent</b>.</li>
+      <li><b>Monte Carlo simulation</b> — <code>X = A + B</code> where A, B, X are all <b>probability distributions</b>; sample repeatedly to build the output distribution.</li>
+      <li><b>Discrete-event vs continuous vs agent-based</b> simulation.</li>
+      <li>Implementation flavours: <b>visual simulation</b> and/or object-oriented simulation.</li>
+    </ul>
+    <p><b>Visual Interactive Simulation (VIS) / Visual Interactive Modeling (VIM):</b> uses computer graphics and animation to fix conventional simulation's opacity; often integrated with <b>RFID and GIS</b>; allows interactive/immersive sensitivity analysis, up to <b>virtual reality</b> and immersive presence.</p>
+    <p><b>Software:</b> Simio, SAS Simulation (SAS OR), Lumina, Oracle Crystal Ball, Palisade, Rockwell <b>Arena</b> (full survey list at orms-today.org).</p>
+  </section>
+
+  <section class="card" id="cases">
+    <h2>Application cases (one line each)</h2>
+    <table>
+      <tr><th>Case</th><th>What it shows</th></tr>
+      <tr><td>8.0 School District of Philadelphia</td><td>Optimal awarding of bus-route contracts (opening vignette)</td></tr>
+      <tr><td>8.1 ExxonMobil Downstream</td><td>DSS optimises ship transport scheduling</td></tr>
+      <tr><td>8.2 Ingram Micro</td><td>BI Center for pricing decisions &amp; customer profiling</td></tr>
+      <tr><td>8.3 American Airlines</td><td>Should-cost modeling under bid uncertainty</td></tr>
+      <tr><td>8.4 Pennsylvania Adoption Exchange</td><td>Spreadsheet model matches children with families</td></tr>
+      <tr><td>8.5 Metro Meals on Wheels</td><td>Excel-based optimal delivery routes</td></tr>
+      <tr><td>8.6 U. Tennessee Medical Center</td><td>Mixed-integer programming for physician scheduling</td></tr>
+      <tr><td>8.7 Hepatitis B interventions</td><td>Simulation (decision + Markov models) beats clinical-trial-only evidence for choosing control measures</td></tr>
+      <tr><td>8.8 Cosan</td><td>Simulation improves a renewable-energy (sugar-cane/ethanol) supply chain</td></tr>
+      <tr><td>8.9 RFID job-shop scheduling</td><td>Simulation-based assessment of an RFID investment</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="exam">
+    <h2>Exam focus</h2>
+    <div class="exam"><b>Most-tested:</b> the Descriptive→Predictive→Prescriptive chain; decision vs uncontrollable vs result variables (give examples per area); Table 8.1 category↔technique mapping (AHP = few alternatives; LP = algorithm; EOQ = formula; simulation = good-enough); certainty/risk/uncertainty definitions; the <b>MBI LP formulation and solution</b> (be able to write objective + 4 constraints and state X₁=333⅓, X₂=200, profit ≈ $5.07M); sensitivity vs what-if vs <b>goal seeking</b> (backwards, break-even); decision-table expected values (bonds 8.4% wins); simulation definition, <b>descriptive-not-normative</b>, advantages/disadvantages, 7-step methodology, Monte Carlo, discrete-event vs continuous vs agent-based; VIS/VIM.</div>
+    <p><b>↔ Readings:</b> R15 (AquaCrop + optimization for irrigation), R16 (integrated data-driven <b>simulation-optimization</b> model), R17 (<b>AHP</b> in disaster management — pairs with SuperDecisions Tutorial 2). Back to <a href="index.html">hub</a>.</p>
+  </section>
+
+  </main>
+</div>
+<footer>Ch.8 · Prescriptive Analytics: Optimization and Simulation · BIA final-exam full-detail page · <a href="index.html">back to hub</a></footer>
+</body>
+</html>

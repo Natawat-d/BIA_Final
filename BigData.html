@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Big Data Analytics · Full Detail</title>
+<style>
+  :root{--teal:#1a7a96;--teal-dark:#0f5a70;--red:#c0392b;--orange:#c0622b;--green:#2e8b57;--purple:#7a5ca8;--bg:#f7f9fa;--card:#fff;--ink:#1f2d33;--muted:#5c6b72;--border:#d9e2e6;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;}
+  a{color:var(--teal-dark);}
+  header.hero{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;padding:34px 26px 26px;}
+  header.hero .home{font-size:.82rem;color:#d7eef4;text-decoration:none;}
+  header.hero .chip{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin:10px 0 8px;}
+  header.hero h1{margin:0;font-size:1.7rem;line-height:1.25;max-width:900px;}
+  header.hero .cite{margin-top:10px;font-size:.9rem;opacity:.92;max-width:900px;}
+  .layout{display:flex;max-width:1140px;margin:0 auto;gap:28px;padding:26px 22px 48px;align-items:flex-start;}
+  nav.toc{position:sticky;top:16px;flex:0 0 215px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.84rem;max-height:calc(100vh - 32px);overflow-y:auto;}
+  nav.toc h2{font-size:.7rem;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0 0 8px;}
+  nav.toc a{display:block;color:var(--teal-dark);text-decoration:none;padding:3px 0;}
+  nav.toc a:hover{text-decoration:underline;}
+  main{flex:1 1 auto;min-width:0;}
+  section.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:14px;}
+  section.card>h2{color:var(--teal);margin-top:0;border-bottom:3px solid var(--teal);padding-bottom:8px;font-size:1.3rem;}
+  h3{color:var(--teal-dark);font-size:1.07rem;margin:20px 0 6px;border-left:4px solid var(--teal);padding-left:9px;}
+  h4{color:var(--teal-dark);margin:14px 0 4px;font-size:.98rem;}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;padding-left:22px;}
+  li{margin:3px 0;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef4f6;color:var(--teal-dark);}
+  code{background:#eef4f6;padding:1px 6px;border-radius:5px;font-size:.9em;}
+  .idea{background:#fdf3ea;border-left:4px solid var(--red);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .idea b{color:var(--red);}
+  .ex{background:#eef7fa;border-left:4px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.95rem;}
+  .ex b{color:var(--teal-dark);}
+  .exam{background:#fbf4ec;border-left:4px solid var(--orange);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .exam b{color:var(--orange);}
+  .spectrum{display:flex;flex-wrap:wrap;align-items:center;gap:7px;background:#eef4f6;border-radius:10px;padding:12px;margin:12px 0;font-weight:600;color:var(--teal-dark);font-size:.85rem;}
+  .spectrum .step{background:#fff;border:1px solid var(--border);border-radius:8px;padding:5px 9px;text-align:center;}
+  .spectrum .arrow{color:var(--teal);}
+  .red{color:var(--red);font-weight:600;}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:22px;border-top:1px solid var(--border);}
+  @media(max-width:860px){.layout{flex-direction:column;}nav.toc{position:static;width:100%;max-height:none;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <a class="home" href="index.html">← Final Prep Hub</a>
+  <div class="chip">LECTURE · FULL DETAIL · BIG DATA</div>
+  <h1>Big Data Analytics</h1>
+  <div class="cite">The Vs of Big Data, critical success factors, enabling technologies (MapReduce, Hadoop &amp; its ecosystem), Hadoop vs the data warehouse, vendors &amp; platforms, and stream analytics.</div>
+</header>
+
+<div class="layout">
+  <nav class="toc">
+    <h2>On this page</h2>
+    <a href="#glance">Key idea</a>
+    <a href="#vignette">Vignette: telecom churn</a>
+    <a href="#define">Definition &amp; sources</a>
+    <a href="#vs">The Vs of Big Data</a>
+    <a href="#fundamentals">Fundamentals &amp; when needed</a>
+    <a href="#csf">Critical success factors</a>
+    <a href="#enablers">Enablers &amp; challenges</a>
+    <a href="#problems">Business problems solved</a>
+    <a href="#mapreduce">MapReduce</a>
+    <a href="#hadoop">Hadoop &amp; ecosystem</a>
+    <a href="#dw">Hadoop vs data warehouse</a>
+    <a href="#vendors">Vendors &amp; platforms</a>
+    <a href="#stream">Stream analytics</a>
+    <a href="#cases">Application cases</a>
+    <a href="#exam">Exam focus</a>
+  </nav>
+  <main>
+
+  <section class="card" id="glance">
+    <h2>Key idea</h2>
+    <div class="idea"><b>Core message:</b> "Big Data" is a <b>misnomer</b> — it is more than just <em>big</em>. It is data whose <b>volume, variety, and velocity</b> (plus veracity and variability) exceed what traditional platforms can capture, store, and analyse. And crucially: <span class="red">Big Data by itself is worthless — Big Data + "big" analytics = value.</span> The technology answer is a new stack (MapReduce, Hadoop, NoSQL, stream analytics) that <b>coexists with</b>, rather than replaces, the data warehouse.</div>
+  </section>
+
+  <section class="card" id="vignette">
+    <h2>Opening vignette — telecom churn with Big Data methods</h2>
+    <p>A telecom company (highly competitive market, churn rate higher than most industries) analyses <b>customer churn</b> with Big Data methods. The challenges that made this a <em>Big Data</em> problem rather than a classic data-mining one:</p>
+    <ul>
+      <li><b>Data from multiple sources</b> (call records, web logs, customer care, network events) that must be combined;</li>
+      <li><b>Data volume far higher than usual</b> — too large for the traditional platform.</li>
+    </ul>
+    <div class="ex"><b>Key vocabulary — sessionizing:</b> stitching raw event/click records into coherent user <b>sessions</b> so behaviour can be analysed end-to-end. The vignette's discussion questions hinge on why sessionizing the multi-source event data was necessary before churn modelling.</div>
+  </section>
+
+  <section class="card" id="define">
+    <h2>Definition, sources, and just how big "big" is</h2>
+    <p>Big Data means different things depending on background; traditionally it meant <b>massive volumes</b> (CERN, NASA, Google). <b>Where does it come from? Everywhere:</b> web logs, RFID, GPS, sensor networks, social networks, Internet text and search indexes, call detail records, astronomy/biology/genomics/physics experiments, medical records, military surveillance, multimedia archives…</p>
+    <h3>Scale reference points (Technology Insight 1)</h3>
+    <ul>
+      <li>Large Hadron Collider — <b>1 PB/second</b>; a Boeing jet — <b>20 TB/hour</b>; Facebook — <b>500 TB/day</b>; YouTube — <b>1 TB per 4 minutes</b>; the proposed Square Kilometer Array telescope — <b>1 EB/day</b>.</li>
+    </ul>
+    <table>
+      <tr><th>Unit</th><th>Symbol</th><th>Value</th><th>Unit</th><th>Symbol</th><th>Value</th></tr>
+      <tr><td>Kilobyte</td><td>kB</td><td>10³</td><td>Petabyte</td><td>PB</td><td>10¹⁵</td></tr>
+      <tr><td>Megabyte</td><td>MB</td><td>10⁶</td><td>Exabyte</td><td>EB</td><td>10¹⁸</td></tr>
+      <tr><td>Gigabyte</td><td>GB</td><td>10⁹</td><td>Zettabyte</td><td>ZB</td><td>10²¹</td></tr>
+      <tr><td>Terabyte</td><td>TB</td><td>10¹²</td><td>Yottabyte</td><td>YB</td><td>10²⁴</td></tr>
+    </table>
+    <p>(Brontobyte 10²⁷ and gegobyte 10³⁰ are proposed, not yet official SI names.)</p>
+  </section>
+
+  <section class="card" id="vs">
+    <h2>The Vs that define Big Data</h2>
+    <table>
+      <tr><th>V</th><th>Meaning</th><th>Implication</th></tr>
+      <tr><td><b>Volume</b></td><td>Sheer amount of data</td><td>Storage/processing beyond one machine → scale out</td></tr>
+      <tr><td><b>Variety</b></td><td>Structured + semi-structured + <b>unstructured</b> (text, image, logs)</td><td>Schema-on-read; RDBMS schemas don't fit everything</td></tr>
+      <tr><td><b>Velocity</b></td><td>Speed data arrives (and must be acted on)</td><td>→ <b>stream analytics</b>, data-in-motion</td></tr>
+      <tr><td><b>Veracity</b></td><td>Accuracy/quality/trustworthiness</td><td>Cleansing &amp; provenance at scale</td></tr>
+      <tr><td><b>Variability</b></td><td>Flow rates and meaning change over time</td><td>Peaks, drift, context-dependence</td></tr>
+      <tr><td><b>Value</b></td><td>The point of it all</td><td>Only analytics turns Big Data into business value</td></tr>
+    </table>
+    <p>The slides also show a <b>high-level conceptual architecture</b> (Teradata/Aster "Unified Data Architecture"): Big Data sources (ERP, SCM, CRM, images, audio/video, machine logs, text, web &amp; social) → <b>data platform</b> → <b>integrated data warehouse</b> + <b>discovery platform</b> (+ event processing) → BI, data mining, math/stats, languages → users from marketing executives to data scientists.</p>
+  </section>
+
+  <section class="card" id="fundamentals">
+    <h2>Fundamentals — and when you actually need Big Data tech</h2>
+    <p>Big Data brought big challenges: effectively and efficiently <b>capturing, storing, and analysing</b> the data — needing a <b>new breed of technologies</b> (developed, purchased, hired, or outsourced).</p>
+    <h3>"Big Data considerations" — signals your current platform is not enough</h3>
+    <ul>
+      <li>You <b>can't process the amount of data</b> you want to on the current platform.</li>
+      <li>You can't include <b>new/contemporary sources</b> (social media, RFID, sensory, web, GPS, text) because they <b>don't fit the storage schema</b>.</li>
+      <li>You need to <b>integrate data as quickly as possible</b> to keep analysis current.</li>
+      <li>You want <b>schema-on-demand</b> storage because of data variety.</li>
+      <li>Data <b>arrives too fast</b> for the traditional analytics platform to handle.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="csf">
+    <h2>Critical success factors for Big Data analytics (7 — memorise)</h2>
+    <ol>
+      <li><b>A clear business need</b> — alignment with the vision and strategy (business value, not tech fashion).</li>
+      <li><b>Strong, committed sponsorship</b> — an executive champion.</li>
+      <li><b>Alignment between the business and IT strategy</b>.</li>
+      <li><b>A fact-based decision-making culture</b>.</li>
+      <li><b>A strong data infrastructure</b>.</li>
+      <li><b>The right analytics tools</b>.</li>
+      <li><b>Right people with right skills</b> (personnel with advanced analytical skills).</li>
+    </ol>
+    <div class="ex"><b>Exam link:</b> these CSFs parallel the BI success factors from R2/R25 (sponsorship, alignment, culture) — a nice cross-reference if a question asks "what makes Big Data initiatives succeed?"</div>
+  </section>
+
+  <section class="card" id="enablers">
+    <h2>Enablers &amp; challenges</h2>
+    <h3>Enablers (performance technologies)</h3>
+    <ul>
+      <li><b>In-memory analytics</b> — store and process the complete dataset in RAM.</li>
+      <li><b>In-database analytics</b> — place analytic procedures close to where the data lives.</li>
+      <li><b>Grid computing &amp; MPP</b> — many machines/processors in parallel (massively parallel processing).</li>
+      <li><b>Appliances</b> — hardware + software + storage combined in one unit for performance and scalability.</li>
+    </ul>
+    <h3>Challenges</h3>
+    <ul>
+      <li><b>Data volume</b> — capture, store, process in a timely manner.</li>
+      <li><b>Data integration</b> — combine quickly and at reasonable cost.</li>
+      <li><b>Processing capabilities</b> — process data as it is captured (<b>stream analytics</b>).</li>
+      <li><b>Data governance</b> — security, privacy, access.</li>
+      <li><b>Skill availability</b> — the <b>data scientist</b> shortage.</li>
+      <li><b>Solution cost</b> — proving <b>ROI</b>.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="problems">
+    <h2>Business problems addressed by Big Data analytics</h2>
+    <p>Process efficiency and cost reduction · brand management · revenue maximisation (cross-/up-selling) · enhanced customer experience · <b>churn identification</b> &amp; customer recruiting · improved customer service · identifying new products and market opportunities · risk management · regulatory compliance · enhanced security capabilities.</p>
+  </section>
+
+  <section class="card" id="mapreduce">
+    <h2>MapReduce</h2>
+    <p><b>What it is:</b> a programming model (developed and popularised by <b>Google</b>) that <b>distributes the processing of very large multi-structured files across a large cluster of ordinary ("simple") machines</b> — achieving high performance from commodity hardware.</p>
+    <ul>
+      <li><b>Map</b> step: split the data into parts, process each part in parallel (produce key–value pairs).</li>
+      <li><b>Reduce</b> step: collect, aggregate, and combine the intermediate results into the final answer.</li>
+      <li>Good at: indexing the web for search, graph analysis, text analysis, machine learning over huge multi-structured data.</li>
+    </ul>
+    <div class="ex"><b>Keep straight for the exam:</b> MapReduce provides the <b>control/distribution framework</b> for analytics — <b>it is not the analytics itself</b> (one of the "demystifying facts" below).</div>
+  </section>
+
+  <section class="card" id="hadoop">
+    <h2>Hadoop &amp; its ecosystem</h2>
+    <p><b>Hadoop</b> = an <b>open-source framework for storing and analysing massive amounts of distributed, unstructured data</b>. Originally created by <b>Doug Cutting at Yahoo!</b>, now an <b>Apache Software Foundation</b> project. Clusters run on <b>inexpensive commodity hardware</b>, so projects <b>scale out</b> cheaply.</p>
+    <h3>How Hadoop works</h3>
+    <div class="spectrum"><span class="step">Ingest unstructured / semi-structured data</span><span class="arrow">→</span><span class="step">Break into "parts"</span><span class="arrow">→</span><span class="step">Load into HDFS across nodes</span><span class="arrow">→</span><span class="step">Replicate each part (failsafe)</span><span class="arrow">→</span><span class="step">Distribute jobs to nodes</span><span class="arrow">→</span><span class="step">Collect &amp; aggregate results via MapReduce</span></div>
+    <h3>Technical components</h3>
+    <table>
+      <tr><th>Component</th><th>Role</th></tr>
+      <tr><td><b>HDFS</b></td><td>Hadoop Distributed File System — a <b>file system, not a DBMS</b></td></tr>
+      <tr><td><b>Name Node</b></td><td>Primary facilitator (tracks where data lives)</td></tr>
+      <tr><td><b>Secondary Node</b></td><td>Backup to the Name Node</td></tr>
+      <tr><td><b>Job Tracker</b></td><td>Distributes MapReduce jobs</td></tr>
+      <tr><td><b>Slave Nodes</b></td><td>"The grunts" — store data and run the work</td></tr>
+    </table>
+    <h3>Ecosystem sub-projects (recognise the names)</h3>
+    <p><b>Hive</b> (SQL-like DW layer — resembles SQL but is <em>not</em> standard SQL) · <b>Pig</b> (dataflow scripting) · <b>HBase</b> &amp; <b>Cassandra</b> (NoSQL databases — "NoSQL = <b>not only SQL</b>") · <b>Flume</b> (log ingestion) · <b>Oozie</b> (workflow) · <b>Ambari</b> (cluster management) · <b>Avro</b> (serialisation) · <b>Mahout</b> (machine-learning library) · <b>Sqoop</b> (RDBMS ↔ Hadoop transfer) · <b>HCatalog</b> (metadata).</p>
+    <h3>Demystifying facts (Technology Insight 2 — quotable list)</h3>
+    <ul>
+      <li>Hadoop consists of <b>multiple products</b> — it's an <b>ecosystem, not a single product</b>.</li>
+      <li>Open source, but also <b>available from vendors</b>.</li>
+      <li><b>HDFS is a file system, not a DBMS</b>.</li>
+      <li><b>Hive resembles SQL but is not standard SQL</b>.</li>
+      <li><b>Hadoop and MapReduce are related but not the same</b>.</li>
+      <li><b>MapReduce provides control for analytics, not analytics itself</b>.</li>
+      <li>Hadoop is about <b>data diversity, not just data volume</b>.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="dw">
+    <h2>Big Data and the data warehouse — coexistence, not replacement</h2>
+    <p>Big Data and RDBMS "do not go nicely together" — but <b>Hadoop will not replace the data warehouse</b>; each has use cases (Hadoop = repository &amp; refinery, active archive; DW = performance, integrated business-value data, interactive BI tools).</p>
+    <h3>When to use which platform (Table 1 highlights)</h3>
+    <table>
+      <tr><th>Requirement</th><th>DW</th><th>Hadoop</th></tr>
+      <tr><td>Low latency, interactive reports, OLAP</td><td>✔</td><td>—</td></tr>
+      <tr><td>ANSI SQL compliance required</td><td>✔</td><td>✔</td></tr>
+      <tr><td>Preprocessing / exploration of <b>raw unstructured data</b></td><td>—</td><td>✔</td></tr>
+      <tr><td>Online archive alternative to tape</td><td>—</td><td>✔</td></tr>
+      <tr><td>High-quality cleansed, consistent data</td><td>✔</td><td>✔</td></tr>
+      <tr><td>100s–1,000s of concurrent users</td><td>✔</td><td>✔</td></tr>
+      <tr><td><b>Discover unknown relationships</b> in the data</td><td>—</td><td>✔</td></tr>
+      <tr><td>Parallel complex process logic</td><td>✔</td><td>✔</td></tr>
+      <tr><td><b>CPU-intense analysis</b></td><td>✔</td><td>—</td></tr>
+      <tr><td>Many flexible programming languages in parallel</td><td>—</td><td>✔</td></tr>
+      <tr><td>Unrestricted, ungoverned <b>sandbox</b> explorations</td><td>—</td><td>✔</td></tr>
+      <tr><td>Analysis of provisional data</td><td>✔</td><td>—</td></tr>
+      <tr><td>Extensive security &amp; regulatory compliance</td><td>✔</td><td>✔</td></tr>
+    </table>
+    <h3>Coexistence patterns (5)</h3>
+    <ol>
+      <li>Hadoop <b>stores and archives</b> multi-structured data.</li>
+      <li>Hadoop <b>filters, transforms, consolidates</b> multi-structured data (the "refinery").</li>
+      <li>Hadoop <b>analyses</b> large volumes and <b>publishes results</b> (to the DW).</li>
+      <li>A relational DBMS with <b>MapReduce capabilities</b> serves as an investigative computing platform.</li>
+      <li>A <b>front-end query tool</b> accesses and analyses data across both.</li>
+    </ol>
+  </section>
+
+  <section class="card" id="vendors">
+    <h2>Vendors &amp; platforms</h2>
+    <p>A fast-developing landscape: <b>Cloudera</b>, <b>MapR</b>, <b>Hortonworks</b> (the classic Hadoop distributors) — plus IBM (Netezza, <b>InfoSphere BigInsights</b>), Oracle (Exadata/Exalogic), Microsoft, Amazon, Google. Platform example in the slides: <b>Teradata Aster</b> (SQL + MapReduce analytics on one platform).</p>
+  </section>
+
+  <section class="card" id="stream">
+    <h2>Big Data and stream analytics</h2>
+    <p><b>Stream analytics</b> = <b>data-in-motion / real-time analytics</b>: the analytic process of extracting <b>actionable information from continuously flowing data</b> — the <b>Velocity</b> V made operational.</p>
+    <ul>
+      <li><b>Why:</b> it may not be feasible to store all the data first, or the data would <b>lose its value</b> if analysed later (fraud alerts, outage detection, dynamic pricing).</li>
+      <li><b>Stream vs perpetual analytics:</b> stream = act on a window as it flows; perpetual = continuously re-evaluate everything.</li>
+      <li><b>Critical event processing:</b> detect and react to meaningful event patterns in the stream.</li>
+    </ul>
+    <div class="ex"><b>Energy-industry use case (slides' worked figure):</b> sensor data from the production system + <b>meteorological data</b> (wind, light, temperature) + <b>usage data</b> from smart meters/grid devices → data integration &amp; temporary staging → <b>streaming analytics predicting usage, production, and anomalies</b> → feeds <b>capacity decisions</b> (production side) and <b>pricing decisions</b> (consumption side), with permanent storage alongside.</div>
+    <p><b>Application sectors:</b> e-commerce, telecommunications, law enforcement &amp; cyber security, power industry, financial services, health services, government.</p>
+  </section>
+
+  <section class="card" id="cases">
+    <h2>Application cases (one line each)</h2>
+    <table>
+      <tr><th>Case</th><th>What it shows</th></tr>
+      <tr><td>Telecom churn (opening vignette)</td><td>Multi-source, high-volume churn modelling; <b>sessionizing</b></td></tr>
+      <tr><td>Top-5 investment bank (MarkLogic)</td><td><b>Single source of truth</b>: one database replaced ~20 copies of the derivatives trade store, making firm-wide financial exposure analysable</td></tr>
+      <tr><td>eBay</td><td>Big Data solution for massive marketplace data</td></tr>
+      <tr><td>Healthcare info on Twitter</td><td>Assessing quality/reliability of health information shared on social media (influential users share more objective content)</td></tr>
+      <tr><td>Flu nowcasting</td><td>Social media as an <b>early predictor of flu outbreaks</b></td></tr>
+      <tr><td>EMR disease patterns</td><td>Comorbidity <b>networks</b> from an electronic-medical-records DW; urban vs rural differences</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="exam">
+    <h2>Exam focus</h2>
+    <div class="exam"><b>Most-tested:</b> the <b>Vs</b> (define each; know that Big Data is "a misnomer — more than just big"); <span class="red">Big Data + big analytics = value</span>; the 7 <b>critical success factors</b>; the 4 enablers (in-memory, in-database, grid/MPP, appliances) vs the 6 challenges (volume, integration, processing/stream, governance, skills, ROI); <b>MapReduce</b> (Google; distribute processing over commodity machines; control ≠ analytics); <b>Hadoop</b> (Doug Cutting/Yahoo → Apache; HDFS + Name Node + Job Tracker + slave nodes; ecosystem names — Hive, Pig, HBase, Flume, Oozie, Mahout, Sqoop; NoSQL = not only SQL); the <b>demystifying facts</b>; <b>Hadoop vs DW</b> table + the 5 coexistence patterns (Hadoop ≠ DW replacement); <b>stream analytics</b> (data-in-motion, why store-then-analyse fails, energy use case); <b>sessionizing</b>.</div>
+    <p><b>↔ Readings:</b> R20 (educational applications of a <b>diagnostic learning-analytics model</b> in the Big Data context — the presentation reading), R21 (an integrated <b>Big Data analytics architecture</b> for resilience in last-mile agri-food delivery). The Vs and Hadoop/DW material also underpin R22–R25 topics (AI-enhanced BI, privacy). Back to <a href="index.html">hub</a>.</p>
+  </section>
+
+  </main>
+</div>
+<footer>Big Data Analytics · BIA final-exam full-detail page · <a href="index.html">back to hub</a></footer>
+</body>
+</html>
