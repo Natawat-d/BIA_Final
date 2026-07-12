@@ -5,8 +5,7 @@ Open **[`index.html`](index.html)** for the landing page that links to everythin
 
 ## Exam coverage (this hub)
 
-Post-midterm lecture topics:
-
+- **Ch. 6** — Text, Web & Social Media Analytics (midterm chapter carried into the final coverage)
 - **Ch. 7** — Deep Learning & Cognitive Computing
 - **Ch. 8** — Prescriptive Analytics: Optimization & Simulation
 - **Expert Systems** — rule-based ES lecture
@@ -21,10 +20,12 @@ Companion readings per topic: R13–R14 (Ch. 7) · R15–R17 (Ch. 8) · R18–R1
 | File | What it is |
 |------|------------|
 | `index.html` | Hub — links to all resources below |
+| `Ch6.html` | **Full-detail page** — Text, Web & Social Media Analytics (TDM, TF-IDF, LDA, sentiment analysis, web mining, SNA) |
 | `Ch7.html` | **Full-detail page** — Deep Learning & Cognitive Computing (ANN → backprop → CNN/RNN/LSTM → LLMs → cognitive computing vs AI) |
 | `Ch8.html` | **Full-detail page** — Prescriptive Analytics (decision modeling, worked MBI LP, sensitivity/what-if/goal seeking, decision tables, simulation) |
 | `ExpertSystems.html` | **Full-detail page** — Expert Systems (architecture, knowledge engineering, production rules, forward/backward chaining, worked rules) |
 | `BigData.html` | **Full-detail page** — Big Data Analytics (the Vs, CSFs, MapReduce/Hadoop, Hadoop vs DW, stream analytics) |
+| `Chapter6-BIA.pdf` · `Chapter7-BIA.pdf` · `Chapter8-BIA.pdf` · `ExpertSystem.pdf` · `Big_Data_Analytics.pdf` | The actual course lecture slides each page was built from |
 
 The pages were built from the course lecture slides (`Lecture/Chapter7-BIA.pdf`, `Chapter8-BIA.pdf`, `ExpertSystem.pdf`, `Big_Data_Analytics.pdf`), in the same template as the `Midterm_prepare/` detail pages — sticky table of contents, key-idea / example / exam-focus callouts, one self-contained page each.
 
