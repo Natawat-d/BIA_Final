@@ -21,6 +21,7 @@ Companion readings per topic: R13–R14 (Ch. 7) · R15–R17 (Ch. 8) · R18–R1
 | File | What it is |
 |------|------------|
 | `index.html` | Hub — links to all resources below |
+| `BIA-Final-CheatSheet.html` | **Printable 2-page cheat sheet** — all four lecture topics + every reading **R12–R25** (Main Argument · Problem/Context · Data & Method · Key Results · 5 Lessons Learned) |
 | `Ch7.html` | **Full-detail page** — Deep Learning & Cognitive Computing (ANN → backprop → CNN/RNN/LSTM → LLMs → cognitive computing vs AI) |
 | `Ch8.html` | **Full-detail page** — Prescriptive Analytics (decision modeling, worked MBI LP, sensitivity/what-if/goal seeking, decision tables, simulation) |
 | `ExpertSystems.html` | **Full-detail page** — Expert Systems (architecture, knowledge engineering, production rules, forward/backward chaining, worked rules) |
@@ -28,6 +29,10 @@ Companion readings per topic: R13–R14 (Ch. 7) · R15–R17 (Ch. 8) · R18–R1
 | `Chapter7-BIA.pdf` · `Chapter8-BIA.pdf` · `ExpertSystem.pdf` · `Big_Data_Analytics.pdf` | The actual course lecture slides each page was built from |
 
 The pages were built from the course lecture slides (`Lecture/Chapter7-BIA.pdf`, `Chapter8-BIA.pdf`, `ExpertSystem.pdf`, `Big_Data_Analytics.pdf`), in the same template as the `Midterm_prepare/` detail pages — sticky table of contents, key-idea / example / exam-focus callouts, one self-contained page each.
+
+## Cheat sheet
+
+`BIA-Final-CheatSheet.html` is verified to print as **exactly 2 A4 pages** (Chrome → Print → A4, margins **None**, scale **100%**, **Background graphics ON**). Page 1 = the four lecture topics; page 2 = the remaining readings + a formulas/quick-pick strip. Every reading R12–R25 uses the same five headings so the structure matches how a reading question should be answered.
 
 ## How to view
 
