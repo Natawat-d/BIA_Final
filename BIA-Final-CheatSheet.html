@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIA Final — Cheat Sheet (Ch.7 · Ch.8 · Expert Systems · Big Data · Ch.10 · Ch.11 + R12–R25)</title>
+<title>BIA Final — Cheat Sheet (Ch.7 · Ch.8 · Expert Systems · Big Data · Ch.10 · Ch.11 + R13–R25)</title>
 <style>
   :root { --teal:#1a7a96; --teal-dark:#0f5a70; --red:#b3361f; --green:#2e7d4f; --purple:#5b3a8e; --ink:#161f23; --line:#cbd6da; --bg:#eef4f6; }
   * { box-sizing:border-box; }
@@ -209,29 +209,12 @@
   </div><!-- /cols -->
 
   <!-- ===================== READINGS ===================== -->
-  <h2 class="purple span">Readings R12–R25 · Main Argument · Problem/Context · Data &amp; Method · Key Results · 5 Lessons Learned</h2>
+  <h2 class="purple span">Readings R13–R25 · Main Argument · Problem/Context · Data &amp; Method · Key Results · 5 Lessons Learned</h2>
   <p class="tem span"><b>Q2 answer template (any reading):</b> ① <b>Main argument</b> in one sentence → ② <b>problem/context</b> (why it matters) → ③ <b>data &amp; method</b> (dataset size + technique names + evaluation metric) → ④ <b>key results</b> (quote the numbers!) → ⑤ <b>lessons/implications</b> + link to the lecture chapter → ⑥ limitations. <span class="k">R20 = your presentation reading → likely excluded from Q2.</span></p>
 
   <div class="cols2">
 
-    <h3>↔ Ch.6/7 · Text &amp; deep learning</h3>
-    <p class="rh"><span class="cr">↔Ch.6</span><b>R12 · Sentiment Analysis + CEEMDAN for Consumer-Group Preferences</b> (Wang 2026)</p>
-    <ul class="rl">
-      <li class="arg"><b>Main argument:</b> Online reviews hide consumer preferences that are unstructured, emotional and <b>time-dependent</b> — combining NLP with decision modelling learns stable, interpretable group preferences.</li>
-      <li><b>Problem/Context:</b> hotels get thousands of Ctrip reviews; they are scattered, implicit, ambiguous and shift over time, so managers can't turn them into decisions.</li>
-      <li><b>Data &amp; Method:</b> 14,133 → <b>10,505</b> cleaned Ctrip hotel reviews. (1) <b>BERT</b>-Base-Chinese fine-grained <b>aspect</b> sentiment → (2) <b>BERTopic</b> extracts <b>20 topics</b> → (3) <b>CEEMDAN</b> decomposes the time series (separates short-term noise from long-term trend) → (4) <b>UTA</b> preference model derives criteria weights, thresholds &amp; value systems per consumer group.</li>
-      <li class="res"><b>Key results:</b> BERT sentiment <b>F1 = 0.83</b>, beating LSTM (0.761) and Random Forest (0.568); yields interpretable per-group priority factors → manager decision support.</li>
-      <li class="les"><b>5 lessons learned</b>
-        <ol class="les5">
-          <li>Fine-grained (aspect-level) sentiment gives far deeper insight than a simple positive/negative label.</li>
-          <li>Preferences <b>change over time</b>, so a trend/noise decomposition (CEEMDAN) is needed for stable conclusions.</li>
-          <li>Combining NLP with a decision model (UTA) buys <b>interpretability</b> that pure deep learning lacks.</li>
-          <li>Transformer models (BERT) clearly outperform LSTM and classical ML on messy review text.</li>
-          <li>Review mining becomes actionable: it guides service, marketing and resource decisions per customer segment.</li>
-        </ol>
-      </li>
-    </ul>
-
+    <h3>↔ Ch.7 · Deep learning</h3>
     <p class="rh"><span class="cr">↔Ch.7</span><b>R13 · Brain-Tumour Classification with CNN + Soft-Voting Ensemble</b> (Puspita 2025)</p>
     <ul class="rl">
       <li class="arg"><b>Main argument:</b> No single CNN is best — a <b>soft-voting ensemble of several CNNs</b> raises brain-tumour classification accuracy above any individual model.</li>

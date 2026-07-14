@@ -46,7 +46,9 @@
   .minicards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;}
   a.minicard{display:block;background:var(--card);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:9px;padding:11px 13px;text-decoration:none;color:inherit;transition:transform .1s ease,box-shadow .1s ease,border-color .1s ease;}
   a.minicard:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.09);border-left-color:var(--teal-dark);}
+  a.minicard.rd{border-left-color:var(--orange);}
   a.minicard .code{font-weight:800;color:var(--teal-dark);font-size:.95rem;}
+  a.minicard.rd .code{color:var(--orange);}
   a.minicard .ttl{display:block;font-size:.78rem;color:var(--muted);margin-top:3px;line-height:1.3;}
 
   footer{text-align:center;color:var(--muted);font-size:.84rem;padding:24px;border-top:1px solid var(--border);margin-top:20px;}
@@ -66,7 +68,7 @@
   <p class="scope"><b>Coverage (this hub):</b> Lectures <b>Ch. 7 · Ch. 8 · Expert Systems · Big Data Analytics · Ch. 10 · Ch. 11</b> — all post-midterm material. Final exam = <b>16 July</b>, worth <b>25%</b>.</p>
   <div class="grid2">
     <div class="q"><b>Lecture topics:</b> Ch. 7 Deep Learning &amp; Cognitive Computing · Ch. 8 Prescriptive Analytics (Optimization &amp; Simulation) · Expert Systems (rule-based ES) · Big Data Analytics (Hadoop, MapReduce, stream analytics) · Ch. 10 AI-Based Trends (cloud, IoT, location/image analytics) · Ch. 11 Ethics, Privacy &amp; Managerial Considerations.</div>
-    <div class="q"><b>Companion readings:</b> R13–R14 (Ch. 7), R15–R17 (Ch. 8), R18–R19 (Expert Systems), R20–R21 (Big Data), R22–R23 (Ch. 10), R24–R25 (Ch. 11). If the final follows the midterm format, expect a choose-one reading question — <b>not your own presentation reading (R20)</b>.</div>
+    <div class="q"><b>Companion readings (R13–R25):</b> R13–R14 (Ch. 7), R15–R17 (Ch. 8), R18–R19 (Expert Systems), R20–R21 (Big Data), R22–R23 (Ch. 10), R24–R25 (Ch. 11). If the final follows the midterm format, expect a choose-one reading question — <b>not your own presentation reading (R20)</b>.</div>
   </div>
 </div>
 
@@ -76,8 +78,8 @@
   <div class="cards">
     <a class="card ref" href="BIA-Final-CheatSheet.html">
       <span class="chip">Print me · 2 pages</span>
-      <h4>Final Cheat Sheet — lectures + R12–R25</h4>
-      <p>Dense 3-column recall sheet: all six lecture topics (Ch.7, Ch.8, Expert Systems, Big Data, Ch.10, Ch.11) plus <b>every reading R12–R25</b> in the exam-answer shape — <b>Main Argument · Problem/Context · Data &amp; Method · Key Results · 5 Lessons Learned</b>. Verified as a compact printable sheet (margins None, scale 100%, Background graphics ON).</p>
+      <h4>Final Cheat Sheet — lectures + R13–R25</h4>
+      <p>Dense 3-column recall sheet: all six lecture topics (Ch.7, Ch.8, Expert Systems, Big Data, Ch.10, Ch.11) plus <b>every reading R13–R25</b> in the exam-answer shape — <b>Main Argument · Problem/Context · Data &amp; Method · Key Results · 5 Lessons Learned</b>. Verified as a compact printable sheet (margins None, scale 100%, Background graphics ON).</p>
       <span class="go">Open →</span>
     </a>
   </div>
@@ -130,6 +132,40 @@
     <a class="minicard" href="BigData.html"><span class="code">Big Data ↔ R20–R21</span><span class="ttl">Diagnostic learning analytics (your presentation) · Big Data architecture for resilience</span></a>
     <a class="minicard" href="Ch10.html"><span class="code">Ch.10 ↔ R22–R23</span><span class="ttl">AI-enhanced BI · Generative AI for autonomous data analytics</span></a>
     <a class="minicard" href="Ch11.html"><span class="code">Ch.11 ↔ R24–R25</span><span class="ttl">Privacy choice &amp; data clean rooms · antecedents of effective BI use</span></a>
+  </div>
+
+  <h3 class="grp">🔬 Full-detail reading pages — read straight from each paper (R13–R25)</h3>
+  <div class="minicards">
+    <a class="minicard rd" href="R13.html"><span class="code">R13</span><span class="ttl">Brain Tumour Classification — CNN Ensemble</span></a>
+    <a class="minicard rd" href="R14.html"><span class="code">R14</span><span class="ttl">ML Comparison for Health Insurance Pricing</span></a>
+    <a class="minicard rd" href="R15.html"><span class="code">R15</span><span class="ttl">AquaCrop + Optimization for Wheat Irrigation</span></a>
+    <a class="minicard rd" href="R16.html"><span class="code">R16</span><span class="ttl">Data-Driven–Simulation–Optimization (Invasive Plants)</span></a>
+    <a class="minicard rd" href="R17.html"><span class="code">R17</span><span class="ttl">AHP in Disaster Management</span></a>
+    <a class="minicard rd" href="R18.html"><span class="code">R18</span><span class="ttl">Rule-Based ES — Bipolar &amp; MDD Diagnosis</span></a>
+    <a class="minicard rd" href="R19.html"><span class="code">R19</span><span class="ttl">Social4Fashion — ES Fashion-Trend Forecasting</span></a>
+    <a class="minicard rd" href="R20.html"><span class="code">R20</span><span class="ttl">Diagnostic Learning Analytics (your presentation)</span></a>
+    <a class="minicard rd" href="R21.html"><span class="code">R21</span><span class="ttl">Integrated BDA Architecture for Resilience</span></a>
+    <a class="minicard rd" href="R22.html"><span class="code">R22</span><span class="ttl">AI-Enhanced Business Intelligence</span></a>
+    <a class="minicard rd" href="R23.html"><span class="code">R23</span><span class="ttl">Generative AI for Autonomous Data Analytics</span></a>
+    <a class="minicard rd" href="R24.html"><span class="code">R24</span><span class="ttl">Big Data, Clean Rooms &amp; Privacy Choice</span></a>
+    <a class="minicard rd" href="R25.html"><span class="code">R25</span><span class="ttl">Antecedents to Effective Use of BI</span></a>
+  </div>
+
+  <h3 class="grp">📑 Source reading papers (PDF)</h3>
+  <div class="minicards">
+    <a class="minicard" href="R13-Brain%20Tumor%20Classification%20based%20on%20CNN.pdf"><span class="code">R13 PDF</span><span class="ttl">Brain Tumor Classification based on CNN</span></a>
+    <a class="minicard" href="R14-Comparative%20Analysis%20of%20MLs%20for%20Health%20Insurance%20Pricing.pdf"><span class="code">R14 PDF</span><span class="ttl">Comparative Analysis of MLs for Health Insurance Pricing</span></a>
+    <a class="minicard" href="R15-AquaCrop%20model%20and%20optimization%20techniques.pdf"><span class="code">R15 PDF</span><span class="ttl">AquaCrop model and optimization techniques</span></a>
+    <a class="minicard" href="R16-An%20integrated%20data-driven-simulation-optimization%20model.pdf"><span class="code">R16 PDF</span><span class="ttl">An integrated data-driven-simulation-optimization model</span></a>
+    <a class="minicard" href="R17-Using%20of%20AHP%20in%20Disaster%20Management.pdf"><span class="code">R17 PDF</span><span class="ttl">Using of AHP in Disaster Management</span></a>
+    <a class="minicard" href="R18_A%20novel%20rule-based%20expert%20system%20for%20early%20diagnosis.pdf"><span class="code">R18 PDF</span><span class="ttl">A novel rule-based expert system for early diagnosis</span></a>
+    <a class="minicard" href="R19-An%20intelligent%20expert%20system%20for%20forecasting%20fashion%20trends.pdf"><span class="code">R19 PDF</span><span class="ttl">An intelligent expert system for forecasting fashion trends</span></a>
+    <a class="minicard" href="R20-Educational_Applications_Big_Data_Analytics.pdf"><span class="code">R20 PDF</span><span class="ttl">Educational Applications of Big Data Analytics</span></a>
+    <a class="minicard" href="R21-An%20Integrated%20Big%20Data%20Analytics%20Architecture%20for%20Resilience.pdf"><span class="code">R21 PDF</span><span class="ttl">An Integrated Big Data Analytics Architecture for Resilience</span></a>
+    <a class="minicard" href="R22-AI-enhanced_BI.pdf"><span class="code">R22 PDF</span><span class="ttl">AI-enhanced BI</span></a>
+    <a class="minicard" href="R23-Generative%20AI%20for%20autonomous%20data%20analytics.pdf"><span class="code">R23 PDF</span><span class="ttl">Generative AI for autonomous data analytics</span></a>
+    <a class="minicard" href="R24-Big%20data%20analytics%20and%20customer%20privacy%20choice.pdf"><span class="code">R24 PDF</span><span class="ttl">Big data analytics and customer privacy choice</span></a>
+    <a class="minicard" href="R25-Exploring%20the%20Antecedents%20to%20the%20Effective%20Use%20of%20BI.pdf"><span class="code">R25 PDF</span><span class="ttl">Exploring the Antecedents to the Effective Use of BI</span></a>
   </div>
 
   <h3 class="grp">📄 Source lecture slides (PDF)</h3>

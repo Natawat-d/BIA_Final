@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R23 — Generative AI for Autonomous Data Analytics (Fikardos et al., 2026) · Full Detail</title>
+<style>
+  :root{--teal:#1a7a96;--teal-dark:#0f5a70;--red:#c0392b;--orange:#c0622b;--green:#2e8b57;--purple:#7a5ca8;--bg:#f7f9fa;--card:#fff;--ink:#1f2d33;--muted:#5c6b72;--border:#d9e2e6;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;}
+  a{color:var(--teal-dark);}
+  header.hero{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;padding:34px 26px 26px;}
+  header.hero .home{font-size:.82rem;color:#d7eef4;text-decoration:none;}
+  header.hero .chip{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin:10px 0 8px;}
+  header.hero h1{margin:0;font-size:1.7rem;line-height:1.25;max-width:900px;}
+  header.hero .cite{margin-top:10px;font-size:.9rem;opacity:.92;max-width:900px;}
+  .layout{display:flex;max-width:1140px;margin:0 auto;gap:28px;padding:26px 22px 48px;align-items:flex-start;}
+  nav.toc{position:sticky;top:16px;flex:0 0 210px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.84rem;max-height:calc(100vh - 32px);overflow-y:auto;}
+  nav.toc h2{font-size:.7rem;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0 0 8px;}
+  nav.toc a{display:block;color:var(--teal-dark);text-decoration:none;padding:3px 0;}
+  nav.toc a:hover{text-decoration:underline;}
+  main{flex:1 1 auto;min-width:0;}
+  section.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:14px;}
+  section.card>h2{color:var(--teal);margin-top:0;border-bottom:3px solid var(--teal);padding-bottom:8px;font-size:1.3rem;}
+  h3{color:var(--teal-dark);font-size:1.07rem;margin:20px 0 6px;border-left:4px solid var(--teal);padding-left:9px;}
+  h4{color:var(--teal-dark);margin:14px 0 4px;font-size:.98rem;}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;padding-left:22px;}
+  li{margin:3px 0;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef4f6;color:var(--teal-dark);}
+  code{background:#eef4f6;padding:1px 6px;border-radius:5px;font-size:.9em;}
+  .idea{background:#fdf3ea;border-left:4px solid var(--red);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .idea b{color:var(--red);}
+  .ex{background:#eef7fa;border-left:4px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.95rem;}
+  .ex b{color:var(--teal-dark);}
+  .exam{background:#fbf4ec;border-left:4px solid var(--orange);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .exam b{color:var(--orange);}
+  .meta-grid{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:.92rem;}
+  .meta-grid dt{font-weight:700;color:var(--teal-dark);}
+  .meta-grid dd{margin:0;}
+  .red{color:var(--red);font-weight:600;}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:22px;border-top:1px solid var(--border);}
+  @media(max-width:860px){.layout{flex-direction:column;}nav.toc{position:static;width:100%;max-height:none;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <a class="home" href="index.html">← Final Prep Hub</a>
+  <div class="chip">READING 23 · FULL DETAIL</div>
+  <h1>Generative AI for autonomous data analytics</h1>
+  <div class="cite">Mattheos Fikardos, Katerina Lepenioti, Alexandros Bousdekis, Dimitris Apostolou, Gregoris Mentzas &middot; ICCS / National Technical University of Athens; University of Piraeus, Greece &middot; <em>Intelligent Systems with Applications</em> 29 (2026) 200626.</div>
+</header>
+
+<div class="layout">
+  <nav class="toc">
+    <h2>On this page</h2>
+    <a href="#glance">At a glance</a>
+    <a href="#argument">Main argument</a>
+    <a href="#problem">Problem / context</a>
+    <a href="#method">Data &amp; method</a>
+    <a href="#results">Key results</a>
+    <a href="#lessons">5 lessons learned</a>
+    <a href="#exam">Exam focus</a>
+  </nav>
+  <main>
+
+  <section class="card" id="glance">
+    <h2>At a glance</h2>
+    <dl class="meta-grid">
+      <dt>Authors</dt><dd>Fikardos, Lepenioti, Bousdekis, Apostolou, Mentzas (ICCS / National Technical Univ. of Athens; Univ. of Piraeus, Greece)</dd>
+      <dt>Venue / year</dt><dd>Intelligent Systems with Applications 29 (2026) 200626</dd>
+      <dt>Type</dt><dd>Applied system + user study &mdash; LLM function-calling agents</dd>
+      <dt>Domain</dt><dd>Analytics platforms &mdash; natural-language interfaces for data analytics</dd>
+      <dt>Data</dt><dd>User study comparing a chat-based interface vs a form-based interface</dd>
+      <dt>Methods</dt><dd>Analytics-platform APIs exposed as <b>LLM function-calling tools</b>, coordinated between analyst &harr; agents &harr; platform, instantiated with open-source models</dd>
+      <dt>Course link</dt><dd><b>Ch.10 &mdash; New AI-Based Trends in Analytics</b></dd>
+    </dl>
+    <div class="idea"><b>One-sentence takeaway:</b> turning an analytics platform&rsquo;s APIs into <b>LLM function-calling tools</b> lets analysts run whole workflows in natural language &mdash; a user study shows the resulting chat interface cuts task time <b>6.71&rarr;2.70 min</b> and actions <b>14.48&rarr;3.30</b> versus a form-based interface, a step toward <b>autonomous data analytics</b>.</div>
+    
+  </section>
+
+  <section class="card" id="argument">
+    <h2>Main Argument</h2>
+    <p>Exposing an analytics platform&rsquo;s <b>APIs as tools callable by LLM-based AI agents</b> (function calling) lets analysts run whole analytical workflows in <b>natural language</b> &mdash; a concrete step toward <b>autonomous data analytics</b>.</p>
+  </section>
+
+  <section class="card" id="problem">
+    <h2>Problem / Context</h2>
+    <p>Traditional form- and API-based analytics platforms impose real <b>cognitive overhead and technical barriers</b>. Non-expert users cannot drive them directly, so useful insight ends up bottlenecked on a small pool of technical specialists.</p>
+  </section>
+
+  <section class="card" id="method">
+    <h2>Data &amp; Method</h2>
+    <p>The authors convert the analytics platform&rsquo;s APIs into <b>LLM function-calling tools</b>. A coordination process mediates between the <b>data analyst, the AI agents, and the platform</b>, producing a <b>chat-based interface</b> for running analytical workflows, instantiated using <b>open-source models</b>. The system is evaluated with a <b>user study</b> that compares the new <b>chat interface</b> against the original <b>form-based interface</b>, measuring task time, number of actions, usability, satisfaction, confidence, and hallucination.</p>
+  </section>
+
+  <section class="card" id="results">
+    <h2>Key Results</h2>
+    <p>Task time falls from <b>6.71 to 2.70 minutes</b>; the number of actions falls from <b>14.48 to 3.30</b>; usability rises from <b>3.09 to 4.64</b>; and the chat interface achieves a <b>+7.2% mean overall score</b> versus other baselines. The chat interface scored better by <b>at least one point</b> on usability, ease of use, satisfaction and timeliness, and notably reduced the <b>&ldquo;familiarity barrier&rdquo;</b> &mdash; users no longer needed to already know the platform or the specific use case to get results.</p>
+  </section>
+
+  <section class="card" id="lessons">
+    <h2>5 Lessons Learned</h2>
+    <ol>
+      <li><b>Natural language is emerging as the next BI interface</b> &mdash; it collapses the cost of learning a platform&rsquo;s tools and menus.</li>
+      <li><b>Function calling / tool use</b> is precisely what turns a general chatbot into an agent that actually executes analytics workflows.</li>
+      <li>The measurable win is <b>time and effort</b> (roughly 2.5&times; faster, about 4&times; fewer actions), not just subjective user delight.</li>
+      <li>GenAI <b>democratises</b> analytics &mdash; non-experts can now run workflows that used to require specialist platform knowledge.</li>
+      <li>Risks remain real: <b>hallucination and trust must be explicitly measured</b>, not simply assumed away by a friendlier interface.</li>
+    </ol>
+  </section>
+
+  <section class="card" id="exam">
+    <h2>Exam focus</h2>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>What does &lsquo;autonomous data analytics&rsquo; actually mean, and what evidence supports it?</i>&rdquo; Answer: platform APIs exposed as LLM function-calling tools let a chat interface replace form-based analytics; a controlled user study shows task time drops 6.71&rarr;2.70 min and actions drop 14.48&rarr;3.30, with usability up and the familiarity barrier reduced &mdash; while hallucination risk is explicitly measured, not ignored.</div>
+    <p class="ex"><b>Course link:</b> see <a href="Ch10.html">Ch.10 &mdash; New AI-Based Trends in Analytics</a> for the matching lecture material. <b>Source paper:</b> <a href="R23-Generative%20AI%20for%20autonomous%20data%20analytics.pdf">R23-Generative AI for autonomous data analytics.pdf</a>.</p>
+  </section>
+
+  </main>
+</div>
+<footer>R23 · Generative AI for Autonomous Data Analytics · BIA final-exam full-detail page · <a href="index.html">back to hub</a></footer>
+</body>
+</html>

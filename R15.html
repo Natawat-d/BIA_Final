@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R15 — AquaCrop + Optimization for Wheat Irrigation (Kaissi et al., 2026) · Full Detail</title>
+<style>
+  :root{--teal:#1a7a96;--teal-dark:#0f5a70;--red:#c0392b;--orange:#c0622b;--green:#2e8b57;--purple:#7a5ca8;--bg:#f7f9fa;--card:#fff;--ink:#1f2d33;--muted:#5c6b72;--border:#d9e2e6;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;}
+  a{color:var(--teal-dark);}
+  header.hero{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;padding:34px 26px 26px;}
+  header.hero .home{font-size:.82rem;color:#d7eef4;text-decoration:none;}
+  header.hero .chip{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin:10px 0 8px;}
+  header.hero h1{margin:0;font-size:1.7rem;line-height:1.25;max-width:900px;}
+  header.hero .cite{margin-top:10px;font-size:.9rem;opacity:.92;max-width:900px;}
+  .layout{display:flex;max-width:1140px;margin:0 auto;gap:28px;padding:26px 22px 48px;align-items:flex-start;}
+  nav.toc{position:sticky;top:16px;flex:0 0 210px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.84rem;max-height:calc(100vh - 32px);overflow-y:auto;}
+  nav.toc h2{font-size:.7rem;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0 0 8px;}
+  nav.toc a{display:block;color:var(--teal-dark);text-decoration:none;padding:3px 0;}
+  nav.toc a:hover{text-decoration:underline;}
+  main{flex:1 1 auto;min-width:0;}
+  section.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:14px;}
+  section.card>h2{color:var(--teal);margin-top:0;border-bottom:3px solid var(--teal);padding-bottom:8px;font-size:1.3rem;}
+  h3{color:var(--teal-dark);font-size:1.07rem;margin:20px 0 6px;border-left:4px solid var(--teal);padding-left:9px;}
+  h4{color:var(--teal-dark);margin:14px 0 4px;font-size:.98rem;}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;padding-left:22px;}
+  li{margin:3px 0;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef4f6;color:var(--teal-dark);}
+  code{background:#eef4f6;padding:1px 6px;border-radius:5px;font-size:.9em;}
+  .idea{background:#fdf3ea;border-left:4px solid var(--red);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .idea b{color:var(--red);}
+  .ex{background:#eef7fa;border-left:4px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.95rem;}
+  .ex b{color:var(--teal-dark);}
+  .exam{background:#fbf4ec;border-left:4px solid var(--orange);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .exam b{color:var(--orange);}
+  .meta-grid{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:.92rem;}
+  .meta-grid dt{font-weight:700;color:var(--teal-dark);}
+  .meta-grid dd{margin:0;}
+  .red{color:var(--red);font-weight:600;}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:22px;border-top:1px solid var(--border);}
+  @media(max-width:860px){.layout{flex-direction:column;}nav.toc{position:static;width:100%;max-height:none;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <a class="home" href="index.html">← Final Prep Hub</a>
+  <div class="chip">READING 15 · FULL DETAIL</div>
+  <h1>Advancing irrigation strategies for wheat production in Morocco: Combining AquaCrop model and optimization techniques</h1>
+  <div class="cite">Oumaima Kaissi, El Houssaine Bouras, Salwa Belaqziz, Lamia Jallal, Abdelghani Chehbouni, Salah Er-Raki &middot; UM6P Benguerir; Cadi Ayyad University Marrakesh; CESBIO Toulouse &middot; <em>Agricultural Water Management</em> 330 (2026) 110418.</div>
+</header>
+
+<div class="layout">
+  <nav class="toc">
+    <h2>On this page</h2>
+    <a href="#glance">At a glance</a>
+    <a href="#argument">Main argument</a>
+    <a href="#problem">Problem / context</a>
+    <a href="#method">Data &amp; method</a>
+    <a href="#results">Key results</a>
+    <a href="#lessons">5 lessons learned</a>
+    <a href="#exam">Exam focus</a>
+  </nav>
+  <main>
+
+  <section class="card" id="glance">
+    <h2>At a glance</h2>
+    <dl class="meta-grid">
+      <dt>Authors</dt><dd>Oumaima Kaissi, El Houssaine Bouras, Salwa Belaqziz, Lamia Jallal, Abdelghani Chehbouni, Salah Er-Raki (UM6P Benguerir; Cadi Ayyad Univ. Marrakesh; CESBIO Toulouse)</dd>
+      <dt>Venue / year</dt><dd>Agricultural Water Management 330 (2026) 110418</dd>
+      <dt>Type</dt><dd>Applied case study &mdash; simulation coupled with optimization (prescriptive analytics)</dd>
+      <dt>Domain</dt><dd>Agriculture &mdash; wheat irrigation scheduling in semi-arid Morocco</dd>
+      <dt>Data</dt><dd>Two wheat fields in the Haouz Plain (Field 1 stressed, Field 2 normal), two growing seasons (2016/17, 2017/18)</dd>
+      <dt>Methods</dt><dd><b>AquaCrop-OSPy</b> crop simulation coupled with <b>minimize_scalar (bounded)</b> and <b>L-BFGS-B</b> optimizers</dd>
+      <dt>Course link</dt><dd><b>Ch.8 &mdash; Prescriptive Analytics: Optimization &amp; Simulation</b></dd>
+    </dl>
+    <div class="idea"><b>One-sentence takeaway:</b> coupling the <b>AquaCrop</b> crop-simulation model with optimization algorithms (bounded scalar search and L-BFGS-B) over soil-water depletion thresholds cuts irrigation water use by <b>26&ndash;45%</b> versus farmer practice while <b>preserving wheat yield</b> &mdash; the textbook simulation + optimization pattern.</div>
+    
+  </section>
+
+  <section class="card" id="argument">
+    <h2>Main Argument</h2>
+    <p><b>Coupling a crop simulation model with optimization algorithms</b> finds irrigation schedules that cut water use sharply <b>while preserving yield</b> &mdash; something neither farmer practice nor an un-optimised simulation model can achieve on its own.</p>
+  </section>
+
+  <section class="card" id="problem">
+    <h2>Problem / Context</h2>
+    <p>Water scarcity is severe in semi-arid Morocco, where agriculture consumes roughly <b>70% of national freshwater</b>. Farmers tend to over-irrigate wheat by habit rather than by any model-based schedule. National cereal production has fallen more than 40%, and average wheat yields sit around only 2 t/ha &mdash; making irrigation efficiency an urgent problem.</p>
+  </section>
+
+  <section class="card" id="method">
+    <h2>Data &amp; Method</h2>
+    <p>The study uses <b>AquaCrop-OSPy</b>, the FAO crop-simulation model, coupled with two optimizers: a unidimensional <b>minimize_scalar (bounded)</b> search and a multidimensional <b>L-BFGS-B</b> algorithm. The <b>decision variables are soil-water depletion thresholds</b>, and the objective is <b>irrigation water productivity</b>. The model is applied to two wheat fields in the <b>Haouz Plain</b> (Field 1 water-stressed, Field 2 under normal conditions) across two seasons (<b>2016/17, 2017/18</b>), and calibrated against observed <b>canopy cover, biomass, and actual evapotranspiration (ETa)</b>. Three irrigation strategies are compared: <b>Real</b> (farmer practice), <b>NET</b> (one constant depletion threshold), and <b>SMT</b> (stage-specific thresholds aligned to phenological phases &mdash; emergence, canopy expansion, max canopy, senescence).</p>
+  </section>
+
+  <section class="card" id="results">
+    <h2>Key Results</h2>
+    <p>Calibration quality is strong: <b>R&sup2; 74&ndash;93%</b>, <b>NSE 0.71&ndash;0.95</b>, index of agreement 0.86&ndash;0.98. The optimised <b>SMT</b> strategy cuts irrigation by <b>26&ndash;31%</b> on Field 1 and <b>42&ndash;45%</b> on Field 2 relative to farmer practice, while sustaining yields of <b>6.43 t/ha</b> (Season 1) and <b>6.24 t/ha</b> (Season 2) and raising irrigation water productivity to <b>2.08&ndash;2.33 kg/m&sup3;</b>. The optimised <b>NET</b> strategy saved only <b>4&ndash;34%</b> &mdash; so <b>SMT clearly beats NET</b> on the water&ndash;yield balance.</p>
+  </section>
+
+  <section class="card" id="lessons">
+    <h2>5 Lessons Learned</h2>
+    <ol>
+      <li><b>Simulation + optimization</b> is the textbook prescriptive-analytics pattern: simulate the system, then optimise its decision variables.</li>
+      <li>The simulation model must be <b>calibrated and validated first</b> (R&sup2;, RMSE, NSE) &mdash; otherwise the &ldquo;optimum&rdquo; found afterward is meaningless.</li>
+      <li><b>Stage-specific</b> thresholds (SMT) beat one constant threshold (NET) &mdash; timing the intervention matters as much as its total amount.</li>
+      <li>A scarce resource can be cut roughly <b>30&ndash;45% without losing output</b>, because the objective function targeted productivity (output per unit of water), not yield alone.</li>
+      <li>Prescriptive analytics turns a purely scientific crop model into a <b>farmer-usable decision-support tool</b>.</li>
+    </ol>
+  </section>
+
+  <section class="card" id="exam">
+    <h2>Exam focus</h2>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Illustrate simulation + optimization with a real example.</i>&rdquo; Answer: AquaCrop simulates wheat growth under different irrigation choices; the optimizer (minimize_scalar / L-BFGS-B) searches over soil-water depletion thresholds to maximise irrigation water productivity &mdash; the stage-specific (SMT) result cuts water 26&ndash;45% while keeping yield near 6.2&ndash;6.4 t/ha.</div>
+    <p class="ex"><b>Course link:</b> see <a href="Ch8.html">Ch.8 &mdash; Prescriptive Analytics: Optimization &amp; Simulation</a> for the matching lecture material. <b>Source paper:</b> <a href="R15-AquaCrop%20model%20and%20optimization%20techniques.pdf">R15-AquaCrop model and optimization techniques.pdf</a>.</p>
+  </section>
+
+  </main>
+</div>
+<footer>R15 · AquaCrop + Optimization for Wheat Irrigation · BIA final-exam full-detail page · <a href="index.html">back to hub</a></footer>
+</body>
+</html>

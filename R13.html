@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R13 — Brain Tumour Classification with CNN Ensemble (Puspita et al., 2025) · Full Detail</title>
+<style>
+  :root{--teal:#1a7a96;--teal-dark:#0f5a70;--red:#c0392b;--orange:#c0622b;--green:#2e8b57;--purple:#7a5ca8;--bg:#f7f9fa;--card:#fff;--ink:#1f2d33;--muted:#5c6b72;--border:#d9e2e6;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;}
+  a{color:var(--teal-dark);}
+  header.hero{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;padding:34px 26px 26px;}
+  header.hero .home{font-size:.82rem;color:#d7eef4;text-decoration:none;}
+  header.hero .chip{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin:10px 0 8px;}
+  header.hero h1{margin:0;font-size:1.7rem;line-height:1.25;max-width:900px;}
+  header.hero .cite{margin-top:10px;font-size:.9rem;opacity:.92;max-width:900px;}
+  .layout{display:flex;max-width:1140px;margin:0 auto;gap:28px;padding:26px 22px 48px;align-items:flex-start;}
+  nav.toc{position:sticky;top:16px;flex:0 0 210px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.84rem;max-height:calc(100vh - 32px);overflow-y:auto;}
+  nav.toc h2{font-size:.7rem;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0 0 8px;}
+  nav.toc a{display:block;color:var(--teal-dark);text-decoration:none;padding:3px 0;}
+  nav.toc a:hover{text-decoration:underline;}
+  main{flex:1 1 auto;min-width:0;}
+  section.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:14px;}
+  section.card>h2{color:var(--teal);margin-top:0;border-bottom:3px solid var(--teal);padding-bottom:8px;font-size:1.3rem;}
+  h3{color:var(--teal-dark);font-size:1.07rem;margin:20px 0 6px;border-left:4px solid var(--teal);padding-left:9px;}
+  h4{color:var(--teal-dark);margin:14px 0 4px;font-size:.98rem;}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;padding-left:22px;}
+  li{margin:3px 0;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef4f6;color:var(--teal-dark);}
+  code{background:#eef4f6;padding:1px 6px;border-radius:5px;font-size:.9em;}
+  .idea{background:#fdf3ea;border-left:4px solid var(--red);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .idea b{color:var(--red);}
+  .ex{background:#eef7fa;border-left:4px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.95rem;}
+  .ex b{color:var(--teal-dark);}
+  .exam{background:#fbf4ec;border-left:4px solid var(--orange);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .exam b{color:var(--orange);}
+  .meta-grid{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:.92rem;}
+  .meta-grid dt{font-weight:700;color:var(--teal-dark);}
+  .meta-grid dd{margin:0;}
+  .red{color:var(--red);font-weight:600;}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:22px;border-top:1px solid var(--border);}
+  @media(max-width:860px){.layout{flex-direction:column;}nav.toc{position:static;width:100%;max-height:none;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <a class="home" href="index.html">← Final Prep Hub</a>
+  <div class="chip">READING 13 · FULL DETAIL</div>
+  <h1>Brain Tumor Classification based on Convolutional Neural Networks with an Ensemble Learning Approach through Soft Voting</h1>
+  <div class="cite">Kartika Puspita, Ferda Ernawan, Yuris Alkhalifi, Shahreen Kasim, Aldo Erianda &middot; Universitas Nusa Mandiri Jakarta &amp; Universiti Malaysia Pahang &middot; <em>JOIV: Int. J. Informatics Visualization</em> 9(5), Sept 2025, pp. 1964&ndash;1970.</div>
+</header>
+
+<div class="layout">
+  <nav class="toc">
+    <h2>On this page</h2>
+    <a href="#glance">At a glance</a>
+    <a href="#argument">Main argument</a>
+    <a href="#problem">Problem / context</a>
+    <a href="#method">Data &amp; method</a>
+    <a href="#results">Key results</a>
+    <a href="#lessons">5 lessons learned</a>
+    <a href="#exam">Exam focus</a>
+  </nav>
+  <main>
+
+  <section class="card" id="glance">
+    <h2>At a glance</h2>
+    <dl class="meta-grid">
+      <dt>Authors</dt><dd>Kartika Puspita, Ferda Ernawan, Yuris Alkhalifi, Shahreen Kasim, Aldo Erianda (Universitas Nusa Mandiri Jakarta; Universiti Malaysia Pahang)</dd>
+      <dt>Venue / year</dt><dd>JOIV: Int. J. Informatics Visualization 9(5), Sept 2025, pp. 1964&ndash;1970</dd>
+      <dt>Type</dt><dd>Applied case study &mdash; supervised deep learning / ensemble classification</dd>
+      <dt>Domain</dt><dd>Medical imaging &mdash; MRI brain-tumour diagnosis</dd>
+      <dt>Data</dt><dd><b>7,023 MRI images</b> at 512&times;512, four classes: glioma / meningioma / pituitary / no tumour</dd>
+      <dt>Methods</dt><dd>Four CNNs (<b>VGG16, MobileNet, ResNet50, DenseNet121</b>) combined by <b>soft voting</b> (average predicted probabilities, argmax)</dd>
+      <dt>Course link</dt><dd><b>Ch.7 &mdash; Deep Learning &amp; Cognitive Computing</b></dd>
+    </dl>
+    <div class="idea"><b>One-sentence takeaway:</b> a <b>soft-voting ensemble of four CNNs</b> (VGG16, MobileNet, ResNet50, DenseNet121) classifies brain-tumour MRI scans into four classes at <b>97.67% accuracy</b> (Cohen&rsquo;s Kappa 0.9688) &mdash; beating every individual CNN.</div>
+    
+  </section>
+
+  <section class="card" id="argument">
+    <h2>Main Argument</h2>
+    <p>No single CNN is best for this problem &mdash; a <b>soft-voting ensemble of several CNNs</b> raises brain-tumour classification accuracy above any individual model. Rather than betting on one architecture, the paper shows that averaging the probability outputs of several different, independently-trained CNNs cancels out each model&rsquo;s individual errors and yields a stronger, more reliable classifier.</p>
+  </section>
+
+  <section class="card" id="problem">
+    <h2>Problem / Context</h2>
+    <p>Glioma, meningioma and pituitary tumours are major global health issues. Manual MRI reading by radiologists is slow, labour-intensive and error-prone, especially at scale &mdash; creating a clear need for automated, computer-vision-based early detection that can support (not replace) clinical diagnosis.</p>
+  </section>
+
+  <section class="card" id="method">
+    <h2>Data &amp; Method</h2>
+    <p>The dataset is <b>7,023 MRI images</b> at <b>512&times;512</b> resolution, spanning four classes: <b>glioma, meningioma, pituitary tumour, and no tumour</b>. Four CNN architectures &mdash; <b>VGG16, MobileNet, ResNet50, DenseNet121</b> &mdash; are each trained and optimised separately (<b>Adam optimiser, learning rate 0.0001, kernel regulariser 0.001</b>). Their predictions are then combined by <b>soft voting</b>: each CNN outputs a class-probability vector, the four vectors are averaged, and the final class is the argmax of the averaged vector.</p>
+  </section>
+
+  <section class="card" id="results">
+    <h2>Key Results</h2>
+    <p>The soft-voting ensemble reaches <b>97.67% accuracy</b> with <b>Cohen&rsquo;s Kappa = 0.9688</b>, outperforming every individual CNN in the ensemble as well as prior published methods on comparable brain-tumour classification tasks.</p>
+  </section>
+
+  <section class="card" id="lessons">
+    <h2>5 Lessons Learned</h2>
+    <ol>
+      <li><b>CNNs learn image features automatically</b> &mdash; no hand-crafted feature engineering is needed; this is Ch.7&rsquo;s core deep-learning claim in action.</li>
+      <li><b>Ensembles beat single models:</b> soft voting averages class probabilities across independently-trained CNNs, cancelling out each model&rsquo;s individual mistakes.</li>
+      <li><b>Transfer learning</b> from pretrained architectures (VGG16, ResNet50, DenseNet121, MobileNet) works well even on a modest, domain-specific medical dataset.</li>
+      <li><b>Accuracy alone is not enough</b> in multi-class problems &mdash; <b>Cohen&rsquo;s Kappa</b> corrects for agreement that could occur by chance, giving a more trustworthy performance figure.</li>
+      <li>Deep learning here is meant to <b>support, not replace, radiologists</b> &mdash; it is a screening / decision-support aid layered onto expert judgement.</li>
+    </ol>
+  </section>
+
+  <section class="card" id="exam">
+    <h2>Exam focus</h2>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Why use an ensemble instead of the single best CNN?</i>&rdquo; Answer: soft voting averages the four CNNs&rsquo; predicted probabilities, which cancels individual model errors and consistently outperforms any one architecture (97.67% accuracy, Kappa 0.9688). Also be ready to explain <b>why Kappa matters</b> alongside accuracy in a 4-class problem.</div>
+    <p class="ex"><b>Course link:</b> see <a href="Ch7.html">Ch.7 &mdash; Deep Learning &amp; Cognitive Computing</a> for the matching lecture material. <b>Source paper:</b> <a href="R13-Brain%20Tumor%20Classification%20based%20on%20CNN.pdf">R13-Brain Tumor Classification based on CNN.pdf</a>.</p>
+  </section>
+
+  </main>
+</div>
+<footer>R13 · Brain Tumour Classification with CNN Ensemble · BIA final-exam full-detail page · <a href="index.html">back to hub</a></footer>
+</body>
+</html>

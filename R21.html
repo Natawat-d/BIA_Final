@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R21 — Integrated BDA Architecture for Supply-Chain Resilience (Alaeddini &amp; Asgari, 2025) · Full Detail</title>
+<style>
+  :root{--teal:#1a7a96;--teal-dark:#0f5a70;--red:#c0392b;--orange:#c0622b;--green:#2e8b57;--purple:#7a5ca8;--bg:#f7f9fa;--card:#fff;--ink:#1f2d33;--muted:#5c6b72;--border:#d9e2e6;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;}
+  a{color:var(--teal-dark);}
+  header.hero{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;padding:34px 26px 26px;}
+  header.hero .home{font-size:.82rem;color:#d7eef4;text-decoration:none;}
+  header.hero .chip{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin:10px 0 8px;}
+  header.hero h1{margin:0;font-size:1.7rem;line-height:1.25;max-width:900px;}
+  header.hero .cite{margin-top:10px;font-size:.9rem;opacity:.92;max-width:900px;}
+  .layout{display:flex;max-width:1140px;margin:0 auto;gap:28px;padding:26px 22px 48px;align-items:flex-start;}
+  nav.toc{position:sticky;top:16px;flex:0 0 210px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.84rem;max-height:calc(100vh - 32px);overflow-y:auto;}
+  nav.toc h2{font-size:.7rem;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0 0 8px;}
+  nav.toc a{display:block;color:var(--teal-dark);text-decoration:none;padding:3px 0;}
+  nav.toc a:hover{text-decoration:underline;}
+  main{flex:1 1 auto;min-width:0;}
+  section.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:14px;}
+  section.card>h2{color:var(--teal);margin-top:0;border-bottom:3px solid var(--teal);padding-bottom:8px;font-size:1.3rem;}
+  h3{color:var(--teal-dark);font-size:1.07rem;margin:20px 0 6px;border-left:4px solid var(--teal);padding-left:9px;}
+  h4{color:var(--teal-dark);margin:14px 0 4px;font-size:.98rem;}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;padding-left:22px;}
+  li{margin:3px 0;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef4f6;color:var(--teal-dark);}
+  code{background:#eef4f6;padding:1px 6px;border-radius:5px;font-size:.9em;}
+  .idea{background:#fdf3ea;border-left:4px solid var(--red);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .idea b{color:var(--red);}
+  .ex{background:#eef7fa;border-left:4px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.95rem;}
+  .ex b{color:var(--teal-dark);}
+  .exam{background:#fbf4ec;border-left:4px solid var(--orange);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .exam b{color:var(--orange);}
+  .meta-grid{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:.92rem;}
+  .meta-grid dt{font-weight:700;color:var(--teal-dark);}
+  .meta-grid dd{margin:0;}
+  .red{color:var(--red);font-weight:600;}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:22px;border-top:1px solid var(--border);}
+  @media(max-width:860px){.layout{flex-direction:column;}nav.toc{position:static;width:100%;max-height:none;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <a class="home" href="index.html">← Final Prep Hub</a>
+  <div class="chip">READING 21 · FULL DETAIL</div>
+  <h1>An Integrated Big Data Analytics Architecture for Resilience: A Case Study of Last-Mile Agri-Food Delivery</h1>
+  <div class="cite">Morteza Alaeddini &amp; Alireza Asgari &middot; ICN Business School / CEREFIGE, Universit&eacute; de Lorraine, Nancy; Universit&eacute; Grenoble Alpes &middot; <em>Procedia Computer Science</em> 253 (2025) 1621&ndash;1630 (ISM 2024).</div>
+</header>
+
+<div class="layout">
+  <nav class="toc">
+    <h2>On this page</h2>
+    <a href="#glance">At a glance</a>
+    <a href="#argument">Main argument</a>
+    <a href="#problem">Problem / context</a>
+    <a href="#method">Data &amp; method</a>
+    <a href="#results">Key results</a>
+    <a href="#lessons">5 lessons learned</a>
+    <a href="#exam">Exam focus</a>
+  </nav>
+  <main>
+
+  <section class="card" id="glance">
+    <h2>At a glance</h2>
+    <dl class="meta-grid">
+      <dt>Authors</dt><dd>Morteza Alaeddini &amp; Alireza Asgari (ICN Business School / CEREFIGE, Univ. de Lorraine, Nancy; Univ. Grenoble Alpes)</dd>
+      <dt>Venue / year</dt><dd>Procedia Computer Science 253 (2025) 1621&ndash;1630 (6th Int. Conf. on Industry 4.0 and Smart Manufacturing, ISM 2024)</dd>
+      <dt>Type</dt><dd>Case study &mdash; layered big-data-analytics architecture design</dd>
+      <dt>Domain</dt><dd>Supply chain &mdash; last-mile agri-food delivery</dd>
+      <dt>Data</dt><dd>Case study at a large B2B2C last-mile food-delivery company; requirements from industry standards + academic literature + company needs</dd>
+      <dt>Methods</dt><dd>Layered architecture (ingestion &rarr; storage &rarr; analytics &rarr; decision) integrating descriptive, predictive &amp; prescriptive analytics</dd>
+      <dt>Course link</dt><dd><b>Big Data Analytics</b></dd>
+    </dl>
+    <div class="idea"><b>One-sentence takeaway:</b> a case study at a B2B2C last-mile food-delivery company proposes a <b>layered Big Data Analytics architecture</b> that integrates <b>descriptive + predictive + prescriptive</b> analytics to improve supply-chain <b>resilience</b> &mdash; anticipation, response and recovery from disruption &mdash; where isolated analytics tools fall short.</div>
+    
+  </section>
+
+  <section class="card" id="argument">
+    <h2>Main Argument</h2>
+    <p>Supply-chain <b>resilience</b> requires an <b>integrated Big Data Analytics architecture that combines descriptive, predictive and prescriptive analytics</b> &mdash; not a collection of isolated analytics tools bolted together.</p>
+  </section>
+
+  <section class="card" id="problem">
+    <h2>Problem / Context</h2>
+    <p>Last-mile delivery (LMD) of agri-food must guarantee uninterrupted access to essential food supplies, yet is highly vulnerable to disruption (weather, traffic, demand shocks). Existing generic Big Data Analytics reference models do not explicitly address resilience as a design goal.</p>
+  </section>
+
+  <section class="card" id="method">
+    <h2>Data &amp; Method</h2>
+    <p>The paper uses a <b>case-study approach</b> at a large <b>B2B2C last-mile food-delivery company</b>, drawing requirements from <b>industry standards, academic research, and the company&rsquo;s specific needs</b>. It reviews three groups of prior literature &mdash; general BDA reference models (e.g. Kaufmann&rsquo;s big-data management model), resilient BDA systems (BDA + IoT for disaster prediction and monitoring), and domain-specific architectures &mdash; and then proposes a <b>layered architecture</b> (ingestion &rarr; storage &rarr; analytics &rarr; decision) that carries all three analytics types end to end.</p>
+  </section>
+
+  <section class="card" id="results">
+    <h2>Key Results</h2>
+    <p>The proposed architecture <b>enhances resilience</b> by integrating descriptive, predictive and prescriptive analytics, enabling improved <b>anticipation, response and recovery</b> from supply-chain disruptions &mdash; descriptive analytics shows what happened, predictive analytics anticipates disruption, and prescriptive analytics plans the recovery response.</p>
+  </section>
+
+  <section class="card" id="lessons">
+    <h2>5 Lessons Learned</h2>
+    <ol>
+      <li><b>Architecture matters</b>: the resilience value comes from integrating the analytics layers together, not from any single model in isolation.</li>
+      <li>The <b>descriptive &rarr; predictive &rarr; prescriptive</b> ladder maps directly onto <b>anticipate &rarr; respond &rarr; recover</b> in a disruption context.</li>
+      <li>Resilience is a <b>BDA use case in its own right</b> &mdash; disruption detection and recovery, not just day-to-day operational efficiency.</li>
+      <li>Reference architectures must be <b>adapted to the domain</b> (here, agri-food last-mile delivery) &mdash; a generic big-data stack is not sufficient on its own.</li>
+      <li><b>IoT / sensor streams</b> (the Velocity V of Big Data) are what make real-time disruption anticipation possible in the first place.</li>
+    </ol>
+  </section>
+
+  <section class="card" id="exam">
+    <h2>Exam focus</h2>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>How should a company architect Big Data Analytics for supply-chain resilience?</i>&rdquo; Answer: a layered architecture (ingestion &rarr; storage &rarr; analytics &rarr; decision) that integrates descriptive, predictive and prescriptive analytics together &mdash; mapping onto anticipate / respond / recover &mdash; rather than deploying isolated analytics point solutions.</div>
+    <p class="ex"><b>Course link:</b> see <a href="BigData.html">Big Data Analytics &mdash; lecture page</a> for the matching lecture material. <b>Source paper:</b> <a href="R21-An%20Integrated%20Big%20Data%20Analytics%20Architecture%20for%20Resilience.pdf">R21-An Integrated Big Data Analytics Architecture for Resilience.pdf</a>.</p>
+  </section>
+
+  </main>
+</div>
+<footer>R21 · Integrated BDA Architecture for Supply-Chain Resilience · BIA final-exam full-detail page · <a href="index.html">back to hub</a></footer>
+</body>
+</html>

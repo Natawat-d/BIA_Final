@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R16 — DDSO Framework for Invasive-Plant Control (Zhang et al., 2026) · Full Detail</title>
+<style>
+  :root{--teal:#1a7a96;--teal-dark:#0f5a70;--red:#c0392b;--orange:#c0622b;--green:#2e8b57;--purple:#7a5ca8;--bg:#f7f9fa;--card:#fff;--ink:#1f2d33;--muted:#5c6b72;--border:#d9e2e6;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;}
+  a{color:var(--teal-dark);}
+  header.hero{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;padding:34px 26px 26px;}
+  header.hero .home{font-size:.82rem;color:#d7eef4;text-decoration:none;}
+  header.hero .chip{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin:10px 0 8px;}
+  header.hero h1{margin:0;font-size:1.7rem;line-height:1.25;max-width:900px;}
+  header.hero .cite{margin-top:10px;font-size:.9rem;opacity:.92;max-width:900px;}
+  .layout{display:flex;max-width:1140px;margin:0 auto;gap:28px;padding:26px 22px 48px;align-items:flex-start;}
+  nav.toc{position:sticky;top:16px;flex:0 0 210px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.84rem;max-height:calc(100vh - 32px);overflow-y:auto;}
+  nav.toc h2{font-size:.7rem;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0 0 8px;}
+  nav.toc a{display:block;color:var(--teal-dark);text-decoration:none;padding:3px 0;}
+  nav.toc a:hover{text-decoration:underline;}
+  main{flex:1 1 auto;min-width:0;}
+  section.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:14px;}
+  section.card>h2{color:var(--teal);margin-top:0;border-bottom:3px solid var(--teal);padding-bottom:8px;font-size:1.3rem;}
+  h3{color:var(--teal-dark);font-size:1.07rem;margin:20px 0 6px;border-left:4px solid var(--teal);padding-left:9px;}
+  h4{color:var(--teal-dark);margin:14px 0 4px;font-size:.98rem;}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;padding-left:22px;}
+  li{margin:3px 0;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef4f6;color:var(--teal-dark);}
+  code{background:#eef4f6;padding:1px 6px;border-radius:5px;font-size:.9em;}
+  .idea{background:#fdf3ea;border-left:4px solid var(--red);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .idea b{color:var(--red);}
+  .ex{background:#eef7fa;border-left:4px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.95rem;}
+  .ex b{color:var(--teal-dark);}
+  .exam{background:#fbf4ec;border-left:4px solid var(--orange);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .exam b{color:var(--orange);}
+  .meta-grid{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:.92rem;}
+  .meta-grid dt{font-weight:700;color:var(--teal-dark);}
+  .meta-grid dd{margin:0;}
+  .red{color:var(--red);font-weight:600;}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:22px;border-top:1px solid var(--border);}
+  @media(max-width:860px){.layout{flex-direction:column;}nav.toc{position:static;width:100%;max-height:none;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <a class="home" href="index.html">← Final Prep Hub</a>
+  <div class="chip">READING 16 · FULL DETAIL</div>
+  <h1>An integrated data-driven-simulation&ndash;optimization model: insights into controlling invasive plants in China</h1>
+  <div class="cite">Shuhua Zhang, Ming Liu, Dong Li &middot; Nanjing University of Science &amp; Technology; Lancaster University &middot; <em>Expert Systems With Applications</em> 310 (2026) 131261.</div>
+</header>
+
+<div class="layout">
+  <nav class="toc">
+    <h2>On this page</h2>
+    <a href="#glance">At a glance</a>
+    <a href="#argument">Main argument</a>
+    <a href="#problem">Problem / context</a>
+    <a href="#method">Data &amp; method</a>
+    <a href="#results">Key results</a>
+    <a href="#lessons">5 lessons learned</a>
+    <a href="#exam">Exam focus</a>
+  </nav>
+  <main>
+
+  <section class="card" id="glance">
+    <h2>At a glance</h2>
+    <dl class="meta-grid">
+      <dt>Authors</dt><dd>Shuhua Zhang, Ming Liu, Dong Li (Nanjing Univ. of Science &amp; Technology; Lancaster University)</dd>
+      <dt>Venue / year</dt><dd>Expert Systems With Applications 310 (2026) 131261</dd>
+      <dt>Type</dt><dd>Methodological / applied &mdash; integrated data-driven, simulation and optimization framework</dd>
+      <dt>Domain</dt><dd>Environmental management &mdash; invasive-species control in Chinese coastal wetlands</dd>
+      <dt>Data</dt><dd>Multi-source ecological observation data (spatial &amp; temporal) feeding a life-cycle + spatial-dispersal simulation</dd>
+      <dt>Methods</dt><dd>Three coupled modules: <b>data-driven ecological parameterization</b>, <b>simulation</b> of spread, and <b>mixed-integer optimization</b> of budget allocation</dd>
+      <dt>Course link</dt><dd><b>Ch.8 &mdash; Prescriptive Analytics: Optimization &amp; Simulation</b></dd>
+    </dl>
+    <div class="idea"><b>One-sentence takeaway:</b> an integrated <b>DDSO (data-driven&ndash;simulation&ndash;optimization) framework</b> beats both System Dynamics and plain simulation-optimization at controlling the invasive plant <i>Spartina alterniflora</i>, revealing that <b>coordination beats raw budget</b> and that efficient plans allocate resources <b>unevenly across space</b>.</div>
+    
+  </section>
+
+  <section class="card" id="argument">
+    <h2>Main Argument</h2>
+    <p>Invasion control needs an <b>integrated DDSO (data-driven&ndash;simulation&ndash;optimization) framework</b>, because static strategies fail against a dynamic, spatially spreading invasion managed under a fixed budget.</p>
+  </section>
+
+  <section class="card" id="problem">
+    <h2>Problem / Context</h2>
+    <p><i>Spartina alterniflora</i> is invading China&rsquo;s coastal wetlands, posing a major ecological and economic threat. Management budgets are limited, and the invasion itself is dynamic, uncertain and spatially heterogeneous &mdash; conditions under which fixed, one-off management strategies quickly become outdated.</p>
+  </section>
+
+  <section class="card" id="method">
+    <h2>Data &amp; Method</h2>
+    <p>The framework couples three modules: (1) <b>data-driven ecological parameterization</b> from multi-source observations, producing <b>time-varying</b> parameters that reflect evolving invasion conditions; (2) <b>simulation</b> of the plant&rsquo;s <b>life-cycle transitions and spatial dispersal</b>; and (3) a <b>mixed-integer optimization</b> module that allocates <b>control budgets and intervention intensities across space and time</b> to generate cost-effective schedules under fixed budget constraints. The framework is benchmarked against plain <b>System Dynamics (SD)</b> and a simpler <b>Simulation&ndash;Optimization (SO)</b> approach, with scenario analysis across different budget levels and invasion intensities.</p>
+  </section>
+
+  <section class="card" id="results">
+    <h2>Key Results</h2>
+    <p>DDSO outperforms both SD and SO on <b>budget efficiency</b>, and surfaces two counter-intuitive management insights: (1) effectiveness depends <b>more on having a coordinated optimization framework than on the scale of investment</b>; and (2) economically efficient strategies inherently favour <b>highly uneven spatial resource allocation</b> rather than spreading effort evenly. The results underscore the value of <b>early intervention</b> and <b>cross-regional coordination</b>.</p>
+  </section>
+
+  <section class="card" id="lessons">
+    <h2>5 Lessons Learned</h2>
+    <ol>
+      <li>The full prescriptive stack in one system: <b>descriptive (data) &rarr; predictive (simulation) &rarr; prescriptive (optimization)</b>.</li>
+      <li><b>Coordination beats budget</b> &mdash; how resources are allocated matters more than how much money is spent.</li>
+      <li>Optimal spatial allocation is <b>uneven</b> &mdash; spreading effort equally across regions is economically inefficient.</li>
+      <li><b>Mixed-integer programming</b> is the right tool for combined yes/no-and-how-much decisions across many locations and time periods.</li>
+      <li><b>Time-varying, data-driven parameters</b> let the plan adapt; static models mismanage a dynamic system.</li>
+    </ol>
+  </section>
+
+  <section class="card" id="exam">
+    <h2>Exam focus</h2>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Why integrate data-driven parameterization with simulation and optimization, rather than optimizing alone?</i>&rdquo; Answer: static optimization can&rsquo;t track a spreading, budget-constrained invasion; DDSO&rsquo;s time-varying parameters + simulation + mixed-integer optimization beat SD and SO on budget efficiency, and reveal that uneven, coordinated spatial allocation outperforms even spreading.</div>
+    <p class="ex"><b>Course link:</b> see <a href="Ch8.html">Ch.8 &mdash; Prescriptive Analytics: Optimization &amp; Simulation</a> for the matching lecture material. <b>Source paper:</b> <a href="R16-An%20integrated%20data-driven-simulation-optimization%20model.pdf">R16-An integrated data-driven-simulation-optimization model.pdf</a>.</p>
+  </section>
+
+  </main>
+</div>
+<footer>R16 · DDSO Framework for Invasive-Plant Control · BIA final-exam full-detail page · <a href="index.html">back to hub</a></footer>
+</body>
+</html>
