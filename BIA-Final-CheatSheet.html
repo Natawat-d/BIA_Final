@@ -3,37 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIA Final — Cheat Sheet (Ch.7 · Ch.8 · Expert Systems · Big Data + R12–R25)</title>
+<title>BIA Final — Cheat Sheet (Ch.7 · Ch.8 · Expert Systems · Big Data · Ch.10 · Ch.11 + R12–R25)</title>
 <style>
   :root { --teal:#1a7a96; --teal-dark:#0f5a70; --red:#b3361f; --green:#2e7d4f; --purple:#5b3a8e; --ink:#161f23; --line:#cbd6da; --bg:#eef4f6; }
   * { box-sizing:border-box; }
   body { margin:0; background:#8d9aa0; font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); overflow-wrap:break-word; }
   .sheet { width:100%; max-width:210mm; background:#fff; margin:14px auto; padding:5mm 5mm 4mm; box-shadow:0 2px 10px rgba(0,0,0,.3); }
-  .cols { column-count:3; column-gap:4.5mm; }
-  .cols2 { column-count:2; column-gap:5mm; }
+  .cols { column-count:3; column-gap:3.6mm; }
+  .cols2 { column-count:2; column-gap:4mm; }
   h1 { font-size:8.3pt; color:var(--teal-dark); margin:0 0 1px; }
   h1 .sub { font-size:5pt; color:#5c6b72; font-weight:400; }
-  h2 { font-size:6.1pt; text-transform:uppercase; letter-spacing:.3px; color:#fff; background:var(--teal); margin:2.8px 0 1.2px; padding:1.6px 5px; border-radius:2px; break-after:avoid; break-inside:avoid; }
+  h2 { font-size:6pt; text-transform:uppercase; letter-spacing:.3px; color:#fff; background:var(--teal); margin:2.3px 0 1px; padding:1.4px 5px; border-radius:2px; break-after:avoid; break-inside:avoid; }
   h2.alt { background:var(--teal-dark); }
   h2.red { background:var(--red); }
   h2.purple { background:var(--purple); }
   h3 { font-size:5.4pt; color:var(--teal-dark); margin:1.8px 0 0.6px; text-transform:uppercase; letter-spacing:.2px; break-after:avoid; }
-  p.t { font-size:4.75pt; line-height:1.1; margin:0 0 1px; break-inside:avoid; text-align:justify; }
+  p.t { font-size:4.6pt; line-height:1.04; margin:0 0 0.85px; break-inside:avoid; text-align:justify; }
   p.t b { color:var(--ink); }
   p.t .k { color:var(--red); font-weight:700; }
   p.t .ab { color:#5c6b72; font-style:italic; }
-  p.idea { font-size:4.95pt; line-height:1.11; margin:0 0 1.3px; padding:1.8px 4px; background:#fdf3ea; border-left:2.5px solid var(--red); border-radius:0 3px 3px 0; break-inside:avoid; }
+  p.idea { font-size:4.85pt; line-height:1.07; margin:0 0 1.1px; padding:1.6px 3.6px; background:#fdf3ea; border-left:2.5px solid var(--red); border-radius:0 3px 3px 0; break-inside:avoid; }
   p.idea b { color:var(--red); text-transform:uppercase; letter-spacing:.2px; font-size:4.6pt; }
-  p.tem { font-size:4.8pt; line-height:1.12; margin:0 0 1.1px; padding:1.6px 4px; background:#f1ecf8; border-left:2.5px solid var(--purple); border-radius:0 3px 3px 0; break-inside:avoid; }
+  p.tem { font-size:4.7pt; line-height:1.07; margin:0 0 0.95px; padding:1.5px 3.6px; background:#f1ecf8; border-left:2.5px solid var(--purple); border-radius:0 3px 3px 0; break-inside:avoid; }
   p.tem b { color:var(--purple); }
-  p.ex { font-size:4.9pt; line-height:1.11; margin:0 0 1.1px; padding:1.8px 4px; background:#eef7fa; border-left:2.5px solid var(--teal); border-radius:0 3px 3px 0; break-inside:avoid; }
+  p.ex { font-size:4.8pt; line-height:1.07; margin:0 0 0.95px; padding:1.6px 3.6px; background:#eef7fa; border-left:2.5px solid var(--teal); border-radius:0 3px 3px 0; break-inside:avoid; }
   p.ex b { color:var(--teal-dark); }
-  p.case { font-size:4.85pt; line-height:1.11; margin:0 0 1.1px; padding:1.8px 4px; background:#f1f6f1; border-left:2.5px solid var(--green); border-radius:0 3px 3px 0; break-inside:avoid; }
+  p.case { font-size:4.75pt; line-height:1.07; margin:0 0 0.95px; padding:1.6px 3.6px; background:#f1f6f1; border-left:2.5px solid var(--green); border-radius:0 3px 3px 0; break-inside:avoid; }
   p.case b { color:var(--green); }
-  p.rh { font-size:5.5pt; color:var(--red); margin:1.7px 0 0.4px; break-after:avoid; break-inside:avoid; }
+  p.rh { font-size:5.4pt; color:var(--red); margin:1.4px 0 0.35px; break-after:avoid; break-inside:avoid; }
   p.rh .cr { color:#5c6b72; font-weight:400; float:right; font-size:5pt; }
   ul.rl { margin:0 0 1.3px; padding:0; list-style:none; }
-  ul.rl > li { font-size:4.5pt; line-height:1.11; margin:0 0 0.4px; padding-left:6.5px; position:relative; break-inside:avoid; text-align:justify; }
+  ul.rl > li { font-size:4.4pt; line-height:1.05; margin:0 0 0.32px; padding-left:6.5px; position:relative; break-inside:avoid; text-align:justify; }
   ul.rl > li::before { content:"›"; position:absolute; left:0.5px; color:var(--teal); font-weight:700; }
   ul.rl > li b { color:var(--teal-dark); }
   ul.rl > li .k { color:var(--red); font-weight:700; }
@@ -42,13 +42,13 @@
   ul.rl > li.arg::before { content:"★"; color:var(--red); }
   ul.rl > li.res b { color:var(--purple); }
   ul.rl > li.res::before { content:"▸"; color:var(--purple); }
-  ul.rl > li.les { padding:1.8px 4px; margin:1.2px 0 0.6px; background:#f1f6f1; border:1px solid #bcd8c6; border-radius:3px; color:#22331f; }
+  ul.rl > li.les { padding:1.5px 3.6px; margin:1px 0 0.5px; background:#f1f6f1; border:1px solid #bcd8c6; border-radius:3px; color:#22331f; }
   ul.rl > li.les::before { content:none; }
   ul.rl > li.les b { color:var(--green); text-transform:uppercase; letter-spacing:.2px; font-size:.92em; }
   ol.les5 { margin:1px 0 0; padding-left:9px; }
-  ol.les5 > li { font-size:4.45pt; line-height:1.09; margin:0 0 0.3px; text-align:justify; }
-  table { width:100%; border-collapse:collapse; margin:1.1px 0 1.9px; font-size:4.8pt; break-inside:avoid; table-layout:fixed; }
-  th,td { border:1px solid var(--line); padding:1px 2.2px; text-align:left; vertical-align:top; line-height:1.08; overflow-wrap:break-word; word-break:normal; }
+  ol.les5 > li { font-size:4.35pt; line-height:1.03; margin:0 0 0.25px; text-align:justify; }
+  table { width:100%; border-collapse:collapse; margin:1px 0 1.6px; font-size:4.7pt; break-inside:avoid; table-layout:fixed; }
+  th,td { border:1px solid var(--line); padding:0.8px 2px; text-align:left; vertical-align:top; line-height:1.05; overflow-wrap:break-word; word-break:normal; }
   th { background:var(--bg); color:var(--teal-dark); }
   code { background:var(--bg); padding:0 2px; border-radius:3px; font-size:.96em; overflow-wrap:break-word; word-break:normal; }
   .span { column-span:all; }
@@ -58,7 +58,7 @@
   @media print {
     html, body { background:#fff; margin:0; padding:0; }
     .sheet { width:auto; max-width:none; margin:0; padding:0; box-shadow:none; }
-    @page { size:A4 portrait; margin:5mm; }
+    @page { size:A4 portrait; margin:4mm; }
   }
 </style>
 </head>
@@ -67,7 +67,7 @@
 <div class="sheet">
 
   <div class="banner">
-    <h1>BIA Final — Cheat Sheet <span class="sub">AT82.04 · Ch.7 Deep Learning · Ch.8 Prescriptive · Expert Systems · Big Data + Readings R12–R25</span></h1>
+    <h1>BIA Final — Cheat Sheet <span class="sub">AT82.04 · Ch.7 Deep Learning · Ch.8 Prescriptive · Expert Systems · Big Data · Ch.10 AI Trends · Ch.11 Ethics + Readings R12–R25</span></h1>
     <span class="tag">Exam 16 July · 25%</span>
   </div>
 
@@ -175,6 +175,46 @@
     <p class="t"><b>Coexistence (5 patterns)</b> — Hadoop as (1) store/archive multi-structured data, (2) filter/transform/consolidate (the "<b>refinery</b>"), (3) analyse &amp; publish results to the DW; (4) an RDBMS with MapReduce as an investigative platform; (5) a front-end query tool over both. Use cases: Hadoop = <b>repository &amp; refinery + active archive</b>; DW = performance, integrated business value, interactive BI.</p>
     <p class="t"><b>Stream analytics</b> — <b>data-in-motion / real-time</b> analytics: extract actionable information from <b>continuously flowing</b> data (the Velocity V). Why: storing it all may be infeasible, or the data <b>loses value</b> if analysed later. Related: <b>perpetual analytics</b>, <b>critical event processing</b>. <em>Energy use case:</em> sensor + meteorological + smart-meter data → streaming analytics (predict usage, production, anomalies) → <b>capacity</b> and <b>pricing</b> decisions. Sectors: e-commerce, telecom, cyber security, power, finance, health, government.</p>
     <p class="case"><b>Cases ·</b> <b>Telecom churn</b> (opening vignette — multi-source, high volume; <b>sessionizing</b> = stitching raw events into user sessions) · <b>investment bank/MarkLogic</b> (single source of truth: 1 DB replaced ~20 copies) · eBay · <b>flu nowcasting</b> from social media · EMR comorbidity <b>networks</b> (urban vs rural). Vendors: Cloudera, MapR, Hortonworks, IBM InfoSphere BigInsights, Teradata Aster.</p>
+
+    <!-- ===================== CH.10 ===================== -->
+    <h2>Ch.10 · New AI-Based Trends in Analytics</h2>
+    <p class="idea"><b>Key idea ·</b> Analytics is reshaped by <b>where compute lives</b> (cloud), <b>what counts as data</b> (location, images, sensors = "<b>alternative data</b>"), and <b>what is connected</b> (IoT). <span class="k">IoT is NOT an application — it is the infrastructure/platform</span> that feeds analytics.</p>
+    <p class="t"><b>Cloud computing</b> — "a model enabling convenient, <b>on-demand network access</b> to a <b>shared pool of configurable computing resources</b> (networks, servers, storage, services) <b>rapidly provisioned and released</b> with minimal management effort." A new name for older trends (utility/grid/on-demand computing, ASP, SaaS). <b>Service-oriented DSS = cloud analytics</b>; 4 componentes as a service: operational systems · data warehouses · OLAP · end-user components.</p>
+    <table>
+      <tr><th>Service</th><th>What you get</th><th>Example</th></tr>
+      <tr><td><b>SaaS</b></td><td>Apps running on cloud computers — pay for <b>use of software</b> only</td><td>Gmail, SAS Viya</td></tr>
+      <tr><td><b>PaaS</b></td><td>A platform to deploy <em>your</em> app; <b>focus on business, not the platform</b></td><td>Google App Engine, OpenShift</td></tr>
+      <tr><td><b>IaaS</b></td><td>Networks, storage, servers, compute</td><td><b>AWS</b></td></tr>
+      <tr><td><b>DaaS</b></td><td><b>Data</b>-as-a-Service (<b>where data lives doesn't matter</b>; SQL/XQuery/XML) <em>or</em> <b>Desktop</b>-as-a-Service (virtual desktop = PC-as-a-Service)</td><td>—</td></tr>
+      <tr><td><b>AaaS</b></td><td><b>Analytics</b>-as-a-Service — cloud + Big Data analytics platform</td><td>Amazon <b>QuickSight</b>, <b>Snowflake</b>, Tableau, Google Data Studio</td></tr>
+    </table>
+    <p class="t"><b>Virtualization</b> (essential enabler) — <b>network</b> (split bandwidth into channels) · <b>storage</b> (pool many devices into one) · <b>server</b> (mask physical servers → centralise management). <b>Deployment:</b> <b>private</b> (one org) · <b>public</b> (shared over Internet) · <b>hybrid</b>. <b>Top-3 security threats (Cloud Security Alliance):</b> <span class="k">data loss &amp; leakage · hardware failure · insecure interface</span>. Other challenges: service level, <b>data governance</b>, loss of control, privacy, legal liability, cross-border politics.</p>
+    <p class="t"><b>Location-based analytics</b> — adds "<b>where</b>" to who/what/when/how-much. <b>Geospatial</b> (static, from <b>GIS</b>; leader <b>ESRI/ArcGIS</b>) → crime analysis, disease spread, agriculture. <b>Real-time location intelligence</b> (dynamic) — GPS + Wi-Fi + cell-tower triangulation; movement patterns → promotions/pricing; <b>augmented reality</b> is an extension. <b>Consumer apps:</b> <b>Waze</b> (crowd-sourced hazards), <b>ParkPGH</b> (predicts parking). <span class="k">Key concern: loss of privacy.</span> <b>Image/alternative data</b> — satellite imagery: World Bank (urban planning), EarthCast (60 satellites → airline weather), Imazon (<b>Amazon deforestation</b>), Global Fishing Watch (<b>illegal fishing</b>).</p>
+    <p class="t"><b>IoT</b> — a network connecting many <b>objects</b>, each with an embedded microprocessor, wirelessly, anytime/anyplace. <b>Working definition:</b> connected devices, each with a <b>unique identifier (UID)</b>, <b>collecting and transferring data automatically</b>. <b>5 characteristics (Miller):</b> ① large numbers of things connected · ② each has a <b>unique ID/IP</b> · ③ each can <b>receive, send &amp; store data automatically</b> · ④ mostly over the <b>wireless Internet</b> · ⑤ built on <b>M2M</b> communication. <span class="k">Internet connects <em>people</em>; IoT connects <em>things</em>.</span> <b>Kevin Ashton</b> coined the term ("…computers can understand the world around them and become humanity's nervous system").</p>
+    <p class="ex"><b>How IoT works (the chain) ·</b> things → <b>sensors collect data</b> → displayed/stored/<b>analysed</b> (data mining) → information becomes <b>knowledge/intelligence</b> → <b>expert systems or ML</b> turn it into <b>decision support</b> → improved actions &amp; results → new use cases. <b>4 building blocks:</b> <b>hardware</b> (devices/sensors/actuators) → <b>connectivity</b> (hubs, gateways, Internet/cloud) → <b>software backend</b> (logic, usually cloud) → <b>applications</b>. Platforms: AWS IoT · Azure IoT Suite · GE <b>Predix</b> · IBM Watson IoT.</p>
+    <p class="t"><b>Sensors &amp; RFID</b> — a <b>sensor</b> automatically collects data about events in its environment; has <b>distance &amp; precision limits</b>; very-short-range = <b>proximity sensors</b> (<b>more reliable</b>). <b>RFID</b> = radio-frequency waves to identify objects; same family as barcodes/magnetic strips but stores <b>richer data</b>; works with <b>tags + readers</b>; <b>active</b> (long-range) vs <b>passive</b> (short-range) tags; spread via retail supply chains.</p>
+    <p class="t"><b>IoT benefits</b> — automate processes (cost ↓), productivity ↑, new revenue streams, <b>optimise asset utilisation</b>, sustainability, <b>anticipate needs</b>, identify problems <b>before they occur</b>, cheap tracking. <b>Drivers</b> — more things online, autonomous things, broadband spread, <b>falling device/sensor &amp; connection costs</b>, smartphone penetration, wearables.</p>
+    <p class="t"><b>Applications</b> — <b>SNCF</b> (French rail): 15,000 trains, 30,000 km, ~14 M passengers, IBM Watson behind it. <b>Smart home</b>: interconnected lights/appliances/security → comfort, security, low energy cost. <span class="k">Barriers = the 3 C's: <b>Compatibility</b> (too many vendors), <b>Communication</b> (consumers disagree what a smart home is), <b>Concentration</b> (target the interested segment, e.g. Gen Y)</span> + cost, privacy, security, ease of use. <b>Smart digital factory</b>: <b>self-optimise · self-adapt/learn in real time · autonomously run production</b>. <b>Smart city</b>: transportation is the key area (Valerann smart road studs; HK Smart Mobility Consortium).</p>
+    <p class="t"><b>Autonomous vehicles</b> — <b>Google started it, Tesla made it famous</b>. Issues: cost of real-time <b>3D maps</b> · AI software nimbleness · readying automakers &amp; <b>insurers</b> · sensor cost/quality · IoT connectivity. <b>5G (5 benefits):</b> ① very high speed even in dense areas · ② connects everything (massive IoT + <b>M2M</b>) · ③ <b>real-time latency</b> · ④ better security &amp; privacy · ⑤ <b>service-based architecture (SBA)</b>.</p>
+    <p class="t"><b>Other trends</b> — <b>RPA</b> (Robotic Process Automation): software "<b>bots</b>" replicate human actions on <b>repetitive, high-volume</b> steps → productivity ↑, errors eliminated, cost ↓. <b>Network science</b>: analyses interactions among features/observations (e.g. <b>comorbidity networks</b> → predict hospital length of stay); spans <b>all three echelons</b> (descriptive, predictive, prescriptive). <b>Web 3.0</b> (decentralized: blockchain, crypto, NFT) · <b>metaverse &amp; digital twins</b> (a digital counterpart of a real product/system) · GPT/ChatGPT, LaMDA, BlenderBot.</p>
+    <p class="case"><b>Cases ·</b> <b>Siemens</b> (opening vignette): sensor data <b>predicts train failures</b> — the classic "1,000 sensors × 1 KB/s" data-volume question (≈ <b>2.6 TB/month</b>). <b>Discover Foods</b>: IoT + ML keep food temperature stable (quality degrades when temperature <b>fluctuates</b>). <b>Zion China</b>: Azure IoT + Stream Analytics + ML + Power BI for mobile health. <b>Chime</b>: Snowflake pulls <b>14 data sources</b>. <b>Starbucks</b>: GIS for store siting. <b>Rockwell</b>: predicts oil &amp; gas asset failures.</p>
+
+    <!-- ===================== CH.11 ===================== -->
+    <h2 class="red">Ch.11 · Ethical, Privacy &amp; Managerial Considerations</h2>
+    <p class="idea"><b>Key idea ·</b> <span class="k">Just because something is DOABLE through technology does not make it appropriate, legal, or ethical.</span> Legal, privacy and ethical issues are <b>interconnected</b>. The manager's job: deploy responsibly — liability, privacy, bias, and the human impact (jobs, skills, resistance).</p>
+    <p class="t"><b>Opening vignette (analytics-journey lessons)</b> — <b>business problem vs research problem</b>; define goal, value &amp; the right <b>metrics</b>; check <b>data access &amp; governance</b>; <b>prediction vs causation</b>; <b>bias</b> (how far predictions are from truth) vs <b>variance</b> (how much they fluctuate with different training data); <b>overfitting</b> (low train error, <b>high test error</b>) vs <b>underfitting</b> (high error on both); <b>retrain</b> models; explain results in <b>business metrics</b>; realistic timelines; business buy-in; the <b>talent gap</b>.</p>
+    <p class="t"><b>Implementation — 3 major development problems</b> (Shchutskaya &amp; Zharovskikh): ① the <b>development approach differs</b> from ordinary IT · ② <b>learning from data</b> — <span class="k">data quality determines outcome quality</span> · ③ <b>no clear view of how insights are generated</b> (opacity + drift). Plus <b>connectivity/integration</b> with existing IT and <b>security</b> (cloud + robots create new vulnerabilities). <b>Leverage:</b> customize the customer experience · increase engagement (chatbots) · detect anomalies. <b>CSF:</b> upgrade skills, build an AI-savvy workforce; <span class="k">the top issue is employees' fear of job loss</span>.</p>
+    <p class="t"><b>Deployment strategy (manager's checklist)</b> — when to start &amp; how to <b>prioritize</b>; <b>DIY vs partner vs outsource</b>; <b>justify the investment (ROI)</b>; overcome <b>employee resistance</b>; arrange <b>people–robot teams</b>; decide <b>which decisions to fully automate</b>; protect security &amp; privacy; handle <b>job loss &amp; retraining</b>. <b>Top management</b> must grasp tactical <em>and</em> strategic opportunities, <b>redesign the organization</b>, and shape the future of work — failure to respond is <b>blamed on senior managers</b>. <b>KPMG digital-labor guidelines:</b> priority areas · employee strategy · providers/partners · benefit realization.</p>
+    <p class="t"><b>Implementing IoT</b> — issues: <b>organizational alignment</b>, <b>interoperability</b>, security, privacy, <b>connecting data silos</b>, management, connected customers. <b>Industrial-IoT competitive-advantage strategy (5):</b> ① specify business goals (+ROI) → ② express an <b>analytic strategy</b> → ③ evaluate need for <b>edge analytics</b> (analyse data where it is collected) → ④ select analytics solutions → ⑤ <b>continuous improvement closes the loop</b>. <b>Rollout:</b> business case → prototype → <b>pilot in one unit</b> → org-wide deployment.</p>
+    <p class="t"><b>Legal issues</b> — mostly <b>liability</b>, mostly unanswered: who is liable for an intelligent machine's advice? if the firm goes <b>bankrupt</b> on AI advice? if a <b>physician accepts a wrong computer diagnosis</b>? for a <b>self-driving car</b> crash? Are developers/auditors <b>jointly liable</b>? <b>Who owns the knowledge ChatGPT/Bard gathers?</b> Can management <b>force experts</b> to contribute expertise (and how are they paid)? <span class="k">At present there are very few laws on intelligent technologies — most relate to safety.</span> <b>AI in law:</b> document review, contract analysis, legal research, <b>predicting case outcomes</b>; open issue = <b>ownership of training content</b>.</p>
+    <p class="idea"><b>Privacy definition (memorise) ·</b> <b>the right to be left alone and the right to be free from unreasonable personal intrusions.</b> Two court rules: ① <span class="k">the right of privacy is NOT absolute</span> — it is balanced against the needs of society; ② <b>the public's right to know is superior</b> to the individual's right to privacy.</p>
+    <p class="t"><b>Where privacy leaks</b> — <b>virtual assistants</b> (Alexa/Siri/Google listen — "your voice assistant is spying on you"; <b>privacy vs convenience</b>) · <b>mobile</b> (cell-tower handoffs, GPS, Wi-Fi hotspots) · <b>IoT networks</b> · <b>profiling</b> (<b>Rapleaf</b>: email → full profile; <b>BlueCava</b>: multi-device profiles; <b>Reputation.com</b>: email → <b>SSN</b>) · <b>workplace analytics</b> (<b>Humanyze</b> sensor badges track all movement; <b>Barclays</b> heat/motion sensors timed bankers at their desks — the <b>union is watching</b>) · surveillance (Delaware <b>AI dashcams</b>, Facebook face recognition, <b>Epicenter microchip implants</b>) · <b>connected cars</b> ("a privacy nightmare" — who owns the data: CarPlay? Android Auto?).</p>
+    <p class="ex"><b>Ethics ·</b> <span class="k">some ethical issues are upsetting but NOT illegal</span>. <b>The Facebook News-Feed experiment</b>: showed users different feeds and measured emotional reactions — judged <b>unethical because it lacked informed consent</b> (and because Facebook is so large); FB acknowledged the error. <b>Machine ethics</b> = moral behaviour of <b>AI beings</b>; <b>roboethics</b> = moral behaviour of the <b>designers/builders/users</b> of robots. Cautionary: <b>Tay</b> chatbot shut down; algorithms may become <b>racist</b>; a self-driving car may face <b>whom to save/kill</b>. <b>10 Commandments of Computer Ethics</b> (don't harm people, interfere, snoop, steal, bear false witness, copy unpaid software, use others' resources, appropriate others' output; <em>do</em> consider social consequences and act with respect).</p>
+    <p class="t"><b>Responsible AI — 6 principles:</b> <span class="k">① Fairness ② Reliability &amp; safety ③ Privacy &amp; security ④ Inclusiveness ⑤ Transparency ⑥ Accountability</span>. <b>Bias cases:</b> <b>Amazon's scrapped AI recruiting tool</b> (gender bias learned from history) · <b>COMPAS</b> (racial bias in sentencing risk scores) · BlenderBot 3.0. <b>Why managers care:</b> Netflix's recommenders are AI-built and <b>not immune to bias</b>; AI market $387 B (2022) → <b>$1,394 B by 2029</b>; Accenture: AI could raise <b>profitability ~38% by 2035</b>.</p>
+    <p class="idea"><b>O'Neil — <em>Weapons of Math Destruction</em> · a model must be:</b> ① <b>transparent</b> (an unintelligible model → unintended consequences) · ② built on <b>clear quantifiable objectives</b> · ③ <b>self-correcting + regularly audited</b>, with new inputs/outputs constantly reconsidered.</p>
+    <p class="t"><b>Impact on organizations</b> — new units (analytics/BI/data-science/AI departments) and C-suite titles (<b>Chief Data Officer, Chief AI Officer</b>). <b>On managers:</b> less expertise needed for many decisions · <b>faster decisions</b> · less reliance on experts · <span class="k">power is redistributed — the more information &amp; analysis capability a manager has, the more power</span> · routine decisions automated.</p>
+    <p class="t"><b>Impact on jobs</b> — agreed: AI <b>creates new jobs</b>, <b>many need retraining</b>, the <b>nature of work changes</b>; no consensus on when/how much. <span class="k">AI accelerates labor-market polarization — growth at the top and bottom, losses in the MIDDLE.</span> Already taken: online marketers, financial analysts, diagnosticians, reporters, middle management, bookkeepers, cashiers, drivers. <b>Low-risk:</b> nurses, doctors, dentists, coaches, <b>social workers</b>. Jobs get redesigned either <b>low-skill (to automate)</b> or <b>high-skill (for humans)</b>. <b>Tips:</b> <b>digital capabilities must come BEFORE AI</b>; ML isn't the answer to everything; <b>don't leave AI solely to technology teams</b>; portfolio approach; <span class="k">the biggest challenges are people and business processes</span>; top-leadership support is required.</p>
+    <p class="t"><b>Dangers &amp; the debate</b> — <b>Musk</b>: "potentially more dangerous than nukes"; <b>Gates</b>: concerned about superintelligence; <b>Hawking</b>: "could spell the end of the human race." <b>Utopia camp</b>: better quality of life (e.g. <b>20% crime reduction</b>) — but concedes the road is rocky (jobs) and change may be turbulent. <b>Citizen data scientist</b> = <span class="k">a <b>business user</b> NOT fully trained in the maths/statistics of data science, who uses visual, intuitive software tools to build models for their own business use</span> → helps <b>alleviate the data-scientist shortage</b>. (<b>Citizen science</b> = the public volunteers to help conduct research.)</p>
 
   </div><!-- /cols -->
 
@@ -358,7 +398,7 @@
       </li>
     </ul>
 
-    <h3>↔ Ch.10/11 · AI trends, ethics &amp; effective use <span class="k">(9 July class — confirm if examinable)</span></h3>
+    <h3>↔ Ch.10 / Ch.11 · AI trends, ethics &amp; effective use</h3>
     <p class="rh"><span class="cr">↔Ch.10</span><b>R22 · AI-Enhanced Business Intelligence for Decision-Making</b> (Olszak &amp; Bartuś 2025)</p>
     <ul class="rl">
       <li class="arg"><b>Main argument:</b> AI + BI shifts analytics <span class="k">from reactive to proactive/augmented</span> — systems autonomously detect patterns and <b>suggest optimal strategies</b>, replacing intuition and static BI reports.</li>

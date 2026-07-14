@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.10 — New AI-Based Trends in Analytics &amp; Data Science · Full Detail</title>
+<style>
+  :root{--teal:#1a7a96;--teal-dark:#0f5a70;--red:#c0392b;--orange:#c0622b;--green:#2e8b57;--purple:#7a5ca8;--bg:#f7f9fa;--card:#fff;--ink:#1f2d33;--muted:#5c6b72;--border:#d9e2e6;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;}
+  a{color:var(--teal-dark);}
+  header.hero{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;padding:34px 26px 26px;}
+  header.hero .home{font-size:.82rem;color:#d7eef4;text-decoration:none;}
+  header.hero .chip{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin:10px 0 8px;}
+  header.hero h1{margin:0;font-size:1.7rem;line-height:1.25;max-width:900px;}
+  header.hero .cite{margin-top:10px;font-size:.9rem;opacity:.92;max-width:900px;}
+  .layout{display:flex;max-width:1140px;margin:0 auto;gap:28px;padding:26px 22px 48px;align-items:flex-start;}
+  nav.toc{position:sticky;top:16px;flex:0 0 215px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.84rem;max-height:calc(100vh - 32px);overflow-y:auto;}
+  nav.toc h2{font-size:.7rem;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0 0 8px;}
+  nav.toc a{display:block;color:var(--teal-dark);text-decoration:none;padding:3px 0;}
+  nav.toc a:hover{text-decoration:underline;}
+  main{flex:1 1 auto;min-width:0;}
+  section.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:14px;}
+  section.card>h2{color:var(--teal);margin-top:0;border-bottom:3px solid var(--teal);padding-bottom:8px;font-size:1.3rem;}
+  h3{color:var(--teal-dark);font-size:1.07rem;margin:20px 0 6px;border-left:4px solid var(--teal);padding-left:9px;}
+  h4{color:var(--teal-dark);margin:14px 0 4px;font-size:.98rem;}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;padding-left:22px;}
+  li{margin:3px 0;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef4f6;color:var(--teal-dark);}
+  code{background:#eef4f6;padding:1px 6px;border-radius:5px;font-size:.9em;}
+  .idea{background:#fdf3ea;border-left:4px solid var(--red);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .idea b{color:var(--red);}
+  .ex{background:#eef7fa;border-left:4px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.95rem;}
+  .ex b{color:var(--teal-dark);}
+  .exam{background:#fbf4ec;border-left:4px solid var(--orange);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .exam b{color:var(--orange);}
+  .spectrum{display:flex;flex-wrap:wrap;align-items:center;gap:7px;background:#eef4f6;border-radius:10px;padding:12px;margin:12px 0;font-weight:600;color:var(--teal-dark);font-size:.85rem;}
+  .spectrum .step{background:#fff;border:1px solid var(--border);border-radius:8px;padding:5px 9px;text-align:center;}
+  .spectrum .arrow{color:var(--teal);}
+  .red{color:var(--red);font-weight:600;}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:22px;border-top:1px solid var(--border);}
+  @media(max-width:860px){.layout{flex-direction:column;}nav.toc{position:static;width:100%;max-height:none;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <a class="home" href="index.html">← Final Prep Hub</a>
+  <div class="chip">CHAPTER 10 · FULL DETAIL · EMERGING TRENDS</div>
+  <h1>New AI-Based Trends in Analytics and Data Science</h1>
+  <div class="cite">Sharda, Delen &amp; Turban — Chapter 10. Cloud analytics (the *-as-a-Service stack), location &amp; image analytics, the Internet of Things, smart homes/cities, autonomous vehicles, 5G, RPA and network science.</div>
+</header>
+
+<div class="layout">
+  <nav class="toc">
+    <h2>On this page</h2>
+    <a href="#glance">Key idea</a>
+    <a href="#vignette">Opening vignette</a>
+    <a href="#cloud">Cloud computing</a>
+    <a href="#aas">The *-as-a-Service stack</a>
+    <a href="#deploy">Deployment &amp; security</a>
+    <a href="#location">Location-based analytics</a>
+    <a href="#image">Image / alternative data</a>
+    <a href="#iot">IoT essentials</a>
+    <a href="#iotstruct">IoT structure &amp; ecosystem</a>
+    <a href="#sensors">Sensors &amp; RFID</a>
+    <a href="#iotapps">IoT applications</a>
+    <a href="#av">Autonomous vehicles &amp; 5G</a>
+    <a href="#other">RPA, network science, Web 3.0</a>
+    <a href="#exam">Exam focus</a>
+  </nav>
+  <main>
+
+  <section class="card" id="glance">
+    <h2>Key idea</h2>
+    <div class="idea"><b>Core message:</b> Analytics is being reshaped by <b>where computing happens</b> (the <b>cloud</b>), <b>what counts as data</b> (location, images, sensors — "<b>alternative data</b>"), and <b>what is connected</b> (the <b>IoT</b>). The unifying chain: <span class="red">things → sensors → data → analytics → knowledge → decisions/actions</span>. IoT is <b>not an application</b> — it is the <b>infrastructure/platform</b> that feeds analytics.</div>
+  </section>
+
+  <section class="card" id="vignette">
+    <h2>Opening vignette — Siemens avoids train failures</h2>
+    <p><b>Analysis of sensor data helps Siemens avoid train failures.</b> Sensors on trains stream condition data continuously; analytics predicts failures <em>before</em> they happen (predictive maintenance) and optimises asset utilisation. The discussion questions push you to think about which parameters to measure, how weather data helps, and — the memorable arithmetic — <b>how much data 1,000 sensors at 1 KB/second generate in a month</b> (≈ 1,000 × 1 KB × 2.6 M seconds ≈ <b>2.6 TB/month per train</b>) and how you would store it.</p>
+    <div class="ex"><b>Second case — "Discover Foods":</b> IoT + machine learning maintain <b>food quality</b>. Temperature is critical, and quality degrades when temperature <b>fluctuates</b> (repeated rises/falls in the time-series). Remote sensing + cloud + ML automate the real-time upkeep of temperature, microorganism growth and humidity → better quality, lower operating cost, less spoilage.</div>
+  </section>
+
+  <section class="card" id="cloud">
+    <h2>Cloud computing</h2>
+    <p><b>Definition:</b> "a model for enabling convenient, <b>on-demand network access</b> to a <b>shared pool of configurable computing resources</b> (networks, servers, storage, services) that can be <b>rapidly provisioned and released</b> with minimal management effort or service-provider interaction."</p>
+    <ul>
+      <li><b>A new name for older trends:</b> utility computing, application service provider, grid computing, on-demand computing, SaaS — and, going further back, centralised computing with dumb terminals. The name comes from drawing the Internet as a "cloud."</li>
+      <li><b>Examples:</b> web-based e-mail (storage + processing on the provider's hardware, centralised control/upgrades); <b>AWS</b> (Amazon's infrastructure for e-commerce, BI, CRM, SCM); Salesforce, IBM Cloud, Microsoft Azure, Google, Adobe.</li>
+      <li><b>Why it matters for analytics:</b> cost-effective, <b>scalable data warehousing</b>; rapid diffusion of advanced tools <b>without big up-front technology investment</b>.</li>
+      <li><b>Service-oriented DSS = a cloud-based analytics system.</b> Four components can be bought individually or bundled as a service: <b>operational systems · data warehouses · OLAP · end-user components</b>.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="aas">
+    <h2>The *-as-a-Service stack (know every acronym)</h2>
+    <table>
+      <tr><th>Service</th><th>What the provider gives you</th><th>Key point</th></tr>
+      <tr><td><b>DaaS</b> — Data-as-a-Service</td><td>Data access wherever the data physically lives</td><td><b>Where data lives doesn't matter</b>; central preprocessing &amp; quality assurance; open standards (SQL, XQuery, XML) → agility</td></tr>
+      <tr><td><b>DaaS</b> — Desktop-as-a-Service</td><td>A <b>virtual desktop</b> with all required apps (a.k.a. PC-as-a-Service)</td><td>Centralises software, hardware &amp; security; no per-machine installs</td></tr>
+      <tr><td><b>SaaS</b> — Software-as-a-Service</td><td>Applications running on distant cloud computers</td><td>Pay only for <b>use of the software</b>; a browser/app is all you need (Gmail, SAS Viya)</td></tr>
+      <tr><td><b>PaaS</b> — Platform-as-a-Service</td><td>A platform to deploy <em>your</em> software for <em>your</em> customers</td><td>No managing servers/storage/OS → <b>focus on business functions, not the platform</b></td></tr>
+      <tr><td><b>IaaS</b> — Infrastructure-as-a-Service</td><td>Networks, storage, servers, compute</td><td>The raw infrastructure — classic example <b>AWS</b></td></tr>
+      <tr><td><b>AaaS</b> — Analytics-as-a-Service</td><td>An extensible <b>analytical platform</b> delivered from the cloud</td><td>Cloud + Big Data analytics: IBM Cloud, <b>Amazon QuickSight</b>, Google Data Studio, SAS Viya, Tableau, <b>Snowflake</b>, MineMyText</td></tr>
+    </table>
+    <h3>Virtualization — the essential enabling technology</h3>
+    <p>Creation of a <b>virtual version</b> of an operating system or server, in three areas:</p>
+    <ul>
+      <li><b>Network virtualization</b> — split available bandwidth into channels, allocate to a server/device.</li>
+      <li><b>Storage virtualization</b> — pool physical storage from many devices into a single logical storage device.</li>
+      <li><b>Server virtualization</b> — mask physical servers from users → centralise &amp; simplify management.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="deploy">
+    <h2>Deployment models, platforms &amp; security concerns</h2>
+    <ul>
+      <li><b>Private cloud</b> — operated solely for/by a single organisation. <b>Public cloud</b> — shared, offered by providers over the Internet. <b>Hybrid cloud</b> — a mix of both.</li>
+      <li><b>Platform providers:</b> Amazon Elastic Beanstalk · IBM Cloud · Microsoft Azure · Google App Engine · <b>OpenShift</b> (Red Hat's PaaS).</li>
+    </ul>
+    <h3>Challenges &amp; the top 3 security threats</h3>
+    <p><b>Major challenges:</b> <b>security</b>, service level, <b>data governance</b>, <b>loss of control</b> and privacy, legal liabilities, cross-border political issues.</p>
+    <p><b>Top three security threats (Cloud Security Alliance):</b> ① <b>data loss and leakage</b>, ② <b>hardware failure</b> of equipment, ③ <b>insecure interface</b>.</p>
+    <div class="ex"><b>Cloud analytics in action:</b> <b>Zion China</b> uses <b>Azure IoT + Stream Analytics + Machine Learning + Power BI</b> for a mobile health-monitoring tool (glucose, blood pressure, diet, medication, exercise). <b>Chime</b> (digital bank) uses the <b>Snowflake</b> elastic data warehouse to pull from <b>14 data sources</b> for personalised banking. A West-Coast utility uses <b>cloud-mobile</b> tech for real-time incident reporting.</div>
+  </section>
+
+  <section class="card" id="location">
+    <h2>Location-based analytics</h2>
+    <p>Incorporating location into analytics — <b>static</b> (geospatial) vs <b>dynamic</b> (real-time) location data; for <b>organisations</b> vs for <b>individuals/consumers</b>.</p>
+    <h3>Geospatial analytics</h3>
+    <p>Adds the dimension of "<b>where</b>" to analyses that already answer <em>who, what, when, how much</em>. Data comes from <b>GIS</b> (Geographic Information Systems); market leader = <b>ESRI</b> with <b>ArcGIS</b>. Applications: agriculture, <b>crime analysis</b>, <b>disease-spread prediction</b>; overlay weather/environmental effects for richer forecasting and planning.</p>
+    <h3>Real-time location intelligence</h3>
+    <p>Cars, buses, taxis, phones, cameras and navigation devices constantly broadcast location via <b>GPS, Wi-Fi and cell-tower triangulation</b>. Analysing large-scale <b>movement patterns</b> identifies distinct classes of behaviour → better promotions and pricing. <b>Augmented reality</b> is an extension of location-based analytics (location + camera images + sensors → immersive experience; a big push at Microsoft and Apple).</p>
+    <h3>Consumer applications</h3>
+    <p><b>Waze</b> — social navigation app: alerts on accidents, police checkpoints, speed traps, construction from other users' inputs. <b>ParkPGH</b> (Pittsburgh, with Carnegie Mellon) — <b>predicts parking availability</b>. Consumers use analytics "without ever realizing it." <span class="red">Key concern: loss of privacy</span> (→ <a href="Ch11.html">Ch.11</a>).</p>
+    <div class="ex"><b>Cases:</b> <b>home-loan appraisal</b> improved with BI + GIS; <b>Starbucks</b> exploits GIS + analytics (demographics, store-location siting, the mobile app, in-store Wi-Fi) to grow worldwide.</div>
+  </section>
+
+  <section class="card" id="image">
+    <h2>Image analytics &amp; alternative data</h2>
+    <p>High-resolution cameras + cheap storage + <b>deep learning</b> (<a href="Ch7.html">Ch.7</a>'s CNNs) make images a serious data source. <b>Satellite data = "alternative data"</b> — a form of Big Data:</p>
+    <ul>
+      <li><b>World Bank</b> — satellite data → strategic recommendations for urban planners in developing nations.</li>
+      <li><b>EarthCast</b> — weather updates for a large US airline from <b>60 government-operated satellites</b>.</li>
+      <li><b>Imazon</b> — detects <b>Amazon deforestation</b>. <b>Global Fishing Watch</b> — spots where and when <b>illegal fishing</b> happens.</li>
+      <li><em>Case 10.5:</em> image analysis <b>estimates plant/foliage cover</b> on farms (an app beats a visual check).</li>
+    </ul>
+  </section>
+
+  <section class="card" id="iot">
+    <h2>Internet of Things — essentials</h2>
+    <p><b>IoT</b> = a computerised network connecting many <b>objects</b> (people, animals, devices, sensors, buildings, items), each with an <b>embedded microprocessor</b>, connected <b>wirelessly via the Internet</b>, exchanging data with each other and their environment <b>anytime, anyplace</b> (ubiquitous computing).</p>
+    <div class="ex"><b>Kevin Ashton</b> (who coined the term): "sensors connected to the Internet and behaving in an Internet-like way by making open, ad hoc connections, sharing data freely, and allowing unexpected applications, <b>so computers can understand the world around them and become humanity's nervous system</b>."<br><b>Textbook working definition:</b> a network of connected computing devices; each object has a <b>unique identifier (UID)</b> and can <b>collect and transfer data automatically</b> across the network.</div>
+    <h3>Characteristics (Miller, 2015) — 5 to memorise</h3>
+    <ol>
+      <li><b>Large numbers</b> of objects ("things") can be connected.</li>
+      <li>Each thing has a <b>unique ID</b> (IP address).</li>
+      <li>Each thing can <b>receive, send and store data automatically</b>.</li>
+      <li>Each thing is delivered mostly over the <b>wireless Internet</b>.</li>
+      <li>Each thing is built on <b>machine-to-machine (M2M) communication</b>.</li>
+    </ol>
+    <p><span class="red">The Internet connects people to each other; IoT connects <b>things</b> to each other and to the sensors that collect data.</span></p>
+    <h3>Benefits &amp; drivers</h3>
+    <table>
+      <tr><th>Major benefits</th><th>Major drivers</th></tr>
+      <tr><td>Reduces cost by <b>automating processes</b>; improves worker productivity; creates <b>new revenue streams</b>; <b>optimises asset utilisation</b>; improves sustainability; <b>anticipates needs</b> (prediction); enables smarter decisions; identifies problems quickly (<b>even before they occur</b>); instant information generation; cheap tracking of activities</td><td>Huge numbers of things going online; connected <b>autonomous</b> things (robots, cars); broadband more widely available; <b>cost of devices/sensors falling</b>; cost of connecting falling; more sensors built into devices; smartphone penetration skyrocketing; wearables increasing; data speeds rising</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="iotstruct">
+    <h2>Structure of IoT systems &amp; the ecosystem</h2>
+    <h3>Technology infrastructure — 4 major blocks</h3>
+    <div class="spectrum"><span class="step"><b>1 Hardware</b><br><small>devices, sensors, actuators — data is produced</small></span><span class="arrow">→</span><span class="step"><b>2 Connectivity</b><br><small>hubs, gateways, Internet/cloud</small></span><span class="arrow">→</span><span class="step"><b>3 Software backend</b><br><small>logic/process that manages data, often in the cloud</small></span><span class="arrow">→</span><span class="step"><b>4 Applications</b><br><small>data → information for a purpose</small></span></div>
+    <p><b>IoT ecosystem</b> = everything that lets users build IoT applications — gateways, analytics, AI algorithms, servers, data storage, security, connectivity devices; <b>platforms</b> (software, hardware, connectivity), <b>building blocks</b> (interfaces, platforms, 3D), and <b>applications</b> (personal, home, vehicle, industrial, enterprise).</p>
+    <p><b>IoT platforms:</b> Amazon <b>AWS IoT</b> · Microsoft <b>Azure IoT Suite</b> · <b>Predix</b> (GE) · <b>IBM Watson IoT</b> · Teradata Unified Data Architecture.</p>
+    <h3>How IoT works — the exam-critical chain</h3>
+    <div class="idea"><b>IoT is NOT an application</b> — it is an <b>infrastructure/platform/framework that supports applications</b>. The process: the ecosystem contains many <b>things</b> → <b>sensors</b> collect information → the information is displayed, stored and <b>processed analytically</b> (e.g. data mining) → analysis converts information into <b>knowledge/intelligence</b> → <b>expert systems or machine learning</b> turn knowledge into <b>decision support</b> (by people and/or machines) → <b>improved actions and results</b> → new applications and use cases.</div>
+  </section>
+
+  <section class="card" id="sensors">
+    <h2>Sensors and RFID</h2>
+    <p>A <b>sensor</b> = an electronic device that <b>automatically collects data about events in its environment</b>. Sensors are a critical part of IoT (and of robotics and autonomous vehicles). They have <b>distance and precision limits</b>; very-short-range sensors are called <b>proximity sensors</b> and are <b>more reliable</b> than longer-range ones. In large-scale applications, sensors send data to the <b>cloud</b> for processing.</p>
+    <h3>RFID (Technology Insight 10.1)</h3>
+    <ul>
+      <li><b>RFID</b> = uses <b>radio-frequency waves to identify objects</b>; part of the automatic-identification family alongside <b>barcodes and magnetic strips</b>, but stores <b>richer identification data</b>.</li>
+      <li>Works with <b>tags and readers</b>; <b>active tags</b> (long range, powered) vs <b>passive tags</b> (short range).</li>
+      <li>Spread through <b>retailers' supply chains</b>; combined with other sensors it is central to IoT.</li>
+    </ul>
+    <div class="ex"><b>Case 10.7 — Rockwell Automation:</b> monitors expensive <b>oil &amp; gas exploration assets to predict failures</b>. Exam-style question from the slides: does this fit the <b>three Vs</b> (volume, variety, velocity) of Big Data? (Yes — high-frequency multi-sensor streams.)</div>
+  </section>
+
+  <section class="card" id="iotapps">
+    <h2>IoT applications — smart homes, factories, cities</h2>
+    <ul>
+      <li><b>French National Railway (SNCF)</b> — manages <b>15,000 trains</b> over <b>30,000 km</b> for ~<b>14 million passengers</b>, using <b>IBM Watson</b> in the background for quality, availability and safety.</li>
+      <li><b>Smart home</b> — automated, interconnected lights, appliances, security and entertainment → comfort, security, <b>low energy cost</b>, convenience. Most existing homes aren't smart but can be cheaply given <b>partial smartness</b>. <b>Smart appliances</b> can be remotely controlled per user preference: learning thermostat, smoke detector/alarm, video surveillance, Samsung smart fridge, LG InstaView, Whirlpool smart washer.</li>
+      <li><b>Barriers to smart-home adoption (the 3 C's):</b> <b>Compatibility</b> (too many vendors/products to connect), <b>Communication</b> (consumers disagree on what a smart home even is), <b>Concentration</b> (brands must target the most interested segments, e.g. Gen Y) — plus <b>cost justification, invasion of privacy, security, ease of use</b>.</li>
+      <li><b>Smart digital factory</b> — a flexible system that can <b>self-optimise</b> performance across a network, <b>self-adapt</b> to and learn from new conditions in (near) real time, and <b>autonomously run entire production processes</b>.</li>
+      <li><b>Smart cities</b> — transportation is the major improvement area (too many vehicles). Examples: <b>Valerann</b> (Israeli start-up) smart road studs; Hong Kong's <b>Smart Mobility Consortium</b>.</li>
+      <li>Simple IoT examples: autonomous vehicles, <b>smartbins</b>, a fridge that reorders food, Clorox's <b>Brita filter that auto-orders</b> its replacement. In production/logistics IoT enables <b>real-time tracking</b> of everything, route/logistics optimization, condition assessment of critical objects, and monitoring of <b>perishables</b>.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="av">
+    <h2>Autonomous vehicles &amp; 5G</h2>
+    <p><b>Autonomous (self-driving) vehicles</b> — driverless/robot-driven cars. <b>Google started it, Tesla made it famous</b>; most manufacturers are investing; France, Singapore, China and others already run them. <b>Implementation issues:</b> cost of real-time <b>3D map</b> technologies · AI software must be nimbler · readying <b>automakers and insurers</b> · sensor technology needs better cost-efficiency · IoT systems and connectivity must improve.</p>
+    <h3>5G — "catalyst for the Fourth Industrial Revolution"</h3>
+    <ol>
+      <li>Very <b>high-speed access</b>, even in densely populated areas.</li>
+      <li><b>Connects everything</b> — supports massive IoT and <b>M2M</b> communication.</li>
+      <li><b>Real-time latency</b> — minimal network delay, enabling new vertical-industry services.</li>
+      <li>Significant improvements to <b>security and privacy</b>.</li>
+      <li>A <b>service-based architecture (SBA)</b> → more flexibility and service diversity.</li>
+    </ol>
+  </section>
+
+  <section class="card" id="other">
+    <h2>Other emerging AI topics</h2>
+    <h3>Robotic Process Automation (RPA)</h3>
+    <p>Technology that <b>reduces employee workload by automating repetitive, high-volume process steps</b>. Software robots ("<b>bots</b>") <b>replicate the actions of human workers</b>, freeing humans for more important activities. Gains: <b>productivity ↑, human errors eliminated, operational cost ↓</b>, labour-intensive tasks automated, work completed faster.</p>
+    <h3>Bioinformatics &amp; network science</h3>
+    <p><b>Bioinformatics</b> and <b>health analytics</b> are major AI growth areas. <b>Network Analysis (NA)</b> analyses complex problems involving <b>interactions among features or observations</b>; used with deep learning and NLP. Example: <b>comorbidity networks</b> for health-disparity analysis, and (Case 10.11) <b>predicting hospital length of stay using comorbidity networks</b>. Network analysis spans <b>all three analytics echelons — descriptive, predictive and prescriptive</b>; as everything becomes connected, network science keeps gaining ground.</p>
+    <h3>Other recent developments</h3>
+    <ul>
+      <li><b>Web 3.0</b> — a <b>decentralized</b> structure: blockchain, cryptocurrency, <b>NFTs</b>.</li>
+      <li><b>Metaverse</b> (a virtual world where objects interact) and <b>digital twins</b> — a <b>digital representation of a real-world product/system/process</b>, an effectively indistinguishable digital counterpart.</li>
+      <li><b>GPT-3/ChatGPT</b> (OpenAI) · <b>LaMDA</b> (Google's dialogue model) · <b>BlenderBot</b> (Meta's chatbot).</li>
+    </ul>
+  </section>
+
+  <section class="card" id="exam">
+    <h2>Exam focus</h2>
+    <div class="exam"><b>Most-tested:</b> the <b>cloud definition</b> (on-demand, shared pool, rapidly provisioned) + the <b>service stack — SaaS / PaaS / IaaS / DaaS / AaaS</b> (be able to say what each provides and give an example: AWS = IaaS, Gmail = SaaS, Snowflake/QuickSight = AaaS); <b>virtualization</b> (network/storage/server); <b>private vs public vs hybrid</b>; the <b>3 cloud security threats</b> (data loss &amp; leakage, hardware failure, insecure interface); <b>geospatial vs real-time location</b> analytics (GIS/ESRI/ArcGIS, Waze, Starbucks); <b>alternative data</b> (satellite imagery); the <b>IoT definition + 5 characteristics + UID</b>; <span class="red">IoT is infrastructure, not an application</span>; the <b>4 building blocks</b> (hardware→connectivity→software backend→applications) and the <b>how-IoT-works chain</b> (things→sensors→data→analytics→knowledge→decision support→action); <b>sensors &amp; RFID</b> (active vs passive tags, proximity sensors); <b>smart home barriers</b> (compatibility, communication, concentration); smart factory (self-optimise, self-adapt, autonomous); <b>autonomous-vehicle implementation issues</b>; <b>5G's 5 benefits</b>; <b>RPA</b>; network analysis across all three echelons.</div>
+    <p><b>↔ Readings:</b> <a href="https://natawat-d.github.io/BIA_Final/BIA-Final-CheatSheet.html">R22</a> (AI-enhanced BI — reactive → proactive) and <b>R23</b> (Generative AI for autonomous data analytics) sit on this chapter. Ties back to <a href="BigData.html">Big Data</a> (stream analytics = IoT's velocity) and <a href="Ch7.html">Ch.7</a> (CNNs power image analytics); the privacy fallout is <a href="Ch11.html">Ch.11</a>. Back to <a href="index.html">hub</a>.</p>
+  </section>
+
+  </main>
+</div>
+<footer>Ch.10 · New AI-Based Trends in Analytics and Data Science · BIA final-exam full-detail page · <a href="index.html">back to hub</a></footer>
+</body>
+</html>

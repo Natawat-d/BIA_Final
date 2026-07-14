@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.11 — Ethical, Privacy &amp; Managerial Considerations in Analytics · Full Detail</title>
+<style>
+  :root{--teal:#1a7a96;--teal-dark:#0f5a70;--red:#c0392b;--orange:#c0622b;--green:#2e8b57;--purple:#7a5ca8;--bg:#f7f9fa;--card:#fff;--ink:#1f2d33;--muted:#5c6b72;--border:#d9e2e6;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;}
+  a{color:var(--teal-dark);}
+  header.hero{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;padding:34px 26px 26px;}
+  header.hero .home{font-size:.82rem;color:#d7eef4;text-decoration:none;}
+  header.hero .chip{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin:10px 0 8px;}
+  header.hero h1{margin:0;font-size:1.7rem;line-height:1.25;max-width:900px;}
+  header.hero .cite{margin-top:10px;font-size:.9rem;opacity:.92;max-width:900px;}
+  .layout{display:flex;max-width:1140px;margin:0 auto;gap:28px;padding:26px 22px 48px;align-items:flex-start;}
+  nav.toc{position:sticky;top:16px;flex:0 0 215px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.84rem;max-height:calc(100vh - 32px);overflow-y:auto;}
+  nav.toc h2{font-size:.7rem;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0 0 8px;}
+  nav.toc a{display:block;color:var(--teal-dark);text-decoration:none;padding:3px 0;}
+  nav.toc a:hover{text-decoration:underline;}
+  main{flex:1 1 auto;min-width:0;}
+  section.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:14px;}
+  section.card>h2{color:var(--teal);margin-top:0;border-bottom:3px solid var(--teal);padding-bottom:8px;font-size:1.3rem;}
+  h3{color:var(--teal-dark);font-size:1.07rem;margin:20px 0 6px;border-left:4px solid var(--teal);padding-left:9px;}
+  h4{color:var(--teal-dark);margin:14px 0 4px;font-size:.98rem;}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;padding-left:22px;}
+  li{margin:3px 0;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef4f6;color:var(--teal-dark);}
+  code{background:#eef4f6;padding:1px 6px;border-radius:5px;font-size:.9em;}
+  .idea{background:#fdf3ea;border-left:4px solid var(--red);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .idea b{color:var(--red);}
+  .ex{background:#eef7fa;border-left:4px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.95rem;}
+  .ex b{color:var(--teal-dark);}
+  .exam{background:#fbf4ec;border-left:4px solid var(--orange);padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;}
+  .exam b{color:var(--orange);}
+  .spectrum{display:flex;flex-wrap:wrap;align-items:center;gap:7px;background:#eef4f6;border-radius:10px;padding:12px;margin:12px 0;font-weight:600;color:var(--teal-dark);font-size:.85rem;}
+  .spectrum .step{background:#fff;border:1px solid var(--border);border-radius:8px;padding:5px 9px;text-align:center;}
+  .spectrum .arrow{color:var(--teal);}
+  .red{color:var(--red);font-weight:600;}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:22px;border-top:1px solid var(--border);}
+  @media(max-width:860px){.layout{flex-direction:column;}nav.toc{position:static;width:100%;max-height:none;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <a class="home" href="index.html">← Final Prep Hub</a>
+  <div class="chip">CHAPTER 11 · FULL DETAIL · ETHICS &amp; MANAGEMENT</div>
+  <h1>Ethical, Privacy and Managerial Considerations in Analytics</h1>
+  <div class="cite">Sharda, Delen &amp; Turban — Chapter 11. Implementing and deploying intelligent systems; legal, privacy and ethical issues; responsible AI; impacts on organizations, jobs and society; the citizen data scientist.</div>
+</header>
+
+<div class="layout">
+  <nav class="toc">
+    <h2>On this page</h2>
+    <a href="#glance">Key idea</a>
+    <a href="#vignette">Vignette: analytics lessons</a>
+    <a href="#implement">Implementing intelligent systems</a>
+    <a href="#topmgmt">Top management &amp; deployment</a>
+    <a href="#iot">Implementing IoT</a>
+    <a href="#legal">Legal issues</a>
+    <a href="#privacy">Privacy issues</a>
+    <a href="#ethics">Ethical issues</a>
+    <a href="#responsible">Responsible / trustworthy AI</a>
+    <a href="#orgs">Impacts on organizations</a>
+    <a href="#jobs">Impacts on jobs &amp; work</a>
+    <a href="#danger">Dangers · utopia vs dystopia</a>
+    <a href="#citizen">Citizen data scientist</a>
+    <a href="#exam">Exam focus</a>
+  </nav>
+  <main>
+
+  <section class="card" id="glance">
+    <h2>Key idea</h2>
+    <div class="idea"><b>Core message:</b> <span class="red">Just because something is <em>doable</em> through technology does not make it appropriate, legal, or ethical.</span> As analytics, cognitive computing and AI spread, <b>everyone is affected</b> — so the manager's job is not only to build intelligent systems but to <b>deploy them responsibly</b>: handle liability, protect privacy, remove bias, and manage the human impact (jobs, skills, resistance). Legal, privacy and ethical issues are <b>interconnected</b> — many privacy issues are part of ethics or have legal aspects.</div>
+  </section>
+
+  <section class="card" id="vignette">
+    <h2>Opening vignette — lessons from an organization's analytics journey</h2>
+    <p>A checklist of what actually goes wrong in real data-science projects:</p>
+    <ul>
+      <li><b>What kind of problem are you solving?</b> A <b>business problem vs a research problem</b> — define the goal, the value, and the right business/research <b>metrics</b>.</li>
+      <li><b>Data sources &amp; quality</b> — can we even <em>access</em> the data inside our own organisation? Have we considered <b>data governance</b>?</li>
+      <li><b>Prediction vs causation/explanation</b> — a model that predicts well does not explain <em>why</em>.</li>
+      <li><b>Bias–variance trade-off</b> — <b>bias</b> = how far predictions are from true values; <b>variance</b> = how much predictions fluctuate with different training data.</li>
+      <li><b>Overfitting</b> = the model learns the training data too well → <b>low training error but high test error</b>. <b>Underfitting</b> = the model is too simple → <b>high error on both</b>.</li>
+      <li><b>Maintenance of AI models</b> — <b>retrain</b> when needed (models decay).</li>
+      <li><b>The right framework</b>, in escalating order: reports &amp; dashboards → EDA &amp; visualization → statistical analysis &amp; hypothesis testing → simple predictive models → deep learning → <b>causal models</b>.</li>
+      <li><b>Explain results in business metrics</b>; set <b>realistic timelines</b>; get <b>business buy-in frequently</b>; mind the <b>talent gap</b> (finding and retaining good data scientists is hard).</li>
+    </ul>
+  </section>
+
+  <section class="card" id="implement">
+    <h2>Implementing intelligent systems</h2>
+    <p>Once an AI system is <em>developed</em>, it must be <b>put into use</b> by the enterprise and its knowledge workers — a complex undertaking. The implementation process is similar to the generic process for other information systems, but has extra pitfalls.</p>
+    <h3>Three major system-development problems (Shchutskaya &amp; Zharovskikh, 2020)</h3>
+    <ol>
+      <li><b>Development approach</b> — AI development is <b>different from ordinary IT/computer-systems development</b>.</li>
+      <li><b>Learning from data</b> — <span class="red">the quality of the data determines the quality and usefulness of the outcomes</span>.</li>
+      <li><b>No clear view of how insights are generated</b> — as the data stream changes, so may the insights (opacity + drift).</li>
+    </ol>
+    <p>Related trouble spots: problems with Big Data, <b>ineffective information access</b>, <b>limited integration capabilities</b>.</p>
+    <h3>Connectivity, integration &amp; security</h3>
+    <ul>
+      <li><b>Connectivity &amp; integration</b> — the AI/analytics application must be connected to <b>existing IT systems</b>, the Internet, and other intelligent systems. (Example: the Australian government commissioned Microsoft to build <b>hyperscale cloud regions</b>.)</li>
+      <li><b>Security protection</b> — intelligent applications managed/updated in the <b>cloud</b> or connected to the Internet open <b>new vulnerabilities</b>; <b>robots</b> are a further source of danger and security threat.</li>
+    </ul>
+    <h3>Leveraging intelligent systems in business</h3>
+    <p>Three levers: ① <b>customize the customer experience</b>, ② <b>increase customer engagement</b> (e.g. via chatbots), ③ <b>detect problems and anomalies</b> in data. <b>Critical success factors:</b> discover, predict, justify and <b>learn from experience</b>; <b>upgrade employees' skills</b> and build an <b>AI-savvy workforce</b>. <span class="red">One of the most important issues: employees' fear of job loss.</span></p>
+  </section>
+
+  <section class="card" id="topmgmt">
+    <h2>Top management &amp; successful deployment</h2>
+    <p>Senior executives must <b>understand the tactical <em>and</em> strategic opportunities</b> of AI, <b>redesign their organizations</b>, and <b>commit to shaping the future of work</b>. Failure to respond in time is usually <b>blamed on senior management</b>.</p>
+    <h3>Deployment-strategy questions (the manager's checklist)</h3>
+    <ul>
+      <li><b>When</b> to embark on intelligent projects and <b>how to prioritize</b> them.</li>
+      <li><b>Do it yourself, partner, or outsource?</b></li>
+      <li>How to <b>justify the investment</b> (ROI).</li>
+      <li>How to <b>overcome employee resistance</b> (fear of job loss).</li>
+      <li>How to arrange appropriate <b>people–robot teams</b>.</li>
+      <li><b>Which decisions to fully automate</b> by AI.</li>
+      <li>How to <b>protect</b> the systems (security) and <b>protect privacy</b>.</li>
+      <li>How to handle possible <b>job losses and retraining</b>.</li>
+    </ul>
+    <p><b>KPMG guidelines for "digital labor":</b> establish <b>priority areas</b> for technological innovation · develop a <b>strategy and plan for employees</b> · identify <b>providers and partners</b> · establish plans to <b>realize the benefits</b>.</p>
+  </section>
+
+  <section class="card" id="iot">
+    <h2>Implementing IoT — managerial considerations</h2>
+    <p><b>Major implementation issues:</b> <b>organizational alignment</b> · <b>interoperability</b> challenges · <b>security</b> · <b>privacy</b> · <b>connecting the silos of data</b> (preparing existing IT architectures and operating models for IoT is complex) · management · connected customers.</p>
+    <h3>Turning industrial IoT into competitive advantage — 5 steps</h3>
+    <div class="spectrum"><span class="step">1 Specify business goals<br><small>incl. ROI analysis</small></span><span class="arrow">→</span><span class="step">2 Express an analytic strategy</span><span class="arrow">→</span><span class="step">3 Evaluate need for <b>edge analytics</b><br><small>analyse data where it's collected</small></span><span class="arrow">→</span><span class="step">4 Select analytics solutions</span><span class="arrow">→</span><span class="step">5 Continuous improvement<br><small>closes the loop</small></span></div>
+    <h3>Steps for a successful IoT implementation</h3>
+    <ol>
+      <li>Develop a <b>business case</b> to justify the IoT project.</li>
+      <li>Develop a <b>working prototype</b>.</li>
+      <li>Install IoT in <b>one organizational unit as a pilot</b>.</li>
+      <li>Plan an <b>organization-wide deployment</b>.</li>
+    </ol>
+  </section>
+
+  <section class="card" id="legal">
+    <h2>Legal issues</h2>
+    <p>The recurring question is <b>liability</b> — and most of it is still unanswered:</p>
+    <ul>
+      <li><b>Who is liable</b> for the actions or advice of intelligent machines? If a firm goes <b>bankrupt</b> following an AI application's advice, who pays?</li>
+      <li>Is the <b>enterprise</b> responsible for <b>not testing the system adequately</b> before trusting it with sensitive issues? Do <b>auditing/accounting firms</b> share liability? Are <b>software developers</b> jointly liable?</li>
+      <li><b>Self-driving cars</b> — who is liable when a car's sensors, network or AI fail?</li>
+      <li>What is the <b>value of an expert opinion in court</b> when the expertise is encoded in a computer?</li>
+      <li>What if a <b>physician accepts an incorrect computer diagnosis</b> and the patient dies? What if a manager enters an incorrect judgment value and disaster follows?</li>
+      <li>Can management <b>force experts to contribute their expertise</b> to an intelligent system — and how are they compensated?</li>
+      <li><b>Who owns the knowledge</b> that systems like ChatGPT/Bard gather and that an end user then employs?</li>
+      <li><b>Intellectual-property protection</b> takes on unique dimensions; Facebook has faced legal issues over <b>face recognition</b>; robot <b>safety rules</b> were written long ago. <span class="red">At present there are very few laws regarding intelligent technologies — most relate to safety.</span></li>
+    </ul>
+    <h3>AI in law (the profession itself)</h3>
+    <p>AI applied to legal work: analysing legal data (e.g. regulatory conflicts) to detect patterns · providing <b>legal advice to consumers</b> · <b>document review</b> · analysing contracts · supporting legal research · <b>predicting results</b> (likelihood to win). Open question: <b>ownership of content used to train AI models</b> (e.g. the AI-art-generator lawsuits).</p>
+  </section>
+
+  <section class="card" id="privacy">
+    <h2>Privacy issues</h2>
+    <div class="idea"><b>Definition:</b> <b>privacy = the right to be left alone and the right to be free from unreasonable personal intrusions.</b> Two rules from past court decisions: ① <b>the right of privacy is NOT absolute</b> — it must be <b>balanced against the needs of society</b>; ② <b>the public's right to know is superior to the individual's right to privacy</b>.</div>
+    <h3>Collecting information about individuals</h3>
+    <p>Intelligent technologies collect customer information to provide <b>targeted services and marketing</b>. The Internet plus large-scale databases created an entirely new dimension of access. Used <b>for good</b> too: reduce <b>fraud</b>, prevent crime, identify government mismanagement, tax evasion, welfare cheating, employment of illegal workers.</p>
+    <h3>Where privacy leaks (know the examples)</h3>
+    <table>
+      <tr><th>Source</th><th>The concern</th></tr>
+      <tr><td><b>Virtual personal assistants</b></td><td>Alexa/Echo, Google Assistant, Siri <b>listen to what is going on</b> — "your voice assistant is spying on you"; the trade-off is <b>privacy vs convenience</b></td></tr>
+      <tr><td><b>Mobile users</b></td><td>Users are unaware of tracking: <b>calls moving between cell towers</b>, <b>GPS</b> transmitting location, phones transmitting at <b>Wi-Fi hotspots</b></td></tr>
+      <tr><td><b>IoT networks</b></td><td>Far more data flowing — how do we protect it and guard against misuse?</td></tr>
+      <tr><td><b>Profiling companies</b></td><td><b>Rapleaf</b> (now TowerData) — from an <b>email address to a complete profile</b>; <b>BlueCava</b> — multi-device personal profile detection; <b>Reputation.com</b> — from just an email address to an <b>SSN</b>. Many claim to honor privacy; violations are often reported ("What They Know," WSJ)</td></tr>
+      <tr><td><b>Workplace analytics</b></td><td><b>Humanyze</b> sensor-embedded <b>badges</b> track all employee movement; <b>Barclays</b> used heat and motion sensors to track how long bankers sat at their desks (officially to optimise office space — the <b>union is watching</b> that it isn't used to spy)</td></tr>
+      <tr><td><b>Surveillance</b></td><td>Delaware police <b>AI dashcams</b> scanning passing cars (uploaded to the cloud); Facebook <b>face recognition</b>; <b>Epicenter</b> offers employees a <b>microchip implant</b> (opens doors, buys food — but management can track you; volunteers only)</td></tr>
+      <tr><td><b>Who owns your data?</b></td><td>Connected cars = "a privacy nightmare" — sensors, IoT, GPS. Who owns the data: <b>Apple CarPlay</b>? <b>Android Auto</b>? Apps like Waze, Yelp, Spotify collect all kinds of data</td></tr>
+    </table>
+    <p><b>Bottom line:</b> intelligent-systems professionals and users must be aware of the legal and ethical issues in collecting information that may be <b>privileged or protected</b>. <b>Privacy is in many cases a component of ethics.</b></p>
+  </section>
+
+  <section class="card" id="ethics">
+    <h2>Ethical issues</h2>
+    <p><b>Personal values</b> are a major factor in ethical decision-making, and ethics is <b>multidimensional</b> — so it's complex. Crucially: <span class="red">some ethical issues are upsetting but not illegal</span>.</p>
+    <div class="ex"><b>The Facebook emotion experiment:</b> Facebook presented <b>different News Feeds</b> to users and monitored their <b>emotional reactions</b> (replies, likes, sentiment). Many companies run similar analytics — but because Facebook is <b>so large</b> and it ran the experiment <b>without users' informed consent</b>, it was judged <b>unethical</b>. Facebook acknowledged the error and instituted a formal review.</div>
+    <h3>The big ethical questions in AI &amp; robotics</h3>
+    <ul>
+      <li>What is the <b>impact on jobs</b>? How do robots <b>affect our behavior and interactions</b>?</li>
+      <li>How can the <b>wealth created by intelligent machines be distributed</b>?</li>
+      <li>How do we <b>guard against mistakes</b> by intelligent applications?</li>
+      <li><b>Can intelligent systems be fair and unbiased — how do we eliminate bias</b> in their creation and operation?</li>
+      <li>How do we keep them <b>safe from adversaries</b> and protected against <b>unintended consequences</b> (e.g. robot accidents)?</li>
+      <li><b>How do we stay in control</b> of a complex intelligent system?</li>
+    </ul>
+    <p><b>Further ethical topics:</b> electronic surveillance · ethics in BI/AI <b>system design</b> · software piracy · invasion of privacy · use of proprietary databases/knowledge bases · use of <b>personal intellectual property</b> for company benefit (and paying contributors) · <b>accuracy</b> of data/information/knowledge · protection of users' rights · accessibility of information · <span class="red">how much decision-making to delegate to intelligent machines</span>.</p>
+    <h3>Machine ethics &amp; roboethics</h3>
+    <ul>
+      <li><b>Machine ethics</b> — concerned with the <b>moral behavior of artificially intelligent beings</b>. <b>Roboethics</b> — concerned with the <b>moral behavior of the designers, builders and users</b> of robots.</li>
+      <li>Cautionary tales: <b>Microsoft's Tay chatbot</b> was shut down after it couldn't handle offensive input; fears that <b>algorithms may become racist</b>; <b>self-driving cars may one day face a decision of whom to save and whom to kill</b>; voice technologies enable caller identification.</li>
+      <li><b>The 10 Commandments of Computer Ethics</b> — don't use a computer to <b>harm people</b>, <b>interfere</b> with others' work, <b>snoop</b> in their files, <b>steal</b>, or <b>bear false witness</b>; don't <b>copy unpaid-for software</b> or use others' <b>resources without authorization</b>; don't <b>appropriate others' intellectual output</b>; <b>do</b> think about the social consequences of what you write; <b>do</b> use computers with consideration and respect. <em>(Note: the last two are printed with "Thou shalt not" in the slides — that's a typo; the intent is the positive duty.)</em></li>
+    </ul>
+  </section>
+
+  <section class="card" id="responsible">
+    <h2>Ethical / responsible / trustworthy AI</h2>
+    <h3>The 6 principles of Responsible AI (memorise)</h3>
+    <div class="spectrum"><span class="step">1 <b>Fairness</b></span><span class="step">2 <b>Reliability &amp; safety</b></span><span class="step">3 <b>Privacy &amp; security</b></span><span class="step">4 <b>Inclusiveness</b></span><span class="step">5 <b>Transparency</b></span><span class="step">6 <b>Accountability</b></span></div>
+    <h3>Cautionary cases</h3>
+    <ul>
+      <li><b>BlenderBot 3.0</b> — Meta's chatbot going off the rails.</li>
+      <li><b>Amazon's scrapped AI recruiting tool</b> — learned <b>gender bias</b> from historical hiring data and had to be abandoned.</li>
+      <li><b>COMPAS</b> (Correctional Offender Management Profiling for Alternative Sanctions) — criminal-risk scoring accused of <b>racial bias</b> in sentencing decisions.</li>
+    </ul>
+    <h3>Why ethical AI should matter to managers</h3>
+    <p><b>Netflix</b> is the success story (DVD sales → rentals → streaming → production), and its <b>recommender systems</b> are built on AI + user behavioral data — yet <b>they are not immune to bias</b>. The stakes are commercial: the global AI market is projected to grow from <b>$387.45 B (2022) to $1,394.30 B by 2029</b> (Fortune Business Insights), and Accenture estimates AI could raise <b>profitability rates by an average of 38% by 2035</b>. AI is becoming <b>indispensable</b> — which is exactly why bias and opacity are business risks, not just moral ones.</p>
+    <h3>O'Neil's claim — the three conditions a model must satisfy</h3>
+    <div class="idea">From <b><em>Weapons of Math Destruction: How Big Data Increases Inequality and Threatens Democracy</em></b> (Cathy O'Neil), models must be:
+      <ol>
+        <li><b>Transparent</b> — if the model is not understandable, its application can lead to <b>unintended consequences</b>.</li>
+        <li>Built on <b>clear, quantifiable objectives</b>.</li>
+        <li>Equipped with a <b>self-correcting mechanism</b> and a process to be <b>audited regularly</b>, with new inputs and outputs constantly reconsidered.</li>
+      </ol>
+      Managers and data scientists must be aware of the <b>social and long-term effects</b> of mathematical models and algorithms.</div>
+  </section>
+
+  <section class="card" id="orgs">
+    <h2>Impacts on organizations</h2>
+    <ul>
+      <li><b>New organizational units:</b> an analytics department, a BI department, a <b>data science</b> department, an <b>AI department</b> — and new C-suite titles: <b>Chief Data Officer</b>, <b>Chief AI Officer</b>.</li>
+      <li><b>Transformation &amp; competitive advantage</b> — enhancing <b>digital transformation</b>; e.g. <b>Amazon uses robots</b> to cut cost and dominate online commerce. (<em>Case 11.1:</em> <b>1-800-Flowers.com</b> uses intelligent systems — SAS Marketing Automation, IBM Watson personalization, SAS Enterprise Miner — for competitive advantage.)</li>
+    </ul>
+    <h3>Impact on managers' activities, performance &amp; job satisfaction</h3>
+    <ul>
+      <li><b>Less expertise/experience is required</b> to make many decisions; <b>faster decision-making</b>; <b>less reliance on experts and analysts</b>.</li>
+      <li><b>Power is redistributed</b> among managers — <span class="red">the more information and analysis capability they possess, the more power they have</span>.</li>
+      <li><b>Support for complex decisions</b>; information for high-level decisions is <b>expedited or even self-generated</b>; <b>routine decisions get automated</b>.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="jobs">
+    <h2>Impacts on jobs and work</h2>
+    <p><b>General agreement:</b> intelligent systems <b>will create many new jobs</b> (as automation always has), <b>many people will need retraining</b>, and <b>the nature of work will change</b>. <b>No consensus</b> on when, how much, or how to deal with it. A key prediction: AI will <b>accelerate the polarization of the labor market</b> — <b>growth at the top and bottom tiers, losses in the middle</b>.</p>
+    <h3>The pessimistic case — massive job losses</h3>
+    <ul>
+      <li>They move <b>very fast</b>; they can take a wide variety of jobs, <b>including office-focused, administrative and non-physical</b> ones; their comparative advantage over manual labour is <b>large and growing</b>; they are already taking <b>professional</b> jobs (financial advisors, paralegals, medical specialists); AI capabilities are growing rapidly. In Russia, <b>robots already teach mathematics</b> in schools.</li>
+      <li>Examples: <b>Elon Musk</b> foresees autonomous truck <b>convoys</b> worldwide within 10 years (electric, economical, fewer accidents — but thousands of drivers lose jobs); <b>Amazon Go</b> cashierless stores (3,000 more planned); post offices already delivering with autonomous vehicles. <span class="red">"In short, there is a chance for massive unemployment."</span></li>
+      <li><em>Case 11.2 — jobs robots have already taken:</em> online marketers, financial analysts/advisors, anesthesiologists, diagnosticians, surgeons, financial &amp; sports reporters (Sherman 2015); middle management, commodity salespeople, report writers, accountants/bookkeepers (Palmer 2017); cashiers, toll-booth operators, fast-food workers, drivers (McFarland 2017). <b>Low-risk jobs:</b> nurses, doctors, dentists, youth sport coaches, <b>social workers</b>.</li>
+    </ul>
+    <h3>The optimistic case — work changes rather than disappears</h3>
+    <p><b>Low-skill jobs</b> will be taken by machines; <b>high-skill jobs may not</b>. Jobs may be <b>redesigned</b> either to be <b>low-skilled so they can be automated</b> or <b>high-skilled so humans execute them</b>. <b>Manyika (McKinsey):</b> many human activities have automation potential; productivity growth from robotics/AI/ML will be <b>tripled</b>; <b>AI will create many new, high-paying jobs</b>; and since <b>more than half the world is still offline</b>, change won't be too rapid.</p>
+    <h3>Tips for success (managerial)</h3>
+    <ul>
+      <li><b>Digital capabilities must come before AI.</b> ML is powerful but <b>not the solution to all problems</b>.</li>
+      <li><b>Do not put technology teams solely in charge</b> of intelligent technologies — add a <b>business partner</b>.</li>
+      <li>Prioritize a <b>portfolio approach</b> to AI initiatives. <span class="red">The biggest challenges will be people and business processes</span>, not the technology.</li>
+      <li>Almost all businesses that use intelligent systems <b>increase income and profit</b>; <b>top-leadership support is necessary</b> for an AI transformation.</li>
+    </ul>
+    <h3>Dealing with the change — 9 societal measures</h3>
+    <p>Use <b>learning and education</b> to facilitate change · involve the <b>private sector</b> in training/retraining · governments <b>incentivize</b> private investment in human capital · build <b>digital infrastructure</b> · develop <b>innovative income and wage schemes</b> · carefully <b>plan the transition</b> and deal properly with displaced employees · handle new technology-enabled technologies · focus on <b>new job creation</b>, particularly digital jobs · capture the <b>productivity increase</b> opportunities.</p>
+  </section>
+
+  <section class="card" id="danger">
+    <h2>Potential dangers of AI — utopia vs dystopia</h2>
+    <table>
+      <tr><th>The warnings (dystopia)</th><th>The utopian position</th></tr>
+      <tr><td><b>Elon Musk</b> — "we need to be super careful with AI. Potentially <b>more dangerous than nukes</b>"; predicts WWIII will start because of AI.<br><b>Bill Gates</b> — "I am in the camp that is <b>concerned about super intelligence</b> … I don't understand why some people are not concerned."<br><b>Stephen Hawking</b> — "the development of full artificial intelligence <b>could spell the end of the human race</b>."</td><td>AI improves quality of life — e.g. a <b>20% reduction in crime</b>. But even utopians concede: ① AI will be so great that <b>people will struggle to fill their free time</b>; ② the road there <b>could be rocky</b> (impacts on jobs and work); ③ one day <b>no one will drive</b> and there may be <b>no human financial advisors</b> — change may be <b>rapid and turbulent</b>, and we may even face disasters as the dystopia camp projects.</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="citizen">
+    <h2>The data-science profession &amp; the citizen data scientist</h2>
+    <ul>
+      <li><b>Citizen science</b> — members of the <b>general public voluntarily help conduct scientific research</b>, at any stage: designing experiments, collecting data, helping analyse, developing reports.</li>
+      <li><b>Citizen data scientist</b> — <span class="red">a <b>business user</b> who has <b>not</b> been fully trained in the mathematics and statistics of data science, but has learned to use the <b>software tools</b> to build models for their own business use</span>. Enabled by <b>visual, intuitive</b> analytics tools. <b>Why it matters:</b> it helps <b>alleviate the shortage of data-science professionals</b> (the talent gap from the opening vignette).</li>
+      <li>Closing caution: new topics constantly appear in analytics/data science/AI — <b>some are fads, others will make a transformative difference</b>.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="exam">
+    <h2>Exam focus</h2>
+    <div class="exam"><b>Most-tested:</b> <span class="red">"doable ≠ appropriate, legal, or ethical"</span>; the <b>privacy definition</b> ("right to be left alone / free from unreasonable personal intrusions") + the <b>two court rules</b> (privacy is <b>not absolute</b>; the public's right to know is <b>superior</b>); the <b>3 development problems</b> (development approach · learning from data · no clear view of how insights are generated); the <b>deployment-strategy checklist</b> (prioritize, DIY-vs-outsource, justify ROI, overcome resistance, people–robot teams, what to fully automate, security/privacy, retraining); IoT's <b>5-step competitive-advantage strategy</b> (incl. <b>edge analytics</b>) and 4 implementation steps; the <b>liability</b> questions (self-driving cars, wrong medical diagnosis, who owns ChatGPT-gathered knowledge; <b>few laws exist — mostly safety</b>); privacy examples (<b>Alexa/Siri listening, Humanyze badges, Barclays desk sensors, Rapleaf, BlueCava, Epicenter microchips, connected cars</b>); the <b>Facebook News Feed experiment</b> (unethical for lack of <b>informed consent</b>, though not illegal); <b>machine ethics vs roboethics</b>; the <b>10 Commandments of Computer Ethics</b>; the <b>6 Responsible-AI principles</b> (fairness, reliability &amp; safety, privacy &amp; security, inclusiveness, transparency, accountability); the bias cases (<b>Amazon recruiting tool, COMPAS, Tay</b>); <b>O'Neil's 3 conditions</b> (transparent · clear quantifiable objectives · self-correcting &amp; regularly audited); <b>labor-market polarization</b> (top and bottom grow, middle shrinks); "biggest challenges will be <b>people and business processes</b>"; <b>citizen data scientist</b>.</div>
+    <p><b>↔ Readings:</b> <b>R24</b> (privacy choice, data clean rooms, democratization — the direct Ch.11 pairing) and <b>R25</b> (antecedents of <em>effective use</em> of BI — the human/organizational side). <b>R22</b> (AI-enhanced BI) supplies the trust/governance barriers. Follows <a href="Ch10.html">Ch.10</a>, whose IoT/location/image trends create most of these privacy problems. Back to <a href="index.html">hub</a>.</p>
+  </section>
+
+  </main>
+</div>
+<footer>Ch.11 · Ethical, Privacy and Managerial Considerations in Analytics · BIA final-exam full-detail page · <a href="index.html">back to hub</a></footer>
+</body>
+</html>
