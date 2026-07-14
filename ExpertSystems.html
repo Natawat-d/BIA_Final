@@ -64,7 +64,13 @@
     <a href="#conventional">Conventional vs ES</a>
     <a href="#classics">Classic applications</a>
     <a href="#structure">Architecture</a>
-    <a href="#ke">Knowledge engineering</a>
+    <a href="#ke"><b>Knowledge engineering</b></a>
+    <a href="#ke1">&nbsp;&nbsp;1 · Acquisition</a>
+    <a href="#ke2">&nbsp;&nbsp;2 · Representation</a>
+    <a href="#ke3">&nbsp;&nbsp;3 · Validation</a>
+    <a href="#ke4">&nbsp;&nbsp;4 · Inferencing</a>
+    <a href="#ke5">&nbsp;&nbsp;5 · Explanation</a>
+    <a href="#ketrace">&nbsp;&nbsp;Worked end-to-end trace</a>
     <a href="#rules">Production rules</a>
     <a href="#chaining">Forward vs backward chaining</a>
     <a href="#explain">Explanation facility</a>
@@ -149,23 +155,144 @@
   </section>
 
   <section class="card" id="ke">
-    <h2>Knowledge engineering (KE)</h2>
-    <p><b>Definition:</b> a set of intensive activities encompassing the <b>acquisition of knowledge from human experts</b> (and other sources) and <b>converting it into a repository — the knowledge base</b>. Primary goals: help experts <b>articulate how they do what they do</b> and document that knowledge in a <b>reusable</b> form. (Narrow KE = building the ES; broad KE = the whole knowledge-systems discipline.)</p>
-    <h3>The KE process — 5 stages + feedback loop</h3>
-    <div class="spectrum"><span class="step">1 Knowledge acquisition</span><span class="arrow">→</span><span class="step">2 Knowledge representation</span><span class="arrow">→</span><span class="step">3 Knowledge validation</span><span class="arrow">→</span><span class="step">4 Inferencing (reasoning)</span><span class="arrow">→</span><span class="step">5 Explanation &amp; justification</span></div>
-    <p>Raw knowledge → codified knowledge → validated knowledge → solutions, with a <b>feedback loop of corrections and refinements</b> running back through every stage, plus <b>meta-knowledge</b> feeding the inferencing/explanation stages.</p>
-    <h3>Difficulties in KE</h3>
+    <h2>Knowledge engineering (KE) — the process</h2>
+    <p><b>Definition:</b> a set of intensive activities encompassing the <b>acquisition of knowledge from human experts</b> (and other sources) and <b>converting it into a repository — the knowledge base</b>. Primary goals: help experts <b>articulate how they do what they do</b>, and document that knowledge in a <b>reusable</b> form. (Narrow KE = building the ES; broad KE = the whole knowledge-systems discipline.)</p>
+
+    <h3>The 5 stages — and what flows between them</h3>
+    <div class="spectrum"><span class="step"><b>1</b> Knowledge<br>acquisition</span><span class="arrow">→</span><span class="step"><b>2</b> Knowledge<br>representation</span><span class="arrow">→</span><span class="step"><b>3</b> Knowledge<br>validation</span><span class="arrow">→</span><span class="step"><b>4</b> Inferencing<br>(reasoning)</span><span class="arrow">→</span><span class="step"><b>5</b> Explanation &amp;<br>justification</span></div>
+    <p>The exam-critical part is not just the five names — it's the <b>artifact that each stage produces and hands to the next</b>. Learn this chain:</p>
+    <table>
+      <tr><th>#</th><th>Stage</th><th>Takes in</th><th>Produces</th><th>Who does it</th></tr>
+      <tr><td>—</td><td><em>Problem or opportunity</em></td><td>—</td><td>The reason to build an ES</td><td>Management</td></tr>
+      <tr><td><b>1</b></td><td><b>Knowledge acquisition</b></td><td>Experts + other knowledge sources</td><td><span class="red">Raw knowledge</span></td><td><b>Knowledge engineer</b> (elicitation)</td></tr>
+      <tr><td><b>2</b></td><td><b>Knowledge representation</b></td><td>Raw knowledge</td><td><span class="red">Codified knowledge</span> (the knowledge base)</td><td>Knowledge engineer</td></tr>
+      <tr><td><b>3</b></td><td><b>Knowledge validation</b></td><td>Codified knowledge</td><td><span class="red">Validated knowledge</span></td><td>Engineer + expert (test cases)</td></tr>
+      <tr><td><b>4</b></td><td><b>Inferencing</b></td><td>Validated knowledge + the user's facts</td><td>A conclusion / recommendation</td><td><b>Inference engine</b> (the machine)</td></tr>
+      <tr><td><b>5</b></td><td><b>Explanation &amp; justification</b></td><td>The reasoning chain + <b>meta-knowledge</b></td><td><span class="red">The solution</span>, defensibly explained</td><td><b>Justifier</b> (the machine)</td></tr>
+    </table>
+    <div class="idea"><b>Two things everyone forgets:</b> ① a <b>feedback loop of corrections and refinements</b> runs <em>back</em> through every stage — KE is iterative, not a one-way pipeline; ② <b>meta-knowledge</b> (knowledge about the knowledge) feeds the <b>inferencing and explanation</b> stages — it is what lets the system reason about <em>its own</em> reasoning. Note also the hand-off in the middle: stages <b>1–3 are done by humans</b> at build time (development environment); stages <b>4–5 are done by the machine</b> at run time (consultation environment).</div>
+  </section>
+
+  <section class="card" id="ke1">
+    <h2>Stage 1 — Knowledge acquisition</h2>
+    <p><b>What it is:</b> extracting knowledge from its sources and transferring it toward the computer. The <b>knowledge engineer</b> interviews and observes the <b>domain expert</b>, a process called <b>knowledge elicitation</b>. Sources are not only people: documented sources count too — books, manuals, regulations, case files, databases, sensors, the Web.</p>
+    <div class="idea"><b>The bottleneck.</b> Acquisition is the <span class="red">hardest and slowest stage of the whole project</span> — the classic "knowledge-acquisition bottleneck." The reason is <b>compiled knowledge</b> (from the definition of expertise): experts have automated their skill to the point that they <b>can no longer articulate how they decide</b>. Ask a doctor why they suspected bipolar rather than depression and you get "experience" — not a rule.</div>
+    <h3>Elicitation techniques</h3>
+    <table>
+      <tr><th>Technique</th><th>How it works</th><th>Good for</th></tr>
+      <tr><td><b>Structured interview</b></td><td>Pre-planned questions walking the expert through the domain</td><td>Broad coverage; the usual starting point</td></tr>
+      <tr><td><b>Unstructured interview</b></td><td>Open conversation, expert leads</td><td>Early scoping; discovering what you don't know to ask</td></tr>
+      <tr><td><b>Protocol analysis</b> (think-aloud)</td><td>The expert solves a real case while <b>narrating their reasoning</b>; the session is recorded and coded</td><td>Getting at <b>tacit</b> reasoning the expert can't state abstractly</td></tr>
+      <tr><td><b>Observation</b></td><td>Watch the expert work, unprompted</td><td>Revealing what experts <em>do</em> vs what they <em>say</em> they do</td></tr>
+      <tr><td><b>Case / repertory-grid analysis</b></td><td>Compare past cases to surface the attributes the expert discriminates on</td><td>Turning judgment into explicit criteria</td></tr>
+      <tr><td><b>Rule induction / machine learning</b></td><td>Derive rules automatically from historical data</td><td>When data is plentiful but experts are scarce — the <b>data-driven</b> alternative</td></tr>
+    </table>
+    <h3>Difficulties (the classic exam list)</h3>
     <ul>
-      <li>Experts often <b>cannot articulate</b> how they decide (compiled, tacit knowledge).</li>
-      <li>Experts may be unavailable, expensive, or <b>disagree with each other</b>.</li>
-      <li>Knowledge extraction is slow; testing and refining rules is laborious; domains drift over time.</li>
+      <li>Experts <b>cannot articulate</b> how they decide (tacit/compiled knowledge) — the core problem.</li>
+      <li>Experts may be <b>unavailable, expensive, or unwilling</b> (why would they automate away their own scarcity?).</li>
+      <li><b>Multiple experts disagree</b> — whose rules win? (R18 notes that rules and their coefficients <b>vary by expert</b>.)</li>
+      <li>Knowledge is <b>domain-specific and drifts</b> over time; extraction is slow and testing is laborious.</li>
+      <li>The knowledge engineer may <b>misunderstand</b> the domain and mis-encode what they heard.</li>
     </ul>
-    <h3>Validation vs verification (definitions the slides stress)</h3>
+    <div class="ex"><b>Shallow vs deep knowledge:</b> <b>shallow</b> = surface heuristics ("if the engine won't start and the lights are dim, the battery is flat") — easy to elicit, brittle at the edges. <b>Deep</b> = understanding the underlying causal model (how a battery, alternator and starter actually interact) — far harder to acquire, but degrades gracefully on novel cases.</div>
+  </section>
+
+  <section class="card" id="ke2">
+    <h2>Stage 2 — Knowledge representation</h2>
+    <p><b>What it is:</b> organising the raw knowledge into a <b>computer-understandable format</b> and storing it properly in the <b>knowledge base</b>. Raw knowledge in → <b>codified knowledge</b> out. This is where an interview transcript becomes something an inference engine can actually fire.</p>
+    <h3>Representation schemes</h3>
+    <table>
+      <tr><th>Scheme</th><th>Idea</th><th>Note</th></tr>
+      <tr><td><b>Production rules</b></td><td><b>Condition–action pairs</b>: <code>IF … THEN … (ELSE …)</code></td><td><span class="red">The most common and most popular</span> — and what "rule-based ES" means. See the <a href="#rules">production-rules section</a>.</td></tr>
+      <tr><td><b>Semantic networks</b></td><td>A graph of concepts (nodes) joined by relationships (links), e.g. <em>is-a</em>, <em>has-a</em></td><td>Good at inheritance and association</td></tr>
+      <tr><td><b>Frames</b></td><td>An object with named <b>slots</b> and values (a template per concept)</td><td>Object-like; groups everything known about one entity</td></tr>
+      <tr><td><b>Decision tables / decision trees</b></td><td>Tabular or branching enumeration of conditions → actions</td><td>Also Ch.8's "few alternatives" tools — easy for experts to check</td></tr>
+      <tr><td><b>Predicate logic</b></td><td>Formal logic statements with quantifiers</td><td>Precise, provable; less intuitive for domain experts</td></tr>
+      <tr><td><b>Ontologies</b></td><td>A formal specification of concepts and relations in the domain</td><td>The modern form — <b>R18 encodes psychiatrists' rules as <b>SWRL rules over an ontology</b></b></td></tr>
+    </table>
+    <h3>Why representation choice matters</h3>
     <ul>
-      <li><b>Evaluation</b> — the broad concept: assess the ES's <b>overall value</b>.</li>
-      <li><b>Validation</b> — deals with the <b>performance</b> of the system (are we building the <em>right</em> system? does it match the expert?).</li>
-      <li><b>Verification</b> — <b>building the system right</b>: substantiating that it correctly implements its <b>specifications</b>.</li>
+      <li>It determines what the inference engine <b>can</b> do — rules chain, frames inherit, networks traverse.</li>
+      <li>It determines whether the <b>expert can still read and correct</b> their own knowledge (a rule they can check; a weight matrix they cannot — this is the whole ES-vs-neural-network trade-off).</li>
+      <li>Recall the ES signature: <span class="red">knowledge is kept <b>separate</b> from the reasoning mechanism</span>. Representation is what makes that separation possible — you can change the rules without reprogramming the engine.</li>
     </ul>
+  </section>
+
+  <section class="card" id="ke3">
+    <h2>Stage 3 — Knowledge validation</h2>
+    <p><b>What it is:</b> testing the codified knowledge until you trust it. Codified knowledge in → <b>validated knowledge</b> out. Typically done by running <b>test cases</b> — cases with known correct outcomes — and comparing the system's conclusions against the <b>expert's</b> conclusions, refining the rules on every disagreement.</p>
+    <div class="idea"><b>The three terms the slides insist on — do not mix them up:</b>
+      <ul>
+        <li><b>Evaluation</b> — the <em>broad</em> concept. Objective: assess the ES's <b>overall value</b> (is it worth having at all?).</li>
+        <li><b>Validation</b> — the part of evaluation dealing with the <b>performance</b> of the system. <em>"Are we building the <b>right</b> system?"</em> Does it reach the same conclusions an expert would?</li>
+        <li><b>Verification</b> — <b>"building the system <em>right</em>"</b>: substantiating that the system is <b>correctly implemented to its specifications</b>. Does it do what the spec said, without internal defects?</li>
+      </ul>
+      Mnemonic: <b>validation = right system</b> (external, vs the expert) · <b>verification = system right</b> (internal, vs the spec).</div>
+    <h3>What verification actually hunts for — rule-base anomalies</h3>
+    <table>
+      <tr><th>Anomaly</th><th>Meaning</th></tr>
+      <tr><td><b>Conflicting rules</b></td><td>Same conditions, contradictory conclusions</td></tr>
+      <tr><td><b>Redundant rules</b></td><td>Two rules say the same thing — harmless but bloats the base</td></tr>
+      <tr><td><b>Subsumed rules</b></td><td>One rule is a more specific case already covered by another</td></tr>
+      <tr><td><b>Circular rules</b></td><td>A chains to B chains back to A → the engine loops forever</td></tr>
+      <tr><td><b>Unreachable / dead-end rules</b></td><td>A rule whose conditions can never be satisfied, or whose conclusion is never used</td></tr>
+      <tr><td><b>Missing rules (gaps)</b></td><td>A legitimate combination of facts that fires <em>nothing</em> — the system goes silent</td></tr>
+    </table>
+    <div class="ex"><b>R18 is the model answer here:</b> the rule base was validated by <b>rigorous testing with expert psychiatrists</b> <em>and</em> against <b>120 clinical samples</b>, reaching a <b>93.33% success rate</b> on only 17 symptoms — plus a <b>user-acceptance score of 3.56/4</b>. Note that they measured <em>both</em> technical performance and <b>human acceptance</b>: an ES no clinician trusts is a failed ES, however accurate.</div>
+  </section>
+
+  <section class="card" id="ke4">
+    <h2>Stage 4 — Inferencing (reasoning)</h2>
+    <p><b>What it is:</b> the point where the machine takes over. The <b>inference engine</b> takes the validated knowledge base plus the <b>facts of the current case</b> (from the user, via the blackboard/working memory) and <b>chains rules together</b> to derive a conclusion. Everything before this stage was preparation; this is the ES actually <em>thinking</em>.</p>
+    <h3>The match–fire cycle</h3>
+    <div class="spectrum"><span class="step"><b>Match</b><br><small>find rules whose IF-parts are satisfied by current facts</small></span><span class="arrow">→</span><span class="step"><b>Resolve conflict</b><br><small>several rules eligible? pick one (meta-rules, priority)</small></span><span class="arrow">→</span><span class="step"><b>Fire</b><br><small>execute the THEN-part, assert the new fact</small></span><span class="arrow">→</span><span class="step"><b>Repeat</b><br><small>until no rule can fire, or the goal is reached</small></span></div>
+    <p>A rule is <b>FIRED</b> when <b>all of its hypotheses (the "if parts") are satisfied</b>. The engine checks every rule in the knowledge base — forward or backward — looking for rules it can fire, and <b>continues until no more rules can fire or a goal is achieved</b>.</p>
+    <h3>The two directions (detail in the <a href="#chaining">chaining section</a>)</h3>
+    <ul>
+      <li><b>Forward chaining</b> — <b>data-driven</b>: start from known facts, assert conclusions, repeat. "What follows from this?"</li>
+      <li><b>Backward chaining</b> — <b>goal-driven</b>: start from a hypothesis, work backward hunting for facts that would verify it. "What would I need to believe this?" — and it only asks the user for facts it still needs, which is why diagnostic systems feel like an efficient interrogation.</li>
+    </ul>
+    <h3>Conflict resolution — when several rules could fire</h3>
+    <p>This is what <b>inference rules (meta-rules)</b> are for; they live in the <b>engine</b>, not the knowledge base: <code>IF more than one rule applies THEN fire the one with the highest priority value first</code>; <code>IF needed data is not known THEN ask the user</code>. Other common strategies: fire the <b>most specific</b> rule, the <b>most recently triggered</b>, or simply the first in order.</p>
+    <h3>Reasoning under uncertainty</h3>
+    <p>Real expertise is rarely black-and-white, so an ES must cope with <b>incomplete or uncertain information</b> (one of its advantages over conventional programs). Mechanisms: <b>certainty factors</b> (MYCIN's approach — attach a confidence to each rule and conclusion), <b>Bayesian probability</b>, and <b>fuzzy logic</b>. R18's rules likewise carry <b>coefficients that vary by expert</b>, and it evaluates <b>combinations</b> of symptoms rather than single facts.</p>
+  </section>
+
+  <section class="card" id="ke5">
+    <h2>Stage 5 — Explanation &amp; justification</h2>
+    <p><b>What it is:</b> the ES defends its answer. Human experts justify and explain their actions — <b>so should an ES</b>. The component is the <b>explanation facility, a.k.a. the justifier</b>. Formally, explanation is "an attempt by an ES to <b>clarify its reasoning, recommendations, or other actions</b> (including asking a question)." It draws on <b>meta-knowledge</b> — the system's knowledge about its own knowledge — which is why the slides call explanation a <em>metaknowledge</em> feature. The output of this stage is the <b>solution</b>, delivered with its reasoning attached.</p>
+    <h3>The two explanation types (both examinable, know the difference)</h3>
+    <table>
+      <tr><th></th><th><b>WHY</b> explanation</th><th><b>HOW</b> explanation</th></tr>
+      <tr><td>User asks</td><td>"<b>Why</b> are you asking me this?"</td><td>"<b>How</b> did you reach that conclusion?"</td></tr>
+      <tr><td>Asked when</td><td><b>During</b> the consultation, when the system requests a fact</td><td><b>After</b> a conclusion or recommendation is given</td></tr>
+      <tr><td>System answers by</td><td>Showing the <b>rule it is currently trying to fire</b> — i.e. what the fact is needed for</td><td>Showing the <b>chain of rules that fired</b> to get there</td></tr>
+      <tr><td>Depth</td><td>—</td><td><b>Simple systems</b> explain only the final conclusion; <b>most complex systems provide the whole chain of rules</b> used</td></tr>
+    </table>
+    <h3>Why explanation is essential (5 purposes)</h3>
+    <ol>
+      <li>Make the system <b>more intelligible</b> to the user.</li>
+      <li><b>Uncover shortcomings of the knowledge base</b> — a nonsensical explanation exposes a bad rule (so explanation is a <em>debugging</em> tool, feeding the KE feedback loop).</li>
+      <li><b>Explain unanticipated situations</b>.</li>
+      <li>Satisfy users' <b>psychological and social needs</b> — people don't act on advice they can't interrogate.</li>
+      <li>Support <b>training and evaluation</b> — a novice learns the domain by reading the system's reasoning.</li>
+    </ol>
+    <div class="idea"><b>Why this is the stage that matters commercially:</b> explanation is exactly what a neural network <b>cannot</b> give you (Ch.7's black-box problem). It is why <b>R18</b>'s rule-based diagnosis earned a <b>3.56/4 acceptance score from psychiatrists</b> where a black-box classifier would have been rejected, and it is why a loan-approval ES can survive a <b>fair-lending audit</b> — it can cite the rules it fired. <span class="red">Accuracy gets you a model; explanation gets you a system people will actually use.</span></div>
+  </section>
+
+  <section class="card" id="ketrace">
+    <h2>The 5 stages traced end-to-end — a worked example</h2>
+    <p>Build a small ES to support a <b>loan-approval</b> decision (the exercise the lecture poses). Watch the artifact change at every hand-off:</p>
+    <table>
+      <tr><th>Stage</th><th>What you actually do</th><th>Artifact</th></tr>
+      <tr><td><b>1 Acquisition</b></td><td>Structured interviews + <b>protocol analysis</b> with senior credit officers; observe them decide 20 real files; pull the bank's lending policy manual. Discover they weigh: credit score, debt-to-income, employment stability, collateral.</td><td><span class="red">Raw knowledge</span> — transcripts, notes, past cases</td></tr>
+      <tr><td><b>2 Representation</b></td><td>Codify as <b>production rules</b>:<br><code>IF credit_score ≥ 700 AND DTI &lt; 40% THEN approve</code><br><code>IF credit_score &lt; 550 THEN reject</code><br><code>IF 550 ≤ credit_score &lt; 700 AND collateral = yes THEN refer_to_officer</code></td><td><span class="red">Codified knowledge</span> — the knowledge base</td></tr>
+      <tr><td><b>3 Validation</b></td><td>Run <b>test cases</b> of past applications with known outcomes; compare the system's verdicts to the officers'. Check for <b>conflicting/circular/missing</b> rules — e.g. what fires for score = 690 with no collateral? (a gap → add a rule). Refine until agreement.</td><td><span class="red">Validated knowledge</span></td></tr>
+      <tr><td><b>4 Inferencing</b></td><td>Applicant arrives. Use <b>backward chaining</b> from the goal "approve?" — the engine asks only for the facts it still needs (score → then DTI), <b>fires</b> the matching rule, writes the conclusion to the blackboard.</td><td>A decision: <em>refer to officer</em></td></tr>
+      <tr><td><b>5 Explanation</b></td><td>Mid-consultation the applicant asks <b>WHY</b> their DTI is needed → "I'm testing the rule that approves scores ≥ 700 when DTI &lt; 40%." Afterwards the officer asks <b>HOW</b> → the justifier prints the fired chain. This is what makes the decision <b>auditable and non-discriminatory</b>.</td><td><span class="red">The solution</span>, defensibly explained</td></tr>
+    </table>
+    <p>And then the <b>feedback loop</b>: an officer overrules the system on a case → that disagreement flows back to stages 1–3, the rule is refined, the knowledge base improves. This is the <b>knowledge-refining system</b> in the architecture.</p>
   </section>
 
   <section class="card" id="rules">
@@ -268,7 +395,7 @@ RULE 4: IF days_until_expiration &lt; 5
 
   <section class="card" id="exam">
     <h2>Exam focus</h2>
-    <div class="exam"><b>Most-tested:</b> ES definition (imitate expert reasoning, narrow domain, <b>augment not replace</b>); expert vs expertise (4 components); transferring expertise chain (acquisition→representation→inferencing→transfer); the <b>architecture</b> — 7 components with knowledge base = long-term vs blackboard = short-term memory; conventional-vs-ES contrasts (separation of knowledge &amp; control, explanation, incomplete data); DENDRAL/MYCIN/XCON one-liners; KE process 5 stages + feedback; <b>validation vs verification</b>; production-rule forms; knowledge (declarative) vs inference (procedural/meta) rules; <span class="red">forward (data-driven) vs backward (goal-driven) chaining</span> + what "firing a rule" means; why- vs how-explanations; the 10 generic problem areas; shell vs custom development. Be ready to <b>write 3–4 IF–THEN rules</b> for a given business scenario (loan approval, inventory) and say which chaining you'd use.</div>
+    <div class="exam"><b>Most-tested:</b> ES definition (imitate expert reasoning, narrow domain, <b>augment not replace</b>); expert vs expertise (4 components); transferring expertise chain (acquisition→representation→inferencing→transfer); the <b>architecture</b> — 7 components with knowledge base = long-term vs blackboard = short-term memory; conventional-vs-ES contrasts (separation of knowledge &amp; control, explanation, incomplete data); DENDRAL/MYCIN/XCON one-liners; <span class="red">the <b>KE process</b> — name the 5 stages <em>and</em> the artifact each hands on (raw → codified → validated knowledge → conclusion → explained solution), plus the feedback loop and where meta-knowledge enters</span>; the acquisition <b>bottleneck</b> &amp; elicitation techniques (protocol analysis!); representation schemes (rules · frames · semantic nets · ontologies); <b>validation vs verification</b> (right system vs system right) + rule-base anomalies; the <b>match–fire cycle</b> &amp; conflict resolution; production-rule forms; knowledge (declarative) vs inference (procedural/meta) rules; <span class="red">forward (data-driven) vs backward (goal-driven) chaining</span> + what "firing a rule" means; why- vs how-explanations; the 10 generic problem areas; shell vs custom development. Be ready to <b>write 3–4 IF–THEN rules</b> for a given business scenario (loan approval, inventory) and say which chaining you'd use.</div>
     <p><b>↔ Readings:</b> R18 (rule-based ES for early diagnosis of bipolar/major depressive disorder — a modern MYCIN descendant), R19 (Social4Fashion — ES forecasting fashion trends from social media). Also links back: MYCIN appears in <a href="Ch7.html">Ch.7</a>'s cognitive-computing lineage; heuristics/ES appear in <a href="Ch8.html">Ch.8</a>'s categories-of-models table. Back to <a href="index.html">hub</a>.</p>
   </section>
 
