@@ -60,9 +60,11 @@
     <a href="#glance">At a glance</a>
     <a href="#argument">Main argument</a>
     <a href="#problem">Problem / context</a>
+    <a href="#concepts">Key concepts</a>
     <a href="#method">Data &amp; method</a>
     <a href="#results">Key results</a>
     <a href="#lessons">5 lessons learned</a>
+    <a href="#limits">Limitations &amp; critique</a>
     <a href="#exam">Exam focus</a>
   </nav>
   <main>
@@ -74,12 +76,14 @@
       <dt>Venue / year</dt><dd>JOIV 8(1), March 2024, pp. 481&ndash;491</dd>
       <dt>Type</dt><dd>Applied case study &mdash; supervised regression / model comparison</dd>
       <dt>Domain</dt><dd>Insurance &mdash; health-insurance premium pricing</dd>
-      <dt>Data</dt><dd>US Health Insurance dataset</dd>
+      <dt>Data</dt><dd>US Health Insurance dataset (age, sex, BMI, children, smoker, region &rarr; charges)</dd>
       <dt>Methods</dt><dd>Four regression models: <b>multiple linear regression, ridge regression, XGBoost, random forest</b>; tuned with <b>GridSearchCV</b></dd>
+      <dt>Baselines compared</dt><dd>Linear vs. ridge vs. XGBoost vs. random forest; random forest also compared pre/post tuning</dd>
+      <dt>Key metric</dt><dd>MAE, MSE, RMSE, R&sup2; (all four, so no metric can hide a weakness)</dd>
       <dt>Course link</dt><dd><b>Ch.5 / Ch.7 &mdash; predictive modelling &amp; ensembles</b></dd>
     </dl>
     <div class="idea"><b>One-sentence takeaway:</b> comparing four regression algorithms on the US Health Insurance dataset, <b>random forest wins on all four error metrics</b> (R&sup2; &asymp; 0.85, &asymp;0.86 after GridSearchCV tuning), confirming that ensemble methods beat linear/ridge regression for pricing.</div>
-    
+
   </section>
 
   <section class="card" id="argument">
@@ -89,17 +93,45 @@
 
   <section class="card" id="problem">
     <h2>Problem / Context</h2>
-    <p>Post-COVID risk and market uncertainty rose sharply, and insurers must price health packages within a profitable threshold. Historically, pricing relied heavily on consultants&rsquo; experience and intuition rather than systematic modelling &mdash; a gap the paper addresses with a rigorous machine-learning comparison.</p>
+    <p>Post-COVID risk and market uncertainty rose sharply, and insurers must price health packages within a profitable threshold while still competing on price. Historically, pricing relied on consultants&rsquo; experience, static generalized linear models (GLM), and intuition rather than dynamic, data-driven modelling &mdash; a gap the paper addresses with a rigorous four-algorithm comparison. The authors note that GLM &ldquo;is neither real-time nor dynamic,&rdquo; and that prior related work (e.g. an ensemble-of-boosting-and-stacking study) had already shown ensembles beating single learners for medical-cost prediction, but without a clean side-by-side comparison of linear, ridge, XGBoost and random forest on one dataset with four metrics.</p>
+  </section>
+
+  <section class="card" id="concepts">
+    <h2>Key concepts</h2>
+    <dl class="meta-grid">
+      <dt>Ridge regression</dt><dd>Linear regression with an added penalty term (&lambda;) on coefficient size, which trades a little bias for lower variance &mdash; useful when predictors are multicollinear.</dd>
+      <dt>XGBoost (gradient boosting)</dt><dd>Trees added <b>sequentially</b>, each correcting the errors of the previous ones (boosting) &mdash; contrast with random forest&rsquo;s parallel, independent trees (bagging).</dd>
+      <dt>Random forest</dt><dd><b>Bagging</b>: many decision trees are trained in parallel on bootstrapped samples/features, then their predictions are averaged &mdash; reduces the overfitting of a single decision tree.</dd>
+      <dt>GridSearchCV</dt><dd>Exhaustive search over a grid of hyperparameter combinations, each evaluated by cross-validation, to find the setting that generalises best.</dd>
+    </dl>
   </section>
 
   <section class="card" id="method">
     <h2>Data &amp; Method</h2>
-    <p>Working from the <b>US Health Insurance dataset</b>, the authors compare four <b>regression</b> models: <b>multiple linear regression, ridge regression, XGBoost, and random forest</b>. Models are evaluated on four metrics &mdash; <b>MAE, MSE, RMSE, R&sup2;</b> &mdash; so that no single metric can hide a weakness. The best-performing model is then further tuned with <b>GridSearchCV</b> hyperparameter search. Feature-importance charts and actual-vs-predicted plots are used to make the results interpretable for a managerial audience.</p>
+    <p>Working from the <b>US Health Insurance dataset</b> (age, sex, BMI, number of children, smoking status, region &rarr; charges), the pipeline runs: load data (Pandas) &rarr; exploratory data analysis (distribution of charges is right-skewed; age, smoking status and BMI visibly relate to charges) &rarr; pre-processing (no missing values; <code>LabelEncoder</code> converts the three categorical columns &mdash; sex, smoker, region &mdash; to numeric) &rarr; <b>70/30 train-test split</b> &rarr; fit four regression models.</p>
+    <table>
+      <tr><th>Stage</th><th>Detail</th></tr>
+      <tr><td>1. Load &amp; EDA</td><td>Pandas dataframe; distribution, scatter and correlation plots (age vs. charges, BMI vs. charges, smoker vs. charges)</td></tr>
+      <tr><td>2. Pre-processing</td><td>No missing values; <code>LabelEncoder</code> for sex/smoker/region; 70/30 train-test split</td></tr>
+      <tr><td>3. Models</td><td><b>Multiple linear regression, ridge regression, XGBoost, random forest</b></td></tr>
+      <tr><td>4. Evaluation</td><td>MAE, MSE, RMSE, R&sup2; on the test set</td></tr>
+      <tr><td>5. Tuning</td><td>Best model (random forest) re-run with <b>GridSearchCV</b> hyperparameter search</td></tr>
+      <tr><td>6. Interpretation</td><td>Feature-importance chart + actual-vs-predicted scatter plots per model</td></tr>
+    </table>
   </section>
 
   <section class="card" id="results">
     <h2>Key Results</h2>
-    <p><b>Random forest wins on all four metrics</b> (R&sup2; &asymp; <b>0.85</b>, rising to &asymp; <b>0.86</b> after tuning). <b>XGBoost beats both linear and ridge regression.</b> Hyperparameter tuning via GridSearchCV improves <b>3 of the 4 metrics (all except MAE)</b>. Overall, ensemble methods clearly outperform linear models on this pricing task.</p>
+    <p><b>Random forest wins on all four metrics</b> before tuning; XGBoost is a clear second, ahead of both linear models. After <b>GridSearchCV</b> tuning, random forest improves on <b>3 of 4 metrics</b> (MSE, RMSE, R&sup2;) but MAE ticks up slightly.</p>
+    <table>
+      <tr><th>Model</th><th>MAE</th><th>MSE</th><th>RMSE</th><th>R&sup2;</th></tr>
+      <tr><td>Linear regression</td><td>4155.24</td><td>33,805,467</td><td>5814.25</td><td>0.77</td></tr>
+      <tr><td>Ridge regression</td><td>4167.79</td><td>33,839,690</td><td>5817.19</td><td>0.77</td></tr>
+      <tr><td>XGBoost</td><td>2873.59</td><td>26,515,250</td><td>5149.29</td><td>0.82</td></tr>
+      <tr><td><b>Random forest (default)</b></td><td><b>2572.27</b></td><td><b>21,614,067</b></td><td><b>4649.09</b></td><td><b>0.85</b></td></tr>
+      <tr><td>Random forest + GridSearchCV</td><td>2617.76</td><td>19,698,671</td><td>4438.32</td><td>0.86</td></tr>
+    </table>
+    <p>Random forest&rsquo;s actual-vs-predicted plots cluster tightest around the zero-error line of the four models, with the GridSearchCV-tuned version closest of all &mdash; visual confirmation of the numeric ranking.</p>
   </section>
 
   <section class="card" id="lessons">
@@ -113,9 +145,20 @@
     </ol>
   </section>
 
+  <section class="card" id="limits">
+    <h2>Limitations &amp; critique</h2>
+    <ul>
+      <li><b>Single dataset, few features:</b> only six predictors from one US dataset &mdash; won&rsquo;t automatically generalise to other markets, regulatory regimes or richer feature sets (claims history, medical codes).</li>
+      <li><b>Interpretability trade-off:</b> random forest is harder to explain to a regulator or customer than a linear/ridge coefficient table, even though it predicts better &mdash; a real tension for justifying an individual premium.</li>
+      <li><b>Tuning gave mixed results:</b> GridSearchCV improved 3 of 4 metrics but made MAE slightly worse, showing tuning is not a free win on every metric.</li>
+      <li><b>No external validation:</b> the model is evaluated on a single train/test split of one dataset, not a hold-out year or an independent population.</li>
+      <li>The paper itself flags <b>deep learning (CNN/RNN) and hybrid ensembles</b> as unexplored future directions that might push accuracy further.</li>
+    </ul>
+  </section>
+
   <section class="card" id="exam">
     <h2>Exam focus</h2>
-    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Which algorithm should an insurer trust for pricing, and how do you know?</i>&rdquo; Answer: compare several regressors on multiple metrics (MAE/MSE/RMSE/R&sup2;) &mdash; here random forest wins on all four, XGBoost is second, and tuning buys a further, metric-dependent improvement.</div>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Which algorithm should an insurer trust for pricing, and how do you know?</i>&rdquo; Answer: compare several regressors on multiple metrics (MAE/MSE/RMSE/R&sup2;) &mdash; here random forest wins on all four (R&sup2; 0.85&rarr;0.86 after tuning), XGBoost is second, and linear/ridge lag behind on non-linear pricing data. Be ready to note the interpretability-vs-accuracy trade-off as a critique.</div>
     <p class="ex"><b>Course link:</b> see <a href="Ch7.html">Ch.7 &mdash; Deep Learning &amp; Cognitive Computing (ensembles / predictive modelling)</a> for the matching lecture material. <b>Source paper:</b> <a href="R14-Comparative%20Analysis%20of%20MLs%20for%20Health%20Insurance%20Pricing.pdf">R14-Comparative Analysis of MLs for Health Insurance Pricing.pdf</a>.</p>
   </section>
 

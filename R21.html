@@ -60,9 +60,11 @@
     <a href="#glance">At a glance</a>
     <a href="#argument">Main argument</a>
     <a href="#problem">Problem / context</a>
+    <a href="#concepts">Key concepts</a>
     <a href="#method">Data &amp; method</a>
     <a href="#results">Key results</a>
     <a href="#lessons">5 lessons learned</a>
+    <a href="#limits">Limitations &amp; critique</a>
     <a href="#exam">Exam focus</a>
   </nav>
   <main>
@@ -73,13 +75,15 @@
       <dt>Authors</dt><dd>Morteza Alaeddini &amp; Alireza Asgari (ICN Business School / CEREFIGE, Univ. de Lorraine, Nancy; Univ. Grenoble Alpes)</dd>
       <dt>Venue / year</dt><dd>Procedia Computer Science 253 (2025) 1621&ndash;1630 (6th Int. Conf. on Industry 4.0 and Smart Manufacturing, ISM 2024)</dd>
       <dt>Type</dt><dd>Case study &mdash; layered big-data-analytics architecture design</dd>
-      <dt>Domain</dt><dd>Supply chain &mdash; last-mile agri-food delivery</dd>
-      <dt>Data</dt><dd>Case study at a large B2B2C last-mile food-delivery company; requirements from industry standards + academic literature + company needs</dd>
-      <dt>Methods</dt><dd>Layered architecture (ingestion &rarr; storage &rarr; analytics &rarr; decision) integrating descriptive, predictive &amp; prescriptive analytics</dd>
+      <dt>Domain</dt><dd>Supply chain &mdash; last-mile agri-food delivery (LMD / AFSC)</dd>
+      <dt>Data</dt><dd>Case study at a Middle-East B2B2C last-mile food-delivery company; <b>17 semi-structured interviews</b> (board, CXOs, consultants) + system reports, triangulated</dd>
+      <dt>Methods</dt><dd>Requirements engineering &rarr; 5-layer architecture with UML logical / process / implementation views; integrates descriptive, predictive &amp; prescriptive analytics</dd>
+      <dt>Baselines compared</dt><dd>Reviewed vs. NIST NBDRA, ISO/IEC 20547 BDRA, Kaufmann, Park (IRIS-RM), Keates (MPSCA), Grambau, Ma, Gyulai reference models</dd>
+      <dt>Key metric</dt><dd>Qualitative &mdash; no numeric evaluation; validated by mapping to 7 strategic drivers + functional/non-functional requirements</dd>
       <dt>Course link</dt><dd><b>Big Data Analytics</b></dd>
     </dl>
-    <div class="idea"><b>One-sentence takeaway:</b> a case study at a B2B2C last-mile food-delivery company proposes a <b>layered Big Data Analytics architecture</b> that integrates <b>descriptive + predictive + prescriptive</b> analytics to improve supply-chain <b>resilience</b> &mdash; anticipation, response and recovery from disruption &mdash; where isolated analytics tools fall short.</div>
-    
+    <div class="idea"><b>One-sentence takeaway:</b> a case study at a B2B2C last-mile food-delivery company proposes a <b>5-layer Big Data Analytics architecture</b> that integrates <b>descriptive + predictive + prescriptive</b> analytics to improve supply-chain <b>resilience</b> &mdash; anticipation, response and recovery from disruption &mdash; where isolated analytics tools fall short.</div>
+
   </section>
 
   <section class="card" id="argument">
@@ -89,17 +93,41 @@
 
   <section class="card" id="problem">
     <h2>Problem / Context</h2>
-    <p>Last-mile delivery (LMD) of agri-food must guarantee uninterrupted access to essential food supplies, yet is highly vulnerable to disruption (weather, traffic, demand shocks). Existing generic Big Data Analytics reference models do not explicitly address resilience as a design goal.</p>
+    <p>Last-mile delivery (LMD) is the final, customer-facing leg of the agri-food supply chain (AFSC), and must guarantee <b>uninterrupted access to essential food supplies</b> &mdash; especially in crises (pandemics, labour shortages, traffic disruption). It faces multiple pressures at once: consumers want faster delivery (38% want same-day or less), demand fluctuates with the shift to e-commerce and organic food, ~30% of the world&rsquo;s food is wasted, and LMD&rsquo;s carbon footprint is projected to rise 36% by 2030 with city-centre vehicle bans looming. Big Data Analytics (BDA) is a recognised tool for resilience, but the paper&rsquo;s literature review finds a clear gap: existing reference models each cover only <b>one or two analytics types</b> and none (except a high-level framework by Keates et al., which lacks a detailed design) <b>comprehensively integrates all three</b> &mdash; descriptive, predictive and prescriptive &mdash; for LMD resilience.</p>
+  </section>
+
+  <section class="card" id="concepts">
+    <h2>Key concepts</h2>
+    <dl class="meta-grid">
+      <dt>Supply-chain resilience</dt><dd>The collective ability of AFSC stakeholders to keep food supply stable by <b>anticipating</b> disruptions, delaying their impact, enabling <b>rapid recovery</b>, and learning afterwards &mdash; mapped in this paper to anticipate &rarr; respond &rarr; recover.</dd>
+      <dt>Three analytics types</dt><dd><b>Descriptive</b> = what happened (dashboards, reporting); <b>predictive</b> = what will happen (demand/disruption forecasting); <b>prescriptive</b> = what to do (route/inventory recommendations). Integration of all three is the paper&rsquo;s core contribution.</dd>
+      <dt>B2B2C model</dt><dd>The case company is an intermediary between food suppliers and consumers, delivering groceries via a mobile/web app &mdash; a business-to-business-to-consumer platform.</dd>
+      <dt>Reference architectures</dt><dd>Standardised BDA blueprints (NIST NBDRA roles/fabrics; ISO/IEC 20547 BDRA layers) that give a common language and layered structure but must be adapted to a domain.</dd>
+      <dt>Architectural views</dt><dd>The design is expressed as UML <b>logical</b> (classes/packages), <b>process</b> (ETL + prediction sequence), and <b>implementation</b> (5-layer component) views.</dd>
+    </dl>
   </section>
 
   <section class="card" id="method">
     <h2>Data &amp; Method</h2>
-    <p>The paper uses a <b>case-study approach</b> at a large <b>B2B2C last-mile food-delivery company</b>, drawing requirements from <b>industry standards, academic research, and the company&rsquo;s specific needs</b>. It reviews three groups of prior literature &mdash; general BDA reference models (e.g. Kaufmann&rsquo;s big-data management model), resilient BDA systems (BDA + IoT for disaster prediction and monitoring), and domain-specific architectures &mdash; and then proposes a <b>layered architecture</b> (ingestion &rarr; storage &rarr; analytics &rarr; decision) that carries all three analytics types end to end.</p>
+    <p>The paper uses a <b>case-study approach</b> (Yin) at a large Middle-East <b>B2B2C last-mile food-delivery company</b> that currently uses only descriptive analytics (data warehouse + Power BI) and is transforming toward predictive and prescriptive analytics. Requirements were drawn from <b>17 semi-structured interviews</b> with board members, CXO-level managers and consultants, then <b>triangulated</b> against the company&rsquo;s strategic plan, meeting minutes, BI dashboards and employee feedback. It reviews three literature groups (general BDA reference models e.g. Kaufmann; resilient BDA systems e.g. BDA + IoT for disaster prediction; domain architectures) and two standards (NIST NBDRA, ISO/IEC 20547) before designing the architecture.</p>
+    <ol>
+      <li><b>7 strategic drivers</b> identified: supply-chain visibility, demand forecasting, risk management, operational efficiency, customer-centricity, agility, and sustainability &mdash; each requiring a mix of descriptive/predictive/prescriptive analytics.</li>
+      <li><b>Functional requirements</b>: multi-stakeholder roles, data aggregation from diverse sources (IoT, DBs, web services, sensors), real-time tracking &amp; GPS visibility, dynamic route optimisation, demand forecasting for inventory, customer-behaviour analysis.</li>
+      <li><b>Non-functional requirements</b>: scalability, data security/privacy, reliability/availability, usable interfaces, interoperability.</li>
+      <li><b>Architecture (5 layers)</b>: Big Data <b>Services</b> (governance/quality) &rarr; <b>Framework</b> (storage, processing, OLAP) &rarr; <b>Provision</b> (ingestion/metadata) &rarr; <b>Applications</b> (descriptive/predictive/prescriptive logic) &rarr; <b>Consumption</b> (end-user interfaces + feedback).</li>
+    </ol>
   </section>
 
   <section class="card" id="results">
     <h2>Key Results</h2>
-    <p>The proposed architecture <b>enhances resilience</b> by integrating descriptive, predictive and prescriptive analytics, enabling improved <b>anticipation, response and recovery</b> from supply-chain disruptions &mdash; descriptive analytics shows what happened, predictive analytics anticipates disruption, and prescriptive analytics plans the recovery response.</p>
+    <p>The proposed architecture <b>enhances resilience</b> by integrating descriptive, predictive and prescriptive analytics end-to-end, mapping onto <b>anticipate &rarr; respond &rarr; recover</b>. It is a design contribution, so &ldquo;results&rdquo; are the architecture&rsquo;s properties and its claimed advantages over prior models rather than performance numbers.</p>
+    <table>
+      <tr><th>Analytics type</th><th>Role in the architecture</th><th>Resilience mapping</th></tr>
+      <tr><td>Descriptive</td><td>Data warehouse + dashboards show past operations &amp; consumer behaviour</td><td>Anticipate (situational awareness)</td></tr>
+      <tr><td>Predictive</td><td>Forecast demand, traffic, disruptions from historical + external data</td><td>Respond (proactive optimisation)</td></tr>
+      <tr><td>Prescriptive</td><td>Recommend routes, inventory adjustments, adaptive strategies</td><td>Recover (optimal action)</td></tr>
+    </table>
+    <p>Compared with prior reference models, the authors argue their design integrates directly with big-data platforms (lower latency, higher scalability than Park&rsquo;s IRIS-RM and Keates&rsquo; MPSCA), targets supply-chain resilience specifically (unlike energy/manufacturing-focused models), and emphasises real-time decision support and usable visualisation with feedback loops.</p>
   </section>
 
   <section class="card" id="lessons">
@@ -113,9 +141,20 @@
     </ol>
   </section>
 
+  <section class="card" id="limits">
+    <h2>Limitations &amp; critique</h2>
+    <ul>
+      <li><b>Conceptual, single-case study:</b> the architecture is proposed from one company&rsquo;s requirements and <b>has not been tested with real-world data or experiments</b> &mdash; the paper&rsquo;s own stated limitation.</li>
+      <li><b>No quantitative evaluation:</b> resilience improvements are argued conceptually; no metrics demonstrate the claimed gains over baseline models.</li>
+      <li><b>Unproven generalisability:</b> requirements come from a single Middle-East B2B2C firm; transferability to other industries/regions needs further empirical study.</li>
+      <li><b>Interview-based requirements:</b> the 17 interviews carry self-report and selection bias, only partly mitigated by triangulation.</li>
+      <li><b>Implementation gap:</b> the design stops at architecture views; the actual build, integration and adoption challenges are left to future work.</li>
+    </ul>
+  </section>
+
   <section class="card" id="exam">
     <h2>Exam focus</h2>
-    <div class="exam"><b>Exam angle:</b> &ldquo;<i>How should a company architect Big Data Analytics for supply-chain resilience?</i>&rdquo; Answer: a layered architecture (ingestion &rarr; storage &rarr; analytics &rarr; decision) that integrates descriptive, predictive and prescriptive analytics together &mdash; mapping onto anticipate / respond / recover &mdash; rather than deploying isolated analytics point solutions.</div>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>How should a company architect Big Data Analytics for supply-chain resilience?</i>&rdquo; Answer: a layered architecture (5 layers: Services &rarr; Framework &rarr; Provision &rarr; Applications &rarr; Consumption) that integrates descriptive, predictive and prescriptive analytics together &mdash; mapping onto anticipate / respond / recover &mdash; rather than deploying isolated analytics point solutions. Flag that it&rsquo;s a conceptual single-case design with no quantitative test.</div>
     <p class="ex"><b>Course link:</b> see <a href="BigData.html">Big Data Analytics &mdash; lecture page</a> for the matching lecture material. <b>Source paper:</b> <a href="R21-An%20Integrated%20Big%20Data%20Analytics%20Architecture%20for%20Resilience.pdf">R21-An Integrated Big Data Analytics Architecture for Resilience.pdf</a>.</p>
   </section>
 

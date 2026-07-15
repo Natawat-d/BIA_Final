@@ -60,9 +60,11 @@
     <a href="#glance">At a glance</a>
     <a href="#argument">Main argument</a>
     <a href="#problem">Problem / context</a>
+    <a href="#concepts">Key concepts</a>
     <a href="#method">Data &amp; method</a>
     <a href="#results">Key results</a>
     <a href="#lessons">5 lessons learned</a>
+    <a href="#limits">Limitations &amp; critique</a>
     <a href="#exam">Exam focus</a>
   </nav>
   <main>
@@ -74,12 +76,14 @@
       <dt>Venue / year</dt><dd>Procedia Computer Science 270 (2025) 415&ndash;425 (29th Int. Conf. on Knowledge-Based and Intelligent Information &amp; Engineering Systems, KES 2025)</dd>
       <dt>Type</dt><dd>Qualitative study &mdash; in-depth interviews across organisations</dd>
       <dt>Domain</dt><dd>Business Intelligence &amp; managerial decision-making</dd>
-      <dt>Data</dt><dd>20 organisations across three sectors (services, trade, manufacturing) using in-depth interviews (IDIs)</dd>
-      <dt>Methods</dt><dd>Qualitative interview study; respondents = managers, data analysts, AI/BI specialists</dd>
+      <dt>Data</dt><dd>20 organisations across three sectors (services, trade, manufacturing), Nov&ndash;Dec 2024; min. 50 employees, &ge;6 months AI+BI use</dd>
+      <dt>Methods</dt><dd>Qualitative IDIs; respondents = managers, data analysts, AI/BI specialists; analysed via Power BI Word Cloud + Treemap (indication counts)</dd>
+      <dt>Baselines compared</dt><dd>Conceptual: traditional reactive BI (rational / bounded-rational / intuitive decision models) vs. AI-enhanced augmented analytics</dd>
+      <dt>Key metric</dt><dd>Frequency of &ldquo;indications&rdquo; (mentions) per benefit / objective / barrier across the 20 organisations</dd>
       <dt>Course link</dt><dd><b>Ch.10 &mdash; New AI-Based Trends in Analytics</b></dd>
     </dl>
     <div class="idea"><b>One-sentence takeaway:</b> in-depth interviews at <b>20 organisations</b> across three sectors show that AI-enhanced BI shifts analytics <b>from reactive to proactive/augmented</b> &mdash; automated insight generation, natural-language querying and prescriptive recommendation &mdash; but adoption is gated by <b>data quality, skills, trust and governance</b>.</div>
-    
+
   </section>
 
   <section class="card" id="argument">
@@ -89,17 +93,38 @@
 
   <section class="card" id="problem">
     <h2>Problem / Context</h2>
-    <p>A data explosion combined with growing market uncertainty means managers still often decide from intuition and rear-view BI reports (consistent with rational and bounded-rational decision models). How organisations actually implement AI-enhanced BI in practice &mdash; and how managers perceive it &mdash; remains under-studied.</p>
+    <p>Organisations face an overwhelming volume of data and rapidly-evolving market dynamics, yet managers still often decide from <b>intuition and rear-view BI reports</b> &mdash; consistent with the classic rational, bounded-rational and intuitive decision models. BI is evolving through generations (BI 1.0 reporting &rarr; BI 2.0 interactive &rarr; BI 3.0/4.0 AI-augmented), mirroring Davenport&rsquo;s Analytics 1.0&ndash;4.0 (traditional BI &rarr; big data &rarr; digital transformation &rarr; AI-driven augmented analytics). Although AI-in-BI&rsquo;s potential is widely acknowledged, existing studies focus on <b>technological architectures or theoretical models</b>, leaving a gap: little <b>empirical, qualitative</b> evidence on how organisations actually implement AI-enhanced BI and how managers perceive the benefits, barriers and synergy in real decision-making.</p>
+  </section>
+
+  <section class="card" id="concepts">
+    <h2>Key concepts</h2>
+    <dl class="meta-grid">
+      <dt>Augmented analytics</dt><dd>AI (ML + NLP) autonomously generates insights, detects anomalies and gives real-time recommendations &mdash; the &ldquo;system proposes, manager disposes&rdquo; model that defines BI 4.0 / Analytics 4.0.</dd>
+      <dt>Reactive &rarr; proactive shift</dt><dd>From reporting &ldquo;what happened&rdquo; (historical, descriptive) to automatically suggesting &ldquo;what to do next&rdquo; (predictive + prescriptive).</dd>
+      <dt>BI as a paradigm</dt><dd>The paper frames BI not as a mere tool but as a <b>comprehensive information-management paradigm</b> spanning collection, processing, analysis, visualisation and decision support.</dd>
+      <dt>Natural-language querying / NLP</dt><dd>Lets managers interact with BI in plain language (chatbots, semantic search), reducing the need for advanced analytical expertise.</dd>
+      <dt>Hyperautomation</dt><dd>Combining AI + Robotic Process Automation (RPA) + BI to fully automate decision-making processes &mdash; one of the areas that benefits most from AI&ndash;BI integration.</dd>
+      <dt>In-Depth Interview (IDI)</dt><dd>A qualitative method giving rich, context-sensitive insight into managers&rsquo; lived experience &mdash; chosen because it suits exploring an emerging, complex phenomenon.</dd>
+    </dl>
   </section>
 
   <section class="card" id="method">
     <h2>Data &amp; Method</h2>
-    <p>The authors run a <b>qualitative study</b> using <b>in-depth interviews (IDIs)</b> across <b>20 organisations</b> spanning <b>three economic sectors</b> (services, trade, manufacturing) that actively use BI and AI to support decision-making. Respondents include <b>managers, data analysts, and AI/BI specialists</b>. The objective is to identify the <b>synergy effect</b> between BI and AI &mdash; the benefits, the barriers, and managers&rsquo; perceptions of the technology.</p>
+    <p>A <b>qualitative study</b> using <b>in-depth interviews (IDIs)</b>, conducted <b>November&ndash;December 2024</b> across <b>20 organisations</b> in three economic sectors &mdash; services (IT, finance, logistics, consulting), trade (retail, wholesale, e-commerce), and manufacturing (production, energy, automotive). Selection criteria: minimum 50 employees, at least 6 months of AI+BI use, active use of both in decision-making. Respondents were <b>managers, data analysts, and AI/BI specialists</b>. Interview responses were analysed in <b>Power BI</b> using two text-analysis techniques &mdash; <b>Word Cloud Analysis</b> (word-frequency) and <b>Treemap Visualization</b> (hierarchical proportions) &mdash; and reported as counts of &ldquo;indications&rdquo; (how many respondents mentioned each theme).</p>
   </section>
 
   <section class="card" id="results">
     <h2>Key Results</h2>
-    <p>Identified capabilities include <b>automated insight generation, natural-language querying, forecasting, and prescriptive recommendation</b>. Key barriers are <b>data quality, skills shortage, trust, and governance</b>. The paper frames BI as more than a technology &mdash; a <b>comprehensive information-management paradigm</b> &mdash; with AI-enhanced BI acting as a decision <em>enabler</em>, conditional on organisational readiness.</p>
+    <p>Capabilities identified: <b>automated insight generation, natural-language querying, forecasting, and prescriptive recommendation</b>. The interview counts quantify managers&rsquo; priorities and pain points.</p>
+    <table>
+      <tr><th>Theme</th><th>Top items (indications = mentions)</th></tr>
+      <tr><td>Synergy perceived</td><td>advanced data analysis (18), automation of analytical processes (15), process optimisation (14), personalisation of decisions (12), better visualisation (12), competitiveness (12)</td></tr>
+      <tr><td>Objectives of AI in BI</td><td>data analysis (19), process automation/optimisation (17), improved result visualisation (17)</td></tr>
+      <tr><td>Application areas</td><td>finance (20), marketing (18), logistics (15), manufacturing (12), HR (10), sales (9)</td></tr>
+      <tr><td>Benefits</td><td>faster decision-making (17), decision support (15), anomaly detection &amp; cost reduction (8); retail sector saw most benefit (28)</td></tr>
+      <tr><td><b>Barriers</b></td><td><b>data availability &amp; quality (20)</b>, data consistency/accuracy (18), high implementation costs (15), shortage of AI/BI specialists (12), AI&ndash;BI integration issues (11), security &amp; regulatory/GDPR concerns (10)</td></tr>
+    </table>
+    <p>The paper frames BI as a <b>comprehensive information-management paradigm</b>, with AI-enhanced BI acting as a decision <em>enabler</em> conditional on organisational readiness &mdash; a shift from retrospective reporting to proactive, data-driven decision support.</p>
   </section>
 
   <section class="card" id="lessons">
@@ -113,9 +138,20 @@
     </ol>
   </section>
 
+  <section class="card" id="limits">
+    <h2>Limitations &amp; critique</h2>
+    <ul>
+      <li><b>Qualitative &amp; small sample:</b> the paper&rsquo;s own limitation &mdash; only 20 organisations in three sectors, so findings have <b>limited generalisability</b> to other industries.</li>
+      <li><b>Self-report bias:</b> interview responses reflect personal experience and organisational culture, and may over- or under-state real impact.</li>
+      <li><b>Benefits not quantified:</b> results are counts of mentions, not measured performance gains &mdash; no ROI, accuracy or productivity metrics.</li>
+      <li><b>Context-dependent:</b> the retail sector dominated the reported benefits, suggesting results skew toward fast-moving, data-rich industries.</li>
+      <li>The authors call for <b>mixed-methods / quantitative</b> follow-up, broader sectors, and deeper study of ethics, algorithm transparency and managerial competencies &mdash; all beyond this study&rsquo;s scope.</li>
+    </ul>
+  </section>
+
   <section class="card" id="exam">
     <h2>Exam focus</h2>
-    <div class="exam"><b>Exam angle:</b> &ldquo;<i>How does AI change what BI does for managers?</i>&rdquo; Answer: it shifts BI from reactive reporting to proactive/augmented analytics &mdash; automated insights, natural-language querying, prescriptive suggestions &mdash; drawn from 20 real organisations, but adoption still hinges on data quality, skills, trust and governance.</div>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>How does AI change what BI does for managers?</i>&rdquo; Answer: it shifts BI from reactive reporting to proactive/augmented analytics &mdash; automated insights, natural-language querying, prescriptive suggestions &mdash; drawn from 20 real organisations, but adoption still hinges on data quality (the #1 barrier, 20 indications), skills shortage, trust and governance. Frame BI as a management paradigm, not just technology.</div>
     <p class="ex"><b>Course link:</b> see <a href="Ch10.html">Ch.10 &mdash; New AI-Based Trends in Analytics</a> for the matching lecture material. <b>Source paper:</b> <a href="R22-AI-enhanced_BI.pdf">R22-AI-enhanced_BI.pdf</a>.</p>
   </section>
 

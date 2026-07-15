@@ -60,9 +60,11 @@
     <a href="#glance">At a glance</a>
     <a href="#argument">Main argument</a>
     <a href="#problem">Problem / context</a>
+    <a href="#concepts">Key concepts</a>
     <a href="#method">Data &amp; method</a>
     <a href="#results">Key results</a>
     <a href="#lessons">5 lessons learned</a>
+    <a href="#limits">Limitations &amp; critique</a>
     <a href="#exam">Exam focus</a>
   </nav>
   <main>
@@ -76,10 +78,12 @@
       <dt>Domain</dt><dd>Agriculture &mdash; wheat irrigation scheduling in semi-arid Morocco</dd>
       <dt>Data</dt><dd>Two wheat fields in the Haouz Plain (Field 1 stressed, Field 2 normal), two growing seasons (2016/17, 2017/18)</dd>
       <dt>Methods</dt><dd><b>AquaCrop-OSPy</b> crop simulation coupled with <b>minimize_scalar (bounded)</b> and <b>L-BFGS-B</b> optimizers</dd>
+      <dt>Baselines compared</dt><dd>Real (farmer practice) vs. NET (constant threshold) vs. SMT (stage-specific threshold), pre- and post-optimisation</dd>
+      <dt>Key metric</dt><dd>Irrigation water productivity (WP<sub>Irrigation</sub> = yield / irrigation water); calibration via R&sup2;, RMSE, NSE, index of agreement</dd>
       <dt>Course link</dt><dd><b>Ch.8 &mdash; Prescriptive Analytics: Optimization &amp; Simulation</b></dd>
     </dl>
     <div class="idea"><b>One-sentence takeaway:</b> coupling the <b>AquaCrop</b> crop-simulation model with optimization algorithms (bounded scalar search and L-BFGS-B) over soil-water depletion thresholds cuts irrigation water use by <b>26&ndash;45%</b> versus farmer practice while <b>preserving wheat yield</b> &mdash; the textbook simulation + optimization pattern.</div>
-    
+
   </section>
 
   <section class="card" id="argument">
@@ -89,17 +93,42 @@
 
   <section class="card" id="problem">
     <h2>Problem / Context</h2>
-    <p>Water scarcity is severe in semi-arid Morocco, where agriculture consumes roughly <b>70% of national freshwater</b>. Farmers tend to over-irrigate wheat by habit rather than by any model-based schedule. National cereal production has fallen more than 40%, and average wheat yields sit around only 2 t/ha &mdash; making irrigation efficiency an urgent problem.</p>
+    <p>Water scarcity is severe in semi-arid Morocco, where agriculture consumes roughly <b>70% of national freshwater</b> resources and rainfed wheat/cereal areas are heavily exposed to drought. Annual precipitation in the Haouz Plain averages only ~250 mm, while reference evapotranspiration (ET<sub>0</sub>) reaches ~1600 mm/year &mdash; a large atmospheric water demand that irrigation must fill. Traditional surface/flood irrigation remains dominant and is inefficient, and farmers tend to over-irrigate (or under-irrigate under stress) by habit rather than by any model-based schedule; national cereal production has fallen more than 40% in recent drought years, and average wheat yields sit around only 2 t/ha under rainfed conditions. Prior studies coupling AquaCrop with optimisation (e.g. PSO-based calibration, remote-sensing-informed scheduling) mostly focused on parameter calibration or maize, leaving a gap for <b>multi-stage, threshold-based optimisation of drip-irrigated wheat</b> validated directly against real farmer practice &mdash; the gap this paper fills.</p>
+  </section>
+
+  <section class="card" id="concepts">
+    <h2>Key concepts</h2>
+    <dl class="meta-grid">
+      <dt>Soil-water depletion threshold (p / Dr)</dt><dd>The fraction of Total Available Water (TAW) that can be depleted before crop water stress begins; irrigation triggers once depletion (Dr) exceeds the threshold.</dd>
+      <dt>NET vs. SMT strategy</dt><dd><b>NET</b> = one constant depletion threshold for the whole season; <b>SMT</b> = four different thresholds, one per phenological stage (emergence, canopy expansion, max canopy, senescence).</dd>
+      <dt>minimize_scalar (bounded)</dt><dd>A <b>unidimensional</b> optimizer (SciPy) used for NET&rsquo;s single threshold &mdash; restricts the search to a realistic 0&ndash;100%-of-TAW range for fast, feasible convergence.</dd>
+      <dt>L-BFGS-B</dt><dd>A gradient-based <b>multidimensional</b> optimizer (limited-memory BFGS with bounds) used for SMT&rsquo;s four interdependent thresholds; chosen over heuristic methods (GA, PSO) for faster convergence on this continuous-variable problem.</dd>
+      <dt>Water productivity (WP)</dt><dd>Yield per unit of water; the paper reports both <b>WP<sub>ETa</sub></b> (yield / actual evapotranspiration) and <b>WP<sub>Irrigation</sub></b> (yield / irrigation water applied) &mdash; the latter is the optimizer&rsquo;s objective function.</dd>
+    </dl>
   </section>
 
   <section class="card" id="method">
     <h2>Data &amp; Method</h2>
-    <p>The study uses <b>AquaCrop-OSPy</b>, the FAO crop-simulation model, coupled with two optimizers: a unidimensional <b>minimize_scalar (bounded)</b> search and a multidimensional <b>L-BFGS-B</b> algorithm. The <b>decision variables are soil-water depletion thresholds</b>, and the objective is <b>irrigation water productivity</b>. The model is applied to two wheat fields in the <b>Haouz Plain</b> (Field 1 water-stressed, Field 2 under normal conditions) across two seasons (<b>2016/17, 2017/18</b>), and calibrated against observed <b>canopy cover, biomass, and actual evapotranspiration (ETa)</b>. Three irrigation strategies are compared: <b>Real</b> (farmer practice), <b>NET</b> (one constant depletion threshold), and <b>SMT</b> (stage-specific thresholds aligned to phenological phases &mdash; emergence, canopy expansion, max canopy, senescence).</p>
+    <p>The study uses <b>AquaCrop-OSPy v6.1</b> (FAO&rsquo;s open-source Python crop model), calibrated on <b>2016/17</b> field data and validated on <b>2017/18</b>, then coupled with two optimizers over the <b>decision variables</b> (soil-water depletion thresholds), maximising the objective <b>WP<sub>Irrigation</sub> = Y(&theta;)/I(&theta;)</b>. Two wheat fields in the <b>Haouz Plain</b> (Field 1 &ldquo;stressed&rdquo;: lower/later irrigation; Field 2 &ldquo;normal&rdquo;: fuller irrigation), each ~1.5 ha with the same drip-irrigation, sowing/harvest dates and soil texture (30% clay, 30% silt, 40% sand). Inputs were measured directly: ET<sub>a</sub> via eddy-covariance station, soil moisture via TDR probes, canopy cover via hemispherical photography, biomass via destructive sampling, yield via harvest quadrats.</p>
+    <ol>
+      <li><b>Data collection</b> &mdash; weather (Tmin/Tmax, precipitation, ET<sub>0</sub> via FAO Penman-Monteith), soil hydraulic properties, irrigation records, crop measurements (CC, biomass, ET<sub>a</sub>, yield).</li>
+      <li><b>Calibration</b> (S1 season) &mdash; grid search over non-conservative parameters (CCx=0.95, CGC=0.89, CDC=0.60, WP*=16 g/m&sup2;, HI0=46%, emergence 82 CGDD, maturity 1462 CGDD, etc.) to align simulated vs. observed CC/biomass/ET<sub>a</sub>/yield.</li>
+      <li><b>Validation</b> (S2 season) &mdash; same fixed parameter set applied without modification, testing transferability.</li>
+      <li><b>Scenario simulation</b> &mdash; three irrigation strategies run in AquaCrop: Real (farmer), NET, SMT.</li>
+      <li><b>Optimization</b> &mdash; NET threshold via <code>minimize_scalar</code> (bounded, 0&ndash;100% TAW); SMT&rsquo;s 4 stage thresholds via <code>L-BFGS-B</code> (numeric finite-difference gradients, SciPy default tolerances).</li>
+      <li><b>Sensitivity analysis</b> &mdash; one-at-a-time &plusmn;20% perturbation on 7 parameters (WP*, HI0, Zr,max, CGC, &theta;FC, &theta;WP) across F1-S1 and F2-S2 under Real/NETopt/SMTopt.</li>
+    </ol>
   </section>
 
   <section class="card" id="results">
     <h2>Key Results</h2>
-    <p>Calibration quality is strong: <b>R&sup2; 74&ndash;93%</b>, <b>NSE 0.71&ndash;0.95</b>, index of agreement 0.86&ndash;0.98. The optimised <b>SMT</b> strategy cuts irrigation by <b>26&ndash;31%</b> on Field 1 and <b>42&ndash;45%</b> on Field 2 relative to farmer practice, while sustaining yields of <b>6.43 t/ha</b> (Season 1) and <b>6.24 t/ha</b> (Season 2) and raising irrigation water productivity to <b>2.08&ndash;2.33 kg/m&sup3;</b>. The optimised <b>NET</b> strategy saved only <b>4&ndash;34%</b> &mdash; so <b>SMT clearly beats NET</b> on the water&ndash;yield balance.</p>
+    <p><b>Calibration quality</b> is strong across CC, biomass and ET<sub>a</sub>: R&sup2; 74&ndash;93%, NSE 0.71&ndash;0.95, index of agreement (d) 0.86&ndash;0.98, RMSE 0.09&ndash;0.10 (CC), 0.15&ndash;0.44 t/ha (biomass), 0.52&ndash;0.61 mm/day (ET<sub>a</sub>) &mdash; validated similarly in the second season, confirming AquaCrop-OSPy&rsquo;s reliability for semi-arid wheat.</p>
+    <table>
+      <tr><th>Strategy</th><th>Field 1 water saving vs. farmer</th><th>Field 2 water saving vs. farmer</th><th>Yield sustained</th><th>WP<sub>Irrigation</sub></th></tr>
+      <tr><td>Optimised NET</td><td>10&ndash;11% (rel. pre-opt)</td><td>4&ndash;34% (vs. farmer)</td><td>moderate</td><td>moderate gains</td></tr>
+      <tr><td><b>Optimised SMT</b></td><td><b>26&ndash;31%</b></td><td><b>42&ndash;45%</b></td><td><b>6.43 t/ha (S1) &middot; 6.24 t/ha (S2)</b></td><td><b>2.08&ndash;2.33 kg/m&sup3;</b></td></tr>
+    </table>
+    <p><b>SMT clearly beats NET</b> on the water&ndash;yield balance: stage-specific thresholds cut irrigation nearly twice as much on Field 2 (42&ndash;45% vs. farmer) while sustaining the same yield levels, because timing the threshold to the crop&rsquo;s phenological stage avoids water stress during sensitive phases while saving water during tolerant ones.</p>
   </section>
 
   <section class="card" id="lessons">
@@ -113,9 +142,20 @@
     </ol>
   </section>
 
+  <section class="card" id="limits">
+    <h2>Limitations &amp; critique</h2>
+    <ul>
+      <li><b>Narrow scope:</b> only 2 fields, 2 seasons, one crop (wheat), one region (Haouz Plain) &mdash; generalising the exact savings percentages to other crops/regions is unproven.</li>
+      <li><b>Calibration-dependent:</b> the whole result chain rests on accurate calibration and reliable soil-moisture/ET<sub>a</sub> measurements; a poorly-instrumented field could not reproduce these gains.</li>
+      <li><b>Optimizer simplifications:</b> only simple bound constraints (0&ndash;100% TAW) were used; a planned maximum-seasonal-irrigation hard constraint was not implemented in the final runs.</li>
+      <li><b>Simulated, not field-tested, optimum:</b> the optimised SMT/NET schedules are AquaCrop-simulated outcomes, not yet re-validated by actually irrigating a field to the optimised thresholds and re-measuring yield.</li>
+      <li>Findings assume the FAO Penman-Monteith ET<sub>0</sub> and pedotransfer-derived soil parameters are accurate; hydraulic properties were estimated, not directly measured, for some layers.</li>
+    </ul>
+  </section>
+
   <section class="card" id="exam">
     <h2>Exam focus</h2>
-    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Illustrate simulation + optimization with a real example.</i>&rdquo; Answer: AquaCrop simulates wheat growth under different irrigation choices; the optimizer (minimize_scalar / L-BFGS-B) searches over soil-water depletion thresholds to maximise irrigation water productivity &mdash; the stage-specific (SMT) result cuts water 26&ndash;45% while keeping yield near 6.2&ndash;6.4 t/ha.</div>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Illustrate simulation + optimization with a real example.</i>&rdquo; Answer: AquaCrop simulates wheat growth under different irrigation choices; the optimizer (minimize_scalar / L-BFGS-B) searches over soil-water depletion thresholds to maximise irrigation water productivity &mdash; the stage-specific (SMT) result cuts water 26&ndash;45% while keeping yield near 6.2&ndash;6.4 t/ha. Be ready to contrast NET (one constant threshold, unidimensional search) vs. SMT (four stage-specific thresholds, multidimensional search).</div>
     <p class="ex"><b>Course link:</b> see <a href="Ch8.html">Ch.8 &mdash; Prescriptive Analytics: Optimization &amp; Simulation</a> for the matching lecture material. <b>Source paper:</b> <a href="R15-AquaCrop%20model%20and%20optimization%20techniques.pdf">R15-AquaCrop model and optimization techniques.pdf</a>.</p>
   </section>
 

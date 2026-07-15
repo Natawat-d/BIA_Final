@@ -60,9 +60,11 @@
     <a href="#glance">At a glance</a>
     <a href="#argument">Main argument</a>
     <a href="#problem">Problem / context</a>
+    <a href="#concepts">Key concepts</a>
     <a href="#method">Data &amp; method</a>
     <a href="#results">Key results</a>
     <a href="#lessons">5 lessons learned</a>
+    <a href="#limits">Limitations &amp; critique</a>
     <a href="#exam">Exam focus</a>
   </nav>
   <main>
@@ -73,9 +75,11 @@
       <dt>Authors</dt><dd>Koen Pauwels &amp; Zeynep Aksehirli (Northeastern University, Boston, USA)</dd>
       <dt>Venue / year</dt><dd>Journal of Business Research 188 (2025) 115112</dd>
       <dt>Type</dt><dd>Conceptual / viewpoint paper &mdash; marketing-strategy synthesis</dd>
-      <dt>Domain</dt><dd>Marketing analytics &amp; data privacy</dd>
+      <dt>Domain</dt><dd>Marketing analytics &amp; data privacy (omnichannel, retail media)</dd>
       <dt>Data</dt><dd>Conceptual synthesis of industry practice + academic literature (no primary dataset)</dd>
-      <dt>Methods</dt><dd>Framework paper: three challenge levels matched to three solution frameworks</dd>
+      <dt>Methods</dt><dd>Framework paper: three challenge levels matched to three solution frameworks + a research agenda</dd>
+      <dt>Baselines compared</dt><dd>Multi-touch attribution (MTA) vs. marketing-mix modelling (MMM) vs. RCTs / geo-experiments; deterministic vs. probabilistic tracking</dd>
+      <dt>Key metric</dt><dd>None quantitative (viewpoint); cites industry stats (analysts spend &gt;80% of effort on data; LiveRamp&ndash;Habu $200M / 11&times; revenue)</dd>
       <dt>Course link</dt><dd><b>Ch.11 &mdash; Ethical, Privacy &amp; Managerial Considerations</b></dd>
     </dl>
     <div class="idea"><b>One-sentence takeaway:</b> omnichannel data creates three challenges &mdash; organizational (silos), operational (insight generation), societal (privacy) &mdash; met by three matched solutions: <b>democratizing analytics</b>, <b>data clean rooms</b> for cross-competitor collaboration, and <b>customer privacy choice by design</b>.</div>
@@ -89,17 +93,42 @@
 
   <section class="card" id="problem">
     <h2>Problem / Context</h2>
-    <p>Digital platforms have driven a data explosion, and Big Data Analytics is moving well beyond social media into retail media, both online and offline. Customer data now sits fragmented across competing <b>&ldquo;walled gardens&rdquo;</b>, breaking cross-channel <b>attribution</b>; meanwhile privacy regulation and consumer distrust are both rising. Analysts still spend <b>more than 80%</b> of their effort just wrangling the data.</p>
+    <p>Digital platforms drove a data explosion, and Big Data Analytics is moving well beyond social media into <b>retail media</b>, online and offline, in an omnichannel world. Three linked obstacles block value: (1) <b>organizational silos</b> &mdash; &ldquo;TV creatives,&rdquo; data scientists, social-media gurus, business leaders and digital marketers barely talk, and analysts still spend <b>more than 80%</b> of effort on the data part; (2) <b>attribution breaks</b> because customer data sits in competing <b>&ldquo;walled gardens&rdquo;</b> (Facebook, Instagram, Amazon, Apple, Google) that guard their data, so cross-channel/offline attribution is fragmented; and (3) <b>rising privacy concern and regulation</b> (GDPR, CCPA, third-party-cookie deprecation) collide with the promise of personalization. The authors note current privacy evidence is mostly stated preference (only ~0.23% of US ad impressions come from users who opted out), so the field lacks revealed-preference evidence on how consumers actually trade off privacy for price/convenience.</p>
+  </section>
+
+  <section class="card" id="concepts">
+    <h2>Key concepts</h2>
+    <dl class="meta-grid">
+      <dt>Walled garden</dt><dd>A closed platform/ecosystem whose owner totally controls content and restricts data access (Amazon, Google, Meta) &mdash; the structural cause of broken cross-channel attribution.</dd>
+      <dt>Data clean room</dt><dd>A secure, privacy-focused environment where two parties combine datasets and run joint analyses (e.g. audience overlap) <b>without sharing raw customer records</b> &mdash; e.g. Amazon Marketing Cloud, LiveRamp.</dd>
+      <dt>Attribution: MTA vs. MMM</dt><dd><b>Multi-touch attribution</b> (individual-level, cookie-based, now decaying) vs. <b>marketing-mix modelling</b> (aggregate, privacy-safe, uses time as counterfactual) vs. RCTs / geo-experiments (consumers/geographies as counterfactual).</dd>
+      <dt>Deterministic vs. probabilistic tracking</dt><dd>Deterministic = persistent login IDs (email) &rarr; high accuracy; probabilistic = statistical inference from IP/device/browser &rarr; less precise but usable when logins are absent.</dd>
+      <dt>Nested Adaptive Change (NAC) model</dt><dd>The organizational-change framework used for democratization: change often starts in small, agile units near the customer and cascades upward; a bottom-up + top-down hybrid works best.</dd>
+      <dt>Privacy calculus</dt><dd>Consumers weigh the benefits (personalization, convenience) against the risks of sharing data &mdash; the trade-off privacy-by-design must respect.</dd>
+    </dl>
   </section>
 
   <section class="card" id="method">
     <h2>Data &amp; Method</h2>
-    <p>This is a <b>conceptual / viewpoint paper</b> written through a marketing-strategy lens, synthesising industry practice and academic literature rather than reporting a primary dataset. It frames the three challenge levels above and proposes three matched solution frameworks &mdash; <b>within-business leadership</b> (democratization), <b>cross-business data trade</b> (clean rooms), and <b>customer privacy choice</b> &mdash; plus a forward-looking research agenda for academics and practising analysts.</p>
+    <p>This is a <b>conceptual / viewpoint paper</b> written through a marketing-strategy lens, synthesising the authors&rsquo; industry experience (5 years in retail-media ads; books on democratizing digital transformation) and academic literature rather than reporting a primary dataset. It structures the argument as three challenge levels, each matched to a solution framework, and closes with a research agenda.</p>
+    <ol>
+      <li><b>Challenge 1 &mdash; Organizational silos</b> &rarr; Solution 1: <b>democratize digital transformation</b>, spreading analytics literacy and leadership across the business using the Nested Adaptive Change model (hybrid top-down + bottom-up), with GenAI as a skill-building/decision-support aid.</li>
+      <li><b>Challenge 2 &mdash; Operational (attribution across walled gardens)</b> &rarr; Solution 2: <b>data clean rooms</b> for cross-business data trade without exposing raw records; the paper cites the &ldquo;Gravity Theory of Walled Garden&rdquo; predicting which platforms will trade data.</li>
+      <li><b>Challenge 3 &mdash; Societal (privacy)</b> &rarr; Solution 3: <b>customer choice in privacy by design</b>, giving consumers a real choice over how data is collected/used; the authors run a cross-continental conjoint study on privacy-vs-convenience trade-offs.</li>
+    </ol>
+    <p>It emphasises the three challenges/solutions are <b>interrelated</b>: breaking silos (1) enables a 360&deg; view (2), which only has value if consumers accept tracking (3).</p>
   </section>
 
   <section class="card" id="results">
     <h2>Key Results</h2>
-    <p>① <b>Democratization</b> &mdash; spreading analytics skills and leadership across the whole business, breaking down organizational silos. ② <b>Data clean rooms</b> &mdash; a neutral space in which competitors and platforms can collaborate on data <b>without exposing raw customer records</b> to each other. ③ <b>Privacy choice</b> &mdash; letting customers choose their own level of data sharing, converting a compliance burden into a source of customer trust.</p>
+    <p>The paper&rsquo;s &ldquo;results&rdquo; are its three matched solution frameworks and supporting industry evidence (it is a viewpoint, not an empirical study).</p>
+    <table>
+      <tr><th>Challenge (level)</th><th>Solution</th><th>Mechanism</th></tr>
+      <tr><td>Organizational (silos)</td><td><b>Democratization</b></td><td>Spread analytics skills &amp; leadership across the business; hybrid top-down/bottom-up change; GenAI lowers the learning barrier</td></tr>
+      <tr><td>Operational (insight / attribution)</td><td><b>Data clean rooms</b></td><td>Competitors/platforms collaborate on combined data <b>without exposing raw records</b>; enables cross-walled-garden attribution</td></tr>
+      <tr><td>Societal (privacy)</td><td><b>Privacy choice by design</b></td><td>Let customers choose their data-sharing level &rarr; turns compliance into trust and competitive advantage</td></tr>
+    </table>
+    <p>Supporting signals of the clean-room trend: LiveRamp acquired Habu for <b>$200M</b> (~11&times; forward revenue) to accelerate clean-room data collaboration; a bottom-up ticketing initiative at one firm cut response times <b>50%</b>. The authors argue MMM is enjoying a revival as a privacy-safe, full-funnel alternative to decaying cookie-based MTA, with geo-experiments combining MMM&rsquo;s privacy benefits and experiments&rsquo; causal counterfactual.</p>
   </section>
 
   <section class="card" id="lessons">
@@ -113,9 +142,20 @@
     </ol>
   </section>
 
+  <section class="card" id="limits">
+    <h2>Limitations &amp; critique</h2>
+    <ul>
+      <li><b>Conceptual, no empirical test:</b> it is a viewpoint/opinion piece synthesising the authors&rsquo; experience &mdash; the frameworks are argued, not validated with data or an experiment.</li>
+      <li><b>Assumes industry adoption:</b> clean rooms and privacy-choice depend on competing platforms and regulators actually cooperating; feasibility and incentives are asserted, not proven.</li>
+      <li><b>Marketing-centric:</b> the lens is marketing strategy / retail media, so the solutions may not generalise to other analytics domains.</li>
+      <li><b>Feasibility not quantified:</b> costs, effort and success rates of democratization / clean-room / privacy-choice programmes aren&rsquo;t measured.</li>
+      <li><b>Privacy evidence gap acknowledged:</b> the authors themselves note current evidence is largely stated-preference, and call for revealed-preference research on real privacy&ndash;convenience trade-offs.</li>
+    </ul>
+  </section>
+
   <section class="card" id="exam">
     <h2>Exam focus</h2>
-    <div class="exam"><b>Exam angle:</b> &ldquo;<i>How can a firm reconcile omnichannel analytics with customer privacy?</i>&rdquo; Answer: treat it as three linked challenges &mdash; organizational silos, operational insight generation, societal privacy &mdash; and address them respectively with democratized analytics leadership, data clean rooms for cross-platform collaboration without exposing raw data, and privacy choice by design.</div>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>How can a firm reconcile omnichannel analytics with customer privacy?</i>&rdquo; Answer: treat it as three linked challenges &mdash; organizational silos, operational insight/attribution across walled gardens, societal privacy &mdash; and address them respectively with democratized analytics leadership, data clean rooms for cross-platform collaboration without exposing raw data, and privacy choice by design (turning compliance into a trust advantage). Note it&rsquo;s a conceptual viewpoint, and that MMM is reviving as a privacy-safe alternative to cookie-based MTA.</div>
     <p class="ex"><b>Course link:</b> see <a href="Ch11.html">Ch.11 &mdash; Ethical, Privacy &amp; Managerial Considerations</a> for the matching lecture material. <b>Source paper:</b> <a href="R24-Big%20data%20analytics%20and%20customer%20privacy%20choice.pdf">R24-Big data analytics and customer privacy choice.pdf</a>.</p>
   </section>
 

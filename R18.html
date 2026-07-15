@@ -60,9 +60,11 @@
     <a href="#glance">At a glance</a>
     <a href="#argument">Main argument</a>
     <a href="#problem">Problem / context</a>
+    <a href="#concepts">Key concepts</a>
     <a href="#method">Data &amp; method</a>
     <a href="#results">Key results</a>
     <a href="#lessons">5 lessons learned</a>
+    <a href="#limits">Limitations &amp; critique</a>
     <a href="#exam">Exam focus</a>
   </nav>
   <main>
@@ -74,12 +76,14 @@
       <dt>Venue / year</dt><dd>Smart Health 35 (2025) 100525</dd>
       <dt>Type</dt><dd>Applied case study &mdash; rule-based expert system (ontology + semantic rules)</dd>
       <dt>Domain</dt><dd>Mental-health diagnosis &mdash; distinguishing Bipolar Disorder from Major Depressive Disorder</dd>
-      <dt>Data</dt><dd>120 clinical samples, validated by expert psychiatrists, using 17 specified symptoms</dd>
-      <dt>Methods</dt><dd><b>Ontology + SWRL semantic rules</b>: single-symptom rules and symptom-combination rules</dd>
+      <dt>Data</dt><dd>120 labelled clinical samples (30 each: Normal, Mania BD, Depressive BD, MDD) from a private clinic; published on Harvard Dataverse; 17 symptoms</dd>
+      <dt>Methods</dt><dd><b>Certainty-Factor rule-based ES</b>: ontology + SWRL rules; forward-chaining; single-symptom rules and symptom-combination rules (Prolog + C#)</dd>
+      <dt>Baselines compared</dt><dd>Prior mental-disorder ES: Hossain et al. belief-rule-based ES (86% avg.); Muhammad et al. BD-only CF ES; Eiring et al. usability 78%</dd>
+      <dt>Key metric</dt><dd>Success rate / accuracy per class; sensitivity, specificity, precision, F1; user-acceptance score (out of 4)</dd>
       <dt>Course link</dt><dd><b>Expert Systems</b></dd>
     </dl>
     <div class="idea"><b>One-sentence takeaway:</b> a <b>rule-based expert system</b> built from an ontology and SWRL rules &mdash; encoding psychiatrists&rsquo; heuristics about 17 symptoms &mdash; classifies MDD vs. manic/depressive Bipolar Disorder at a <b>93.33% success rate</b>, with a high clinician-acceptance score of <b>3.56/4</b>.</div>
-    
+
   </section>
 
   <section class="card" id="argument">
@@ -89,17 +93,43 @@
 
   <section class="card" id="problem">
     <h2>Problem / Context</h2>
-    <p>Major Depressive Disorder (MDD) and Bipolar Disorder (BD) <b>share overlapping symptoms</b> (sadness, exhaustion), so BD is routinely misdiagnosed as MDD. The wrong treatment can actually <b>trigger a manic episode</b> in a misdiagnosed bipolar patient, making early, explainable diagnosis a genuine community-health need.</p>
+    <p>Major Depressive Disorder (MDD) and Bipolar Disorder (BD) <b>share overlapping symptoms</b> (sadness, exhaustion, sleep disorder), so BD is routinely misdiagnosed as MDD &mdash; a serious error, because the wrong treatment (e.g. an antidepressant) can actually <b>trigger a manic episode</b> in a misdiagnosed bipolar patient. Roughly <b>8&ndash;12% of the world&rsquo;s population</b> suffers from one of these disorders, so a reliable early-diagnosis decision-support system could affect community mental health broadly. The paper notes that most ML approaches to mood-disorder diagnosis rely on EEG/sMRI (recorded physiological signals) rather than behavioural symptoms, and that behavioural datasets are scarce &mdash; while clinicians favour expert systems precisely because their reasoning is <b>traceable and interpretable</b>, unlike black-box ML. Prior work rarely differentiated all of Mania BD, Depressive BD, MDD <em>and</em> normal individuals in one system, or published its rules/data &mdash; the gap this paper fills.</p>
+  </section>
+
+  <section class="card" id="concepts">
+    <h2>Key concepts</h2>
+    <dl class="meta-grid">
+      <dt>Rule-based expert system</dt><dd>Four components: <b>knowledge base</b> (rules), <b>inference engine</b> (applies rules to facts), <b>explanation facility</b> (traces reasoning), and <b>GUI</b>. Here the DB/GUI/explanation parts are optional add-ons, not core to the ES.</dd>
+      <dt>Certainty Factor (CF)</dt><dd>A number expressing degree of belief/disbelief in a hypothesis; each symptom updates the CF of each disorder class, and the class with the highest CF is the prediction. Chosen over fuzzy logic for being more interpretable, better aligned with clinicians&rsquo; confidence-based reasoning, and computationally lighter.</dd>
+      <dt>Ontology model</dt><dd>Conceptualises the classes (disorders) and their symptoms as objects/attributes, with increasing/decreasing relations between each symptom and each disorder&rsquo;s CF &mdash; making the knowledge shareable, reusable and extensible.</dd>
+      <dt>SWRL (Semantic Web Rule Language)</dt><dd>IF-THEN rules compatible with OWL ontology syntax, e.g. <code>Patient(?x) &and; MoodSwing(?x,True) &and; SuicidalThoughts(?x,True) &rarr; UpdateMBD(?x, FactorC)</code>.</dd>
+      <dt>Forward chaining</dt><dd>Reasons from the observed symptoms toward a conclusion &mdash; chosen over backward chaining, which risked fixing on an assumed diagnosis before enough evidence (e.g. calling every depressive-BD case MDD) was gathered.</dd>
+    </dl>
   </section>
 
   <section class="card" id="method">
     <h2>Data &amp; Method</h2>
-    <p>The system is built on an <b>ontology plus SWRL semantic rules</b>, developed on the recommendation of expert psychiatrists. There are <b>two rule groups</b>: one evaluates <b>single symptoms</b>, the other evaluates <b>combinations of symptoms</b> (e.g. sadness + mood swings together provide stronger evidence of BD than either alone). The system distinguishes four classes: <b>MDD, manic BD, depressive BD, and ordinary individuals with mild symptoms</b>. It was validated by <b>expert psychiatrists</b> and tested against <b>120 clinical samples</b>, using only <b>17 specified symptoms</b> as inputs.</p>
+    <p>The system is built on an <b>ontology plus SWRL semantic rules</b>, developed through two rounds of expert-psychiatrist interviews (first to collect symptom knowledge, second to tune the CF coefficients until the expert was satisfied). Implemented in <b>Prolog + C#</b> with a simple GUI (a 2&ndash;3 minute questionnaire). The <b>17 behavioural symptoms</b> were chosen with clinicians to minimise inputs while still distinguishing the disorders (age/gender were deliberately excluded as too error-prone to weight). There are <b>two rule groups</b>: one evaluates <b>single symptoms</b>, the other <b>combinations of symptoms</b> (e.g. sadness + mood swings together give stronger BD evidence than either alone).</p>
+    <ol>
+      <li><b>Classes</b> &mdash; four: MDD, Mania BD, Depressive BD, and ordinary individuals with mild symptoms.</li>
+      <li><b>Symptoms (17)</b> &mdash; Sadness, Exhaustness, Euphoric, Sleep disorder, Mood swings, Suicidal thoughts, Anorexia, Anxiety, Try-explaining, Nervous breakdown, Ignore &amp; Move-on, Admitting mistakes, Overthinking, Aggressive response, Optimism, Sexual activity, Concentration.</li>
+      <li><b>Dataset</b> &mdash; 120 labelled samples (30 per class) from a private clinic, published on Harvard Dataverse; used only for testing, not for tuning the CFs.</li>
+      <li><b>Inference</b> &mdash; forward-chaining; each symptom updates each class&rsquo;s CF; highest-CF class wins; a &ldquo;full explanation&rdquo; button shows the CF for every class.</li>
+      <li><b>Evaluation</b> &mdash; confusion matrix (per-class TP/FP/FN/TN) vs. expert labels, plus a 17-question user-satisfaction survey (~76 volunteers).</li>
+    </ol>
   </section>
 
   <section class="card" id="results">
     <h2>Key Results</h2>
-    <p>The system classifies mental-disorder cases with a <b>success rate of 93.33%</b> using only the 17 symptoms, and achieves a <b>user-acceptance score of 3.56 / 4</b> &mdash; a high score reflecting that clinicians trust the system because its reasoning is transparent and explainable.</p>
+    <p>The overall <b>success rate is 93.33%</b> using only the 17 symptoms, with strong per-class metrics from the confusion matrix (Table 7). A separate performance test on limited clinical samples reported <b>92.45% (49/53)</b>; the mispredictions were cases where competing CFs were close or the patient showed a very broad symptom mix. User acceptance averaged <b>3.56/4</b> overall (and 3.60/4 on the four GUI-specific questions), reflecting trust in the transparent reasoning.</p>
+    <table>
+      <tr><th>Class</th><th>Sensitivity</th><th>Specificity</th><th>Precision</th><th>Accuracy</th><th>F1-score</th></tr>
+      <tr><td>Mania Bipolar</td><td>92.85%</td><td>95.65%</td><td>86.66%</td><td>95%</td><td>89.65%</td></tr>
+      <tr><td>Depressive Bipolar</td><td>93.54%</td><td>98.67%</td><td>96.66%</td><td>97.50%</td><td>95.08%</td></tr>
+      <tr><td>Major Depression</td><td>93.54%</td><td>98.87%</td><td>96.66%</td><td>97.50%</td><td>95.08%</td></tr>
+      <tr><td>Normal</td><td>93.33%</td><td>97.77%</td><td>93.33%</td><td>96.66%</td><td>93.33%</td></tr>
+    </table>
+    <p>By comparison, the prior belief-rule-based ES (Hossain et al.) reached ~86% average, and earlier BD-only systems lacked the MDD/BD/normal differentiation this system provides.</p>
   </section>
 
   <section class="card" id="lessons">
@@ -113,9 +143,20 @@
     </ol>
   </section>
 
+  <section class="card" id="limits">
+    <h2>Limitations &amp; critique</h2>
+    <ul>
+      <li><b>Rules must be hand-encoded:</b> the paper&rsquo;s own stated limitation &mdash; a medical expert is required for any change to the rules, and the rules/CF coefficients differ from one expert to another (subjective).</li>
+      <li><b>Small, narrow evaluation:</b> only 17 symptoms, 120 samples, and 2 disorders (plus normal) &mdash; the 17-symptom choice is acknowledged as potentially controversial since every psychiatrist has a unique approach.</li>
+      <li><b>No learning from data:</b> static rules don&rsquo;t improve automatically as new cases arrive; they need manual expert upkeep, unlike ML models.</li>
+      <li><b>Crisp margins:</b> the model uses crisp thresholds; the authors suggest <b>fuzzy variables</b> would be more realistic, and propose coupling with biomarkers via a voting mechanism.</li>
+      <li><b>Limited scope of disorders:</b> only mood disorders are covered; extending to schizophrenia, OCD, etc. is future work, and no large-scale prospective clinical trial is reported.</li>
+    </ul>
+  </section>
+
   <section class="card" id="exam">
     <h2>Exam focus</h2>
-    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Why choose a rule-based expert system over machine learning for this diagnostic task?</i>&rdquo; Answer: MDD/BD data is scarce and the domain is judgment-heavy; a rule-based ES encoding psychiatrists&rsquo; single-symptom and symptom-combination rules reaches 93.33% success with full explainability (WHY/HOW), which is what earns clinician trust (acceptance 3.56/4).</div>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Why choose a rule-based expert system over machine learning for this diagnostic task?</i>&rdquo; Answer: MDD/BD behavioural data is scarce and the domain is judgment-heavy; a Certainty-Factor rule-based ES encoding psychiatrists&rsquo; single-symptom and symptom-combination rules (via ontology + SWRL, forward chaining) reaches 93.33% success with full explainability (WHY/HOW), which earns clinician trust (acceptance 3.56/4). Be ready to name the four ES components and why CF was chosen over fuzzy logic.</div>
     <p class="ex"><b>Course link:</b> see <a href="ExpertSystems.html">Expert Systems &mdash; lecture page</a> for the matching lecture material. <b>Source paper:</b> <a href="R18_A%20novel%20rule-based%20expert%20system%20for%20early%20diagnosis.pdf">R18_A novel rule-based expert system for early diagnosis.pdf</a>.</p>
   </section>
 

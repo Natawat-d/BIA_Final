@@ -60,9 +60,11 @@
     <a href="#glance">At a glance</a>
     <a href="#argument">Main argument</a>
     <a href="#problem">Problem / context</a>
+    <a href="#concepts">Key concepts</a>
     <a href="#method">Data &amp; method</a>
     <a href="#results">Key results</a>
     <a href="#lessons">5 lessons learned</a>
+    <a href="#limits">Limitations &amp; critique</a>
     <a href="#exam">Exam focus</a>
   </nav>
   <main>
@@ -74,12 +76,14 @@
       <dt>Venue / year</dt><dd>International Journal of Geoinformatics 21(4), 2025</dd>
       <dt>Type</dt><dd>Systematic review &mdash; multi-criteria decision analysis (MCDA)</dd>
       <dt>Domain</dt><dd>Disaster risk mapping &mdash; flood &amp; landslide susceptibility</dd>
-      <dt>Data</dt><dd>A review of &asymp;20 landslide-susceptibility studies + &asymp;20 flood-susceptibility studies applying AHP + GIS</dd>
+      <dt>Data</dt><dd>A comparative synthesis of <b>20 landslide</b> + <b>20 flood</b> susceptibility studies applying AHP + GIS across varied global contexts</dd>
       <dt>Methods</dt><dd><b>Analytical Hierarchy Process (AHP)</b>: hierarchy &rarr; pairwise comparison (Saaty 1&ndash;9) &rarr; eigenvector weights &rarr; Consistency Ratio check &rarr; GIS weighted overlay</dd>
+      <dt>Baselines compared</dt><dd>Four sub-criteria weighting schemes: straight ranking, reciprocal ranking, exponential ranking, rank-order centroid (ROC)</dd>
+      <dt>Key metric</dt><dd>Criteria priority frequency across studies; Consistency Ratio (CR &lt; 0.1) as the validity check</dd>
       <dt>Course link</dt><dd><b>Ch.8 (MCDM / Tutorial 2 &middot; SuperDecisions)</b></dd>
     </dl>
-    <div class="idea"><b>One-sentence takeaway:</b> a systematic review of &asymp;40 AHP + GIS studies shows AHP is an effective, transparent way to fuse <b>expert judgment with quantitative data</b> for flood/landslide susceptibility mapping (via pairwise comparison, eigenvector weights and a Consistency Ratio &lt; 0.1), but criteria must be <b>context-specific</b> to each hazard.</div>
-    
+    <div class="idea"><b>One-sentence takeaway:</b> a systematic review of <b>40 AHP + GIS studies</b> (20 landslide + 20 flood) shows AHP is an effective, transparent way to fuse <b>expert judgment with quantitative data</b> for susceptibility mapping (via pairwise comparison, eigenvector weights and a Consistency Ratio &lt; 0.1), but criteria must be <b>context-specific</b> to each hazard.</div>
+
   </section>
 
   <section class="card" id="argument">
@@ -89,17 +93,43 @@
 
   <section class="card" id="problem">
     <h2>Problem / Context</h2>
-    <p>Flood and landslide risk mapping involves many criteria of unequal importance. Purely data-driven maps ignore valuable expert knowledge, while purely expert-opinion maps can be inconsistent. AHP addresses this by integrating both, typically paired with <b>GIS</b> for spatial mapping.</p>
+    <p>Site-suitability analysis for disaster-prone areas involves many criteria of unequal importance &mdash; environmental (slope, soil, land cover), socio-economic (population, proximity to services), and regulatory (zoning). Purely data-driven maps ignore valuable local expert knowledge, while purely expert-opinion maps can be inconsistent. Introduced by <b>Thomas Saaty in 1980</b>, AHP addresses this by structuring the decision into a hierarchy and integrating both data and expert judgment, typically paired with <b>GIS</b> for spatial mapping. But its very flexibility has produced a diversity of methodologies &mdash; wide variation in how criteria are selected, weighted and validated &mdash; which threatens consistency and comparability. The review&rsquo;s gap: no standardised, comparative synthesis existed of <em>which</em> criteria matter most for flood vs. landslide mapping and <em>how</em> weighting practices differ.</p>
+  </section>
+
+  <section class="card" id="concepts">
+    <h2>Key concepts</h2>
+    <dl class="meta-grid">
+      <dt>AHP hierarchy</dt><dd>A multi-level structure: <b>goal &rarr; criteria &rarr; sub-criteria &rarr; suitability level</b>, each level logically linked to the next.</dd>
+      <dt>Saaty 1&ndash;9 scale</dt><dd>Translates qualitative judgments into numbers: 1 = equal importance &hellip; 9 = extreme importance; reciprocals (1/3, 1/7&hellip;) for the inverse comparison. Paper recommends 5&ndash;9 criteria (a 20-criteria matrix needs 190 comparisons &mdash; cognitively unmanageable).</dd>
+      <dt>Eigenvector weights</dt><dd>The pairwise-comparison matrix is column-normalised and row-averaged to derive the priority vector (local weights); global weight = sub-criterion weight &times; parent-criterion weight.</dd>
+      <dt>Consistency Ratio (CR)</dt><dd>CR = CI/RI where CI = (&lambda;<sub>max</sub> &minus; n)/(n &minus; 1) and RI is a size-dependent Random Index. <b>CR &lt; 0.1</b> = judgments acceptably consistent; otherwise revise the comparisons. (Worked example in the paper: &lambda;<sub>max</sub> = 5.199, CI = 0.050, RI = 1.12 for n = 5, CR &asymp; 0.05.)</dd>
+      <dt>Sub-criteria weighting schemes</dt><dd>Straight ranking (w &prop; n+1&minus;i), reciprocal (1/i), exponential ((n+1&minus;i)<sup>P</sup>), and <b>rank-order centroid (ROC)</b> &mdash; quick alternatives to full pairwise comparison when data or time is limited.</dd>
+    </dl>
   </section>
 
   <section class="card" id="method">
     <h2>Data &amp; Method</h2>
-    <p>The paper is a <b>systematic review</b> of numerous published studies (<b>&asymp;20 landslide + &asymp;20 flood</b> susceptibility studies) that apply AHP combined with GIS. It explains the AHP mechanics in detail: build a <b>hierarchy</b> (goal &rarr; criteria &rarr; sub-criteria &rarr; alternatives) &rarr; construct a <b>pairwise comparison matrix</b> using the <b>Saaty 1&ndash;9 scale</b> &rarr; derive criteria weights via the matrix&rsquo;s <b>eigenvector</b> &rarr; check the <b>Consistency Ratio (CR &lt; 0.1)</b> to validate the judgments &rarr; combine weighted criteria layers through a <b>weighted overlay in GIS</b> to produce the final susceptibility map. The review also compares different sub-criteria weighting schemes (straight, reciprocal, exponential ranking, rank-order centroid).</p>
+    <p>The paper is a <b>systematic review</b> comparing <b>20 landslide-susceptibility + 20 flood-susceptibility</b> studies (published across many global contexts) that apply AHP combined with GIS. It documents the AHP workflow step by step and then tabulates the criteria each study prioritised, synthesising the most frequently-used factors per hazard type.</p>
+    <ol>
+      <li><b>Criteria selection</b> &mdash; guided by relevance, completeness, independence/non-redundancy, measurability, mutual exclusivity, and stakeholder/expert involvement (Delphi, focus groups, interviews).</li>
+      <li><b>Hierarchical structuring</b> &mdash; goal &rarr; criteria &rarr; sub-criteria &rarr; suitability level.</li>
+      <li><b>Pairwise comparison</b> &mdash; build the reciprocal matrix on the Saaty 1&ndash;9 scale.</li>
+      <li><b>Weight derivation</b> &mdash; column-normalise &rarr; row-average &rarr; eigenvector (priority) weights.</li>
+      <li><b>Consistency check</b> &mdash; compute CI, look up RI, verify <b>CR &lt; 0.1</b>; otherwise redo comparisons.</li>
+      <li><b>Sub-criteria weighting</b> &mdash; compare straight / reciprocal / exponential ranking and ROC.</li>
+      <li><b>Final map</b> &mdash; weighted linear combination F = &Sigma; w<sub>i</sub> s<sub>i</sub> C<sub>i</sub> applied as a <b>weighted overlay in GIS</b>.</li>
+    </ol>
   </section>
 
   <section class="card" id="results">
     <h2>Key Results</h2>
-    <p><b>Landslide</b> susceptibility maps are dominated by <b>slope, lithology, and land-use/land-cover</b>; <b>flood</b> susceptibility maps are dominated by <b>rainfall intensity, proximity to rivers, and drainage density</b>. The review concludes AHP is <b>not universally applicable</b> &mdash; criteria selection must be <b>context-specific</b> to the hazard &mdash; and calls for a <b>standardised methodology</b> to improve transparency and comparability across future AHP disaster-mapping studies.</p>
+    <p>The synthesis shows clear, hazard-specific criteria dominance &mdash; the same factors recur across studies of each hazard, confirming that criteria selection is not arbitrary but is hazard-driven.</p>
+    <table>
+      <tr><th>Hazard</th><th>Most-prioritised criteria (with frequency across 20 studies)</th></tr>
+      <tr><td><b>Landslide</b></td><td><b>Slope</b> (in 16/20; ranked #1 in 12), <b>lithology</b> (18/20), <b>land-use/land-cover (LULC)</b> (15/20); plus aspect (16), curvature (15), elevation (12), distance to rivers/drainage (14), distance to roads (13), rainfall (8, but a critical trigger in tropical regions)</td></tr>
+      <tr><td><b>Flood</b></td><td><b>Rainfall intensity/precipitation</b> (frequently ranked #1&ndash;2), <b>proximity to rivers / drainage density</b>, <b>TWI &amp; flow accumulation</b>, elevation &amp; slope, and LULC (dominant in urban studies)</td></tr>
+    </table>
+    <p>Regional variation is real: tropical regions (Vietnam, Thailand) emphasise rainfall and the Topographic Wetness Index; mountainous regions (Himalayas, Alps) prioritise seismicity and relative relief; urban settings weight roads and soil cohesion. The review concludes AHP is <b>not universally applicable</b> &mdash; criteria must be <b>context-specific</b> &mdash; and calls for a <b>standardised methodology</b> to improve transparency and comparability.</p>
   </section>
 
   <section class="card" id="lessons">
@@ -113,9 +143,20 @@
     </ol>
   </section>
 
+  <section class="card" id="limits">
+    <h2>Limitations &amp; critique</h2>
+    <ul>
+      <li><b>It is a review, not a new method:</b> the paper synthesises existing studies rather than validating a fresh model against ground-truth landslide/flood events.</li>
+      <li><b>Subjective, expert-dependent weights:</b> pairwise comparisons carry inherent subjectivity and potential bias; the CR check controls consistency but not correctness of the underlying judgments.</li>
+      <li><b>Methodological variability:</b> because criteria selection and weighting differ so widely across studies, results are hard to compare or reproduce &mdash; the paper&rsquo;s own central critique.</li>
+      <li><b>Scaling problem:</b> pairwise comparison doesn&rsquo;t scale &mdash; many criteria mean an explosion of comparisons (20 criteria &rarr; 190), overwhelming human judgment.</li>
+      <li><b>Static framework:</b> traditional AHP doesn&rsquo;t account for temporal change (evolving climate/land-use), and depends on the quality/availability of input data &mdash; a real constraint in data-scarce regions. The paper recommends sensitivity analysis, fuzzy-AHP, and hybrid AHP + machine-learning as fixes.</li>
+    </ul>
+  </section>
+
   <section class="card" id="exam">
     <h2>Exam focus</h2>
-    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Walk through how AHP would be used to build a landslide-susceptibility map.</i>&rdquo; Answer: build the goal&ndash;criteria&ndash;alternatives hierarchy (e.g. slope, lithology, land-use) &rarr; pairwise-compare criteria on the Saaty 1&ndash;9 scale &rarr; derive eigenvector weights &rarr; check CR &lt; 0.1 &rarr; combine weighted layers in a GIS overlay. Tie this to SuperDecisions/Tutorial 2 and note criteria must be hazard-specific.</div>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Walk through how AHP would be used to build a landslide-susceptibility map.</i>&rdquo; Answer: build the goal&ndash;criteria&ndash;alternatives hierarchy (e.g. slope, lithology, land-use) &rarr; pairwise-compare criteria on the Saaty 1&ndash;9 scale &rarr; derive eigenvector weights &rarr; check CR &lt; 0.1 &rarr; combine weighted layers in a GIS overlay. Tie this to SuperDecisions/Tutorial 2, quote that slope/lithology/LULC dominate landslide maps while rainfall/rivers/drainage dominate flood maps, and note criteria must be hazard-specific.</div>
     <p class="ex"><b>Course link:</b> see <a href="Ch8.html">Ch.8 &mdash; Prescriptive Analytics (MCDM / AHP)</a> for the matching lecture material. <b>Source paper:</b> <a href="R17-Using%20of%20AHP%20in%20Disaster%20Management.pdf">R17-Using of AHP in Disaster Management.pdf</a>.</p>
   </section>
 

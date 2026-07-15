@@ -60,9 +60,11 @@
     <a href="#glance">At a glance</a>
     <a href="#argument">Main argument</a>
     <a href="#problem">Problem / context</a>
+    <a href="#concepts">Key concepts</a>
     <a href="#method">Data &amp; method</a>
     <a href="#results">Key results</a>
     <a href="#lessons">5 lessons learned</a>
+    <a href="#limits">Limitations &amp; critique</a>
     <a href="#exam">Exam focus</a>
   </nav>
   <main>
@@ -73,13 +75,15 @@
       <dt>Authors</dt><dd>Fikardos, Lepenioti, Bousdekis, Apostolou, Mentzas (ICCS / National Technical Univ. of Athens; Univ. of Piraeus, Greece)</dd>
       <dt>Venue / year</dt><dd>Intelligent Systems with Applications 29 (2026) 200626</dd>
       <dt>Type</dt><dd>Applied system + user study &mdash; LLM function-calling agents</dd>
-      <dt>Domain</dt><dd>Analytics platforms &mdash; natural-language interfaces for data analytics</dd>
-      <dt>Data</dt><dd>User study comparing a chat-based interface vs a form-based interface</dd>
-      <dt>Methods</dt><dd>Analytics-platform APIs exposed as <b>LLM function-calling tools</b>, coordinated between analyst &harr; agents &harr; platform, instantiated with open-source models</dd>
+      <dt>Domain</dt><dd>Analytics platforms &mdash; natural-language interfaces for data analytics (EV Li-Ion battery testing use case)</dd>
+      <dt>Data</dt><dd>16 cases &times; 2 models &times; 3 runs = 288 experiments (LLM-as-judge); user study with <b>N = 11</b> participants comparing chat vs. form</dd>
+      <dt>Methods</dt><dd>Platform APIs exposed as <b>LLM function-calling tools</b> via <b>MCP</b>; a &ldquo;Flow&rdquo; process of 6 states / 5 agents; open-source models (Qwen 2.5:32b, Mistral-small:24b); judge = Deepseek-r1</dd>
+      <dt>Baselines compared</dt><dd>Three architectures: single-shot <b>LLM</b> vs. single <b>Agent</b> vs. multi-agent <b>Flow</b>; chat vs. form-based interface</dd>
+      <dt>Key metric</dt><dd>Correctness, Coherence, Professionalism, Task Completion, Tool Correctness (0&ndash;1); task time, #actions, usability</dd>
       <dt>Course link</dt><dd><b>Ch.10 &mdash; New AI-Based Trends in Analytics</b></dd>
     </dl>
     <div class="idea"><b>One-sentence takeaway:</b> turning an analytics platform&rsquo;s APIs into <b>LLM function-calling tools</b> lets analysts run whole workflows in natural language &mdash; a user study shows the resulting chat interface cuts task time <b>6.71&rarr;2.70 min</b> and actions <b>14.48&rarr;3.30</b> versus a form-based interface, a step toward <b>autonomous data analytics</b>.</div>
-    
+
   </section>
 
   <section class="card" id="argument">
@@ -89,17 +93,51 @@
 
   <section class="card" id="problem">
     <h2>Problem / Context</h2>
-    <p>Traditional form- and API-based analytics platforms impose real <b>cognitive overhead and technical barriers</b>. Non-expert users cannot drive them directly, so useful insight ends up bottlenecked on a small pool of technical specialists.</p>
+    <p>Data science is complex and demands scarce human expertise, so automating its software-engineering tasks is valuable. But traditional <b>form- and API-based analytics platforms</b> impose real <b>cognitive overhead and technical barriers</b> &mdash; they require users to formulate code-like requests and know configuration parameters, which non-technical users cannot do, bottlenecking insight on a small pool of specialists. Existing GenAI approaches mostly integrate AI as copilots or address only a single stage of the analytics lifecycle. The paper&rsquo;s differentiators: it (1) considers the <b>whole analytics lifecycle</b>, (2) exposes platform functionality as <b>tools accessible to external systems</b>, and (3) gives a <b>systematic framework</b> to design agentic analytics workflows &mdash; converting an API-based platform into a conversational, natural-language interface driven by multiple LLM agents.</p>
+  </section>
+
+  <section class="card" id="concepts">
+    <h2>Key concepts</h2>
+    <dl class="meta-grid">
+      <dt>Function calling / tool use</dt><dd>Giving an LLM structured &ldquo;tools&rdquo; (function name + JSON input parameters) it can invoke to fetch data or run analyses &mdash; what turns a chatbot into an agent that actually executes workflows.</dd>
+      <dt>Model Context Protocol (MCP)</dt><dd>Anthropic&rsquo;s JSON-based standard (host = LLM/agent, client = adapter, server = wrapped tools) used to wrap the platform&rsquo;s function-calling API as reusable tools, boosting interoperability.</dd>
+      <dt>AI agents</dt><dd>LLMs given a name, personality/description, tools and expected output; multiple agents converse and cooperate through a defined process.</dd>
+      <dt>The &ldquo;Flow&rdquo; process</dt><dd>P = &lang;States, Agents, Tasks, Transitions&rang; &mdash; here 6 states and 5 agents (User Input &rarr; Manager &rarr; Coder / Analyst / Result Expert &rarr; Fulfilment), with self-reflect and human-in-the-loop mechanisms.</dd>
+      <dt>Enablers</dt><dd>Prompt engineering, knowledge injection (RAG), memory expansion, function calling, fine-tuning, and AI agents &mdash; the techniques that adapt LLMs to the task.</dd>
+      <dt>LLM-as-a-judge</dt><dd>Using a stronger model (Deepseek-r1) to score outputs on defined metrics &mdash; scalable, explainable evaluation via the Deepeval framework&rsquo;s G-EVAL methodology.</dd>
+    </dl>
   </section>
 
   <section class="card" id="method">
     <h2>Data &amp; Method</h2>
-    <p>The authors convert the analytics platform&rsquo;s APIs into <b>LLM function-calling tools</b>. A coordination process mediates between the <b>data analyst, the AI agents, and the platform</b>, producing a <b>chat-based interface</b> for running analytical workflows, instantiated using <b>open-source models</b>. The system is evaluated with a <b>user study</b> that compares the new <b>chat interface</b> against the original <b>form-based interface</b>, measuring task time, number of actions, usability, satisfaction, confidence, and hallucination.</p>
+    <p>The authors extend an Analytics-as-a-Service (A4A) platform: its GraphQL/API functions are wrapped as <b>function-calling tools</b> exposed through an <b>MCP server</b>. A coordination process (the &ldquo;Flow&rdquo;) mediates between the data analyst, the AI agents and the platform, producing a <b>chat-based interface</b>. The industrial use case is <b>EV Li-Ion battery testing</b> (chamber/tester sensor data, machine statuses), with five descriptive analyses + one predictive analysis (chamber-status forecast).</p>
+    <ol>
+      <li><b>Tool exposure</b> &mdash; platform functions &rarr; function-calling API &rarr; MCP-wrapped tools (Result Attributes, Build Analysis, Algorithm Code/Description, Intents, Results, Prediction, etc.).</li>
+      <li><b>Flow architecture</b> &mdash; 6 states / 5 agents: User Input &rarr; Manager (routes) &rarr; Coder / Analyst / Result Expert (tool-using) &rarr; Fulfilment (checks answer, loops back if insufficient); self-reflect + human-in-the-loop.</li>
+      <li><b>Benchmark experiments</b> &mdash; 3 architectures (LLM, Agent, Flow) &times; 2 open-source models (Qwen 2.5:32b, Mistral-small:24b) &times; 16 cases &times; 3 seeds = <b>288 experiments</b>; hosted via Ollama on 2&times;RTX 4090 (48GB); judged by Deepseek-r1 on 5 Deepeval metrics.</li>
+      <li><b>User study</b> &mdash; N = 11 (highly educated, technically experienced); each user does 3 tasks with both the <b>form-based</b> and the <b>Flow+Qwen chat</b> interface; logged task time, #actions, plus Likert usability/satisfaction/confidence; significance via Mann-Whitney U.</li>
+    </ol>
   </section>
 
   <section class="card" id="results">
     <h2>Key Results</h2>
-    <p>Task time falls from <b>6.71 to 2.70 minutes</b>; the number of actions falls from <b>14.48 to 3.30</b>; usability rises from <b>3.09 to 4.64</b>; and the chat interface achieves a <b>+7.2% mean overall score</b> versus other baselines. The chat interface scored better by <b>at least one point</b> on usability, ease of use, satisfaction and timeliness, and notably reduced the <b>&ldquo;familiarity barrier&rdquo;</b> &mdash; users no longer needed to already know the platform or the specific use case to get results.</p>
+    <p>In the benchmark, the multi-agent <b>Flow architecture with Qwen</b> scored best overall (0.86), a <b>+7.2%</b> mean improvement over other approaches, and led on Correctness and Tool Correctness.</p>
+    <table>
+      <tr><th>Architecture &times; Model</th><th>Correctness</th><th>Task Completion</th><th>Tool Correctness</th><th>Overall</th></tr>
+      <tr><td>LLM &times; Mistral</td><td>0.27</td><td>0.59</td><td>0.52</td><td>0.66</td></tr>
+      <tr><td>LLM &times; Qwen</td><td>0.61</td><td>0.80</td><td>0.79</td><td>0.82</td></tr>
+      <tr><td>Agent &times; Qwen</td><td>0.68</td><td>0.78</td><td>0.79</td><td>0.83</td></tr>
+      <tr><td>Flow &times; Mistral</td><td>0.70</td><td>0.75</td><td>0.88</td><td>0.83</td></tr>
+      <tr><td><b>Flow &times; Qwen</b></td><td><b>0.73</b></td><td>0.78</td><td><b>0.92</b></td><td><b>0.86</b></td></tr>
+    </table>
+    <p>The <b>user study</b> is the headline evidence for the chat interface vs. the form:</p>
+    <table>
+      <tr><th>Measure</th><th>Form-based</th><th>Chat (Flow + Qwen)</th></tr>
+      <tr><td>Task time</td><td>6.71 min</td><td><b>2.70 min</b> (~2.5&times; faster)</td></tr>
+      <tr><td>Number of actions</td><td>14.48</td><td><b>3.30</b> (~4&times; fewer)</td></tr>
+      <tr><td>Usability</td><td>3.09</td><td><b>4.64</b></td></tr>
+    </table>
+    <p>The chat interface was better by <b>at least one point</b> on usability, ease of use, satisfaction and timeliness, and notably reduced the <b>&ldquo;familiarity barrier&rdquo;</b> &mdash; users no longer needed to already know the platform or the use case. Despite the known hallucination risk, participants reported high confidence and an absence of hallucinations, and valued that the agents&rsquo; executed queries were displayed (explainability/trust). Trade-off: the Flow architecture is slower per run (~2&ndash;3&times; longer mean execution time) than the single-LLM baseline.</p>
   </section>
 
   <section class="card" id="lessons">
@@ -113,9 +151,20 @@
     </ol>
   </section>
 
+  <section class="card" id="limits">
+    <h2>Limitations &amp; critique</h2>
+    <ul>
+      <li><b>Small user study:</b> only N = 11 participants, mostly highly-educated technical experts &mdash; not representative of the non-technical users the system aims to empower.</li>
+      <li><b>One platform, open-source models:</b> evaluated on a single analytics platform (A4A) with quantised open-source LLMs, which are weaker than frontier models; results may not transfer.</li>
+      <li><b>Speed/robustness trade-off:</b> the best-scoring Flow architecture is markedly slower (2&ndash;3&times; longer execution) and showed performance instability/outliers &mdash; sophistication costs latency.</li>
+      <li><b>Limited task set:</b> 16 benchmark cases and a battery-testing use case; broader analytical workflows are untested.</li>
+      <li><b>Hallucination not solved:</b> although low here, hallucination and trust remain fundamental unresolved LLM risks that the paper measures but cannot eliminate; the work is described as &ldquo;preliminary.&rdquo;</li>
+    </ul>
+  </section>
+
   <section class="card" id="exam">
     <h2>Exam focus</h2>
-    <div class="exam"><b>Exam angle:</b> &ldquo;<i>What does &lsquo;autonomous data analytics&rsquo; actually mean, and what evidence supports it?</i>&rdquo; Answer: platform APIs exposed as LLM function-calling tools let a chat interface replace form-based analytics; a controlled user study shows task time drops 6.71&rarr;2.70 min and actions drop 14.48&rarr;3.30, with usability up and the familiarity barrier reduced &mdash; while hallucination risk is explicitly measured, not ignored.</div>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>What does &lsquo;autonomous data analytics&rsquo; actually mean, and what evidence supports it?</i>&rdquo; Answer: platform APIs exposed as LLM function-calling tools (via MCP) let a multi-agent &ldquo;Flow&rdquo; chat interface replace form-based analytics; a user study (N=11) shows task time drops 6.71&rarr;2.70 min and actions drop 14.48&rarr;3.30, usability 3.09&rarr;4.64, with the familiarity barrier reduced &mdash; while hallucination risk is explicitly measured, not ignored. Note the speed/robustness trade-off of the Flow architecture.</div>
     <p class="ex"><b>Course link:</b> see <a href="Ch10.html">Ch.10 &mdash; New AI-Based Trends in Analytics</a> for the matching lecture material. <b>Source paper:</b> <a href="R23-Generative%20AI%20for%20autonomous%20data%20analytics.pdf">R23-Generative AI for autonomous data analytics.pdf</a>.</p>
   </section>
 

@@ -60,9 +60,11 @@
     <a href="#glance">At a glance</a>
     <a href="#argument">Main argument</a>
     <a href="#problem">Problem / context</a>
+    <a href="#concepts">Key concepts</a>
     <a href="#method">Data &amp; method</a>
     <a href="#results">Key results</a>
     <a href="#lessons">5 lessons learned</a>
+    <a href="#limits">Limitations &amp; critique</a>
     <a href="#exam">Exam focus</a>
   </nav>
   <main>
@@ -76,10 +78,12 @@
       <dt>Domain</dt><dd>Medical imaging &mdash; MRI brain-tumour diagnosis</dd>
       <dt>Data</dt><dd><b>7,023 MRI images</b> at 512&times;512, four classes: glioma / meningioma / pituitary / no tumour</dd>
       <dt>Methods</dt><dd>Four CNNs (<b>VGG16, MobileNet, ResNet50, DenseNet121</b>) combined by <b>soft voting</b> (average predicted probabilities, argmax)</dd>
+      <dt>Baselines compared</dt><dd>The 4 individual CNNs, plus 5 prior published methods (Mahmud, Asiri, Alsaif, Filatov, Ravinder et al.)</dd>
+      <dt>Key metric</dt><dd>Accuracy, Precision/Recall/F1, and <b>Cohen&rsquo;s Kappa</b> (chance-corrected agreement)</dd>
       <dt>Course link</dt><dd><b>Ch.7 &mdash; Deep Learning &amp; Cognitive Computing</b></dd>
     </dl>
     <div class="idea"><b>One-sentence takeaway:</b> a <b>soft-voting ensemble of four CNNs</b> (VGG16, MobileNet, ResNet50, DenseNet121) classifies brain-tumour MRI scans into four classes at <b>97.67% accuracy</b> (Cohen&rsquo;s Kappa 0.9688) &mdash; beating every individual CNN.</div>
-    
+
   </section>
 
   <section class="card" id="argument">
@@ -89,17 +93,45 @@
 
   <section class="card" id="problem">
     <h2>Problem / Context</h2>
-    <p>Glioma, meningioma and pituitary tumours are major global health issues. Manual MRI reading by radiologists is slow, labour-intensive and error-prone, especially at scale &mdash; creating a clear need for automated, computer-vision-based early detection that can support (not replace) clinical diagnosis.</p>
+    <p>Glioma, meningioma and pituitary tumours are among the most common brain tumours and a major global health issue; because malignant tumours can spread and be life-threatening, <b>early detection</b> matters &mdash; it lets clinicians intervene with surgery, radiotherapy or chemotherapy before symptoms worsen. MRI is the standard diagnostic tool, but manual reading by radiologists is time-consuming and error-prone at scale, motivating computer-vision-based screening support. Prior single-CNN work already showed real but uneven accuracy &mdash; a ConvNeXt/EfficientNet/ResNet/VGG comparison by Reyes &amp; S&aacute;nchez topped out at <b>95.3%</b>, and a fine-tuning approach by Takahashi et al. reached <b>87.5%</b> on glioma segmentation &mdash; and the authors note that a single CNN model is <b>&ldquo;sometimes not enough to get optimal results&rdquo;</b> and can fail on unseen data. That gap motivates combining several optimised CNNs through ensemble learning rather than trusting any one architecture.</p>
+  </section>
+
+  <section class="card" id="concepts">
+    <h2>Key concepts</h2>
+    <dl class="meta-grid">
+      <dt>Soft voting</dt><dd>Each of the 4 CNNs outputs a class-probability vector; the vectors are <b>averaged</b> across models, and the final prediction is the <b>argmax</b> of that average &mdash; different from &ldquo;hard&rdquo; voting, which would just count each model&rsquo;s single predicted label.</dd>
+      <dt>Transfer learning (<code>include_top=False</code>)</dt><dd>Each CNN reuses convolutional feature-extraction layers pretrained on large image datasets; the original classifier head is discarded (<code>include_top=False</code>) and replaced with a new task-specific head.</dd>
+      <dt>Top-layer head</dt><dd><b>GlobalAveragePooling2D</b> (averages each feature map to one value) &rarr; <b>Dense(1024, ReLU)</b> &rarr; <b>Dropout(0.3)</b> (randomly zeroes 30% of neurons during training to fight overfitting) &rarr; <b>Dense(4, Softmax)</b> for the four classes.</dd>
+      <dt>Cohen&rsquo;s Kappa</dt><dd>An agreement statistic that corrects raw accuracy for the agreement expected <b>by chance</b> &mdash; a stricter, more trustworthy check than accuracy alone in a 4-class problem.</dd>
+    </dl>
   </section>
 
   <section class="card" id="method">
     <h2>Data &amp; Method</h2>
-    <p>The dataset is <b>7,023 MRI images</b> at <b>512&times;512</b> resolution, spanning four classes: <b>glioma, meningioma, pituitary tumour, and no tumour</b>. Four CNN architectures &mdash; <b>VGG16, MobileNet, ResNet50, DenseNet121</b> &mdash; are each trained and optimised separately (<b>Adam optimiser, learning rate 0.0001, kernel regulariser 0.001</b>). Their predictions are then combined by <b>soft voting</b>: each CNN outputs a class-probability vector, the four vectors are averaged, and the final class is the argmax of the averaged vector.</p>
+    <p>The dataset is Nickparvar&rsquo;s public <b>Brain Tumor MRI</b> collection: <b>7,023 images</b> at <b>512&times;512</b> resolution, spanning four classes &mdash; glioma (1,621), meningioma (1,645), no tumour (2,000), pituitary (1,757). The paper resizes images to <b>128&times;128</b> to reduce computation, then splits each class into training / validation / testing subsets (per Table II of the paper: Glioma 1,321/300/300; Meningioma 1,339/306/306; No Tumor 1,595/405/405; Pituitary 1,457/300/300).</p>
+    <table>
+      <tr><th>Stage</th><th>Detail</th></tr>
+      <tr><td>1. Pre-processing</td><td>Resize 512&times;512 &rarr; 128&times;128; split into train/validation/test per class</td></tr>
+      <tr><td>2. Base models</td><td>4 pretrained CNNs (transfer learning, <code>include_top=False</code>): <b>VGG16, MobileNet, ResNet50, DenseNet121</b></td></tr>
+      <tr><td>3. Top layer (each CNN)</td><td>GlobalAveragePooling2D &rarr; Dense(1024, ReLU) &rarr; Dropout(0.3) &rarr; Dense(4, Softmax)</td></tr>
+      <tr><td>4. Optimisation</td><td>Adam optimiser, learning rate <b>0.0001</b>, kernel regulariser <b>0.001</b> (penalises large weights)</td></tr>
+      <tr><td>5. Ensembling</td><td><b>Soft voting</b>: average the 4 models&rsquo; class-probability vectors, take the argmax</td></tr>
+      <tr><td>6. Evaluation</td><td>Confusion matrix &rarr; accuracy, precision, recall, F1-score, and <b>Cohen&rsquo;s Kappa</b></td></tr>
+    </table>
   </section>
 
   <section class="card" id="results">
     <h2>Key Results</h2>
-    <p>The soft-voting ensemble reaches <b>97.67% accuracy</b> with <b>Cohen&rsquo;s Kappa = 0.9688</b>, outperforming every individual CNN in the ensemble as well as prior published methods on comparable brain-tumour classification tasks.</p>
+    <p>The soft-voting ensemble reaches <b>97.67% accuracy</b> with <b>Cohen&rsquo;s Kappa = 0.9688</b>, outperforming every individual CNN and prior published methods on comparable brain-tumour classification tasks. Per-class performance for the ensemble (support 857 test images): Glioma 98/99/98% (P/R/F1), Meningioma 98/93/96%, No Tumor 99/99/99%, Pituitary 96/100/98%, average 98/98/98%.</p>
+    <table>
+      <tr><th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1-score</th><th>Cohen&rsquo;s Kappa</th></tr>
+      <tr><td>ResNet50</td><td>51.34%</td><td>66%</td><td>48%</td><td>40%</td><td>0.3243</td></tr>
+      <tr><td>VGG16</td><td>96.97%</td><td>97%</td><td>97%</td><td>97%</td><td>0.9595</td></tr>
+      <tr><td>MobileNet</td><td>97.08%</td><td>97%</td><td>97%</td><td>97%</td><td>0.9611</td></tr>
+      <tr><td>DenseNet121</td><td>92.77%</td><td>93%</td><td>93%</td><td>93%</td><td>0.9035</td></tr>
+      <tr><td><b>Soft voting ensemble</b></td><td><b>97.67%</b></td><td><b>98%</b></td><td><b>98%</b></td><td><b>98%</b></td><td><b>0.9688</b></td></tr>
+    </table>
+    <p>Comparison with prior published methods (all on MRI, accuracy only): Mahmud et al. CNN 93.3%; Asiri et al. HPCNN 96%; Alsaif et al. VGG19 93%; Filatov et al. CNN 89.55%; Ravinder et al. GCNN 95.01%; <b>this paper&rsquo;s soft-voting ensemble 97.67%</b> &mdash; the highest of the group.</p>
   </section>
 
   <section class="card" id="lessons">
@@ -113,9 +145,20 @@
     </ol>
   </section>
 
+  <section class="card" id="limits">
+    <h2>Limitations &amp; critique</h2>
+    <ul>
+      <li><b>Compute-heavy ensemble:</b> training and running four full CNNs is significantly more expensive than a single model &mdash; a real deployment cost the paper doesn&rsquo;t quantify.</li>
+      <li><b>Single dataset/modality:</b> validated only on one public Kaggle-sourced MRI dataset; generalisation to other scanners, sites or populations is untested.</li>
+      <li><b>Modest marginal gain:</b> soft voting (97.67%) beats the best single CNN, MobileNet (97.08%), by well under a point &mdash; most of the ensemble&rsquo;s value already came from its strongest member.</li>
+      <li><b>Weak ensemble member risk:</b> ResNet50 alone scored only 51.34% accuracy / Kappa 0.32 in this run &mdash; a poorly-performing member could drag down soft voting if it weren&rsquo;t offset by the other three.</li>
+      <li><b>No clinical validation:</b> the authors&rsquo; own future work flags bigger datasets and <b>explainable-AI</b> extensions as needed before the model could support real clinical decision-making; no prospective trial or radiologist comparison is reported.</li>
+    </ul>
+  </section>
+
   <section class="card" id="exam">
     <h2>Exam focus</h2>
-    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Why use an ensemble instead of the single best CNN?</i>&rdquo; Answer: soft voting averages the four CNNs&rsquo; predicted probabilities, which cancels individual model errors and consistently outperforms any one architecture (97.67% accuracy, Kappa 0.9688). Also be ready to explain <b>why Kappa matters</b> alongside accuracy in a 4-class problem.</div>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Why use an ensemble instead of the single best CNN?</i>&rdquo; Answer: soft voting averages the four CNNs&rsquo; predicted probabilities, which cancels individual model errors and consistently outperforms any one architecture (97.67% accuracy, Kappa 0.9688). Also be ready to explain <b>why Kappa matters</b> alongside accuracy in a 4-class problem, and note the gain over the best single CNN (MobileNet 97.08%) is small &mdash; a natural critique angle.</div>
     <p class="ex"><b>Course link:</b> see <a href="Ch7.html">Ch.7 &mdash; Deep Learning &amp; Cognitive Computing</a> for the matching lecture material. <b>Source paper:</b> <a href="R13-Brain%20Tumor%20Classification%20based%20on%20CNN.pdf">R13-Brain Tumor Classification based on CNN.pdf</a>.</p>
   </section>
 

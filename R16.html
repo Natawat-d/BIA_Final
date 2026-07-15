@@ -60,9 +60,11 @@
     <a href="#glance">At a glance</a>
     <a href="#argument">Main argument</a>
     <a href="#problem">Problem / context</a>
+    <a href="#concepts">Key concepts</a>
     <a href="#method">Data &amp; method</a>
     <a href="#results">Key results</a>
     <a href="#lessons">5 lessons learned</a>
+    <a href="#limits">Limitations &amp; critique</a>
     <a href="#exam">Exam focus</a>
   </nav>
   <main>
@@ -74,12 +76,14 @@
       <dt>Venue / year</dt><dd>Expert Systems With Applications 310 (2026) 131261</dd>
       <dt>Type</dt><dd>Methodological / applied &mdash; integrated data-driven, simulation and optimization framework</dd>
       <dt>Domain</dt><dd>Environmental management &mdash; invasive-species control in Chinese coastal wetlands</dd>
-      <dt>Data</dt><dd>Multi-source ecological observation data (spatial &amp; temporal) feeding a life-cycle + spatial-dispersal simulation</dd>
-      <dt>Methods</dt><dd>Three coupled modules: <b>data-driven ecological parameterization</b>, <b>simulation</b> of spread, and <b>mixed-integer optimization</b> of budget allocation</dd>
+      <dt>Data</dt><dd>Multi-source data (Sentinel-2, Landsat-5/8 remote sensing + climate, soil, topography, hydrodynamics) over Yancheng, 1990&ndash;2022; six coastal regions, 33 time steps, 5 life-cycle stages</dd>
+      <dt>Methods</dt><dd>Three coupled modules: <b>data-driven ecological parameterization</b> (RF + KNN), <b>simulation</b> of spread, and <b>mixed-integer optimization</b> of budget allocation (solved with CPLEX 22.1)</dd>
+      <dt>Baselines compared</dt><dd>DDSO vs. <b>System Dynamics (SD)</b> vs. plain <b>Simulation&ndash;Optimization (SO)</b>, under a fixed CNY 300M budget</dd>
+      <dt>Key metric</dt><dd>Total economic loss (CNY); optimal budget allocation; treatment intensity &amp; timing per region</dd>
       <dt>Course link</dt><dd><b>Ch.8 &mdash; Prescriptive Analytics: Optimization &amp; Simulation</b></dd>
     </dl>
     <div class="idea"><b>One-sentence takeaway:</b> an integrated <b>DDSO (data-driven&ndash;simulation&ndash;optimization) framework</b> beats both System Dynamics and plain simulation-optimization at controlling the invasive plant <i>Spartina alterniflora</i>, revealing that <b>coordination beats raw budget</b> and that efficient plans allocate resources <b>unevenly across space</b>.</div>
-    
+
   </section>
 
   <section class="card" id="argument">
@@ -89,17 +93,41 @@
 
   <section class="card" id="problem">
     <h2>Problem / Context</h2>
-    <p><i>Spartina alterniflora</i> is invading China&rsquo;s coastal wetlands, posing a major ecological and economic threat. Management budgets are limited, and the invasion itself is dynamic, uncertain and spatially heterogeneous &mdash; conditions under which fixed, one-off management strategies quickly become outdated.</p>
+    <p><i>Spartina alterniflora</i> &mdash; originally introduced for shoreline stabilisation &mdash; spreads rapidly through clonal growth and high seed production, and is now listed among the world&rsquo;s <b>100 worst invasive species</b>. It is invading China&rsquo;s coastal wetlands, including the UNESCO-listed <b>Yancheng</b> mudflats (a core migratory-bird habitat on the Yellow Sea), displacing native vegetation and degrading habitats. Management budgets are limited, and the invasion is dynamic, uncertain and spatially heterogeneous. The gap the paper targets: most prior work relies on <b>single data sources or standalone algorithms</b> and assumes <b>static ecological parameters</b>, so it cannot track a spreading invasion whose reproduction, mortality and dispersal rates actually change with environmental conditions over time. Existing optimisation approaches rarely feed in <b>time-varying ecological information derived from real observations</b>.</p>
+  </section>
+
+  <section class="card" id="concepts">
+    <h2>Key concepts</h2>
+    <dl class="meta-grid">
+      <dt>DDSO framework</dt><dd>Three coupled modules &mdash; <b>D</b>ata-driven parameterization &rarr; <b>S</b>imulation of ecological dynamics &rarr; <b>O</b>ptimization of control decisions &mdash; forming the full descriptive&rarr;predictive&rarr;prescriptive stack in one system.</dd>
+      <dt>Time-varying parameters</dt><dd>Reproduction rate, natural mortality, seed survival, dispersal/migration rate are re-estimated from environmental data at each period &mdash; not held constant as in older niche models.</dd>
+      <dt>Random Forest + KNN</dt><dd>RF classifies growth stages from remote-sensing imagery (via GEE) and estimates stage-specific attrition; a KNN regression model maps environmental drivers (temperature, salinity, soil sodium, precipitation) to seed-survival adaptability coefficients.</dd>
+      <dt>Mixed-integer programming (MIP)</dt><dd>Binary decision variable x<sub>r,t</sub> = whether to treat region r at time t (yes/no), combined with continuous intensity/budget variables &mdash; solved to minimise total invasion-induced economic loss under a fixed budget. Big-M linearisation converts the min-operator constraints into a solvable MIP.</dd>
+      <dt>Google Earth Engine (GEE)</dt><dd>Cloud platform used to extract NDVI/EVI/NDWI vegetation-and-water indices from Sentinel-2 / Landsat imagery and map the invasion&rsquo;s spatiotemporal spread 1990&ndash;2022.</dd>
+    </dl>
   </section>
 
   <section class="card" id="method">
     <h2>Data &amp; Method</h2>
-    <p>The framework couples three modules: (1) <b>data-driven ecological parameterization</b> from multi-source observations, producing <b>time-varying</b> parameters that reflect evolving invasion conditions; (2) <b>simulation</b> of the plant&rsquo;s <b>life-cycle transitions and spatial dispersal</b>; and (3) a <b>mixed-integer optimization</b> module that allocates <b>control budgets and intervention intensities across space and time</b> to generate cost-effective schedules under fixed budget constraints. The framework is benchmarked against plain <b>System Dynamics (SD)</b> and a simpler <b>Simulation&ndash;Optimization (SO)</b> approach, with scenario analysis across different budget levels and invasion intensities.</p>
+    <p>The framework couples three modules over <b>six coastal regions of Yancheng</b> (Xiangshui, Binhai, Sheyang, Tinghu, Dafeng, Dongtai), discretising the problem into spatial units r, decision periods t (33 time steps), and life-cycle stages k (5 stages). It was solved with <b>IBM ILOG CPLEX 22.1</b> on an Apple M1 (8-core, 8 GB RAM); all tested instances solved within <b>180 s</b>, with effort scaling roughly linearly in the number of periods.</p>
+    <ol>
+      <li><b>Data-driven parameterization</b> &mdash; multi-source data (Sentinel-2, Landsat-5/8, climate/soil/topography/hydrodynamics) fused on GEE + Python; RF and KNN estimate time-varying reproduction, mortality, seed-survival and dispersal parameters (cross-validation mean R&sup2; &asymp; <b>0.79&ndash;0.88</b>).</li>
+      <li><b>Simulation</b> &mdash; a stage-structured system-dynamics model of the full life cycle (seed bank, growth, reproduction, dispersal, migration) using a Lotka-Volterra competition framework for inter-stage suppression under a regional carrying capacity.</li>
+      <li><b>Optimization</b> &mdash; a mixed-integer model minimises total economic loss subject to a total-budget constraint; binary x<sub>r,t</sub> decides where/when to apply combined physical + chemical control (effective control rate &gamma; = 0.85; labour/machinery cost C = CNY 2400).</li>
+      <li><b>Benchmarking &amp; scenarios</b> &mdash; DDSO vs. SD vs. SO at a fixed CNY 300M budget; then scenario analysis over budget levels (0, 100, 200, 400, 500M CNY), invasion frequency/abundance (Low/Medium/High), and intervention-timing delays.</li>
+    </ol>
   </section>
 
   <section class="card" id="results">
     <h2>Key Results</h2>
-    <p>DDSO outperforms both SD and SO on <b>budget efficiency</b>, and surfaces two counter-intuitive management insights: (1) effectiveness depends <b>more on having a coordinated optimization framework than on the scale of investment</b>; and (2) economically efficient strategies inherently favour <b>highly uneven spatial resource allocation</b> rather than spreading effort evenly. The results underscore the value of <b>early intervention</b> and <b>cross-regional coordination</b>.</p>
+    <p>At a fixed CNY 300M budget, adding <b>optimized control decisions</b> (SO and DDSO) cuts total economic loss by <b>nearly two orders of magnitude</b> versus the no-control System Dynamics baseline &mdash; SD leaves total loss at <b>CNY 521.6M</b>, while SO and DDSO bring it to ~CNY 5.65&ndash;5.71M. The budget-scenario analysis shows diminishing marginal returns: past ~CNY 200M, additional funding mainly extends coverage/persistence rather than cutting loss further (loss stabilises near CNY 5.7M).</p>
+    <table>
+      <tr><th>Model (CNY 300M budget)</th><th>Total economic loss (CNY)</th><th>What it adds</th></tr>
+      <tr><td>System Dynamics (SD, no control)</td><td>521,595,663</td><td>Baseline: simulation only, no optimised control</td></tr>
+      <tr><td>Simulation&ndash;Optimization (SO, fixed params)</td><td>5,651,560</td><td>Adds optimised control decisions</td></tr>
+      <tr><td><b>DDSO (time-varying params)</b></td><td><b>5,705,480</b></td><td>Adds data-driven ecological realism &rarr; smoother, less-extreme control paths</td></tr>
+    </table>
+    <p>Two counter-intuitive insights: (1) the <b>existence of a coordinated optimization framework</b> &mdash; not the scale of investment &mdash; determines the order of magnitude of losses; (2) economically efficient plans favour <b>highly uneven spatial allocation</b>, concentrating resources in high-return, high-propagation regions (Sheyang, Dafeng, Dongtai) rather than spreading effort evenly. DDSO&rsquo;s finer ecological structure produces <b>more temporally distributed, less extreme</b> control pathways than SO at similar total cost, improving robustness. Findings underscore <b>early intervention</b> and <b>cross-regional coordination</b>.</p>
   </section>
 
   <section class="card" id="lessons">
@@ -113,9 +141,20 @@
     </ol>
   </section>
 
+  <section class="card" id="limits">
+    <h2>Limitations &amp; critique</h2>
+    <ul>
+      <li><b>One species, one region:</b> validated only on <i>Spartina alterniflora</i> across six coastal-China regions &mdash; the specific allocations won&rsquo;t transfer directly to other invasions or geographies.</li>
+      <li><b>Heavy data &amp; parameter demands:</b> the approach needs multi-source remote-sensing + environmental data and machine-learned parameters; its ecological parameters are described as &ldquo;plausible, time-varying&rdquo; approximations, not true observed values.</li>
+      <li><b>MIP scalability:</b> although tractable here (33 periods &times; 6 regions &times; 5 stages, &lt;180 s), mixed-integer optimisation scales poorly as the spatial&ndash;temporal grid grows.</li>
+      <li><b>Only as good as the ecological model:</b> results depend on the life-cycle/dispersal simulation being faithful; structural errors there propagate straight into the &ldquo;optimal&rdquo; plan.</li>
+      <li><b>Simulated outcomes:</b> the cost/loss figures come from the model, not from a field trial of the recommended control schedule.</li>
+    </ul>
+  </section>
+
   <section class="card" id="exam">
     <h2>Exam focus</h2>
-    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Why integrate data-driven parameterization with simulation and optimization, rather than optimizing alone?</i>&rdquo; Answer: static optimization can&rsquo;t track a spreading, budget-constrained invasion; DDSO&rsquo;s time-varying parameters + simulation + mixed-integer optimization beat SD and SO on budget efficiency, and reveal that uneven, coordinated spatial allocation outperforms even spreading.</div>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>Why integrate data-driven parameterization with simulation and optimization, rather than optimizing alone?</i>&rdquo; Answer: static optimization can&rsquo;t track a spreading, budget-constrained invasion; DDSO&rsquo;s time-varying parameters + simulation + mixed-integer optimization cut total loss from CNY 521.6M (no control) to ~CNY 5.7M and reveal that uneven, coordinated spatial allocation outperforms even spreading &mdash; coordination matters more than budget scale.</div>
     <p class="ex"><b>Course link:</b> see <a href="Ch8.html">Ch.8 &mdash; Prescriptive Analytics: Optimization &amp; Simulation</a> for the matching lecture material. <b>Source paper:</b> <a href="R16-An%20integrated%20data-driven-simulation-optimization%20model.pdf">R16-An integrated data-driven-simulation-optimization model.pdf</a>.</p>
   </section>
 

@@ -60,9 +60,11 @@
     <a href="#glance">At a glance</a>
     <a href="#argument">Main argument</a>
     <a href="#problem">Problem / context</a>
+    <a href="#concepts">Key concepts</a>
     <a href="#method">Data &amp; method</a>
     <a href="#results">Key results</a>
     <a href="#lessons">5 lessons learned</a>
+    <a href="#limits">Limitations &amp; critique</a>
     <a href="#exam">Exam focus</a>
   </nav>
   <main>
@@ -74,12 +76,14 @@
       <dt>Venue / year</dt><dd>Expert Systems With Applications 252 (2024) 124018</dd>
       <dt>Type</dt><dd>Applied system &mdash; deep-learning pipeline with expert-supplied inputs</dd>
       <dt>Domain</dt><dd>Fashion retail &mdash; trend forecasting from social media</dd>
-      <dt>Data</dt><dd>Instagram posts collected via hashtags supplied by domain experts; a new dataset released</dd>
-      <dt>Methods</dt><dd>Pipeline: fashion/non-fashion image classification &rarr; garment object detection &rarr; dominant colour extraction &rarr; trend analysis</dd>
+      <dt>Data</dt><dd>New 700,000-image Instagram dataset (350k fashion / 350k non-fashion) for classification; MADAME (55,087 handbags, 91,380 instances) for detection; COCO for YOLOv5 pretraining</dd>
+      <dt>Methods</dt><dd>Pipeline: <b>VGG-16</b> fashion/non-fashion classification &rarr; <b>YOLOv5</b> garment object detection &rarr; <b>K-Means</b> dominant-colour extraction &rarr; PowerBI dashboards</dd>
+      <dt>Baselines compared</dt><dd>Classification: VGG-16 vs. ResNet50, DenseNet121, EfficientNet; detection: per-class YOLOv5 mAP</dd>
+      <dt>Key metric</dt><dd>Accuracy/Precision/Recall/F1 (classification, 95% CI); <b>mAP@.5</b> (detection, PASCAL VOC metric)</dd>
       <dt>Course link</dt><dd><b>Expert Systems (+ Ch.6 / Ch.7)</b></dd>
     </dl>
-    <div class="idea"><b>One-sentence takeaway:</b> &ldquo;Social4Fashion&rdquo; automates fashion-trend scouting: a deep-learning pipeline over Instagram images (fashion classification &rarr; object detection &rarr; colour extraction), seeded by hashtags from domain experts, reaches <b>97% classification accuracy</b> and <b>0.77 mAP</b> for garment detection &mdash; replacing manual, district-by-district trend scouting.</div>
-    
+    <div class="idea"><b>One-sentence takeaway:</b> &ldquo;Social4Fashion&rdquo; automates fashion-trend scouting: a deep-learning pipeline over Instagram images (VGG-16 classification &rarr; YOLOv5 detection &rarr; K-Means colour extraction), seeded by hashtags from domain experts, reaches <b>97% classification accuracy</b> and <b>0.77 mAP</b> for handbag detection &mdash; replacing manual, district-by-district trend scouting.</div>
+
   </section>
 
   <section class="card" id="argument">
@@ -89,17 +93,44 @@
 
   <section class="card" id="problem">
     <h2>Problem / Context</h2>
-    <p>Influencers now shape fashion trends online, yet trend forecasting was traditionally manual, slow and subjective &mdash; designers used to travel to fashion districts in person to observe what people were wearing. Designers need faster, evidence-based signals drawn from where trends actually surface today: social media.</p>
+    <p>The global apparel market reached ~US$1.5 trillion in 2021 and was projected to hit ~US$2 trillion by 2026, and social media has shifted trend-setting power from brands to <b>influencers</b>. Yet trend forecasting was traditionally manual, slow and subjective &mdash; designers physically travelled to fashion districts in major cities to observe what people wore. Social-media images are voluminous, unlabelled and heterogeneous, so extracting trend signals by hand is a time-consuming filtering-and-analysis task. The paper identifies a specific gap: while fashion AI covers clothing detection, classification and virtual try-on, few systems <b>leverage social networks as a continuous, geo-localised data source</b> for trend analysis. Social4Fashion fills this by giving designers an automated, dashboard-driven tool to spot current and future trends by time and location.</p>
+  </section>
+
+  <section class="card" id="concepts">
+    <h2>Key concepts</h2>
+    <dl class="meta-grid">
+      <dt>Expert-in-the-loop pipeline</dt><dd>Domain experts supply the <b>hashtags</b> (e.g. shoulder bags, clutch, backpack) that seed the Instagram crawler &mdash; the expert-knowledge input that earns the &ldquo;expert system&rdquo; label; CNNs then do the perception.</dd>
+      <dt>VGG-16</dt><dd>A CNN used for the binary fashion/non-fashion image classifier; chosen after comparison as the best speed/accuracy trade-off among the four networks tested.</dd>
+      <dt>YOLOv5</dt><dd>A single-stage object detector that locates and classifies the handbag in an image; pretrained on COCO, fine-tuned on the MADAME handbag dataset.</dd>
+      <dt>K-Means colour clustering</dt><dd>Pixels of the cropped bag are clustered in RGB space; cluster centres = dominant colours (3 extracted; first is background, next two are the bag). The efficient &ldquo;Elkan&rdquo; K-Means variant is used.</dd>
+      <dt>mAP (mean Average Precision)</dt><dd>The PASCAL VOC detection metric, combining precision and recall across classes; robust to class imbalance (why accuracy is not used for detection).</dd>
+    </dl>
   </section>
 
   <section class="card" id="method">
     <h2>Data &amp; Method</h2>
-    <p>The system runs an end-to-end pipeline on <b>Instagram</b> posts, collected via <b>hashtags provided by domain experts</b> &mdash; this expert-supplied input is what earns the &ldquo;expert system&rdquo; label. The pipeline stages are: (1) data acquisition; (2) <b>fashion / non-fashion image classification</b>; (3) <b>object detection</b> of the garment (e.g. locating and classifying a handbag); (4) <b>dominant colour extraction</b>; and (5) trend analysis &amp; forecasting to support designers&rsquo; decisions. The system is validated on real-world service datasets, and a new dataset is released for future research.</p>
+    <p>The system runs an end-to-end pipeline on <b>Instagram</b> posts, crawled twice a day via the Instaloader library using <b>expert-supplied hashtags</b>; images are stored in AWS S3 and metadata (caption, hashtags, geolocation) in MongoDB. Because hashtags can be inconsistent with image content, the pipeline uses <b>image analysis, not hashtags alone</b>, to classify fashion content.</p>
+    <table>
+      <tr><th>Stage</th><th>Model / method</th><th>Data &amp; settings</th></tr>
+      <tr><td>1. Acquisition</td><td>Instaloader crawler</td><td>Hashtags from experts; images &rarr; S3, text &rarr; MongoDB, with geolocation</td></tr>
+      <tr><td>2. Fashion/non-fashion classification</td><td><b>VGG-16</b></td><td>New 700k-image dataset (350k/350k), 70/10/20 train/val/test split; Adam, LR 1e-5, batch 32, 50 epochs, early stopping</td></tr>
+      <tr><td>3. Handbag detection</td><td><b>YOLOv5s</b></td><td>Pretrained on COCO; fine-tuned on MADAME (55,087 bags, 10 classes, 91,380 instances); 80/20 stratified split; SGD, LR 0.01, batch 128, 150 epochs</td></tr>
+      <tr><td>4. Dominant-colour extraction</td><td><b>K-Means</b> (Elkan)</td><td>Cluster cropped-bag pixels in RGB; extract 3 dominant colours (RGB triads)</td></tr>
+      <tr><td>5. Trend analysis</td><td>Backend APIs + <b>PowerBI</b> dashboards</td><td>Filter by time / geolocation / handbag type / colour; KPIs (posts, likes, comments)</td></tr>
+    </table>
   </section>
 
   <section class="card" id="results">
     <h2>Key Results</h2>
-    <p>Fashion-image classification reaches <b>97% accuracy</b> (95% CI 0.95&ndash;1.00); handbag <b>object detection</b> reaches <b>mAP 0.77</b> (95% CI 0.73&ndash;0.82) &mdash; both accurate enough for practical use in fashion-domain trend analysis.</p>
+    <p>The <b>VGG-16 classifier</b> is the best of four networks tested (95% CIs from 200 bootstrap rounds); handbag <b>detection</b> averages mAP@.5 = 0.787 across 10 classes, with wide per-class spread (clutch/bowling bags detect well; backpacks poorly).</p>
+    <table>
+      <tr><th>Classifier</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1-score</th></tr>
+      <tr><td>ResNet50</td><td>0.91</td><td>0.92</td><td>0.92</td><td>0.92</td></tr>
+      <tr><td><b>VGG-16</b></td><td><b>0.97</b> (0.95&ndash;1.00)</td><td><b>0.94</b></td><td><b>0.94</b></td><td><b>0.94</b></td></tr>
+      <tr><td>DenseNet121</td><td>0.89</td><td>0.88</td><td>0.91</td><td>0.89</td></tr>
+      <tr><td>EfficientNet</td><td>0.93</td><td>0.93</td><td>0.95</td><td>0.94</td></tr>
+    </table>
+    <p>Handbag detection (YOLOv5, test set): total average Precision 0.832, Recall 0.754, <b>mAP@.5 = 0.777&ndash;0.787</b> (95% CI 0.73&ndash;0.82). Best classes: Bowling bag (mAP 0.855), Mini bags (0.829), Clutch (0.827); weakest: Backpack (0.714) &mdash; largely tracking each class&rsquo;s image count in MADAME. Both metrics are judged accurate enough for practical fashion-domain trend analysis.</p>
   </section>
 
   <section class="card" id="lessons">
@@ -113,9 +144,20 @@
     </ol>
   </section>
 
+  <section class="card" id="limits">
+    <h2>Limitations &amp; critique</h2>
+    <ul>
+      <li><b>Instagram-only &amp; hashtag-dependent:</b> the data source is a single platform and the pipeline is seeded by expert-supplied hashtags, which can be applied inconsistently on social media.</li>
+      <li><b>Modest, uneven detection:</b> average mAP 0.77 is only moderate, and per-class performance varies widely (backpacks 0.71) &mdash; driven by class imbalance in the training data.</li>
+      <li><b>Visual-only:</b> the system analyses images (and one garment type, handbags) but largely ignores caption text/context; object detection can include foreground clutter, which the authors suggest semantic segmentation would fix.</li>
+      <li><b>Limited validation:</b> demonstrated on real service datasets but not benchmarked against actual future trend outcomes &mdash; forecasting quality itself is asserted rather than measured.</li>
+      <li><b>Single category:</b> only handbags are covered so far; extension to shoes/dresses/etc. and to other social platforms is future work.</li>
+    </ul>
+  </section>
+
   <section class="card" id="exam">
     <h2>Exam focus</h2>
-    <div class="exam"><b>Exam angle:</b> &ldquo;<i>How does this system still count as an &lsquo;expert system&rsquo; if it&rsquo;s mostly CNNs?</i>&rdquo; Answer: domain experts supply the hashtag vocabulary that seeds data collection &mdash; the expert knowledge input &mdash; while CNNs handle classification (97% accuracy) and object detection (mAP 0.77); the two together replace manual expert trend-scouting.</div>
+    <div class="exam"><b>Exam angle:</b> &ldquo;<i>How does this system still count as an &lsquo;expert system&rsquo; if it&rsquo;s mostly CNNs?</i>&rdquo; Answer: domain experts supply the hashtag vocabulary that seeds data collection &mdash; the expert knowledge input &mdash; while VGG-16 handles classification (97% accuracy) and YOLOv5 does object detection (mAP 0.77), with K-Means for colour; the pipeline together replaces manual expert trend-scouting. Note the metric split: accuracy for classification, mAP for detection.</div>
     <p class="ex"><b>Course link:</b> see <a href="ExpertSystems.html">Expert Systems &mdash; lecture page</a> for the matching lecture material. <b>Source paper:</b> <a href="R19-An%20intelligent%20expert%20system%20for%20forecasting%20fashion%20trends.pdf">R19-An intelligent expert system for forecasting fashion trends.pdf</a>.</p>
   </section>
 
