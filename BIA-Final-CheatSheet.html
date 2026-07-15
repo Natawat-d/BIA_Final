@@ -9,8 +9,8 @@
   * { box-sizing:border-box; }
   body { margin:0; background:#8d9aa0; font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); overflow-wrap:break-word; }
   .sheet { width:100%; max-width:210mm; background:#fff; margin:14px auto; padding:5mm 5mm 4mm; box-shadow:0 2px 10px rgba(0,0,0,.3); }
-  .cols { column-count:3; column-gap:3.6mm; }
-  .cols2 { column-count:2; column-gap:4mm; }
+  .cols { column-count:3; column-gap:3mm; }
+  .cols2 { column-count:2; column-gap:3.4mm; }
   h2 { font-size:6pt; text-transform:uppercase; letter-spacing:.3px; color:#fff; background:var(--teal); margin:2.3px 0 1px; padding:1.4px 5px; border-radius:2px; break-after:avoid; break-inside:avoid; }
   h2.alt { background:var(--teal-dark); }
   h2.red { background:var(--red); }
@@ -43,6 +43,9 @@
   ul.rl > li.les { padding:1.5px 3.6px; margin:1px 0 0.5px; background:#f1f6f1; border:1px solid #bcd8c6; border-radius:3px; color:#22331f; }
   ul.rl > li.les::before { content:none; }
   ul.rl > li.les b { color:var(--green); text-transform:uppercase; letter-spacing:.2px; font-size:.92em; }
+  ul.rl > li.lim { color:#8a3320; margin:0.7px 0 0; }
+  ul.rl > li.lim::before { content:"⚠"; color:var(--red); font-size:.9em; }
+  ul.rl > li.lim b { color:var(--red); text-transform:uppercase; letter-spacing:.2px; font-size:.92em; }
   ol.les5 { margin:1px 0 0; padding-left:9px; }
   ol.les5 > li { font-size:4.35pt; line-height:1.03; margin:0 0 0.25px; text-align:justify; }
   table { width:100%; border-collapse:collapse; margin:1px 0 1.6px; font-size:4.7pt; break-inside:avoid; table-layout:fixed; }
@@ -53,7 +56,7 @@
   @media print {
     html, body { background:#fff; margin:0; padding:0; }
     .sheet { width:auto; max-width:none; margin:0; padding:0; box-shadow:none; }
-    @page { size:A4 portrait; margin:4mm; }
+    @page { size:A4 portrait; margin:6mm; }
   }
 </style>
 </head>
@@ -223,7 +226,7 @@
 
   <!-- ===================== READINGS ===================== -->
   <h2 class="purple span">Readings R13–R25 · Main Argument · Problem/Context · Data &amp; Method · Key Results · 5 Lessons Learned</h2>
-  <p class="tem span"><b>Q2 answer template (any reading):</b> ① <b>Main argument</b> in one sentence → ② <b>problem/context</b> (why it matters) → ③ <b>data &amp; method</b> (dataset size + technique names + evaluation metric) → ④ <b>key results</b> (quote the numbers!) → ⑤ <b>lessons/implications</b> + link to the lecture chapter → ⑥ limitations. <span class="k">R20 = your presentation reading → likely excluded from Q2.</span></p>
+  <p class="tem span"><b>Q2 answer template (any reading):</b> ① <b>Main argument</b> in one sentence → ② <b>problem/context</b> (why it matters) → ③ <b>data &amp; method</b> (dataset size + technique names + evaluation metric) → ④ <b>key results</b> (quote the numbers!) → ⑤ <b>lessons/implications</b> + link to the lecture chapter → ⑥ <b>limitations</b> (the ⚠ line on each reading). <span class="k">R20 (Diagnostic Learning Analytics) is your own presentation reading → excluded from Q2, so it's left off this sheet.</span></p>
 
   <div class="cols2">
 
@@ -243,7 +246,8 @@
           <li>DL supports (does not replace) radiologists: it is a screening/decision-support aid.</li>
         </ol>
       </li>
-    </ul>
+          <li class="lim"><b>Limitation:</b> Ensemble of 4 CNNs is compute-heavy; validated on one MRI dataset/modality; the soft-voting gain over the best single CNN is modest; no prospective clinical trial.</li>
+</ul>
 
     <p class="rh"><span class="cr">↔Ch.5/7</span><b>R14 · Comparing ML Algorithms for Health-Insurance Pricing</b> (Bau &amp; Md Hanif 2024)</p>
     <ul class="rl">
@@ -260,7 +264,8 @@
           <li><b>Visualisation</b> (feature importance, actual-vs-predicted) converts a model into a managerial pricing decision.</li>
         </ol>
       </li>
-    </ul>
+          <li class="lim"><b>Limitation:</b> Single US dataset with few features; won't generalise to other markets/regulations; RF is less interpretable than linear models for justifying a premium; tuning failed to improve MAE.</li>
+</ul>
 
     <h3>↔ Ch.8 · Prescriptive: optimization &amp; simulation</h3>
     <p class="rh"><span class="cr">↔Ch.8</span><b>R15 · AquaCrop + Optimization for Wheat Irrigation (Morocco)</b> (Kaissi 2026)</p>
@@ -278,7 +283,8 @@
           <li>Prescriptive analytics turns a scientific model into a <b>farmer-usable decision-support tool</b>.</li>
         </ol>
       </li>
-    </ul>
+          <li class="lim"><b>Limitation:</b> Only 2 fields, 2 seasons, one crop (wheat), one region (Haouz); results hinge on careful model calibration and reliable soil-moisture data.</li>
+</ul>
 
     <p class="rh"><span class="cr">↔Ch.8</span><b>R16 · Data-Driven–Simulation–Optimization (DDSO) for Invasive Plants</b> (Zhang 2026)</p>
     <ul class="rl">
@@ -295,7 +301,8 @@
           <li>Time-varying, data-driven parameters let the plan <b>adapt</b>; static models mis-manage dynamic systems.</li>
         </ol>
       </li>
-    </ul>
+          <li class="lim"><b>Limitation:</b> One species/region (<em>Spartina</em>, coastal China); heavy data &amp; parameter demands; mixed-integer optimisation scales poorly as space–time grows; only as good as the ecological model.</li>
+</ul>
 
     <p class="rh"><span class="cr">↔Ch.8 · MCDM</span><b>R17 · AHP in Disaster Management (flood &amp; landslide)</b> (Thammaboribal 2025 · AIT)</p>
     <ul class="rl">
@@ -312,7 +319,8 @@
           <li>Different hazards need <b>different criteria</b> — don't copy a landslide model onto a flood problem.</li>
         </ol>
       </li>
-    </ul>
+          <li class="lim"><b>Limitation:</b> A review, not a new method; AHP weights are subjective/expert-dependent; methodology varies across studies so results aren't comparable; pairwise comparisons don't scale to many criteria.</li>
+</ul>
 
     <h3>↔ Expert Systems</h3>
     <p class="rh"><span class="cr">↔ES</span><b>R18 · Rule-Based Expert System for Early Diagnosis of Bipolar &amp; MDD</b> (Zolfagharnasab 2025)</p>
@@ -330,7 +338,8 @@
           <li>Knowledge <b>validation with real experts + real cases</b> is the essential final step of knowledge engineering.</li>
         </ol>
       </li>
-    </ul>
+          <li class="lim"><b>Limitation:</b> Rules &amp; coefficients vary by expert (subjective); only 17 symptoms / 120 samples / 2 disorders; static rules don't learn from data and need expert upkeep.</li>
+</ul>
 
     <p class="rh"><span class="cr">↔ES + Ch.6/7</span><b>R19 · Social4Fashion — Expert System Forecasting Fashion Trends</b> (Balloni 2024)</p>
     <ul class="rl">
@@ -347,25 +356,11 @@
           <li>The business value is <b>speed</b>: automated scouting replaces slow, costly manual trend research.</li>
         </ol>
       </li>
-    </ul>
+          <li class="lim"><b>Limitation:</b> Instagram-only and dependent on expert-supplied hashtags; handbag mAP 0.77 is modest; visual-only (ignores caption text/context); validated on limited service datasets.</li>
+</ul>
 
     <h3>↔ Big Data Analytics</h3>
-    <p class="rh"><span class="cr">↔BigData</span><b>R20 · Diagnostic Learning Analytics (DLA) in Big Data</b> (Jiang 2025) <span class="k">— your presentation</span></p>
-    <ul class="rl">
-      <li class="arg"><b>Main argument:</b> A <b>Diagnostic Learning Analytics model</b> built on distributed clustering + pose estimation can mine <b>classroom behaviour</b> data to diagnose learning problems — going beyond static grade data.</li>
-      <li><b>Problem/Context:</b> traditional learning analytics rely on <b>static data</b> (assignments, transcripts) and miss real behavioural engagement; big-data scale demands distributed processing.</li>
-      <li><b>Data &amp; Method:</b> <b>M-Canopy-K-means</b> clustering (Canopy pre-clustering to pick initial centroids, parallelised with <b>MapReduce</b>) + <b>PSSHRNet</b> pose-estimation network to recognise classroom behaviour from video; benchmarked on <b>MSCOCO</b> &amp; <b>CrowdPose</b>; applied to real classroom behaviour data.</li>
-      <li class="res"><b>Key results:</b> clustering accuracy <b>+10%</b> vs K-means and <b>+7%</b> vs mini-batch K-means, with <b>&gt;2× speedup</b> on small datasets; PSSHRNet converges faster with lower loss. Real finding: engagement participation score only <b>2.81</b>, with <b>mobile-phone use = 33.29%</b> of classroom behaviour → targeted personalised intervention.</li>
-      <li class="les"><b>5 lessons learned</b>
-        <ol class="les5">
-          <li>Big-data analytics reaches <b>education</b>: behaviour data diagnoses learning problems that grades hide.</li>
-          <li><b>MapReduce parallelisation</b> is what makes clustering feasible at classroom-video scale (Ch. Big Data).</li>
-          <li>Better <b>centroid initialisation</b> (Canopy) fixes K-means' classic weakness → accuracy + speed.</li>
-          <li>Combining <b>unsupervised clustering with deep learning</b> (pose estimation) beats either alone.</li>
-          <li>Analytics must end in <b>action</b>: the diagnosis triggers personalised teaching intervention.</li>
-        </ol>
-      </li>
-    </ul>
+    
 
     <p class="rh"><span class="cr">↔BigData</span><b>R21 · Integrated Big Data Analytics Architecture for Resilience (Last-Mile Agri-Food)</b> (Alaeddini &amp; Asgari 2025)</p>
     <ul class="rl">
@@ -382,7 +377,8 @@
           <li><b>IoT/sensor streams</b> (velocity) are what make disruption anticipation possible.</li>
         </ol>
       </li>
-    </ul>
+          <li class="lim"><b>Limitation:</b> Conceptual single-case study (one company); no quantitative performance evaluation; the reference architecture's generalisability is unproven.</li>
+</ul>
 
     <h3>↔ Ch.10 / Ch.11 · AI trends, ethics &amp; effective use</h3>
     <p class="rh"><span class="cr">↔Ch.10</span><b>R22 · AI-Enhanced Business Intelligence for Decision-Making</b> (Olszak &amp; Bartuś 2025)</p>
@@ -400,7 +396,8 @@
           <li>BI is a <b>management paradigm, not a technology</b> — AI amplifies it but doesn't replace the organisation.</li>
         </ol>
       </li>
-    </ul>
+          <li class="lim"><b>Limitation:</b> Qualitative, only 20 organisations / 3 sectors; interview self-report bias; benefits not quantified; findings are context-dependent.</li>
+</ul>
 
     <p class="rh"><span class="cr">↔Ch.10</span><b>R23 · Generative AI for Autonomous Data Analytics</b> (Fikardos 2026)</p>
     <ul class="rl">
@@ -417,7 +414,8 @@
           <li>Risks remain: <b>hallucination and trust</b> must be measured explicitly, not assumed away.</li>
         </ol>
       </li>
-    </ul>
+          <li class="lim"><b>Limitation:</b> Small user study on one platform with open-source (weaker) models; hallucination &amp; trust remain unresolved; limited task set.</li>
+</ul>
 
     <p class="rh"><span class="cr">↔Ch.11</span><b>R24 · Big Data Analytics Democratized: Clean Rooms &amp; Customer Privacy Choice</b> (Pauwels &amp; Aksehirli 2025)</p>
     <ul class="rl">
@@ -434,7 +432,8 @@
           <li>Ethics is now a <b>core analytics design constraint</b> (Ch.11), not an afterthought.</li>
         </ol>
       </li>
-    </ul>
+          <li class="lim"><b>Limitation:</b> Conceptual viewpoint with no empirical test; clean rooms &amp; privacy-choice assume industry adoption and regulation; marketing-centric; feasibility not quantified.</li>
+</ul>
 
     <p class="rh"><span class="cr">↔Ch.1/11</span><b>R25 · Antecedents to the <em>Effective Use</em> of BI — Systematic Review</b> (Widjaja 2025)</p>
     <ul class="rl">
@@ -451,7 +450,8 @@
           <li>Research (and managers) should <b>shift focus from acquiring BI to embedding it</b> in daily decisions.</li>
         </ol>
       </li>
-    </ul>
+          <li class="lim"><b>Limitation:</b> Secondary literature review (no primary data); heterogeneous studies + publication bias; “effective use” is measured inconsistently; associations are correlational, not causal.</li>
+</ul>
 
   </div><!-- /cols2 readings -->
 
